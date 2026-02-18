@@ -1,0 +1,1 @@
+{"version":3,"file":"compose.d.mts","sourceRoot":"","sources":["../../../src/javascript/mock/compose.mts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,gBAAgB,CAAC;AAC/C,OAAO,EAAE,OAAO,EAAE,MAAM,cAAc,CAAC;AAMvC,KAAK,QAAQ,GAAG;IACd,CAAC,IAAI,EAAE,MAAM,GAAG,GAAG,CAAC;CACrB,CAAC;AAGF,eAAO,MAAM,eAAe,cACf,aAAa,WACf,OAAO,KACf,QA6DF,CAAC"}

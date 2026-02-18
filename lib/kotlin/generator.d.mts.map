@@ -1,0 +1,1 @@
+{"version":3,"file":"generator.d.mts","sourceRoot":"","sources":["../../src/kotlin/generator.mts"],"names":[],"mappings":"AAQA,OAAO,KAAK,EAEV,WAAW,EAEX,MAAM,EAOP,MAAM,cAAc,CAAC;AAItB,iBAAS,SAAS,CAChB,KAAK,EAAE,WAAW,EAClB,MAAM,EAAE,MAAM,GACb;IAAE,IAAI,EAAE,MAAM,CAAC;IAAC,IAAI,EAAE,MAAM,CAAA;CAAE,CA4PhC;AAkBD,OAAO,EAAE,SAAS,EAAE,CAAC"}
