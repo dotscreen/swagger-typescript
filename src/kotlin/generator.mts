@@ -30,6 +30,22 @@ function generator(
   let constantsCounter = 0;
   const constants: ConstantsAST[] = [];
 
+  function hasSwagger2ResponseSchema(): boolean {
+    return Object.values(input.paths).some((pathItem) =>
+      Object.values(pathItem).some((value) => {
+        if (!value || typeof value !== "object") {
+          return false;
+        }
+        if ((value as SwaggerRequest).responses) {
+          return Object.values((value as SwaggerRequest).responses).some(
+            (response) => response?.schema,
+          );
+        }
+        return false;
+      }),
+    );
+  }
+
   function getConstantName(value: string) {
     const constant = constants.find((_constant) => _constant.value === value);
     if (constant) {
@@ -47,6 +63,20 @@ function generator(
   }
 
   try {
+    if (input.openapi) {
+      if (input.definitions) {
+        console.warn(
+          "OpenAPI 3 input contains Swagger 2 'definitions'. Fallbacks will be used.",
+        );
+      }
+
+      if (hasSwagger2ResponseSchema()) {
+        console.warn(
+          "OpenAPI 3 input contains Swagger 2 'responses.schema'. Fallbacks will be used.",
+        );
+      }
+    }
+
     Object.entries(input.paths).forEach(([endPoint, value]) => {
       const parametersExtended = value.parameters as Parameter[] | undefined;
       Object.entries(value).forEach(
@@ -83,7 +113,7 @@ function generator(
           );
 
           const pathParams = getPathParams(parameters);
- 
+
           const {
             exist: isQueryParamsExist,
             isNullable: isQueryParamsNullable,
@@ -204,6 +234,17 @@ function generator(
       );
     }
 
+    if (input?.definitions) {
+      types.push(
+        ...Object.entries(input.definitions).map(([name, schema]) => {
+          return {
+            name,
+            schema,
+          };
+        }),
+      );
+    }
+
     if (input?.components?.parameters) {
       types.push(
         ...Object.entries(input.components.parameters).map(([key, value]) => ({
@@ -244,6 +285,8 @@ function getBodyContent(responses?: SwaggerResponse): Schema | undefined {
 
   return responses.content
     ? Object.values(responses.content)[0].schema
+    : responses.schema
+    ? responses.schema
     : responses.$ref
     ? ({
         $ref: responses.$ref,

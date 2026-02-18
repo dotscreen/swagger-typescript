@@ -182,6 +182,8 @@ export type Parameter = {
 export interface SwaggerResponse {
   $ref?: string;
   description?: string;
+  // swagger 2 response schema
+  schema?: Schema;
   content?: Partial<
     Record<
       ApiAST["contentType"],
@@ -220,6 +222,8 @@ export interface SwaggerJson {
     [url: string]: PathItem;
   };
   components?: Components;
+  // swagger 2 definitions
+  definitions?: Record<string, Schema>;
   info: InfoObject;
   servers?: any[];
   security?: any[];

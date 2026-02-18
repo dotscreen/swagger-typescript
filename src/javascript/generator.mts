@@ -54,7 +54,37 @@ function generator(
     ),
   };
 
+  function hasSwagger2ResponseSchema(): boolean {
+    return Object.values(context.input.paths).some((pathItem) =>
+      Object.values(pathItem).some((value) => {
+        if (!value || typeof value !== "object") {
+          return false;
+        }
+        if ((value as SwaggerRequest).responses) {
+          return Object.values((value as SwaggerRequest).responses).some(
+            (response) => response?.schema,
+          );
+        }
+        return false;
+      }),
+    );
+  }
+
   try {
+    if (context.input.openapi) {
+      if (context.input.definitions) {
+        console.warn(
+          "OpenAPI 3 input contains Swagger 2 'definitions'. Fallbacks will be used.",
+        );
+      }
+
+      if (hasSwagger2ResponseSchema()) {
+        console.warn(
+          "OpenAPI 3 input contains Swagger 2 'responses.schema'. Fallbacks will be used.",
+        );
+      }
+    }
+
     // Process API paths
     processApiPaths(context);
 
@@ -340,6 +370,12 @@ function extractComponentTypes(context: GeneratorContext): void {
     });
   }
 
+  if (context.input.definitions) {
+    Object.entries(context.input.definitions).forEach(([name, schema]) => {
+      context.types.push({ name, schema });
+    });
+  }
+
   // Extract parameters
   if (components?.parameters) {
     Object.entries(components.parameters).forEach(([key, value]) => {
@@ -370,6 +406,10 @@ function getBodyContent(responses?: SwaggerResponse): Schema | undefined {
 
   if (responses.content) {
     return Object.values(responses.content)[0].schema;
+  }
+
+  if (responses.schema) {
+    return responses.schema;
   }
 
   if (responses.$ref) {
