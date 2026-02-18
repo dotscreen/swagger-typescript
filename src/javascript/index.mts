@@ -51,7 +51,7 @@ const generateJavascriptService = async (
       dir,
       "config",
       isToJs,
-      getConfigFile({ baseUrl: input.servers?.[0]?.url || "" }),
+      getConfigFile({ baseUrl: config.baseUrl || input.servers?.[0]?.url || "" }),
       config,
     );
 
