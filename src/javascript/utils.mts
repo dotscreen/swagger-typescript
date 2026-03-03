@@ -131,23 +131,6 @@ function getParamString(
     description,
   })}${name}${required ? "" : "?"}: ${isPartial ? `Partial<${type}>` : type}`;
 }
-//x-nullable
-function normalizeObjectPropertyNullable(
-  propertyName: string,
-  schema: Schema,
-  required?: string[],
-) {
-  if (schema.nullable !== undefined) {
-    return schema.nullable;
-  }
-  if (schema["x-nullable"] !== undefined) {
-    return schema["x-nullable"];
-  }
-  if (required) {
-    return !required.includes(propertyName);
-  }
-  return true;
-}
 
 /**
  * Handles reference types ($ref) and returns appropriate TypeScript type
@@ -210,7 +193,7 @@ function handleObjectProperties(
     Object.entries(properties).map(([pName, _schema]) => {
       let schema = {
         ..._schema,
-        nullable: normalizeObjectPropertyNullable(pName, _schema, required),
+        optional: !(required?.includes(pName) ?? false),
       };
 
       // If this is a discriminator property, use the mapping keys as a union type
@@ -223,8 +206,8 @@ function handleObjectProperties(
         const discriminatorValues = Object.keys(discriminator.mapping);
         schema = {
           ...schema,
+          optional: false,
           enum: discriminatorValues,
-          nullable: false,
         };
       }
 
@@ -446,19 +429,19 @@ function getTsType(
 }
 
 function getObjectType(
-  parameter: { schema?: Schema; name: string }[],
+  parameter: { schema?: Schema & {optional?: boolean}; name: string }[],
   config: Config,
   schemasMap?: Map<string, Schema>,
 ) {
   const object = parameter
     .sort(
       (
-        { name, schema: { nullable } = {} },
-        { name: _name, schema: { nullable: _nullable } = {} },
+        { name, schema: { optional } = {} },
+        { name: _name, schema: { optional: _optional } = {} },
       ) => {
-        if (!nullable && _nullable) {
+        if (!optional && _optional) {
           return -1;
-        } else if (nullable && !_nullable) {
+        } else if (optional && !_optional) {
           return 1;
         }
 
@@ -473,22 +456,23 @@ function getObjectType(
             deprecated,
             "x-deprecatedMessage": deprecatedMessage,
             example,
-            nullable,
+            optional,
           } = {},
           schema,
           name,
         },
       ) => {
+        const nullable = schema?.nullable ?? schema?.['x-nullable'] ?? false;
         return `${prev}${getJsdoc({
           ...schema,
           deprecated:
             deprecated || deprecatedMessage ? deprecatedMessage : undefined,
           example,
-        })}"${name}"${nullable ? "?" : ""}: ${getTsType(
+        })}"${name}"${optional ? "?" : ""}: ${getTsType(
           schema,
           config,
           schemasMap,
-        )};`;
+        )}${nullable ? " | null" : ""};`;
       },
       "",
     );
