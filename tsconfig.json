@@ -68,6 +68,7 @@
     "node_modules",
     "test/",
     "test2/",
+    "testFiles/",
     "lib/",
     "__tests__"
   ]
