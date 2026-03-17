@@ -193,17 +193,17 @@ async function handleJsonPersistence(
     if (!config.tag?.length) {
       const output = await (async () => {
         try {
-          return await format(JSON.stringify(input), getPrettierOptions(config));
+          return await format(
+            JSON.stringify(input),
+            getPrettierOptions(config, "json"),
+          );
         } catch (error) {
           console.log(chalk.red("format failed"), chalk.red(error));
           return JSON.stringify(input, null, 2);
         }
       })();
-      
-      writeFileSync(
-        swaggerJsonPath,
-        output,
-      );
+
+      writeFileSync(swaggerJsonPath, output);
       return input;
     }
 

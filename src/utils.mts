@@ -100,7 +100,10 @@ async function execAsync(command: string) {
 
 const cache: { [key: string]: any } = {};
 /** Load Prettier options from config file */
-function getPrettierOptions(config: Config): any {
+function getPrettierOptions(
+  config: Config,
+  parser: "typescript" | "json" = "typescript",
+): any {
   const configPaths = [
     config.prettierPath,
     ".prettierrc",
@@ -110,15 +113,15 @@ function getPrettierOptions(config: Config): any {
   for (const path of configPaths) {
     if (existsSync(path)) {
       if (cache[path]) {
-        return cache[path];
+        return { ...cache[path], parser };
       }
       const options = JSON.parse(readFileSync(path).toString());
-      cache[path] = { parser: "typescript", ...options };
-      return cache[path];
+      cache[path] = { ...options };
+      return { ...cache[path], parser };
     }
   }
 
-  return { parser: "typescript" };
+  return { parser };
 }
 
 export {
