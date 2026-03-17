@@ -200,12 +200,14 @@ function createQueryParamsType(
       ...prev,
       [name]: {
         ...($ref ? { $ref } : schema),
-        nullable: !_required,
         description,
       } as Schema,
     }),
     {},
   );
+  const required = queryParameters
+    ?.filter(({ required: isRequired }) => isRequired)
+    .map(({ name }) => name);
 
   context.types.push({
     name: typeName,
@@ -213,6 +215,7 @@ function createQueryParamsType(
       type: "object",
       nullable: isQueryParamsNullable,
       properties,
+      required,
     },
   });
 

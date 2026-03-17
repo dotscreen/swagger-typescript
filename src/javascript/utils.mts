@@ -103,6 +103,7 @@ const TYPES = {
   object: "object",
   string: "string",
   array: "array",
+  null: "null",
 };
 
 function getDefineParam(
@@ -425,11 +426,11 @@ function getTsType(
   }
 
   // Return result or fallback to basic type mapping
-  return result || TYPES[type as keyof typeof TYPES];
+  return result || TYPES[type as keyof typeof TYPES] || "any";
 }
 
 function getObjectType(
-  parameter: { schema?: Schema & {optional?: boolean}; name: string }[],
+  parameter: { schema?: Schema & { optional?: boolean }; name: string }[],
   config: Config,
   schemasMap?: Map<string, Schema>,
 ) {
@@ -462,17 +463,23 @@ function getObjectType(
           name,
         },
       ) => {
-        const nullable = schema?.nullable ?? schema?.['x-nullable'] ?? false;
+        const nullable = schema?.nullable ?? schema?.["x-nullable"] ?? false;
+        const tsType = getTsType(schema, config, schemasMap);
+        const typeWithNullable =
+          nullable &&
+          !tsType
+            .split("|")
+            .map((part) => part.trim())
+            .includes("null")
+            ? `${tsType} | null`
+            : tsType;
+
         return `${prev}${getJsdoc({
           ...schema,
           deprecated:
             deprecated || deprecatedMessage ? deprecatedMessage : undefined,
           example,
-        })}"${name}"${optional ? "?" : ""}: ${getTsType(
-          schema,
-          config,
-          schemasMap,
-        )}${nullable ? " | null" : ""};`;
+        })}"${name}"${optional ? "?" : ""}: ${typeWithNullable};`;
       },
       "",
     );

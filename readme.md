@@ -103,6 +103,23 @@ For Example:
 - `enum ReferralStatus {Successed="Successed","Error"="Error"} `
 - `type ReferralStatus="Successed" | "Error"; // generateEnumAsType = true `
 
+## Type generation semantics
+
+For generated TypeScript models, `required` and `nullable` are handled separately:
+
+- `required` controls whether a property is optional (`?`) or not.
+- `nullable` (or `x-nullable`) controls whether `null` is included in the type.
+
+Rules used by the generator:
+
+- Required + non-nullable => `field: T`
+- Required + nullable => `field: T | null`
+- Optional + non-nullable => `field?: T`
+- Optional + nullable => `field?: T | null`
+
+The same principle applies to generated query parameter object types: parameter
+requiredness controls `?`, while nullability only affects `| null`.
+
 # CLI Options
 
 | [`Key`]  | [`default`]             | Comment                                                                                                                                                                                                                                                                                                                                        |

@@ -3560,15 +3560,15 @@ export const useGetTeamAccessLogs = (
   options?: SwaggerTypescriptUseQueryOptions<{
     logins: {
       count: number;
+      country: string | null;
       date_first: number;
       date_last: number;
+      ip: string | null;
+      isp: string | null;
+      region: string | null;
       user_agent: string;
       user_id: Defs_user_id;
       username: string;
-      country?: string;
-      ip?: string;
-      isp?: string;
-      region?: string;
     }[];
     ok: Defs_ok_true;
     paging: Objs_paging;
@@ -3598,15 +3598,15 @@ useGetTeamAccessLogs.prefetch = (
   options?: SwaggerTypescriptUseQueryOptions<{
     logins: {
       count: number;
+      country: string | null;
       date_first: number;
       date_last: number;
+      ip: string | null;
+      isp: string | null;
+      region: string | null;
       user_agent: string;
       user_id: Defs_user_id;
       username: string;
-      country?: string;
-      ip?: string;
-      isp?: string;
-      region?: string;
     }[];
     ok: Defs_ok_true;
     paging: Objs_paging;
@@ -9297,15 +9297,15 @@ export const getTeamAccessLogs = (
   SwaggerResponse<{
     logins: {
       count: number;
+      country: string | null;
       date_first: number;
       date_last: number;
+      ip: string | null;
+      isp: string | null;
+      region: string | null;
       user_agent: string;
       user_id: Defs_user_id;
       username: string;
-      country?: string;
-      ip?: string;
-      isp?: string;
-      region?: string;
     }[];
     ok: Defs_ok_true;
     paging: Objs_paging;
@@ -14625,7 +14625,7 @@ export interface Objs_file {
   preview?: string;
   public_url_shared?: boolean;
   reactions?: Objs_reaction[];
-  shares?: { private?: null; public?: null };
+  shares?: { private?: any; public?: any };
   size?: number;
   source_team?: Defs_team;
   state?: string;
@@ -14827,7 +14827,7 @@ export interface Objs_team {
   created?: number;
   date_create?: number;
   deleted?: boolean;
-  description?: string;
+  description?: string | null;
   discoverable?: (null | string)[];
   enterprise_id?: Defs_enterprise_id;
   enterprise_name?: Defs_enterprise_name;
@@ -14855,17 +14855,17 @@ export interface Objs_team_profile_field {
   label: string;
   ordering: number;
   type: \\"text\\" | \\"date\\" | \\"link\\" | \\"mailto\\" | \\"options_list\\" | \\"user\\";
-  field_name?: string;
+  field_name?: string | null;
   is_hidden?: boolean;
   options?: (null | Objs_team_profile_field_option)[];
-  possible_values?: string[];
+  possible_values?: string[] | null;
 }
 
 export interface Objs_team_profile_field_option {
-  is_custom?: boolean;
-  is_multiple_entry?: boolean;
-  is_protected?: boolean;
-  is_scim?: boolean;
+  is_custom?: boolean | null;
+  is_multiple_entry?: boolean | null;
+  is_protected?: boolean | null;
+  is_scim?: boolean | null;
 }
 
 export type Objs_user = any;
@@ -14876,6 +14876,7 @@ export interface Objs_user_profile {
   avatar_hash: string;
   display_name: string;
   display_name_normalized: string;
+  fields: { [x in string | number]: any }[] | null;
   phone: string;
   real_name: string;
   real_name_normalized: string;
@@ -14887,50 +14888,50 @@ export interface Objs_user_profile {
   api_app_id?: Defs_optional_app_id;
   bot_id?: Defs_bot_id;
   /** - Format: email */
-  email?: string;
-  fields?: { [x in string | number]: any }[];
-  first_name?: string;
-  guest_expiration_ts?: number;
-  guest_invited_by?: string;
+  email?: string | null;
+  first_name?: string | null;
+  guest_expiration_ts?: number | null;
+  guest_invited_by?: string | null;
   /** - Format: uri */
-  image_1024?: string;
+  image_1024?: string | null;
   /** - Format: uri */
-  image_192?: string;
+  image_192?: string | null;
   /** - Format: uri */
-  image_24?: string;
+  image_24?: string | null;
   /** - Format: uri */
-  image_32?: string;
+  image_32?: string | null;
   /** - Format: uri */
-  image_48?: string;
+  image_48?: string | null;
   /** - Format: uri */
-  image_512?: string;
+  image_512?: string | null;
   /** - Format: uri */
-  image_72?: string;
+  image_72?: string | null;
   /** - Format: uri */
-  image_original?: string;
+  image_original?: string | null;
   is_app_user?: boolean;
   is_custom_image?: boolean;
-  is_restricted?: boolean;
-  is_ultra_restricted?: boolean;
+  is_restricted?: boolean | null;
+  is_ultra_restricted?: boolean | null;
   last_avatar_image_hash?: string;
-  last_name?: string;
+  last_name?: string | null;
   memberships_count?: number;
-  name?: string;
+  name?: string | null;
   pronouns?: string;
   status_default_emoji?: string;
   status_default_text?: string;
-  status_default_text_canonical?: string;
+  status_default_text_canonical?: string | null;
   status_expiration?: number;
-  status_text_canonical?: string;
+  status_text_canonical?: string | null;
   team?: Defs_workspace_id;
   updated?: number;
   user_id?: string;
-  username?: string;
+  username?: string | null;
 }
 
 export interface Objs_user_profile_short {
   avatar_hash: string;
   display_name: string;
+  first_name: string | null;
   /** - Format: uri */
   image_72: string;
   is_restricted: boolean;
@@ -14939,7 +14940,6 @@ export interface Objs_user_profile_short {
   real_name: string;
   team: Defs_workspace_id;
   display_name_normalized?: string;
-  first_name?: string;
   real_name_normalized?: string;
 }
 ",

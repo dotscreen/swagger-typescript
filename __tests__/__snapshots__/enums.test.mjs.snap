@@ -139,7 +139,7 @@ export type NotificationLevel =
 export interface SettlementRequestResultListResponseVM {
   /** - Format: int64 */
   totalCount: number;
-  settlementRequests?: SettlementRequestResultResponseVM[];
+  settlementRequests?: SettlementRequestResultResponseVM[] | null;
 }
 
 export interface SettlementRequestResultResponseVM {
@@ -157,7 +157,7 @@ export interface SettlementRequestResultResponseVM {
   status: SettlementRequestStatus;
   /** - Format: int64 */
   userWalletId: number;
-  accountNumber?: string;
+  accountNumber?: string | null;
 }
 
 export type SettlementRequestStatus = \\"Pending\\" | \\"Paid\\";
@@ -314,7 +314,7 @@ export enum NotificationLevel {
 export interface SettlementRequestResultListResponseVM {
   /** - Format: int64 */
   totalCount: number;
-  settlementRequests?: SettlementRequestResultResponseVM[];
+  settlementRequests?: SettlementRequestResultResponseVM[] | null;
 }
 
 export interface SettlementRequestResultResponseVM {
@@ -332,7 +332,7 @@ export interface SettlementRequestResultResponseVM {
   status: SettlementRequestStatus;
   /** - Format: int64 */
   userWalletId: number;
-  accountNumber?: string;
+  accountNumber?: string | null;
 }
 
 export enum SettlementRequestStatus {

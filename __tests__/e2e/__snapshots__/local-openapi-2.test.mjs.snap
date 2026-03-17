@@ -32049,6 +32049,7 @@ export interface Account {
   balance_debit_dc: string;
   /** - Format: date-time */
   created: string;
+  created_by: number | null;
   currency: Currency;
   has_transactions: boolean;
   /** - Format: uuid */
@@ -32061,7 +32062,6 @@ export interface Account {
   /** - MaxLength: 20 */
   accounting_code?: string;
   comments?: string;
-  created_by?: number;
 }
 
 /**
@@ -32130,13 +32130,13 @@ export interface AccountingType {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 /**
@@ -32150,13 +32150,13 @@ export interface AccountingTypeRequest {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 /**
@@ -32190,13 +32190,13 @@ export interface Activity {
    *
    * - MaxLength: 255
    */
-  name_en?: string;
+  name_en?: string | null;
   /**
    * Name [tr]
    *
    * - MaxLength: 255
    */
-  name_tr?: string;
+  name_tr?: string | null;
 }
 
 /**
@@ -32213,7 +32213,7 @@ export interface ActivityList {
   /** - MaxLength: 255 */
   name: string;
   numchild: number;
-  results?: any[];
+  results: any[] | null;
 }
 
 /**
@@ -32243,13 +32243,13 @@ export interface ActivityRequest {
    *
    * - MaxLength: 255
    */
-  name_en?: string;
+  name_en?: string | null;
   /**
    * Name [tr]
    *
    * - MaxLength: 255
    */
-  name_tr?: string;
+  name_tr?: string | null;
 }
 
 export interface ActivityType {
@@ -32270,6 +32270,7 @@ export interface ActivityTypeRequest {
 export interface Answer {
   /** - Format: date-time */
   created: string;
+  created_by: number | null;
   /** - Format: uuid */
   id: string;
   /**
@@ -32279,16 +32280,15 @@ export interface Answer {
   maximum_score: number;
   /** - Format: date-time */
   modified: string;
+  modified_by: number | null;
   question: string;
-  created_by?: number;
-  modified_by?: number;
   /** - Max: 32767 */
-  score?: number;
+  score?: number | null;
 }
 
 export interface AnswerRequest {
   /** - Max: 32767 */
-  score?: number;
+  score?: number | null;
 }
 
 export interface ApprovalHistory {
@@ -32304,7 +32304,7 @@ export interface ApprovalHistory {
   /** - MaxLength: 50 */
   source_status?: string;
   /** - Format: date-time */
-  transaction_date?: string;
+  transaction_date?: string | null;
 }
 
 /** - \`PENDING\` - Pending \`REJECTED\` - Reject \`APPROVED\` - Approve */
@@ -32397,6 +32397,8 @@ export interface ApprovedOrderItem {
   cancelled: string;
   cancelled_by: UserNameAvatar;
   company: string;
+  counter: string | null;
+  currency: string | null;
   description: string;
   /**
    * - Format: decimal
@@ -32416,6 +32418,7 @@ export interface ApprovedOrderItem {
    */
   ordered_quantity: string;
   project: string;
+  request_no: string | null;
   resource_code: string;
   resource_name: string;
   status: ApprovedOrderItemStatusEnum;
@@ -32424,9 +32427,6 @@ export interface ApprovedOrderItem {
   unit: string;
   wbs_code: string;
   wbs_name: string;
-  counter?: string;
-  currency?: string;
-  request_no?: string;
   sort_order?: number;
 }
 
@@ -32451,8 +32451,15 @@ export interface ApprovedRequestItem {
   activity_name: string;
   approver: UserNameAvatar;
   cancel_reason: string;
+  /**
+   * Cancel Date
+   *
+   * - Format: date-time
+   */
+  cancelled: string | null;
   cancelled_by: UserNameAvatar;
   company: string;
+  counter: string | null;
   /** - Format: uuid */
   id: string;
   /**
@@ -32467,19 +32474,12 @@ export interface ApprovedRequestItem {
   unit: string;
   wbs_code: string;
   wbs_name: string;
-  /**
-   * Cancel Date
-   *
-   * - Format: date-time
-   */
-  cancelled?: string;
-  counter?: string;
   description?: string;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   sort_order?: number;
 }
 
@@ -32802,14 +32802,18 @@ export interface Company {
   country: Country;
   /** - Format: date-time */
   created: string;
+  created_by: number | null;
   district: District;
   etedarik_api_key_valid: string;
   /** - Format: uuid */
   id: string;
   /** - Format: date-time */
   modified: string;
+  modified_by: number | null;
   /** - MaxLength: 255 */
   name: string;
+  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
+  slug: string | null;
   /**
    * Haritadan seçim yaparak, profilinizde konumunuzun görünmesini
    * sağlayabilirsiniz.
@@ -32827,8 +32831,7 @@ export interface Company {
    * - MaxLength: 4
    * - MinLength: 4
    */
-  company_code?: string;
-  created_by?: number;
+  company_code?: string | null;
   /**
    * E-mail (1)
    *
@@ -32863,7 +32866,6 @@ export interface Company {
    * - MinLength: 16
    */
   mersis_no?: string;
-  modified_by?: number;
   /**
    * Phone No (1)
    *
@@ -32876,14 +32878,12 @@ export interface Company {
    * - MaxLength: 255
    */
   phone2?: string;
-  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
-  slug?: string;
   /**
    * Tax/TC ID No
    *
    * - MaxLength: 20
    */
-  tax_no?: string;
+  tax_no?: string | null;
   /** - MaxLength: 255 */
   tax_office?: string;
   /**
@@ -32933,7 +32933,7 @@ export interface CompanyNameCode {
    * - MaxLength: 4
    * - MinLength: 4
    */
-  company_code?: string;
+  company_code?: string | null;
 }
 
 /**
@@ -32977,7 +32977,7 @@ export interface CompanyRequest {
    * - MaxLength: 4
    * - MinLength: 4
    */
-  company_code?: string;
+  company_code?: string | null;
   /**
    * E-mail (1)
    *
@@ -33029,7 +33029,7 @@ export interface CompanyRequest {
    *
    * - MaxLength: 20
    */
-  tax_no?: string;
+  tax_no?: string | null;
   /** - MaxLength: 255 */
   tax_office?: string;
   /**
@@ -33339,17 +33339,19 @@ export interface ConsolidatedPermissions {
 export interface Contact {
   /** - Format: date-time */
   created: string;
+  created_by: number | null;
   /** - Format: uuid */
   id: string;
   /** - Format: date-time */
   modified: string;
+  modified_by: number | null;
   /**
    * Name and surname
    *
    * - MaxLength: 255
    */
   name: string;
-  created_by?: number;
+  supplier: string | null;
   /**
    * E-mail
    *
@@ -33357,7 +33359,6 @@ export interface Contact {
    * - MaxLength: 254
    */
   email?: string;
-  modified_by?: number;
   /**
    * Internal phone
    *
@@ -33372,7 +33373,6 @@ export interface Contact {
   phone_mobile?: string;
   /** - MaxLength: 255 */
   position?: string;
-  supplier?: string;
 }
 
 export interface ContactRequest {
@@ -33383,6 +33383,8 @@ export interface ContactRequest {
    * - MinLength: 1
    */
   name: string;
+  /** - MinLength: 1 */
+  supplier: string | null;
   /**
    * E-mail
    *
@@ -33404,8 +33406,6 @@ export interface ContactRequest {
   phone_mobile?: string;
   /** - MaxLength: 255 */
   position?: string;
-  /** - MinLength: 1 */
-  supplier?: string;
 }
 
 /**
@@ -33481,19 +33481,19 @@ export interface Contract {
   advance_payments?: ContractAdvancePayment[];
   collaterals?: ContractCollateral[];
   /** - Format: date */
-  contract_date?: string;
+  contract_date?: string | null;
   contract_description?: string;
   /** - MaxLength: 255 */
   contract_number?: string;
   current_revision?: Revision;
   deductions?: ContractDeduction[];
   is_lump_sum?: boolean;
-  main_contractor?: SupplierName;
+  main_contractor?: SupplierName | null;
   planned_payments?: ContractPlannedPayment[];
   /** - Format: date */
-  work_end_date?: string;
+  work_end_date?: string | null;
   /** - Format: date */
-  work_start_date?: string;
+  work_start_date?: string | null;
 }
 
 export interface ContractAdvancePayment {
@@ -33550,9 +33550,9 @@ export interface ContractCollateral {
    *
    * - Format: date
    */
-  received_at?: string;
+  received_at?: string | null;
   /** - Format: date */
-  valid_until?: string;
+  valid_until?: string | null;
 }
 
 export interface ContractCollateralList {
@@ -33578,9 +33578,9 @@ export interface ContractCollateralList {
    *
    * - Format: date
    */
-  received_at?: string;
+  received_at?: string | null;
   /** - Format: date */
-  valid_until?: string;
+  valid_until?: string | null;
 }
 
 export interface ContractCollateralReason {
@@ -33608,9 +33608,9 @@ export interface ContractCollateralRequest {
    *
    * - Format: date
    */
-  received_at?: string;
+  received_at?: string | null;
   /** - Format: date */
-  valid_until?: string;
+  valid_until?: string | null;
 }
 
 export interface ContractCollateralStatus {
@@ -33674,7 +33674,7 @@ export interface ContractCreate {
   advance_payments?: ContractAdvancePayment[];
   collaterals?: ContractCollateral[];
   /** - Format: date */
-  contract_date?: string;
+  contract_date?: string | null;
   contract_description?: string;
   /** - MaxLength: 255 */
   contract_number?: string;
@@ -33682,12 +33682,12 @@ export interface ContractCreate {
   /** - Format: uuid */
   id?: string;
   is_lump_sum?: boolean;
-  main_contractor?: SupplierName;
+  main_contractor?: SupplierName | null;
   planned_payments?: ContractPlannedPayment[];
   /** - Format: date */
-  work_end_date?: string;
+  work_end_date?: string | null;
   /** - Format: date */
-  work_start_date?: string;
+  work_start_date?: string | null;
 }
 
 /**
@@ -33742,7 +33742,7 @@ export interface ContractCreateRequest {
   advance_payments?: ContractAdvancePaymentRequest[];
   collaterals?: ContractCollateralRequest[];
   /** - Format: date */
-  contract_date?: string;
+  contract_date?: string | null;
   contract_description?: string;
   /** - MaxLength: 255 */
   contract_number?: string;
@@ -33751,12 +33751,12 @@ export interface ContractCreateRequest {
   id?: string;
   is_lump_sum?: boolean;
   /** - Format: uuid */
-  main_contractor?: string;
+  main_contractor?: string | null;
   planned_payments?: ContractPlannedPaymentRequest[];
   /** - Format: date */
-  work_end_date?: string;
+  work_end_date?: string | null;
   /** - Format: date */
-  work_start_date?: string;
+  work_start_date?: string | null;
 }
 
 /**
@@ -33876,13 +33876,13 @@ export interface ContractItem {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   sort_order?: number;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  unit_price?: string;
+  unit_price?: string | null;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
 }
@@ -33908,13 +33908,13 @@ export interface ContractItemRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   sort_order?: number;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  unit_price?: string;
+  unit_price?: string | null;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
 }
@@ -34012,7 +34012,7 @@ export interface ContractPlannedPayment {
    */
   amount?: string;
   /** - Format: uuid */
-  subcontract_progress?: string;
+  subcontract_progress?: string | null;
 }
 
 export interface ContractPlannedPaymentRequest {
@@ -34024,7 +34024,7 @@ export interface ContractPlannedPaymentRequest {
    */
   amount?: string;
   /** - Format: uuid */
-  subcontract_progress?: string;
+  subcontract_progress?: string | null;
 }
 
 /**
@@ -34080,7 +34080,7 @@ export interface ContractRequest {
   advance_payments?: ContractAdvancePaymentRequest[];
   collaterals?: ContractCollateralRequest[];
   /** - Format: date */
-  contract_date?: string;
+  contract_date?: string | null;
   contract_description?: string;
   /** - MaxLength: 255 */
   contract_number?: string;
@@ -34088,12 +34088,12 @@ export interface ContractRequest {
   deductions?: ContractDeductionRequest[];
   is_lump_sum?: boolean;
   /** - Format: uuid */
-  main_contractor?: string;
+  main_contractor?: string | null;
   planned_payments?: ContractPlannedPaymentRequest[];
   /** - Format: date */
-  work_end_date?: string;
+  work_end_date?: string | null;
   /** - Format: date */
-  work_start_date?: string;
+  work_start_date?: string | null;
 }
 
 /**
@@ -34125,10 +34125,10 @@ export interface ContractRevisionSummaryRequest {
 }
 
 export interface Counter {
+  code: string | null;
   /** - Pattern: ^[-a-zA-Z0-9_]+$ */
   slug: string;
-  code?: string;
-  url?: string;
+  url: string | null;
 }
 
 export interface Country {
@@ -34324,6 +34324,7 @@ export interface DeductionReturnList {
   counter: string;
   /** - Format: date-time */
   created: string;
+  created_by: number | null;
   currency: string;
   /** - Format: date */
   date: string;
@@ -34336,7 +34337,6 @@ export interface DeductionReturnList {
   status: string;
   subcontractor: string;
   type: string;
-  created_by?: number;
 }
 
 export interface DeductionReturnPlannedPayment {
@@ -34498,10 +34498,10 @@ export interface Expense {
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
   xrate_to: string;
-  activity?: ActivityNameCode;
+  activity?: ActivityNameCode | null;
   description?: string;
-  resource?: ResourceNameCodeName;
-  wbs?: WBSNameCode;
+  resource?: ResourceNameCodeName | null;
+  wbs?: WBSNameCode | null;
 }
 
 export interface ExpenseList {
@@ -34562,12 +34562,12 @@ export interface ExpenseRequest {
    */
   xrate_to: string;
   /** - Format: uuid */
-  activity?: string;
+  activity?: string | null;
   description?: string;
   /** - Format: uuid */
-  resource?: string;
+  resource?: string | null;
   /** - Format: uuid */
-  wbs?: string;
+  wbs?: string | null;
 }
 
 /** - \`EXPENSE\` - Expense \`INCOME\` - Income \`REFUND\` - Refund \`TRANSFER\` - Transfer */
@@ -34808,14 +34808,14 @@ export interface GetFinanceIncomeInvoicesCounter__slugApprovalHistoryQueryParams
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   /** - Format: uuid */
   category?: string;
   company?: string[] | string;
@@ -34846,14 +34846,14 @@ export interface GetFinanceIncomeInvoicesQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   /** - Format: uuid */
   category?: string;
   company?: string[] | string;
@@ -34884,14 +34884,14 @@ export interface GetFinanceIncomeInvoicesStatesQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   /** - Format: uuid */
   category?: string;
   company?: string[] | string;
@@ -35517,14 +35517,14 @@ export interface GetProcurementInvoicesCounter__slugApprovalHistoryQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   company?: string[] | string;
   counter?: string;
   /** - Format: date */
@@ -35553,14 +35553,14 @@ export interface GetProcurementInvoicesQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   company?: string[] | string;
   counter?: string;
   /** - Format: date */
@@ -35589,14 +35589,14 @@ export interface GetProcurementInvoicesStatesQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   company?: string[] | string;
   counter?: string;
   /** - Format: date */
@@ -35641,7 +35641,7 @@ export interface GetProcurementOrdersCounter__slugApprovalHistoryQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  totals_with_vat_max?: string;
+  totals_with_vat_max?: string | null;
   /**
    * Total with vat
    *
@@ -35650,7 +35650,7 @@ export interface GetProcurementOrdersCounter__slugApprovalHistoryQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  totals_with_vat_min?: string;
+  totals_with_vat_min?: string | null;
 }
 
 export interface GetProcurementOrdersQueryParams {
@@ -35681,7 +35681,7 @@ export interface GetProcurementOrdersQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  totals_with_vat_max?: string;
+  totals_with_vat_max?: string | null;
   /**
    * Total with vat
    *
@@ -35690,7 +35690,7 @@ export interface GetProcurementOrdersQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  totals_with_vat_min?: string;
+  totals_with_vat_min?: string | null;
 }
 
 export interface GetProcurementOrdersStatesQueryParams {
@@ -35717,7 +35717,7 @@ export interface GetProcurementOrdersStatesQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  totals_with_vat_max?: string;
+  totals_with_vat_max?: string | null;
   /**
    * Total with vat
    *
@@ -35726,7 +35726,7 @@ export interface GetProcurementOrdersStatesQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  totals_with_vat_min?: string;
+  totals_with_vat_min?: string | null;
 }
 
 export interface GetProcurementRequestTypesQueryParams {
@@ -35821,14 +35821,14 @@ export interface GetProcurementSpecialInvoicesCounter__slugApprovalHistoryQueryP
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   company?: string[] | string;
   counter?: string;
   /** - Format: date */
@@ -35859,14 +35859,14 @@ export interface GetProcurementSpecialInvoicesQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   company?: string[] | string;
   counter?: string;
   /** - Format: date */
@@ -35897,14 +35897,14 @@ export interface GetProcurementSpecialInvoicesStatesQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   company?: string[] | string;
   counter?: string;
   /** - Format: date */
@@ -36154,7 +36154,7 @@ export interface GetSubcontractsDeductionReturnsCounter__slugApprovalHistoryQuer
   company?: string[] | string;
   /** - Format: uuid */
   contract__category?: string;
-  contract_code?: string;
+  contract_code?: string | null;
   counter?: string;
   /** - Format: date */
   created_after?: string;
@@ -36182,7 +36182,7 @@ export interface GetSubcontractsDeductionReturnsQueryParams {
   company?: string[] | string;
   /** - Format: uuid */
   contract__category?: string;
-  contract_code?: string;
+  contract_code?: string | null;
   counter?: string;
   /** - Format: date */
   created_after?: string;
@@ -36210,7 +36210,7 @@ export interface GetSubcontractsDeductionReturnsStatesQueryParams {
   company?: string[] | string;
   /** - Format: uuid */
   contract__category?: string;
-  contract_code?: string;
+  contract_code?: string | null;
   counter?: string;
   /** - Format: date */
   created_after?: string;
@@ -36253,7 +36253,7 @@ export interface GetSubcontractsProgressesCounter__slugApprovalHistoryQueryParam
   company?: string[] | string;
   /** - Format: uuid */
   contract__category?: string;
-  contract_code?: string;
+  contract_code?: string | null;
   counter?: string;
   /** - Format: date */
   created_after?: string;
@@ -36282,7 +36282,7 @@ export interface GetSubcontractsProgressesQueryParams {
   company?: string[] | string;
   /** - Format: uuid */
   contract__category?: string;
-  contract_code?: string;
+  contract_code?: string | null;
   counter?: string;
   /** - Format: date */
   created_after?: string;
@@ -36311,7 +36311,7 @@ export interface GetSubcontractsProgressesStatesQueryParams {
   company?: string[] | string;
   /** - Format: uuid */
   contract__category?: string;
-  contract_code?: string;
+  contract_code?: string | null;
   counter?: string;
   /** - Format: date */
   created_after?: string;
@@ -36395,13 +36395,13 @@ export interface GetSuppliersReviewFormsQueryParams {
    *
    * - Max: 32767
    */
-  score_max?: number;
+  score_max?: number | null;
   /**
    * Score is greater than
    *
    * - Max: 32767
    */
-  score_min?: number;
+  score_min?: number | null;
   /** A search term. */
   search?: string;
   supplier__name?: string;
@@ -36719,6 +36719,7 @@ export interface GroupRequest {
 /** Adds nested create feature */
 
 export interface IncomeInvoice {
+  agreed_exchange_currency: Currency | null;
   approver: UserNameAvatar;
   attachments: Attachment[];
   category: IncomeInvoiceCategory;
@@ -36750,20 +36751,19 @@ export interface IncomeInvoice {
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
   totals: string;
-  agreed_exchange_currency?: Currency;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   has_vat_witholding?: boolean;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
-  invoice_type?: InvoiceTypeEnum | BlankEnum | NullEnum;
+  invoice_type?: (InvoiceTypeEnum | BlankEnum | NullEnum) | null;
   items?: IncomeInvoiceItem[];
   realized_payments?: IncomeInvoiceRealizedPayment[];
 }
@@ -36813,16 +36813,16 @@ export interface IncomeInvoiceItem {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   taxes?: Tax[];
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  unit_price?: string;
+  unit_price?: string | null;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
-  vat_witholding?: Vatwitholding;
+  vat_witholding?: Vatwitholding | null;
 }
 
 /** Adds nested create feature */
@@ -36849,17 +36849,17 @@ export interface IncomeInvoiceItemRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   taxes?: TaxRequest[];
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  unit_price?: string;
+  unit_price?: string | null;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
   /** - Format: uuid */
-  vat_witholding?: string;
+  vat_witholding?: string | null;
 }
 
 /** Adds nested create feature */
@@ -36948,6 +36948,8 @@ export interface IncomeInvoiceRealizedPaymentRequest {
 
 export interface IncomeInvoiceRequest {
   /** - Format: uuid */
+  agreed_exchange_currency: string | null;
+  /** - Format: uuid */
   category: string;
   /** - Format: uuid */
   company: string;
@@ -36960,21 +36962,19 @@ export interface IncomeInvoiceRequest {
   project: string;
   /** - Format: uuid */
   supplier: string;
-  /** - Format: uuid */
-  agreed_exchange_currency?: string;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   has_vat_witholding?: boolean;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
-  invoice_type?: InvoiceTypeEnum | BlankEnum | NullEnum;
+  invoice_type?: (InvoiceTypeEnum | BlankEnum | NullEnum) | null;
   items?: IncomeInvoiceItemRequest[];
   realized_payments?: IncomeInvoiceRealizedPaymentRequest[];
 }
@@ -37063,27 +37063,27 @@ export interface Invoice {
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
   advance_deduction?: string;
-  agreed_exchange_currency?: Currency;
+  agreed_exchange_currency?: Currency | null;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  correction?: string;
+  correction?: string | null;
   has_vat_witholding?: boolean;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
   items?: InvoiceItem[];
   /** - Format: date */
-  waybill_date?: string;
+  waybill_date?: string | null;
   /** - MaxLength: 255 */
   waybill_no?: string;
 }
@@ -37133,17 +37133,17 @@ export interface InvoiceItem {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
-  request_item?: RequestItem;
+  quantity?: string | null;
+  request_item?: RequestItem | null;
   taxes?: Tax[];
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  unit_price?: string;
+  unit_price?: string | null;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
-  vat_witholding?: Vatwitholding;
+  vat_witholding?: Vatwitholding | null;
 }
 
 export interface InvoiceItemList {
@@ -37151,7 +37151,7 @@ export interface InvoiceItemList {
   activity_tree: any[];
   company: string;
   currency: string;
-  exchange_rates: undefined;
+  exchange_rates: any;
   invoice_date: string;
   invoice_no: string;
   project: string;
@@ -37201,19 +37201,19 @@ export interface InvoiceItemRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   /** - Format: uuid */
-  request_item?: string;
+  request_item?: string | null;
   taxes?: TaxRequest[];
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  unit_price?: string;
+  unit_price?: string | null;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
   /** - Format: uuid */
-  vat_witholding?: string;
+  vat_witholding?: string | null;
 }
 
 /** Adds nested create feature */
@@ -37330,27 +37330,27 @@ export interface InvoiceRequest {
    */
   advance_deduction?: string;
   /** - Format: uuid */
-  agreed_exchange_currency?: string;
+  agreed_exchange_currency?: string | null;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  correction?: string;
+  correction?: string | null;
   has_vat_witholding?: boolean;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
   items?: InvoiceItemRequest[];
   /** - Format: date */
-  waybill_date?: string;
+  waybill_date?: string | null;
   /** - MaxLength: 255 */
   waybill_no?: string;
 }
@@ -37469,7 +37469,7 @@ export interface OfferComparisonRequestRequest {
 }
 
 export interface OfferComparisonResponse {
-  api_response: undefined;
+  api_response: any;
   message: string;
   /** - Format: uri */
   offer_url: string;
@@ -37513,14 +37513,14 @@ export interface Order {
   totals: string;
   unsaved: boolean;
   advance_payments?: OrderAdvancePayment[];
-  agreed_exchange_currency?: Currency;
+  agreed_exchange_currency?: Currency | null;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   /** - MaxLength: 255 */
   delivery_contact_phone?: string;
   /**
@@ -37528,12 +37528,12 @@ export interface Order {
    *
    * - Format: date
    */
-  delivery_date?: string;
+  delivery_date?: string | null;
   delivery_note?: string;
   delivery_warehouse?: WarehouseName;
   has_vat_witholding?: boolean;
   items?: OrderItem[];
-  packaging_methods?: any[];
+  packaging_methods?: any[] | null;
 }
 
 export interface OrderAdvancePayment {
@@ -37602,15 +37602,15 @@ export interface OrderItem {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  ordered_quantity?: string;
+  ordered_quantity?: string | null;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  unit_price?: string;
+  unit_price?: string | null;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
-  vat_witholding?: Vatwitholding;
+  vat_witholding?: Vatwitholding | null;
 }
 
 export interface OrderItemRequest {
@@ -37628,16 +37628,16 @@ export interface OrderItemRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  ordered_quantity?: string;
+  ordered_quantity?: string | null;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  unit_price?: string;
+  unit_price?: string | null;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
   /** - Format: uuid */
-  vat_witholding?: string;
+  vat_witholding?: string | null;
 }
 
 /** Adds nested create feature */
@@ -37718,14 +37718,14 @@ export interface OrderRequest {
   supplier: string;
   advance_payments?: OrderAdvancePaymentRequest[];
   /** - Format: uuid */
-  agreed_exchange_currency?: string;
+  agreed_exchange_currency?: string | null;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   /** - MaxLength: 255 */
   delivery_contact_phone?: string;
   /**
@@ -37733,13 +37733,13 @@ export interface OrderRequest {
    *
    * - Format: date
    */
-  delivery_date?: string;
+  delivery_date?: string | null;
   delivery_note?: string;
   /** - Format: uuid */
   delivery_warehouse?: string;
   has_vat_witholding?: boolean;
   items?: OrderItemRequest[];
-  packaging_methods?: any[];
+  packaging_methods?: any[] | null;
 }
 
 export interface PackagingMethod {
@@ -37748,13 +37748,13 @@ export interface PackagingMethod {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 export interface PackagingMethodRequest {
@@ -37763,20 +37763,20 @@ export interface PackagingMethodRequest {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 export interface PaginatedAccountList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: Account[];
 }
 
@@ -37787,193 +37787,193 @@ export interface PaginatedActivityListList {
 
 export interface PaginatedApprovalHistoryList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: ApprovalHistory[];
 }
 
 export interface PaginatedApprovedOrderItemList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: ApprovedOrderItem[];
 }
 
 export interface PaginatedApprovedRequestItemList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: ApprovedRequestItem[];
 }
 
 export interface PaginatedBankAccountListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: BankAccountList[];
 }
 
 export interface PaginatedCashAccountListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: CashAccountList[];
 }
 
 export interface PaginatedCompanyList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: Company[];
 }
 
 export interface PaginatedContractCollateralListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: ContractCollateralList[];
 }
 
 export interface PaginatedContractListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: ContractList[];
 }
 
 export interface PaginatedCrewListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: CrewList[];
 }
 
 export interface PaginatedDeductionReturnListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: DeductionReturnList[];
 }
 
 export interface PaginatedExpenseListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: ExpenseList[];
 }
 
 export interface PaginatedIncomeInvoiceListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: IncomeInvoiceList[];
 }
 
 export interface PaginatedInstrumentListDiscoveryList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: InstrumentListDiscovery[];
 }
 
 export interface PaginatedInvoiceListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: InvoiceList[];
 }
 
 export interface PaginatedOrderListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: OrderList[];
 }
 
 export interface PaginatedPaymentBondListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: PaymentBondList[];
 }
 
 export interface PaginatedPaymentChequeListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: PaymentChequeList[];
 }
 
 export interface PaginatedPaymentDetailList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: PaymentDetail[];
 }
 
 export interface PaginatedPaymentPlan2TypeDiscoveryList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: PaymentPlan2TypeDiscovery[];
 }
 
 export interface PaginatedPersonListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: PersonList[];
 }
 
 export interface PaginatedProductListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: ProductList[];
 }
 
 export interface PaginatedProgressListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: ProgressList[];
 }
 
 export interface PaginatedProjectListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: ProjectList[];
 }
 
 export interface PaginatedRequestListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: RequestList[];
 }
 
@@ -37984,105 +37984,105 @@ export interface PaginatedResourceListList {
 
 export interface PaginatedRevenueBondListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: RevenueBondList[];
 }
 
 export interface PaginatedRevenueChequeListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: RevenueChequeList[];
 }
 
 export interface PaginatedRevenueDetailList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: RevenueDetail[];
 }
 
 export interface PaginatedReviewsListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: ReviewsList[];
 }
 
 export interface PaginatedRevisionList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: Revision[];
 }
 
 export interface PaginatedSalaryList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: Salary[];
 }
 
 export interface PaginatedSlipList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: Slip[];
 }
 
 export interface PaginatedSpecialInvoiceListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: SpecialInvoiceList[];
 }
 
 export interface PaginatedSupplierAccountListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: SupplierAccountList[];
 }
 
 export interface PaginatedSupplierList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: Supplier[];
 }
 
 export interface PaginatedTransactionList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: Transaction[];
 }
 
 export interface PaginatedTransactionListList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: TransactionList[];
 }
 
 export interface PaginatedTransitionList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: Transition[];
 }
 
@@ -38093,9 +38093,9 @@ export interface PaginatedWBSListList {
 
 export interface PaginatedWarehouseList {
   count?: number;
-  next?: string;
+  next?: string | null;
   page_count?: number;
-  previous?: string;
+  previous?: string | null;
   results?: Warehouse[];
 }
 
@@ -38165,13 +38165,13 @@ export interface PatchedAccountingTypeRequest {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 export interface PatchedActivityRequest {
@@ -38186,13 +38186,13 @@ export interface PatchedActivityRequest {
    *
    * - MaxLength: 255
    */
-  name_en?: string;
+  name_en?: string | null;
   /**
    * Name [tr]
    *
    * - MaxLength: 255
    */
-  name_tr?: string;
+  name_tr?: string | null;
 }
 
 export interface PatchedActivityTypeRequest {
@@ -38205,7 +38205,7 @@ export interface PatchedActivityTypeRequest {
 
 export interface PatchedAnswerRequest {
   /** - Max: 32767 */
-  score?: number;
+  score?: number | null;
 }
 
 /**
@@ -38310,7 +38310,7 @@ export interface PatchedCompanyRequest {
    * - MaxLength: 4
    * - MinLength: 4
    */
-  company_code?: string;
+  company_code?: string | null;
   /**
    * E-mail (1)
    *
@@ -38367,7 +38367,7 @@ export interface PatchedCompanyRequest {
    *
    * - MaxLength: 20
    */
-  tax_no?: string;
+  tax_no?: string | null;
   /** - MaxLength: 255 */
   tax_office?: string;
   /**
@@ -38409,7 +38409,7 @@ export interface PatchedContactRequest {
   /** - MaxLength: 255 */
   position?: string;
   /** - MinLength: 1 */
-  supplier?: string;
+  supplier?: string | null;
 }
 
 /**
@@ -38457,7 +38457,7 @@ export interface PatchedContractRequest {
   /** - Format: uuid */
   company?: string;
   /** - Format: date */
-  contract_date?: string;
+  contract_date?: string | null;
   contract_description?: string;
   /** - MaxLength: 255 */
   contract_number?: string;
@@ -38469,16 +38469,16 @@ export interface PatchedContractRequest {
   id?: string;
   is_lump_sum?: boolean;
   /** - Format: uuid */
-  main_contractor?: string;
+  main_contractor?: string | null;
   planned_payments?: ContractPlannedPaymentRequest[];
   /** - Format: uuid */
   project?: string;
   /** - Format: uuid */
   subcontractor?: string;
   /** - Format: date */
-  work_end_date?: string;
+  work_end_date?: string | null;
   /** - Format: date */
-  work_start_date?: string;
+  work_start_date?: string | null;
 }
 
 /**
@@ -38555,7 +38555,7 @@ export interface PatchedExpenseRequest {
   /** - Format: uuid */
   account_to?: string;
   /** - Format: uuid */
-  activity?: string;
+  activity?: string | null;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
@@ -38572,12 +38572,12 @@ export interface PatchedExpenseRequest {
   /** - Format: uuid */
   project?: string;
   /** - Format: uuid */
-  resource?: string;
+  resource?: string | null;
   /** - Format: date-time */
   txn_date?: string;
   type?: ExpenseTypeChoices;
   /** - Format: uuid */
-  wbs?: string;
+  wbs?: string | null;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
@@ -38612,14 +38612,14 @@ export interface PatchedIncomeInvoiceCategoryRequest {
 
 export interface PatchedIncomeInvoiceRequest {
   /** - Format: uuid */
-  agreed_exchange_currency?: string;
+  agreed_exchange_currency?: string | null;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   /** - Format: uuid */
   category?: string;
   /** - Format: uuid */
@@ -38630,10 +38630,10 @@ export interface PatchedIncomeInvoiceRequest {
   /** - Format: uuid */
   id?: string;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
-  invoice_type?: InvoiceTypeEnum | BlankEnum | NullEnum;
+  invoice_type?: (InvoiceTypeEnum | BlankEnum | NullEnum) | null;
   items?: IncomeInvoiceItemRequest[];
   planned_payments?: IncomeInvoicePlannedPaymentRequest[];
   /** - Format: uuid */
@@ -38652,28 +38652,28 @@ export interface PatchedInvoiceRequest {
    */
   advance_deduction?: string;
   /** - Format: uuid */
-  agreed_exchange_currency?: string;
+  agreed_exchange_currency?: string | null;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   /** - Format: uuid */
   company?: string;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  correction?: string;
+  correction?: string | null;
   /** - Format: uuid */
   currency?: string;
   has_vat_witholding?: boolean;
   /** - Format: uuid */
   id?: string;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
   items?: InvoiceItemRequest[];
@@ -38683,7 +38683,7 @@ export interface PatchedInvoiceRequest {
   /** - Format: uuid */
   supplier?: string;
   /** - Format: date */
-  waybill_date?: string;
+  waybill_date?: string | null;
   /** - MaxLength: 255 */
   waybill_no?: string;
 }
@@ -38733,14 +38733,14 @@ export interface PatchedOrderAdvancePaymentRequest {
 export interface PatchedOrderRequest {
   advance_payments?: OrderAdvancePaymentRequest[];
   /** - Format: uuid */
-  agreed_exchange_currency?: string;
+  agreed_exchange_currency?: string | null;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   /** - Format: uuid */
   company?: string;
   /** - Format: uuid */
@@ -38752,7 +38752,7 @@ export interface PatchedOrderRequest {
    *
    * - Format: date
    */
-  delivery_date?: string;
+  delivery_date?: string | null;
   delivery_note?: string;
   /** - Format: uuid */
   delivery_warehouse?: string;
@@ -38760,7 +38760,7 @@ export interface PatchedOrderRequest {
   /** - Format: uuid */
   id?: string;
   items?: OrderItemRequest[];
-  packaging_methods?: any[];
+  packaging_methods?: any[] | null;
   planned_payments?: OrderPlannedPaymentRequest[];
   /** - Format: uuid */
   project?: string;
@@ -38774,13 +38774,13 @@ export interface PatchedPackagingMethodRequest {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 export interface PatchedPaymentBondRequest {
@@ -38887,9 +38887,9 @@ export interface PatchedPaymentMethodRequest {
  */
 
 export interface PatchedPersonRequest {
-  address?: string;
+  address?: string | null;
   /** - Format: date */
-  birth_date?: string;
+  birth_date?: string | null;
   /** - MaxLength: 100 */
   birth_place?: string;
   blood_type?: BloodTypeEnum | BlankEnum;
@@ -38902,12 +38902,12 @@ export interface PatchedPersonRequest {
   /** - MaxLength: 255 */
   education_department?: string;
   /** - Format: date */
-  education_end_date?: string;
+  education_end_date?: string | null;
   education_level?: EducationLevelEnum | BlankEnum;
   /** - MaxLength: 255 */
   education_school?: string;
   /** - Format: date */
-  education_start_date?: string;
+  education_start_date?: string | null;
   /**
    * - Format: email
    * - MaxLength: 255
@@ -38928,11 +38928,11 @@ export interface PatchedPersonRequest {
   location?: string;
   marital_status?: MaritalStatusEnum | BlankEnum;
   /** - Format: uuid */
-  nationality?: string;
+  nationality?: string | null;
   /** - Format: date */
-  passport_expire_date?: string;
+  passport_expire_date?: string | null;
   /** - Format: date */
-  passport_issue_date?: string;
+  passport_issue_date?: string | null;
   /** - MaxLength: 100 */
   passport_issue_place?: string;
   /** - MaxLength: 11 */
@@ -38944,7 +38944,7 @@ export interface PatchedPersonRequest {
   /** - MaxLength: 20 */
   phone_other?: string;
   /** - Format: binary */
-  photo?: string;
+  photo?: string | null;
   /** - Format: uuid */
   position?: string;
   /** - Format: uuid */
@@ -38952,13 +38952,13 @@ export interface PatchedPersonRequest {
   /** - Format: uuid */
   project?: string;
   /** - Format: date */
-  project_start_date?: string;
+  project_start_date?: string | null;
   /** - Format: date */
-  quit_date?: string;
+  quit_date?: string | null;
   /** - Format: uuid */
-  quit_reason?: string;
+  quit_reason?: string | null;
   /** - Format: uuid */
-  quit_record?: string;
+  quit_record?: string | null;
   /** - Format: date */
   start_date?: string;
   status?: Status386Enum;
@@ -38988,7 +38988,7 @@ export interface PatchedProductCreateRequest {
   /** - Format: uuid */
   unit?: string;
   /** - Format: double */
-  volume?: number;
+  volume?: number | null;
   /** - Format: uuid */
   warehouse?: string;
   /** - Format: date-time */
@@ -38997,7 +38997,7 @@ export interface PatchedProductCreateRequest {
   /** - Format: uuid */
   wbs?: string;
   /** - Format: double */
-  weight?: number;
+  weight?: number | null;
 }
 
 export interface PatchedProfessionRequest {
@@ -39023,24 +39023,24 @@ export interface PatchedProgressRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  advance_deduction?: string;
+  advance_deduction?: string | null;
   /** - Format: uuid */
   contract?: string;
   deductions?: ProgressDeductionRequest[];
   /** - Format: uuid */
   id?: string;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
   items?: ProgressItemRequest[];
   planned_payments?: ProgressPlannedPaymentRequest[];
   /** - Format: date */
-  progress_date?: string;
+  progress_date?: string | null;
   /** - MaxLength: 255 */
   progress_no?: string;
   /** - Max: 2147483647 */
-  progress_order?: number;
+  progress_order?: number | null;
 }
 
 /**
@@ -39143,13 +39143,13 @@ export interface PatchedProjectTypeParamRequest {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 export interface PatchedQuitReasonRequest {
@@ -39194,7 +39194,7 @@ export interface PatchedRequestRequest {
    *
    * - Format: date
    */
-  delivery_date?: string;
+  delivery_date?: string | null;
   /** - Format: uuid */
   id?: string;
   items?: RequestItemRequest[];
@@ -39220,13 +39220,13 @@ export interface PatchedResourceRequest {
    *
    * - MaxLength: 255
    */
-  name_en?: string;
+  name_en?: string | null;
   /**
    * Name [tr]
    *
    * - MaxLength: 255
    */
-  name_tr?: string;
+  name_tr?: string | null;
   /** - Max: 2147483647 */
   numchild?: number;
   type?: ResourceTypeEnum;
@@ -39258,13 +39258,13 @@ export interface PatchedResponsibleTypeParamRequest {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 export interface PatchedRevenueBondRequest {
@@ -39381,7 +39381,7 @@ export interface PatchedReviewRequest {
   /** - MaxLength: 255 */
   description?: string;
   /** - MinLength: 1 */
-  supplier?: string;
+  supplier?: string | null;
   /** - Format: uuid */
   template?: string;
 }
@@ -39443,36 +39443,36 @@ export interface PatchedSpecialInvoiceRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  advance_deduction?: string;
+  advance_deduction?: string | null;
   /** - Format: uuid */
-  agreed_exchange_currency?: string;
+  agreed_exchange_currency?: string | null;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   /** - Format: uuid */
   company?: string;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  correction?: string;
+  correction?: string | null;
   /** - Format: uuid */
   currency?: string;
   has_vat_witholding?: boolean;
   /** - Format: uuid */
   id?: string;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
   items?: SpecialInvoiceItemRequest[];
   planned_payments?: SpecialInvoicePlannedPaymentRequest[];
   /** - Format: uuid */
-  prepaid_from?: string;
+  prepaid_from?: string | null;
   /** - Format: uuid */
   project?: string;
   /** - Format: uuid */
@@ -39480,9 +39480,9 @@ export interface PatchedSpecialInvoiceRequest {
   /** - Format: uuid */
   type?: string;
   /** - Format: uuid */
-  warehouse?: string;
+  warehouse?: string | null;
   /** - Format: date */
-  waybill_date?: string;
+  waybill_date?: string | null;
   /** - MaxLength: 255 */
   waybill_no?: string;
 }
@@ -39516,7 +39516,7 @@ export interface PatchedSupplierAccountingCodeRequest {
   /** - Format: uuid */
   currency?: string;
   /** - MinLength: 1 */
-  supplier?: string;
+  supplier?: string | null;
   type?: SupplierAccountingCodeTypeEnum;
 }
 
@@ -39528,7 +39528,7 @@ export interface PatchedSupplierBankAccountRequest {
   /** - MaxLength: 50 */
   iban?: string;
   /** - MinLength: 1 */
-  supplier?: string;
+  supplier?: string | null;
   /** - MaxLength: 20 */
   swift_no?: string;
 }
@@ -39618,7 +39618,7 @@ export interface PatchedSupplierRequest {
    *
    * - MaxLength: 20
    */
-  tax_no?: string;
+  tax_no?: string | null;
   /** - MaxLength: 255 */
   tax_office?: string;
   /** - Format: uuid */
@@ -39728,13 +39728,13 @@ export interface PatchedWBSRequest {
    *
    * - MaxLength: 255
    */
-  name_en?: string;
+  name_en?: string | null;
   /**
    * Name [tr]
    *
    * - MaxLength: 255
    */
-  name_tr?: string;
+  name_tr?: string | null;
   /** - Max: 2147483647 */
   numchild?: number;
   /** - Format: uuid */
@@ -40379,21 +40379,21 @@ export interface Person {
   project: ProjectName;
   /** - Format: date */
   start_date: string;
-  address?: string;
+  address?: string | null;
   /** - Format: date */
-  birth_date?: string;
+  birth_date?: string | null;
   /** - MaxLength: 100 */
   birth_place?: string;
   blood_type?: BloodTypeEnum | BlankEnum;
   /** - MaxLength: 255 */
   education_department?: string;
   /** - Format: date */
-  education_end_date?: string;
+  education_end_date?: string | null;
   education_level?: EducationLevelEnum | BlankEnum;
   /** - MaxLength: 255 */
   education_school?: string;
   /** - Format: date */
-  education_start_date?: string;
+  education_start_date?: string | null;
   /**
    * - Format: email
    * - MaxLength: 255
@@ -40402,11 +40402,11 @@ export interface Person {
   gender?: GenderEnum | BlankEnum;
   marital_status?: MaritalStatusEnum | BlankEnum;
   /** - Format: uuid */
-  nationality?: string;
+  nationality?: string | null;
   /** - Format: date */
-  passport_expire_date?: string;
+  passport_expire_date?: string | null;
   /** - Format: date */
-  passport_issue_date?: string;
+  passport_issue_date?: string | null;
   /** - MaxLength: 100 */
   passport_issue_place?: string;
   /** - MaxLength: 11 */
@@ -40418,13 +40418,13 @@ export interface Person {
   /** - MaxLength: 20 */
   phone_other?: string;
   /** - Format: uri */
-  photo?: string;
+  photo?: string | null;
   /** - Format: date */
-  project_start_date?: string;
+  project_start_date?: string | null;
   /** - Format: date */
-  quit_date?: string;
-  quit_reason?: QuitReason;
-  quit_record?: QuitRecord;
+  quit_date?: string | null;
+  quit_reason?: QuitReason | null;
+  quit_record?: QuitRecord | null;
   status?: Status386Enum;
   /** - MaxLength: 11 */
   tckn?: string;
@@ -40448,13 +40448,13 @@ export interface PersonList {
   position: string;
   profession: string;
   project: string;
-  status: Status386Enum;
   /** - Format: date */
-  quit_date?: string;
+  quit_date: string | null;
   /** - Format: uuid */
-  quit_reason?: string;
+  quit_reason: string | null;
   /** - Format: uuid */
-  quit_record?: string;
+  quit_record: string | null;
+  status: Status386Enum;
 }
 
 /**
@@ -40489,21 +40489,21 @@ export interface PersonRequest {
   project: string;
   /** - Format: date */
   start_date: string;
-  address?: string;
+  address?: string | null;
   /** - Format: date */
-  birth_date?: string;
+  birth_date?: string | null;
   /** - MaxLength: 100 */
   birth_place?: string;
   blood_type?: BloodTypeEnum | BlankEnum;
   /** - MaxLength: 255 */
   education_department?: string;
   /** - Format: date */
-  education_end_date?: string;
+  education_end_date?: string | null;
   education_level?: EducationLevelEnum | BlankEnum;
   /** - MaxLength: 255 */
   education_school?: string;
   /** - Format: date */
-  education_start_date?: string;
+  education_start_date?: string | null;
   /**
    * - Format: email
    * - MaxLength: 255
@@ -40512,11 +40512,11 @@ export interface PersonRequest {
   gender?: GenderEnum | BlankEnum;
   marital_status?: MaritalStatusEnum | BlankEnum;
   /** - Format: uuid */
-  nationality?: string;
+  nationality?: string | null;
   /** - Format: date */
-  passport_expire_date?: string;
+  passport_expire_date?: string | null;
   /** - Format: date */
-  passport_issue_date?: string;
+  passport_issue_date?: string | null;
   /** - MaxLength: 100 */
   passport_issue_place?: string;
   /** - MaxLength: 11 */
@@ -40528,15 +40528,15 @@ export interface PersonRequest {
   /** - MaxLength: 20 */
   phone_other?: string;
   /** - Format: binary */
-  photo?: string;
+  photo?: string | null;
   /** - Format: date */
-  project_start_date?: string;
+  project_start_date?: string | null;
   /** - Format: date */
-  quit_date?: string;
+  quit_date?: string | null;
   /** - Format: uuid */
-  quit_reason?: string;
+  quit_reason?: string | null;
   /** - Format: uuid */
-  quit_record?: string;
+  quit_record?: string | null;
   status?: Status386Enum;
   /** - MaxLength: 11 */
   tckn?: string;
@@ -40598,14 +40598,14 @@ export interface PostFinanceIncomeInvoicesApprovalsQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   /** - Format: uuid */
   category?: string;
   company?: string[] | string;
@@ -40690,14 +40690,14 @@ export interface PostProcurementInvoicesApprovalsQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   company?: string[] | string;
   counter?: string;
   /** - Format: date */
@@ -40746,7 +40746,7 @@ export interface PostProcurementOrdersApprovalsQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  totals_with_vat_max?: string;
+  totals_with_vat_max?: string | null;
   /**
    * Total with vat
    *
@@ -40755,7 +40755,7 @@ export interface PostProcurementOrdersApprovalsQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  totals_with_vat_min?: string;
+  totals_with_vat_min?: string | null;
 }
 
 export interface PostProcurementRequestsApprovalsQueryParams {
@@ -40789,14 +40789,14 @@ export interface PostProcurementSpecialInvoicesApprovalsQueryParams {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_max?: string;
+  balance_max?: string | null;
   /**
    * Balance between
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  balance_min?: string;
+  balance_min?: string | null;
   company?: string[] | string;
   counter?: string;
   /** - Format: date */
@@ -40853,7 +40853,7 @@ export interface PostSubcontractsDeductionReturnsApprovalsQueryParams {
   company?: string[] | string;
   /** - Format: uuid */
   contract__category?: string;
-  contract_code?: string;
+  contract_code?: string | null;
   counter?: string;
   /** - Format: date */
   created_after?: string;
@@ -40881,7 +40881,7 @@ export interface PostSubcontractsProgressesApprovalsQueryParams {
   company?: string[] | string;
   /** - Format: uuid */
   contract__category?: string;
-  contract_code?: string;
+  contract_code?: string | null;
   counter?: string;
   /** - Format: date */
   created_after?: string;
@@ -41038,11 +41038,11 @@ export interface ProductCreate {
   serial_number?: string;
   supplier?: SupplierName;
   /** - Format: double */
-  volume?: number;
+  volume?: number | null;
   warehouse?: WarehouseName;
   waybill_no?: string;
   /** - Format: double */
-  weight?: number;
+  weight?: number | null;
 }
 
 export interface ProductCreateRequest {
@@ -41071,12 +41071,12 @@ export interface ProductCreateRequest {
   /** - Format: uuid */
   supplier?: string;
   /** - Format: double */
-  volume?: number;
+  volume?: number | null;
   /** - Format: uuid */
   warehouse?: string;
   waybill_no?: string;
   /** - Format: double */
-  weight?: number;
+  weight?: number | null;
 }
 
 export interface ProductDeliveryListCreateRequest {
@@ -41150,14 +41150,14 @@ export interface Profile {
   /** - Format: uri */
   avatar: string;
   notificate_by: any[];
-  delegated_to?: number;
+  delegated_to?: number | null;
   /** - Format: date */
-  delegated_until?: string;
+  delegated_until?: string | null;
   is_removed?: boolean;
   /** - MaxLength: 15 */
   phone_number?: string;
   /** - MaxLength: 6 */
-  primary_code?: string;
+  primary_code?: string | null;
   /** - MaxLength: 50 */
   title?: string;
 }
@@ -41166,14 +41166,14 @@ export interface ProfileRequest {
   /** - Format: binary */
   avatar: string;
   notificate_by: any[];
-  delegated_to?: number;
+  delegated_to?: number | null;
   /** - Format: date */
-  delegated_until?: string;
+  delegated_until?: string | null;
   is_removed?: boolean;
   /** - MaxLength: 15 */
   phone_number?: string;
   /** - MaxLength: 6 */
-  primary_code?: string;
+  primary_code?: string | null;
   /** - MaxLength: 50 */
   title?: string;
 }
@@ -41181,6 +41181,13 @@ export interface ProfileRequest {
 /** Adds nested create feature */
 
 export interface Progress {
+  /**
+   * Additions
+   *
+   * - Format: decimal
+   * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
+   */
+  additions_total: string | null;
   approver: UserNameAvatar;
   attachments: Attachment[];
   company: CompanyName;
@@ -41193,72 +41200,70 @@ export interface Progress {
   created: string;
   created_by: string;
   currency: string;
-  is_approvable: boolean;
-  is_editable: boolean;
-  /** - Format: date-time */
-  modified: string;
-  modified_by: string;
-  project: ProjectNameCode;
-  slug: string;
-  status: State;
-  subcontractor: SupplierName;
-  additions?: ProgressAddition[];
-  /**
-   * Additions
-   *
-   * - Format: decimal
-   * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
-   */
-  additions_total?: string;
-  /**
-   * - Format: decimal
-   * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
-   */
-  advance_deduction?: string;
-  deductions?: ProgressDeduction[];
-  /** - Format: uuid */
-  id?: string;
-  /** - Format: date */
-  invoice_date?: string;
-  /** - MaxLength: 255 */
-  invoice_no?: string;
   /**
    * Invoiced deductions
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  invoiced_deductions_total?: string;
-  items?: ProgressItem[];
+  invoiced_deductions_total: string | null;
+  is_approvable: boolean;
+  is_editable: boolean;
+  /** - Format: date-time */
+  modified: string;
+  modified_by: string;
   /**
    * Non invoiced deductions
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  non_invoiced_deductions_total?: string;
-  planned_payments?: ProgressPlannedPayment[];
-  /** - Format: date */
-  progress_date?: string;
-  /** - MaxLength: 255 */
-  progress_no?: string;
-  /** - Max: 2147483647 */
-  progress_order?: number;
+  non_invoiced_deductions_total: string | null;
+  project: ProjectNameCode;
+  slug: string;
+  status: State;
+  subcontractor: SupplierName;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  total_vat?: string;
+  total_vat: string | null;
   /**
    * Total
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  totals?: string;
+  totals: string | null;
+  additions?: ProgressAddition[];
+  /**
+   * - Format: decimal
+   * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
+   */
+  advance_deduction?: string | null;
+  deductions?: ProgressDeduction[];
+  /** - Format: uuid */
+  id?: string;
+  /** - Format: date */
+  invoice_date?: string | null;
+  /** - MaxLength: 255 */
+  invoice_no?: string;
+  items?: ProgressItem[];
+  planned_payments?: ProgressPlannedPayment[];
+  /** - Format: date */
+  progress_date?: string | null;
+  /** - MaxLength: 255 */
+  progress_no?: string;
+  /** - Max: 2147483647 */
+  progress_order?: number | null;
 }
 
 export interface ProgressAddition {
+  /**
+   * - Format: decimal
+   * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
+   */
+  cumulative_amount: string | null;
   /** - Format: uuid */
   id: string;
   type: ProgressAdditionType;
@@ -41267,11 +41272,6 @@ export interface ProgressAddition {
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
   amount?: string;
-  /**
-   * - Format: decimal
-   * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
-   */
-  cumulative_amount?: string;
   description?: string;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
@@ -41301,6 +41301,11 @@ export interface ProgressAdditionType {
 
 export interface ProgressDeduction {
   contract_percentage: number;
+  /**
+   * - Format: decimal
+   * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
+   */
+  cumulative_amount: string | null;
   /** - Format: uuid */
   id: string;
   total_returned: string;
@@ -41310,11 +41315,6 @@ export interface ProgressDeduction {
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
   amount?: string;
-  /**
-   * - Format: decimal
-   * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
-   */
-  cumulative_amount?: string;
   description?: string;
 }
 
@@ -41353,6 +41353,11 @@ export interface ProgressDeductionType {
 
 export interface ProgressItem {
   contract_item: ContractItem;
+  /**
+   * - Format: decimal
+   * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
+   */
+  cumulative_quantity: string | null;
   /** - Format: uuid */
   id: string;
   selected: boolean;
@@ -41367,17 +41372,12 @@ export interface ProgressItem {
    */
   total_vat: string;
   /**
-   * - Format: decimal
-   * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
-   */
-  cumulative_quantity?: string;
-  /**
    * Progressed quantity
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   sort_order?: number;
 }
 
@@ -41386,7 +41386,9 @@ export interface ProgressItemList {
   activity_tree: any[];
   company: string;
   currency: string;
-  exchange_rates: undefined;
+  exchange_rates: any;
+  /** - Format: date */
+  invoice_date: string | null;
   invoice_no: string;
   project: string;
   /**
@@ -41414,8 +41416,6 @@ export interface ProgressItemList {
   vat_ratio: number;
   wbs: string;
   wbs_tree: any[];
-  /** - Format: date */
-  invoice_date?: string;
 }
 
 /**
@@ -41434,7 +41434,7 @@ export interface ProgressItemRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   sort_order?: number;
 }
 
@@ -41461,27 +41461,27 @@ export interface ProgressList {
   slug: string;
   status: string;
   subcontractor: string;
-  url: string;
-  /** - Format: uuid */
-  id?: string;
-  /** - Format: date */
-  progress_date?: string;
-  /** - MaxLength: 255 */
-  progress_no?: string;
-  /** - Max: 2147483647 */
-  progress_order?: number;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  total_vat?: string;
+  total_vat: string | null;
   /**
    * Total
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  totals?: string;
+  totals: string | null;
+  url: string;
+  /** - Format: uuid */
+  id?: string;
+  /** - Format: date */
+  progress_date?: string | null;
+  /** - MaxLength: 255 */
+  progress_no?: string;
+  /** - Max: 2147483647 */
+  progress_order?: number | null;
 }
 
 export interface ProgressPlannedPayment {
@@ -41519,22 +41519,22 @@ export interface ProgressRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  advance_deduction?: string;
+  advance_deduction?: string | null;
   deductions?: ProgressDeductionRequest[];
   /** - Format: uuid */
   id?: string;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
   items?: ProgressItemRequest[];
   planned_payments?: ProgressPlannedPaymentRequest[];
   /** - Format: date */
-  progress_date?: string;
+  progress_date?: string | null;
   /** - MaxLength: 255 */
   progress_no?: string;
   /** - Max: 2147483647 */
-  progress_order?: number;
+  progress_order?: number | null;
 }
 
 /**
@@ -41553,6 +41553,8 @@ export interface Project {
   name: string;
   project_code: string;
   project_type: ProjectTypeValue;
+  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
+  slug: string | null;
   /** - MaxLength: 255 */
   accounting_code_prefix?: string;
   /**
@@ -41599,8 +41601,6 @@ export interface Project {
   phone2?: string;
   project_active?: boolean;
   responsibles?: ResponsibleUserType[];
-  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
-  slug?: string;
   use_budget_codes?: boolean;
   use_wbs?: boolean;
   /**
@@ -41643,11 +41643,11 @@ export interface ProjectList {
    */
   project_code: string;
   responsibles: ResponsiblesList[];
+  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
+  slug: string | null;
   /** - MaxLength: 10 */
   duration?: string;
   project_active?: boolean;
-  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
-  slug?: string;
 }
 
 /**
@@ -41868,13 +41868,13 @@ export interface ProjectTypeParam {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 /**
@@ -41889,13 +41889,13 @@ export interface ProjectTypeParamRequest {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 /**
@@ -42046,7 +42046,7 @@ export interface Request {
    *
    * - Format: date
    */
-  delivery_date?: string;
+  delivery_date?: string | null;
   items?: RequestItem[];
   /** Request notes */
   notes?: string;
@@ -42059,6 +42059,12 @@ export interface Request {
 
 export interface RequestItem {
   activity: ActivityNameCode;
+  /**
+   * Requested delivery date
+   *
+   * - Format: date
+   */
+  delivery_date: string | null;
   /** - Format: uuid */
   id: string;
   /**
@@ -42070,18 +42076,12 @@ export interface RequestItem {
   selected: boolean;
   unit: ResourceUnit;
   wbs: WBSNameCode;
-  /**
-   * Requested delivery date
-   *
-   * - Format: date
-   */
-  delivery_date?: string;
   description?: string;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   sort_order?: number;
 }
 
@@ -42106,7 +42106,7 @@ export interface RequestItemRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   sort_order?: number;
 }
 
@@ -42133,7 +42133,7 @@ export interface RequestList {
    *
    * - Format: date
    */
-  delivery_date?: string;
+  delivery_date?: string | null;
   /** Request notes */
   notes?: string;
 }
@@ -42154,7 +42154,7 @@ export interface RequestRequest {
    *
    * - Format: date
    */
-  delivery_date?: string;
+  delivery_date?: string | null;
   items?: RequestItemRequest[];
   /** Request notes */
   notes?: string;
@@ -42205,13 +42205,13 @@ export interface Resource {
    *
    * - MaxLength: 255
    */
-  name_en?: string;
+  name_en?: string | null;
   /**
    * Name [tr]
    *
    * - MaxLength: 255
    */
-  name_tr?: string;
+  name_tr?: string | null;
   /** - Max: 2147483647 */
   numchild?: number;
 }
@@ -42327,13 +42327,13 @@ export interface ResourceRequest {
    *
    * - MaxLength: 255
    */
-  name_en?: string;
+  name_en?: string | null;
   /**
    * Name [tr]
    *
    * - MaxLength: 255
    */
-  name_tr?: string;
+  name_tr?: string | null;
   /** - Max: 2147483647 */
   numchild?: number;
 }
@@ -42390,13 +42390,13 @@ export interface ResponsibleTypeParam {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 /**
@@ -42411,13 +42411,13 @@ export interface ResponsibleTypeParamRequest {
    *
    * - MaxLength: 255
    */
-  value_en?: string;
+  value_en?: string | null;
   /**
    * Value [tr]
    *
    * - MaxLength: 255
    */
-  value_tr?: string;
+  value_tr?: string | null;
 }
 
 /**
@@ -42761,21 +42761,21 @@ export interface RevenueDetailRequest {
 export interface Review {
   /** - Format: date-time */
   created: string;
+  created_by: number | null;
   /** - Format: uuid */
   id: string;
   /** - Format: date-time */
   modified: string;
+  modified_by: number | null;
   score: number;
+  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
+  slug: string | null;
+  supplier: string | null;
   supplier_name: string;
   template: ReviewTemplate;
   answers?: Answer[];
-  created_by?: number;
   /** - MaxLength: 255 */
   description?: string;
-  modified_by?: number;
-  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
-  slug?: string;
-  supplier?: string;
 }
 
 /** Adds nested create feature */
@@ -42816,13 +42816,13 @@ export interface ReviewQuestionRequest {
 /** Adds nested create feature */
 
 export interface ReviewRequest {
+  /** - MinLength: 1 */
+  supplier: string | null;
   /** - Format: uuid */
   template: string;
   answers?: PatchedAnswerRequest[];
   /** - MaxLength: 255 */
   description?: string;
-  /** - MinLength: 1 */
-  supplier?: string;
 }
 
 /** Adds nested create feature */
@@ -42830,10 +42830,12 @@ export interface ReviewRequest {
 export interface ReviewTemplate {
   /** - Format: date-time */
   created: string;
+  created_by: number | null;
   /** - Format: uuid */
   id: string;
   /** - Format: date-time */
   modified: string;
+  modified_by: number | null;
   /**
    * - Minimum: -2147483648
    * - Max: 2147483647
@@ -42841,11 +42843,9 @@ export interface ReviewTemplate {
   pass_mark: number;
   /** - MaxLength: 255 */
   review_type: string;
-  created_by?: number;
-  modified_by?: number;
-  questions?: ReviewQuestion[];
   /** - Pattern: ^[-a-zA-Z0-9_]+$ */
-  slug?: string;
+  slug: string | null;
+  questions?: ReviewQuestion[];
 }
 
 export interface ReviewTemplateList {
@@ -42859,7 +42859,7 @@ export interface ReviewTemplateList {
   /** - MaxLength: 255 */
   review_type: string;
   /** - Pattern: ^[-a-zA-Z0-9_]+$ */
-  slug?: string;
+  slug: string | null;
 }
 
 /** Adds nested create feature */
@@ -42885,12 +42885,12 @@ export interface ReviewsList {
   id: string;
   pass_mark: number;
   score: number;
+  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
+  slug: string | null;
   supplier: string;
   template: string;
   /** - MaxLength: 255 */
   description?: string;
-  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
-  slug?: string;
 }
 
 /** Adds nested create feature */
@@ -43006,6 +43006,7 @@ export interface SlipRequest {
 /** Adds nested create feature */
 
 export interface SpecialInvoice {
+  agreed_exchange_currency: Currency | null;
   approver: UserNameAvatar;
   attachments: Attachment[];
   company: CompanyName;
@@ -43022,6 +43023,7 @@ export interface SpecialInvoice {
   modified: string;
   modified_by: string;
   planned_payments: SpecialInvoicePlannedPayment[];
+  prepaid_from: AccountName | null;
   project: ProjectNameCodeCompany;
   realized_payments: SpecialInvoiceRealizedPayment[];
   slug: string;
@@ -43052,30 +43054,28 @@ export interface SpecialInvoice {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  advance_deduction?: string;
-  agreed_exchange_currency?: Currency;
+  advance_deduction?: string | null;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  correction?: string;
+  correction?: string | null;
   has_vat_witholding?: boolean;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
   items?: SpecialInvoiceItem[];
-  prepaid_from?: AccountName;
-  warehouse?: WarehouseName;
+  warehouse?: WarehouseName | null;
   /** - Format: date */
-  waybill_date?: string;
+  waybill_date?: string | null;
   /** - MaxLength: 255 */
   waybill_no?: string;
 }
@@ -43101,16 +43101,16 @@ export interface SpecialInvoiceItem {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   taxes?: Tax[];
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  unit_price?: string;
+  unit_price?: string | null;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
-  vat_witholding?: Vatwitholding;
+  vat_witholding?: Vatwitholding | null;
 }
 
 export interface SpecialInvoiceItemList {
@@ -43120,7 +43120,9 @@ export interface SpecialInvoiceItemList {
   currency: string;
   /** - Format: double */
   exchange_rate_usd: number;
-  exchange_rates: undefined;
+  exchange_rates: any;
+  /** - Format: date */
+  invoice_date: string | null;
   invoice_no: string;
   project: string;
   /**
@@ -43148,8 +43150,6 @@ export interface SpecialInvoiceItemList {
   vat_ratio: number;
   wbs: string;
   wbs_tree: any[];
-  /** - Format: date */
-  invoice_date?: string;
 }
 
 /** Adds nested create feature */
@@ -43176,17 +43176,17 @@ export interface SpecialInvoiceItemRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  quantity?: string;
+  quantity?: string | null;
   taxes?: TaxRequest[];
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
-  unit_price?: string;
+  unit_price?: string | null;
   /** - Max: 32767 */
   vat_ratio?: VatRatioChoices;
   /** - Format: uuid */
-  vat_witholding?: string;
+  vat_witholding?: string | null;
 }
 
 /** Adds nested create feature */
@@ -43280,12 +43280,16 @@ export interface SpecialInvoiceRealizedPaymentRequest {
 
 export interface SpecialInvoiceRequest {
   /** - Format: uuid */
+  agreed_exchange_currency: string | null;
+  /** - Format: uuid */
   company: string;
   /** - Format: uuid */
   currency: string;
   /** - Format: uuid */
   id: string;
   planned_payments: SpecialInvoicePlannedPaymentRequest[];
+  /** - Format: uuid */
+  prepaid_from: string | null;
   /** - Format: uuid */
   project: string;
   /** - Format: uuid */
@@ -43296,33 +43300,29 @@ export interface SpecialInvoiceRequest {
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  advance_deduction?: string;
-  /** - Format: uuid */
-  agreed_exchange_currency?: string;
+  advance_deduction?: string | null;
   /**
    * Agreed currency rate
    *
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,6}(?:.\\\\d{0,4})?$
    */
-  agreed_exchange_rate?: string;
+  agreed_exchange_rate?: string | null;
   /**
    * - Format: decimal
    * - Pattern: ^-?\\\\d{0,17}(?:.\\\\d{0,2})?$
    */
-  correction?: string;
+  correction?: string | null;
   has_vat_witholding?: boolean;
   /** - Format: date */
-  invoice_date?: string;
+  invoice_date?: string | null;
   /** - MaxLength: 255 */
   invoice_no?: string;
   items?: SpecialInvoiceItemRequest[];
   /** - Format: uuid */
-  prepaid_from?: string;
-  /** - Format: uuid */
-  warehouse?: string;
+  warehouse?: string | null;
   /** - Format: date */
-  waybill_date?: string;
+  waybill_date?: string | null;
   /** - MaxLength: 255 */
   waybill_no?: string;
 }
@@ -43333,6 +43333,7 @@ export interface SpecialInvoiceRequest {
  */
 
 export interface SpecialInvoiceType {
+  description: string | null;
   /** - Format: uuid */
   id: string;
   /**
@@ -43342,7 +43343,6 @@ export interface SpecialInvoiceType {
    */
   stockable: boolean;
   value: string;
-  description?: string;
 }
 
 export interface State {
@@ -43402,17 +43402,21 @@ export interface Supplier {
   country: Country;
   /** - Format: date-time */
   created: string;
+  created_by: number | null;
   district: District;
   /** - Format: uuid */
   id: string;
   /** - Format: date-time */
   modified: string;
+  modified_by: number | null;
   /**
    * Supplier name
    *
    * - MaxLength: 255
    */
   name: string;
+  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
+  slug: string | null;
   type: SupplierType;
   /**
    * Haritadan seçim yaparak, profilinizde konumunuzun görünmesini
@@ -43427,7 +43431,6 @@ export interface Supplier {
    * - MaxLength: 255
    */
   commercial_reg_id?: string;
-  created_by?: number;
   /**
    * E-mail (1)
    *
@@ -43462,7 +43465,6 @@ export interface Supplier {
    * - MinLength: 16
    */
   mersis_no?: string;
-  modified_by?: number;
   /**
    * Phone No (1)
    *
@@ -43475,14 +43477,12 @@ export interface Supplier {
    * - MaxLength: 255
    */
   phone2?: string;
-  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
-  slug?: string;
   /**
    * Tax/TC ID No
    *
    * - MaxLength: 20
    */
-  tax_no?: string;
+  tax_no?: string | null;
   /** - MaxLength: 255 */
   tax_office?: string;
   /**
@@ -43587,15 +43587,15 @@ export interface SupplierAccountingCode {
   code: string;
   /** - Format: date-time */
   created: string;
+  created_by: number | null;
   currency: Currency;
   /** - Format: uuid */
   id: string;
   /** - Format: date-time */
   modified: string;
+  modified_by: number | null;
+  supplier: string | null;
   account_owner?: AccountOwnerEnum;
-  created_by?: number;
-  modified_by?: number;
-  supplier?: string;
   type?: SupplierAccountingCodeTypeEnum;
 }
 
@@ -43609,9 +43609,9 @@ export interface SupplierAccountingCodeRequest {
   code: string;
   /** - Format: uuid */
   currency: string;
-  account_owner?: AccountOwnerEnum;
   /** - MinLength: 1 */
-  supplier?: string;
+  supplier: string | null;
+  account_owner?: AccountOwnerEnum;
   type?: SupplierAccountingCodeTypeEnum;
 }
 
@@ -43627,16 +43627,16 @@ export interface SupplierBankAccount {
   bank_name: BankName;
   /** - Format: date-time */
   created: string;
+  created_by: number | null;
   currency: Currency;
   /** - Format: uuid */
   id: string;
   /** - Format: date-time */
   modified: string;
-  created_by?: number;
+  modified_by: number | null;
+  supplier: string | null;
   /** - MaxLength: 50 */
   iban?: string;
-  modified_by?: number;
-  supplier?: string;
   /** - MaxLength: 20 */
   swift_no?: string;
 }
@@ -43646,10 +43646,10 @@ export interface SupplierBankAccountRequest {
   bank_name: string;
   /** - Format: uuid */
   currency: string;
+  /** - MinLength: 1 */
+  supplier: string | null;
   /** - MaxLength: 50 */
   iban?: string;
-  /** - MinLength: 1 */
-  supplier?: string;
   /** - MaxLength: 20 */
   swift_no?: string;
 }
@@ -43671,6 +43671,8 @@ export interface SupplierForm {
    * - MaxLength: 255
    */
   name: string;
+  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
+  slug: string | null;
   /**
    * Haritadan seçim yaparak, profilinizde konumunuzun görünmesini
    * sağlayabilirsiniz.
@@ -43691,8 +43693,6 @@ export interface SupplierForm {
    * - MaxLength: 255
    */
   phone1?: string;
-  /** - Pattern: ^[-a-zA-Z0-9_]+$ */
-  slug?: string;
 }
 
 /**
@@ -43813,7 +43813,7 @@ export interface SupplierRequest {
    *
    * - MaxLength: 20
    */
-  tax_no?: string;
+  tax_no?: string | null;
   /** - MaxLength: 255 */
   tax_office?: string;
   /**
@@ -44024,7 +44024,7 @@ export interface TransactionList {
    *
    * - Format: date-time
    */
-  txn_date?: string;
+  txn_date?: string | null;
 }
 
 export interface TransactionListCreate {
@@ -44232,13 +44232,13 @@ export interface WBS {
    *
    * - MaxLength: 255
    */
-  name_en?: string;
+  name_en?: string | null;
   /**
    * Name [tr]
    *
    * - MaxLength: 255
    */
-  name_tr?: string;
+  name_tr?: string | null;
   /** - Max: 2147483647 */
   numchild?: number;
 }
@@ -44289,13 +44289,13 @@ export interface WBSRequest {
    *
    * - MaxLength: 255
    */
-  name_en?: string;
+  name_en?: string | null;
   /**
    * Name [tr]
    *
    * - MaxLength: 255
    */
-  name_tr?: string;
+  name_tr?: string | null;
   /** - Max: 2147483647 */
   numchild?: number;
 }

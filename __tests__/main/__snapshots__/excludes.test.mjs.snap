@@ -7091,19 +7091,19 @@ export interface AccountBalanceApiModel {
 }
 
 export interface AccountCreationApiModel {
-  automaticSettlement?: boolean;
-  getComissionFromPayer?: boolean;
-  isActive?: boolean;
-  title?: string;
+  automaticSettlement?: boolean | null;
+  getComissionFromPayer?: boolean | null;
+  isActive?: boolean | null;
+  title?: string | null;
   /** - Format: int32 */
-  userBankId?: number;
+  userBankId?: number | null;
 }
 
 export interface AccountInfoApiModel {
   /** - Format: int64 */
   userWalletId: number;
-  accountOwnerAvatarUrl?: string;
-  accountOwnerTitle?: string;
+  accountOwnerAvatarUrl?: string | null;
+  accountOwnerTitle?: string | null;
 }
 
 export interface AccountPermittedSubUserQuery {
@@ -7119,14 +7119,14 @@ export interface AccountPermittedSubUserQuery {
   /** - Format: guid */
   subuserId: string;
   subuserStatus: SubuserStatus;
-  connectDate?: string;
-  connectionStatusDisplay?: string;
-  disconnectDate?: string;
-  subUserAvatarUrl?: string;
-  subUserContact?: string;
-  subUserPositionTitle?: string;
-  subUserTitle?: string;
-  subuserStatusDisplay?: string;
+  connectDate?: string | null;
+  connectionStatusDisplay?: string | null;
+  disconnectDate?: string | null;
+  subUserAvatarUrl?: string | null;
+  subUserContact?: string | null;
+  subUserPositionTitle?: string | null;
+  subUserTitle?: string | null;
+  subuserStatusDisplay?: string | null;
 }
 
 export interface AccountSettingNotificationStatusApiModel {
@@ -7146,15 +7146,15 @@ export interface AggregationApiModel {
 }
 
 export interface AllTransactionsReportApiModel {
-  credits?: ReportApiModel[];
-  debits?: ReportApiModel[];
+  credits?: ReportApiModel[] | null;
+  debits?: ReportApiModel[] | null;
 }
 
 export interface BankApiModel {
   /** - Format: int32 */
   id: number;
-  logoUrl?: string;
-  name?: string;
+  logoUrl?: string | null;
+  name?: string | null;
 }
 
 export interface BankReceiptApiModel {
@@ -7166,29 +7166,29 @@ export interface BankReceiptApiModel {
   createDate: string;
   failed: boolean;
   type: EpayRequestType;
-  createDateDisplay?: string;
-  creatorUserAvatarUrl?: string;
-  creatorUserDisplayName?: string;
-  description?: string;
-  failureMessage?: string;
+  createDateDisplay?: string | null;
+  creatorUserAvatarUrl?: string | null;
+  creatorUserDisplayName?: string | null;
+  description?: string | null;
+  failureMessage?: string | null;
   /** - Format: int64 */
-  operationId?: number;
+  operationId?: number | null;
   /** - Format: int64 */
-  payerAccountId?: number;
-  payerAccountName?: string;
-  payerAccountNumber?: string;
-  shareUrl?: string;
-  targetAccountNumber?: string;
-  targetAvatarUrl?: string;
-  targetUserDisplayName?: string;
-  typeDisplay?: string;
+  payerAccountId?: number | null;
+  payerAccountName?: string | null;
+  payerAccountNumber?: string | null;
+  shareUrl?: string | null;
+  targetAccountNumber?: string | null;
+  targetAvatarUrl?: string | null;
+  targetUserDisplayName?: string | null;
+  typeDisplay?: string | null;
   /** - Format: int64 */
-  voucherId?: number;
+  voucherId?: number | null;
 }
 
 export interface BusinessCategoryApiModel {
   id: BusinessType;
-  title?: string;
+  title?: string | null;
 }
 
 export enum BusinessShareType {
@@ -7219,18 +7219,18 @@ export interface BusinessUserConnectionApiModel {
    * @deprecated Use 'Status' instead.
    */
   subUserConnectionStatus: SubUserConnectionStatus;
-  businessAvatarUrl?: string;
-  businessName?: string;
-  connectDate?: string;
+  businessAvatarUrl?: string | null;
+  businessName?: string | null;
+  connectDate?: string | null;
   /** - Format: date-time */
-  connectDateTime?: string;
+  connectDateTime?: string | null;
   /** - Format: int64 */
-  connectionId?: number;
-  disconnectDate?: string;
+  connectionId?: number | null;
+  disconnectDate?: string | null;
   /** - Format: date-time */
-  disconnectDateTime?: string;
-  positionTitle?: string;
-  statusDisplay?: string;
+  disconnectDateTime?: string | null;
+  positionTitle?: string | null;
+  statusDisplay?: string | null;
 }
 
 export enum CallbackType {
@@ -7247,7 +7247,7 @@ export interface ClientPurchaseInput {
   instituteCode: number;
   /** - Format: int32 */
   userWalletId: number;
-  driverCode?: string;
+  driverCode?: string | null;
 }
 
 export enum ComissionType {
@@ -7287,29 +7287,29 @@ export interface CommissionAmountApiModel {
 export interface CommissionPolicyApiModel {
   commissionType: ComissionType;
   logicalAction: LogicalActionType;
-  commissionTypeDisplay?: string;
+  commissionTypeDisplay?: string | null;
   /** - Format: decimal */
-  fixedValue?: number;
-  logicalActionDisplay?: string;
+  fixedValue?: number | null;
+  logicalActionDisplay?: string | null;
   /** - Format: decimal */
-  maxValue?: number;
+  maxValue?: number | null;
   /** - Format: double */
-  percent?: number;
-  title?: string;
-  value?: string;
+  percent?: number | null;
+  title?: string | null;
+  value?: string | null;
 }
 
 export interface ContactApiModel {
   audienceType: UserIdentifierType;
   /** - Format: int64 */
   id: number;
-  audienceTypeDisplay?: string;
-  contact?: string;
-  fullName?: string;
-  userDisplayName?: string;
+  audienceTypeDisplay?: string | null;
+  contact?: string | null;
+  fullName?: string | null;
+  userDisplayName?: string | null;
   /** - Format: guid */
-  userId?: string;
-  userProfileImageLink?: string;
+  userId?: string | null;
+  userProfileImageLink?: string | null;
 }
 
 export enum DatePart {
@@ -7333,9 +7333,9 @@ export interface DateReportApiModelOfDecimal {
   value: number;
   /** - Format: int32 */
   year: number;
-  dayName?: string;
-  label?: string;
-  monthName?: string;
+  dayName?: string | null;
+  label?: string | null;
+  monthName?: string | null;
 }
 
 export interface DateReportApiModelOfInteger {
@@ -7349,9 +7349,9 @@ export interface DateReportApiModelOfInteger {
   value: number;
   /** - Format: int32 */
   year: number;
-  dayName?: string;
-  label?: string;
-  monthName?: string;
+  dayName?: string | null;
+  label?: string | null;
+  monthName?: string | null;
 }
 
 export interface DeleteBusinessUserConnectionInvitationIdRemoveQueryParams {
@@ -7367,10 +7367,10 @@ export interface DivideEpayRequestServiceInput {
   invoiceDate: string;
   isAutoRedirect: boolean;
   isBlocking: boolean;
-  callBackUrl?: string;
-  description?: string;
-  divisions?: DivideEpayRequestShareModel[];
-  invoiceNumber?: string;
+  callBackUrl?: string | null;
+  description?: string | null;
+  divisions?: DivideEpayRequestShareModel[] | null;
+  invoiceNumber?: string | null;
 }
 
 export interface DivideEpayRequestShareModel {
@@ -7378,8 +7378,8 @@ export interface DivideEpayRequestShareModel {
   amount: number;
   /** - Format: decimal */
   dividerAmount: number;
-  apiKey?: string;
-  invoiceNumber?: string;
+  apiKey?: string | null;
+  invoiceNumber?: string | null;
 }
 
 export interface DividedEpayRequestCancelInput {
@@ -7387,13 +7387,13 @@ export interface DividedEpayRequestCancelInput {
   dividerAmount: number;
   /** - Format: decimal */
   userAmount: number;
-  description?: string;
-  firstName?: string;
-  invoiceNumber?: string;
-  lastName?: string;
-  paymentToken?: string;
-  shebaNo?: string;
-  userApiKey?: string;
+  description?: string | null;
+  firstName?: string | null;
+  invoiceNumber?: string | null;
+  lastName?: string | null;
+  paymentToken?: string | null;
+  shebaNo?: string | null;
+  userApiKey?: string | null;
 }
 
 export interface DividedEpayRequestCancelResult {
@@ -7406,10 +7406,10 @@ export interface DividedEpayRequestUnblockInput {
   dividerAmount: number;
   /** - Format: decimal */
   userAmount: number;
-  description?: string;
-  invoiceNumber?: string;
-  paymentToken?: string;
-  userApiKey?: string;
+  description?: string | null;
+  invoiceNumber?: string | null;
+  paymentToken?: string | null;
+  userApiKey?: string | null;
 }
 
 export interface DividedEpayRequestUnblockResult {
@@ -7438,10 +7438,10 @@ export interface DocumentApiModel {
   fileTypes: FileTypes;
   /** - Format: guid */
   uniqueId: string;
-  contentTypeDisplay?: string;
-  fileName?: string;
-  fileTypeDisplay?: string;
-  fileUrl?: string;
+  contentTypeDisplay?: string | null;
+  fileName?: string | null;
+  fileTypeDisplay?: string | null;
+  fileUrl?: string | null;
 }
 
 export enum DocumentContentType {
@@ -7462,63 +7462,63 @@ export interface DocumentInput {
 
 export interface DriverInfoResult {
   barcodType: number;
-  barcodTypeDescription?: string;
-  customData?: TaxiInfoOutput;
-  firstName?: string;
+  barcodTypeDescription?: string | null;
+  customData?: TaxiInfoOutput | null;
+  firstName?: string | null;
   /** - Format: int64 */
-  identificationCode?: number;
-  identificationDesc?: string;
-  imageUrl?: string;
-  lastName?: string;
-  nationalCode?: string;
-  price?: TaxiPriceOutput[];
+  identificationCode?: number | null;
+  identificationDesc?: string | null;
+  imageUrl?: string | null;
+  lastName?: string | null;
+  nationalCode?: string | null;
+  price?: TaxiPriceOutput[] | null;
 }
 
 export interface DropDownResultItemOfIdentityStatus {
   value: IdentityStatus;
-  display?: string;
+  display?: string | null;
 }
 
 export interface DropDownResultOfIdentityStatus {
-  items?: DropDownResultItemOfIdentityStatus[];
+  items?: DropDownResultItemOfIdentityStatus[] | null;
 }
 
 export interface EPayPluginSpecificApiModel {
-  id?: string;
-  persianName?: string;
+  id?: string | null;
+  persianName?: string | null;
   /**
    * [Deprecated, don't use this property anymore, it is always null]
    *
    * @deprecated Don't use this property anymore, it is always null.
    */
-  pluginPropertyId?: string;
+  pluginPropertyId?: string | null;
   /**
    * [Deprecated, use 'Id' instead]
    *
    * @deprecated Use 'Id' instead.
    */
-  pluginPropertyName?: string;
+  pluginPropertyName?: string | null;
   /**
    * [Deprecated, use 'PersianName' instead]
    *
    * @deprecated Use 'PersianName' instead.
    */
-  pluginPropertyPersianName?: string;
-  value?: string;
+  pluginPropertyPersianName?: string | null;
+  value?: string | null;
 }
 
 export interface EPayRequestAudienceInput {
-  contact?: string;
-  fullName?: string;
+  contact?: string | null;
+  fullName?: string | null;
 }
 
 export interface EditConnectionInfoInput {
-  position?: string;
+  position?: string | null;
 }
 
 export interface EditSubUserPermissionInput {
-  isEnabled?: boolean;
-  subUserPermissionType?: SubUserPermissionType;
+  isEnabled?: boolean | null;
+  subUserPermissionType?: SubUserPermissionType | null;
 }
 
 export enum EpayRequestActualState {
@@ -7546,35 +7546,35 @@ export interface EpayRequestApiModel {
   status: EpayRequestActualState;
   /** - Format: int64 */
   userWalletId: number;
-  assistantDisplayName?: string;
-  assistantPositionTitle?: string;
+  assistantDisplayName?: string | null;
+  assistantPositionTitle?: string | null;
   /** - Format: guid */
-  assistantUserId?: string;
-  createDate?: string;
-  description?: string;
+  assistantUserId?: string | null;
+  createDate?: string | null;
+  description?: string | null;
   /**
    * [Deprecated, don't use EpayRequestAudience]
    *
    * @deprecated Don't use EpayRequestAudience.
    */
-  epayRequestAudience?: EPayRequestAudienceInput[];
-  expireDate?: string;
-  payDate?: string;
+  epayRequestAudience?: EPayRequestAudienceInput[] | null;
+  expireDate?: string | null;
+  payDate?: string | null;
   /** - Format: date-time */
-  payDateTime?: string;
-  payerName?: string;
-  paymentLink?: string;
-  qrCodeLink?: string;
-  statusDisplay?: string;
-  targetDisplayName?: string;
-  userAccountName?: string;
+  payDateTime?: string | null;
+  payerName?: string | null;
+  paymentLink?: string | null;
+  qrCodeLink?: string | null;
+  statusDisplay?: string | null;
+  targetDisplayName?: string | null;
+  userAccountName?: string | null;
 }
 
 export interface EpayRequestCheckStatusResult {
   requestStatus: EpayRequestStatus;
-  bankReferenceId?: string;
+  bankReferenceId?: string | null;
   /** - Format: date-time */
-  verifyDate?: string;
+  verifyDate?: string | null;
 }
 
 export interface EpayRequestDetailApiModel {
@@ -7612,35 +7612,35 @@ export interface EpayRequestDetailApiModel {
   status: EpayRequestActualState;
   /** - Format: int64 */
   userWalletId: number;
-  assistantDisplayName?: string;
+  assistantDisplayName?: string | null;
   /** - Format: guid */
-  assistantUserId?: string;
-  audiences?: ContactApiModel[];
-  description?: string;
+  assistantUserId?: string | null;
+  audiences?: ContactApiModel[] | null;
+  description?: string | null;
   /**
    * [Deprecated, use 'Audiences' instead]
    *
    * @deprecated Use 'Audiences' instead.
    */
-  epayRequestAudience?: ContactApiModel[];
+  epayRequestAudience?: ContactApiModel[] | null;
   /**
    * [Deprecated, use 'PluginProperties' instead]
    *
    * @deprecated Use 'PluginProperties' instead.
    */
-  epayRequestPluginSpecific?: EPayPluginSpecificApiModel[];
+  epayRequestPluginSpecific?: EPayPluginSpecificApiModel[] | null;
   /** - Format: date-time */
-  payDateTime?: string;
-  paymentLink?: string;
+  payDateTime?: string | null;
+  paymentLink?: string | null;
   /** - Format: int32 */
-  pluginId?: number;
-  pluginName?: string;
-  pluginProperties?: EPayPluginSpecificApiModel[];
-  publicLink?: string;
-  qrCodeLink?: string;
-  statusDisplay?: string;
-  token?: string;
-  userAccountName?: string;
+  pluginId?: number | null;
+  pluginName?: string | null;
+  pluginProperties?: EPayPluginSpecificApiModel[] | null;
+  publicLink?: string | null;
+  qrCodeLink?: string | null;
+  statusDisplay?: string | null;
+  token?: string | null;
+  userAccountName?: string | null;
 }
 
 export interface EpayRequestForUserQuery {
@@ -7676,24 +7676,24 @@ export interface EpayRequestForUserQuery {
    *
    * @deprecated Use 'UserDisplayName' instead.
    */
-  applicantName?: string;
-  createDate?: string;
-  description?: string;
-  expireDate?: string;
-  paymentUrl?: string;
-  statusDisplay?: string;
-  token?: string;
-  userAccountNumber?: string;
-  userDisplayName?: string;
+  applicantName?: string | null;
+  createDate?: string | null;
+  description?: string | null;
+  expireDate?: string | null;
+  paymentUrl?: string | null;
+  statusDisplay?: string | null;
+  token?: string | null;
+  userAccountNumber?: string | null;
+  userDisplayName?: string | null;
 }
 
 export interface EpayRequestPayInput {
-  description?: string;
+  description?: string | null;
 }
 
 export interface EpayRequestPluginSpecificInput {
-  pluginPropertyId?: string;
-  value?: string;
+  pluginPropertyId?: string | null;
+  value?: string | null;
 }
 
 export interface EpayRequestPublicInfoApiModel {
@@ -7702,18 +7702,18 @@ export interface EpayRequestPublicInfoApiModel {
   /** - Format: date-time */
   expireDate: string;
   status: EpayRequestStatus;
-  description?: string;
-  expireDateDisplay?: string;
+  description?: string | null;
+  expireDateDisplay?: string | null;
   /** - Format: date-time */
-  payDate?: string;
-  payDateDisplay?: string;
-  payerName?: string;
-  paymentUrl?: string;
-  statusDisplay?: string;
-  token?: string;
-  userAccountNumber?: string;
-  userAvatarUrl?: string;
-  userDisplayName?: string;
+  payDate?: string | null;
+  payDateDisplay?: string | null;
+  payerName?: string | null;
+  paymentUrl?: string | null;
+  statusDisplay?: string | null;
+  token?: string | null;
+  userAccountNumber?: string | null;
+  userAvatarUrl?: string | null;
+  userDisplayName?: string | null;
 }
 
 export interface EpayRequestServiceInput {
@@ -7738,10 +7738,10 @@ export interface EpayRequestServiceInput {
    * - MinLength: 1
    */
   userId: string;
-  audiences?: EPayRequestAudienceInput[];
-  callbackUrl?: string;
-  description?: string;
-  invoiceNumber?: string;
+  audiences?: EPayRequestAudienceInput[] | null;
+  callbackUrl?: string | null;
+  description?: string | null;
+  invoiceNumber?: string | null;
 }
 
 export enum EpayRequestStatus {
@@ -7771,8 +7771,8 @@ export enum EpayRequestType {
 }
 
 export interface EpayRequestWcfResult {
-  paymentUrl?: string;
-  requestToken?: string;
+  paymentUrl?: string | null;
+  requestToken?: string | null;
 }
 
 export enum FieldDisplayType {
@@ -7790,8 +7790,8 @@ export interface FileApiModel {
   fileSize: number;
   /** - Format: guid */
   uniqueId: string;
-  fileName?: string;
-  fileUrl?: string;
+  fileName?: string | null;
+  fileUrl?: string | null;
 }
 
 export enum FileTypes {
@@ -7801,13 +7801,13 @@ export enum FileTypes {
 }
 
 export interface ForgetPasswordQuery {
-  token?: string;
+  token?: string | null;
 }
 
 export interface FullRegisterApiModel {
-  fullName?: string;
-  introducerCode?: string;
-  phoneNumber?: string;
+  fullName?: string | null;
+  introducerCode?: string | null;
+  phoneNumber?: string | null;
 }
 
 export enum Gender {
@@ -8629,8 +8629,8 @@ export interface GroupTransferInput {
   totalAmount: number;
   /** - Format: int64 */
   userWalletId: number;
-  description?: string;
-  targets?: GroupTransferTargetInput[];
+  description?: string | null;
+  targets?: GroupTransferTargetInput[] | null;
 }
 
 export interface GroupTransferQuery {
@@ -8640,27 +8640,27 @@ export interface GroupTransferQuery {
   createDate: string;
   /** - Format: int64 */
   voucherId: number;
-  createDateDisplay?: string;
-  description?: string;
-  targets?: GroupTransferTargetQuery[];
-  userAccountName?: string;
-  userDisplayName?: string;
+  createDateDisplay?: string | null;
+  description?: string | null;
+  targets?: GroupTransferTargetQuery[] | null;
+  userAccountName?: string | null;
+  userDisplayName?: string | null;
 }
 
 export interface GroupTransferTargetInput {
   /** - Format: decimal */
   amount: number;
-  description?: string;
-  identifier?: string;
+  description?: string | null;
+  identifier?: string | null;
 }
 
 export interface GroupTransferTargetQuery {
   /** - Format: decimal */
   amount: number;
-  accountName?: string;
-  description?: string;
-  userDisplayName?: string;
-  userPhoneNumber?: string;
+  accountName?: string | null;
+  description?: string | null;
+  userDisplayName?: string | null;
+  userPhoneNumber?: string | null;
 }
 
 export enum GroupTransferTargetStatus {
@@ -8674,9 +8674,9 @@ export enum GroupTransferTargetStatus {
 export interface GroupTransferTargetValidationInput {
   /** - Format: decimal */
   amount: number;
-  description?: string;
+  description?: string | null;
   /** PhoneNumber or Account Number */
-  identifier?: string;
+  identifier?: string | null;
 }
 
 export interface GroupTransferTargetValidationQuery {
@@ -8686,19 +8686,19 @@ export interface GroupTransferTargetValidationQuery {
   status: GroupTransferTargetStatus;
   /** - Format: int64 */
   userCustomerNumber: number;
-  accountNumber?: string;
-  identifier?: string;
-  identifierTypeDisplay?: string;
-  name?: string;
+  accountNumber?: string | null;
+  identifier?: string | null;
+  identifierTypeDisplay?: string | null;
+  name?: string | null;
   /**
    * [Deprecated, use 'StatusDisplay' instead]
    *
    * @deprecated Use 'StatusDisplay' instead.
    */
-  statusDescription?: string;
-  statusDisplay?: string;
-  userDisplayName?: string;
-  userPhoneNumber?: string;
+  statusDescription?: string | null;
+  statusDisplay?: string | null;
+  userDisplayName?: string | null;
+  userPhoneNumber?: string | null;
 }
 
 export enum IPGStatus {
@@ -8724,18 +8724,18 @@ export interface ImportantActionApiModel {
   isSeen: boolean;
   level: NotificationLevel;
   type: NotificationModelType;
-  data?: string;
-  dataId?: string;
-  levelDisplay?: string;
-  text?: string;
-  title?: string;
-  typeDisplay?: string;
+  data?: string | null;
+  dataId?: string | null;
+  levelDisplay?: string | null;
+  text?: string | null;
+  title?: string | null;
+  typeDisplay?: string | null;
 }
 
 export interface InitApiModel {
   versionState: TerminalVersionState;
-  appDownloadLink?: string;
-  versionStateDisplay?: string;
+  appDownloadLink?: string | null;
+  versionStateDisplay?: string | null;
 }
 
 export interface KpiResult {
@@ -8743,10 +8743,10 @@ export interface KpiResult {
   end: string;
   /** - Format: date-time */
   start: string;
-  datePart?: DatePart;
-  kpiName?: string;
-  targetIds?: string[];
-  values?: KpiResultValue[];
+  datePart?: DatePart | null;
+  kpiName?: string | null;
+  targetIds?: string[] | null;
+  values?: KpiResultValue[] | null;
 }
 
 export interface KpiResultValue {
@@ -8758,7 +8758,7 @@ export interface KpiResultValue {
   startPoint: string;
   /** - Format: decimal */
   value: number;
-  targetId?: string;
+  targetId?: string | null;
 }
 
 export enum LogEventLevel {
@@ -8798,7 +8798,7 @@ export enum LogicalActionType {
 export interface MachineSignUp {
   /** - Format: int64 */
   customerNumber: number;
-  apiKey?: string;
+  apiKey?: string | null;
 }
 
 export interface NewChargeRequestInput {
@@ -8809,11 +8809,11 @@ export interface NewChargeRequestInput {
    */
   amount: number;
   /** آدرس بازگشت بعد از پرداخت */
-  callbackUrl?: string;
+  callbackUrl?: string | null;
 }
 
 export interface NewChargeRequestResultQuery {
-  paymentLink?: string;
+  paymentLink?: string | null;
 }
 
 export interface NewEpayRequestInput {
@@ -8834,38 +8834,38 @@ export interface NewEpayRequestInput {
   /** انتقال مستقیم به درگاه */
   isAutoConfirm: boolean;
   /** - Format: guid */
-  assisstantUserId?: string;
+  assisstantUserId?: string | null;
   /** اطلاعات پرداخت کننده / ها */
-  audiences?: EPayRequestAudienceInput[];
+  audiences?: EPayRequestAudienceInput[] | null;
   /** آدرس بازگشت بعد از پرداخت */
-  callbackUrl?: string;
+  callbackUrl?: string | null;
   /** توضحیات درخواست (بابت) */
-  description?: string;
+  description?: string | null;
   /** نحوه دریافت کارمزد */
-  getComissionByPayer?: boolean;
+  getComissionByPayer?: boolean | null;
   /**
    * تاریخ فاکتور
    *
    * - Format: date-time
    */
-  invoiceDate?: string;
+  invoiceDate?: string | null;
   /** شماره فاکتور */
-  invoiceNumber?: string;
+  invoiceNumber?: string | null;
   /**
    * ...
    *
    * - Format: int32
    */
-  pluginId?: number;
+  pluginId?: number | null;
   /** ... */
-  pluginSpecifics?: EpayRequestPluginSpecificInput[];
+  pluginSpecifics?: EpayRequestPluginSpecificInput[] | null;
 }
 
 export interface NewUserIdentityRequestInput {
-  documents?: DocumentInput[];
-  firstName?: string;
-  lastName?: string;
-  nationalCode?: string;
+  documents?: DocumentInput[] | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  nationalCode?: string | null;
 }
 
 export interface NotificationApiModel {
@@ -8874,11 +8874,11 @@ export interface NotificationApiModel {
   isSeen: boolean;
   level: NotificationLevel;
   type: NotificationModelType;
-  dataId?: string;
-  levelDisplay?: string;
-  text?: string;
-  title?: string;
-  typeDisplay?: string;
+  dataId?: string | null;
+  levelDisplay?: string | null;
+  text?: string | null;
+  title?: string | null;
+  typeDisplay?: string | null;
 }
 
 export enum NotificationChannel {
@@ -8941,24 +8941,24 @@ export enum PlatformType {
 export interface PluginApiModel {
   /** - Format: int32 */
   id: number;
-  amountCalculationExpression?: string;
-  logoFileName?: string;
+  amountCalculationExpression?: string | null;
+  logoFileName?: string | null;
   /** - Format: guid */
-  logoFileUniqueId?: string;
-  logoFileUrl?: string;
-  name?: string;
-  properties?: PluginPropertyApiModel[];
+  logoFileUniqueId?: string | null;
+  logoFileUrl?: string | null;
+  name?: string | null;
+  properties?: PluginPropertyApiModel[] | null;
 }
 
 export interface PluginPropertyApiModel {
   fieldType: FieldDisplayType;
   isFilterable: boolean;
   isRequired: boolean;
-  currencyName?: string;
-  description?: string;
-  name?: string;
-  title?: string;
-  value?: string;
+  currencyName?: string | null;
+  description?: string | null;
+  name?: string | null;
+  title?: string | null;
+  value?: string | null;
 }
 
 export interface PosLandingPageApiModel {
@@ -8966,36 +8966,36 @@ export interface PosLandingPageApiModel {
   domainId: number;
   /** - Format: guid */
   userId: string;
-  accountNumber?: string;
-  domainEnglishName?: string;
-  domainLogoFileName?: string;
+  accountNumber?: string | null;
+  domainEnglishName?: string | null;
+  domainLogoFileName?: string | null;
   /** - Format: guid */
-  domainLogoFileUniqueId?: string;
-  domainLogoFileUrl?: string;
-  domainPersianName?: string;
-  getCommissionFromPayer?: boolean;
-  subUserAvatarFileName?: string;
+  domainLogoFileUniqueId?: string | null;
+  domainLogoFileUrl?: string | null;
+  domainPersianName?: string | null;
+  getCommissionFromPayer?: boolean | null;
+  subUserAvatarFileName?: string | null;
   /** - Format: guid */
-  subUserAvatarFileUniqueId?: string;
-  subUserAvatarFileUrl?: string;
-  subUserDisplayName?: string;
+  subUserAvatarFileUniqueId?: string | null;
+  subUserAvatarFileUrl?: string | null;
+  subUserDisplayName?: string | null;
   /** - Format: guid */
-  subUserId?: string;
-  userAvatarFileName?: string;
+  subUserId?: string | null;
+  userAvatarFileName?: string | null;
   /** - Format: guid */
-  userAvatarFileUniqueId?: string;
-  userAvatarFileUrl?: string;
-  userDisplayName?: string;
+  userAvatarFileUniqueId?: string | null;
+  userAvatarFileUrl?: string | null;
+  userDisplayName?: string | null;
 }
 
 export interface PosOnlinePayInput {
   /** - Format: decimal */
   amount: number;
-  callBackUrl?: string;
-  callbackType?: CallbackType;
-  description?: string;
+  callBackUrl?: string | null;
+  callbackType?: CallbackType | null;
+  description?: string | null;
   /** - Format: guid */
-  subuserId?: string;
+  subuserId?: string | null;
 }
 
 export interface PosWalletPayInput {
@@ -9003,21 +9003,21 @@ export interface PosWalletPayInput {
   amount: number;
   /** - Format: int64 */
   userWalletId: number;
-  description?: string;
+  description?: string | null;
 }
 
 export interface RegisterApiModel {
-  deviceBrandName?: string;
-  deviceId?: string;
-  deviceOsVersion?: string;
-  deviceToken?: string;
-  phoneNumber?: string;
+  deviceBrandName?: string | null;
+  deviceId?: string | null;
+  deviceOsVersion?: string | null;
+  deviceToken?: string | null;
+  phoneNumber?: string | null;
 }
 
 export interface RegisterNewUserQuery {
   /** - Format: guid */
   userId: string;
-  token?: string;
+  token?: string | null;
 }
 
 export interface ReportApiModel {
@@ -9035,18 +9035,18 @@ export interface ReportApiModel {
   sum: number;
   /** - Format: int32 */
   year: number;
-  dayName?: string;
-  label?: string;
-  monthName?: string;
+  dayName?: string | null;
+  label?: string | null;
+  monthName?: string | null;
   /** سال دو رقمی */
-  yearShort?: string;
+  yearShort?: string | null;
 }
 
 export type RequestBodyAccountCreationApiModel = AccountCreationApiModel;
 
 export interface RequestBodyFile_Upload {
   /** - Format: binary */
-  file?: string;
+  file?: string | null;
 }
 
 export type RequestBodyLogEventLevel = LogEventLevel;
@@ -9061,7 +9061,7 @@ export type RequestBodyTransferMoneyInput = TransferMoneyInput;
 export type RequestBodyUserBankInput = UserBankInput;
 
 export interface RequestTotpInput {
-  phoneNumber?: string;
+  phoneNumber?: string | null;
 }
 
 export interface ReselledUserActivityApiModel {
@@ -9084,17 +9084,17 @@ export interface ReselledUserApiModel {
   /** - Format: guid */
   userId: string;
   userStatus: UserStatus;
-  displayName?: string;
-  identityStatusDisplay?: string;
-  imageUrl?: string;
-  ipgStatusDisplay?: string;
-  lastActivityDate?: string;
-  phoneNumber?: string;
-  registerDate?: string;
+  displayName?: string | null;
+  identityStatusDisplay?: string | null;
+  imageUrl?: string | null;
+  ipgStatusDisplay?: string | null;
+  lastActivityDate?: string | null;
+  phoneNumber?: string | null;
+  registerDate?: string | null;
 }
 
 export interface ReselledUserFilterData {
-  identityStatuses?: DropDownResultOfIdentityStatus;
+  identityStatuses?: DropDownResultOfIdentityStatus | null;
 }
 
 export interface ResellerApiModel {
@@ -9107,24 +9107,24 @@ export interface ResellerApiModel {
   isActive: boolean;
   /** - Format: date-time */
   startDate: string;
-  commissionDisplay?: string;
+  commissionDisplay?: string | null;
   /** - Format: decimal */
-  commissionFixedValue?: number;
+  commissionFixedValue?: number | null;
   /** - Format: decimal */
-  commissionMaxValue?: number;
-  commissionName?: string;
+  commissionMaxValue?: number | null;
+  commissionName?: string | null;
   /** - Format: double */
-  commissionPercent?: number;
-  commissionTypeDisplay?: string;
-  endDateDisplay?: string;
-  introduceLink?: string;
-  startDateDisplay?: string;
+  commissionPercent?: number | null;
+  commissionTypeDisplay?: string | null;
+  endDateDisplay?: string | null;
+  introduceLink?: string | null;
+  startDateDisplay?: string | null;
 }
 
 export interface SendConnectionRequestInput {
-  email?: string;
-  phoneNumber?: string;
-  position?: string;
+  email?: string | null;
+  phoneNumber?: string | null;
+  position?: string | null;
 }
 
 export enum SepidResponseType {
@@ -9134,21 +9134,21 @@ export enum SepidResponseType {
 
 export interface SetAccountAccessForSubUserInput {
   /** - Format: int64 */
-  userWalletId?: number;
+  userWalletId?: number | null;
 }
 
 export interface SetUserBasicInfoInput {
   /** - Format: guid */
   userId: string;
-  firstName?: string;
+  firstName?: string | null;
   /** - Format: int64 */
-  introducerCode?: number;
-  lastName?: string;
-  password?: string;
+  introducerCode?: number | null;
+  lastName?: string | null;
+  password?: string | null;
 }
 
 export interface SettingApiModel {
-  logSetting?: LogSetting;
+  logSetting?: LogSetting | null;
 }
 
 export interface SubDomainApiModel {
@@ -9157,23 +9157,23 @@ export interface SubDomainApiModel {
   isActive: boolean;
   /** - Format: guid */
   resellerUserId: string;
-  about?: string;
-  domainEnglishName?: string;
-  domainPersianName?: string;
-  englishName?: string;
-  logoFileName?: string;
+  about?: string | null;
+  domainEnglishName?: string | null;
+  domainPersianName?: string | null;
+  englishName?: string | null;
+  logoFileName?: string | null;
   /** - Format: guid */
-  logoFileUniqueId?: string;
-  logoFileUrl?: string;
-  persianName?: string;
-  resellerUserDisplayName?: string;
-  subDomainAddress?: string;
+  logoFileUniqueId?: string | null;
+  logoFileUrl?: string | null;
+  persianName?: string | null;
+  resellerUserDisplayName?: string | null;
+  subDomainAddress?: string | null;
 }
 
 export interface SubDomainUpdateApiModel {
-  about?: string;
+  about?: string | null;
   /** - Format: guid */
-  logoFileUniqueId?: string;
+  logoFileUniqueId?: string | null;
 }
 
 export interface SubUserAccountDetailQuery {
@@ -9194,11 +9194,11 @@ export interface SubUserAccountDetailQuery {
   posPaidCount: number;
   /** - Format: int32 */
   posScanCount: number;
-  accountNumber?: string;
-  accountQrCodeUrl?: string;
-  accountStatusDisplay?: string;
-  name?: string;
-  posLinkUrl?: string;
+  accountNumber?: string | null;
+  accountQrCodeUrl?: string | null;
+  accountStatusDisplay?: string | null;
+  name?: string | null;
+  posLinkUrl?: string | null;
 }
 
 export interface SubUserActivityApiModel {
@@ -9228,23 +9228,23 @@ export interface SubUserConnectionApiModel {
    * @deprecated Use 'Status' instead,
    */
   subUserConnectionStatus: SubUserConnectionStatus;
-  connectDate?: string;
+  connectDate?: string | null;
   /** - Format: date-time */
-  connectDateTime?: string;
+  connectDateTime?: string | null;
   /** - Format: int64 */
-  connectionId?: number;
-  disconnectDate?: string;
+  connectionId?: number | null;
+  disconnectDate?: string | null;
   /** - Format: date-time */
-  disconnectDateTime?: string;
-  removeDate?: string;
+  disconnectDateTime?: string | null;
+  removeDate?: string | null;
   /** - Format: date-time */
-  removeDateTime?: string;
-  requestDate?: string;
-  statusDisplay?: string;
-  subUserAvatarUrl?: string;
-  subUserContact?: string;
-  subUserPositionTitle?: string;
-  subUserTitle?: string;
+  removeDateTime?: string | null;
+  requestDate?: string | null;
+  statusDisplay?: string | null;
+  subUserAvatarUrl?: string | null;
+  subUserContact?: string | null;
+  subUserPositionTitle?: string | null;
+  subUserTitle?: string | null;
 }
 
 export enum SubUserConnectionStatus {
@@ -9266,10 +9266,10 @@ export interface SubUserInvitationApiModel {
    * @deprecated Use 'InvitationToken' to call new endpoints.
    */
   invitationId: number;
-  businessUserAvatarUrl?: string;
-  businessUserTitle?: string;
-  invitationToken?: string;
-  message?: string;
+  businessUserAvatarUrl?: string | null;
+  businessUserTitle?: string | null;
+  invitationToken?: string | null;
+  message?: string | null;
 }
 
 export interface SubUserNotificationStatusInput {
@@ -9293,8 +9293,8 @@ export interface SubUserPermissionApiModel {
   totalBalance: number;
   /** - Format: int64 */
   userWalletId: number;
-  accountNumber?: string;
-  accountTitle?: string;
+  accountNumber?: string | null;
+  accountTitle?: string | null;
 }
 
 export enum SubUserPermissionType {
@@ -9329,11 +9329,11 @@ export interface TaxiInfoOutput {
   carTypeCode: number;
   /** - Format: int32 */
   lineCode: number;
-  activityType?: string;
-  destination?: string;
-  source?: string;
-  vehicleColor?: string;
-  vehicleType?: string;
+  activityType?: string | null;
+  destination?: string | null;
+  source?: string | null;
+  vehicleColor?: string | null;
+  vehicleType?: string | null;
 }
 
 export enum TaxiPaymentProvider {
@@ -9344,8 +9344,8 @@ export enum TaxiPaymentProvider {
 export interface TaxiPriceOutput {
   /** - Format: int64 */
   amount: number;
-  currency?: string;
-  title?: string;
+  currency?: string | null;
+  title?: string | null;
 }
 
 export interface TaxiRecieptApiDto {
@@ -9355,15 +9355,15 @@ export interface TaxiRecieptApiDto {
   dateTime: string;
   sepidResponse: SepidResponseType;
   taxiProvider: TaxiPaymentProvider;
-  accountName?: string;
-  accountNumber?: string;
-  sepidResponseDisplay?: string;
-  taxiProviderDisplay?: string;
+  accountName?: string | null;
+  accountNumber?: string | null;
+  sepidResponseDisplay?: string | null;
+  taxiProviderDisplay?: string | null;
 }
 
 export interface TerminalVersionApiModel {
-  currentVersion?: string;
-  minimumVersion?: string;
+  currentVersion?: string | null;
+  minimumVersion?: string | null;
 }
 
 export enum TerminalVersionState {
@@ -9374,7 +9374,7 @@ export enum TerminalVersionState {
 }
 
 export interface TotpLoginResult {
-  token?: string;
+  token?: string | null;
 }
 
 export interface TransactionApiModel {
@@ -9392,20 +9392,20 @@ export interface TransactionApiModel {
   transactionType: TransactionType;
   /** - Format: int64 */
   voucherId: number;
-  accountNumber?: string;
-  accountTitle?: string;
-  createDate?: string;
-  description?: string;
-  followupId?: string;
-  logicalAction?: LogicalActionType;
-  logicalActionDisplay?: string;
+  accountNumber?: string | null;
+  accountTitle?: string | null;
+  createDate?: string | null;
+  description?: string | null;
+  followupId?: string | null;
+  logicalAction?: LogicalActionType | null;
+  logicalActionDisplay?: string | null;
   /** - Format: int32 */
-  targetBusinessCategoryId?: number;
-  targetBusinessCategoryName?: string;
-  transactionOperationTypeDisplay?: string;
-  transactionTypeDisplay?: string;
-  voucherType?: VoucherOperationType;
-  voucherTypeDisplay?: string;
+  targetBusinessCategoryId?: number | null;
+  targetBusinessCategoryName?: string | null;
+  transactionOperationTypeDisplay?: string | null;
+  transactionTypeDisplay?: string | null;
+  voucherType?: VoucherOperationType | null;
+  voucherTypeDisplay?: string | null;
 }
 
 export enum TransactionOperationType {
@@ -9463,7 +9463,7 @@ export interface TransferMoneyApiModel {
   userAccountId: number;
   /** - Format: int64 */
   voucherId: number;
-  description?: string;
+  description?: string | null;
   /**
    * [Deprecated, use 'OperationId' instead]
    *
@@ -9471,20 +9471,20 @@ export interface TransferMoneyApiModel {
    *
    * @deprecated Use 'OperationId' instead.
    */
-  id?: number;
+  id?: number | null;
   /** - Format: int64 */
-  operationId?: number;
-  payerAccountName?: string;
-  payerAccountNumber?: string;
-  targetAccountNumber?: string;
-  targetUserAvatarUrl?: string;
-  targetUserDisplayName?: string;
+  operationId?: number | null;
+  payerAccountName?: string | null;
+  payerAccountNumber?: string | null;
+  targetAccountNumber?: string | null;
+  targetUserAvatarUrl?: string | null;
+  targetUserDisplayName?: string | null;
   /**
    * [Deprecated, use 'PayerAccountName' instead]
    *
    * @deprecated Use 'PayerAccountName' instead.
    */
-  userAccountName?: string;
+  userAccountName?: string | null;
 }
 
 export interface TransferMoneyInput {
@@ -9492,8 +9492,8 @@ export interface TransferMoneyInput {
   amount: number;
   /** - Format: int64 */
   targetUserAccountId: number;
-  description?: string;
-  targetIdentifier?: string;
+  description?: string | null;
+  targetIdentifier?: string | null;
 }
 
 export interface UnreadNotificationCountApiModel {
@@ -9520,36 +9520,36 @@ export interface UpgradeToBusinessApiModel {
    * @deprecated Use 'BusinessShareType' instead.
    */
   userIdentityType: BusinessShareType;
-  address?: string;
-  businessLogoImageLink?: string;
+  address?: string | null;
+  businessLogoImageLink?: string | null;
   /** - Format: guid */
-  businessLogoImageUniqueId?: string;
-  businessName?: string;
-  businessShareTypeDisplay?: string;
-  businessTypeDisplay?: string;
-  city?: string;
-  description?: string;
-  documents?: DocumentApiModel[];
-  email?: string;
-  faxNumber?: string;
-  managerName?: string;
-  managerPhoneNumber?: string;
-  organizationName?: string;
-  organizationNationalCode?: string;
-  personNationalCode?: string;
-  phoneNumber?: string;
-  rejectCause?: UpgradeToBusinessRejectCause;
-  rejectCauseDescription?: string;
-  rejectCauseDisplay?: string;
-  state?: string;
-  statusDisplay?: string;
+  businessLogoImageUniqueId?: string | null;
+  businessName?: string | null;
+  businessShareTypeDisplay?: string | null;
+  businessTypeDisplay?: string | null;
+  city?: string | null;
+  description?: string | null;
+  documents?: DocumentApiModel[] | null;
+  email?: string | null;
+  faxNumber?: string | null;
+  managerName?: string | null;
+  managerPhoneNumber?: string | null;
+  organizationName?: string | null;
+  organizationNationalCode?: string | null;
+  personNationalCode?: string | null;
+  phoneNumber?: string | null;
+  rejectCause?: UpgradeToBusinessRejectCause | null;
+  rejectCauseDescription?: string | null;
+  rejectCauseDisplay?: string | null;
+  state?: string | null;
+  statusDisplay?: string | null;
   /**
    * [Deprecated, use 'RejectCauseDescription' instead]
    *
    * @deprecated Use 'RejectCauseDescription' instead.
    */
-  upgradeToBusinessRequestStatusDescription?: string;
-  webSiteUrl?: string;
+  upgradeToBusinessRequestStatusDescription?: string | null;
+  webSiteUrl?: string | null;
 }
 
 export enum UpgradeToBusinessRejectCause {
@@ -9559,29 +9559,29 @@ export enum UpgradeToBusinessRejectCause {
 }
 
 export interface UpgradeToBusinessUserInput {
-  address?: string;
-  businessName?: string;
-  businessShareType?: BusinessShareType;
-  businessType?: BusinessType;
-  city?: string;
-  documents?: DocumentInput[];
-  email?: string;
-  faxNumber?: string;
+  address?: string | null;
+  businessName?: string | null;
+  businessShareType?: BusinessShareType | null;
+  businessType?: BusinessType | null;
+  city?: string | null;
+  documents?: DocumentInput[] | null;
+  email?: string | null;
+  faxNumber?: string | null;
   /** - Format: guid */
-  logoFileUniqueId?: string;
-  managerName?: string;
-  managerPhoneNumber?: string;
-  organizationName?: string;
-  organizationNationalCode?: string;
-  phoneNumber?: string;
-  state?: string;
+  logoFileUniqueId?: string | null;
+  managerName?: string | null;
+  managerPhoneNumber?: string | null;
+  organizationName?: string | null;
+  organizationNationalCode?: string | null;
+  phoneNumber?: string | null;
+  state?: string | null;
   /**
    * [Deprecated, use 'BusinessShareType' instead]
    *
    * @deprecated Use 'BusinessShareType' instead.
    */
-  userIdentityType?: BusinessShareType;
-  webSiteUrl?: string;
+  userIdentityType?: BusinessShareType | null;
+  webSiteUrl?: string | null;
 }
 
 export interface UserBankApiModel {
@@ -9598,53 +9598,53 @@ export interface UserBankApiModel {
   identityType: BusinessShareType;
   isVisible: boolean;
   status: IdentityStatus;
-  accountNumber?: string;
-  bankLogo?: string;
-  bankName?: string;
-  businessShareTypeDisplay?: string;
-  firstName?: string;
-  lastName?: string;
-  name?: string;
-  rejectCause?: UserBankRejectCause;
-  rejectCauseDescription?: string;
-  rejectCauseDisplay?: string;
-  shebaNo?: string;
+  accountNumber?: string | null;
+  bankLogo?: string | null;
+  bankName?: string | null;
+  businessShareTypeDisplay?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  name?: string | null;
+  rejectCause?: UserBankRejectCause | null;
+  rejectCauseDescription?: string | null;
+  rejectCauseDisplay?: string | null;
+  shebaNo?: string | null;
   /**
    * [Deprecated, use 'RejectCauseDescription' instead]
    *
    * @deprecated Use 'RejectCauseDescription' instead.
    */
-  statusDescription?: string;
-  statusDisplay?: string;
+  statusDescription?: string | null;
+  statusDisplay?: string | null;
 }
 
 export interface UserBankChangeVisibilityInput {
-  isVisible?: boolean;
+  isVisible?: boolean | null;
 }
 
 export type UserBankDetailApiModel = UserBankApiModel & {
-  documents?: DocumentApiModel[];
-  nationalCode?: string;
+  documents?: DocumentApiModel[] | null;
+  nationalCode?: string | null;
 };
 
 export interface UserBankInput {
-  accountNumber?: string;
+  accountNumber?: string | null;
   /** - Format: int32 */
-  bankId?: number;
-  businessShareType?: BusinessShareType;
-  documents?: DocumentInput[];
-  firstName?: string;
+  bankId?: number | null;
+  businessShareType?: BusinessShareType | null;
+  documents?: DocumentInput[] | null;
+  firstName?: string | null;
   /**
    * [Deprecated, use 'BusinessShareType' instead]
    *
    * @deprecated Use 'BusinessShareType' instead.
    */
-  identityType?: BusinessShareType;
-  isVisible?: boolean;
-  lastName?: string;
-  name?: string;
-  nationalCode?: string;
-  shebaNo?: string;
+  identityType?: BusinessShareType | null;
+  isVisible?: boolean | null;
+  lastName?: string | null;
+  name?: string | null;
+  nationalCode?: string | null;
+  shebaNo?: string | null;
 }
 
 export enum UserBankRejectCause {
@@ -9654,22 +9654,22 @@ export enum UserBankRejectCause {
 }
 
 export interface UserChangePasswordInput {
-  currentPassword?: string;
-  newPassword?: string;
+  currentPassword?: string | null;
+  newPassword?: string | null;
 }
 
 export type UserDetailQuery = UserMeQuery & {
-  address?: string;
-  city?: string;
-  email?: string;
-  introducedBySubDomain?: string;
-  nationalCode?: string;
-  phoneNumber?: string;
-  state?: string;
+  address?: string | null;
+  city?: string | null;
+  email?: string | null;
+  introducedBySubDomain?: string | null;
+  nationalCode?: string | null;
+  phoneNumber?: string | null;
+  state?: string | null;
 };
 
 export interface UserForgetPasswordInput {
-  phoneNumber?: string;
+  phoneNumber?: string | null;
 }
 
 export enum UserIdentifierType {
@@ -9695,20 +9695,20 @@ export interface UserIdentityRequestQuery {
    * @deprecated Use 'Status' instead.
    */
   userIdentityRequestStatus: IdentityStatus;
-  documents?: DocumentApiModel[];
-  firstName?: string;
-  lastName?: string;
-  nationalCode?: string;
-  rejectCause?: UserIdentityRejectCause;
-  rejectCauseDescription?: string;
-  rejectCauseDisplay?: string;
-  statusDisplay?: string;
+  documents?: DocumentApiModel[] | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  nationalCode?: string | null;
+  rejectCause?: UserIdentityRejectCause | null;
+  rejectCauseDescription?: string | null;
+  rejectCauseDisplay?: string | null;
+  statusDisplay?: string | null;
   /**
    * [Deprecated, use 'RejectCauseDescription' instead]
    *
    * @deprecated Use 'RejectCauseDescription' instead.
    */
-  userIdentityRequestStatusDescription?: string;
+  userIdentityRequestStatusDescription?: string | null;
 }
 
 export interface UserMeQuery {
@@ -9721,24 +9721,24 @@ export interface UserMeQuery {
   /** - Format: guid */
   userId: string;
   /** - Format: date-time */
-  birthDate?: string;
-  birthDateDisplay?: string;
-  businessName?: string;
+  birthDate?: string | null;
+  birthDateDisplay?: string | null;
+  businessName?: string | null;
   /** - Format: guid */
-  businessUserId?: string;
-  gender?: Gender;
-  genderDisplay?: string;
-  identityStatusDisplay?: string;
-  profileImageLink?: string;
-  referredBy?: string;
-  title?: string;
+  businessUserId?: string | null;
+  gender?: Gender | null;
+  genderDisplay?: string | null;
+  identityStatusDisplay?: string | null;
+  profileImageLink?: string | null;
+  referredBy?: string | null;
+  title?: string | null;
 }
 
 export interface UserMinimalDto {
   /** - Format: guid */
   userId: string;
-  displayName?: string;
-  positionTitle?: string;
+  displayName?: string | null;
+  positionTitle?: string | null;
 }
 
 export interface UserPluginApiModel {
@@ -9747,9 +9747,9 @@ export interface UserPluginApiModel {
   isActive: boolean;
   /** - Format: guid */
   userId: string;
-  pluginConfig?: string;
-  pluginName?: string;
-  userDisplayName?: string;
+  pluginConfig?: string | null;
+  pluginName?: string | null;
+  userDisplayName?: string | null;
 }
 
 export interface UserPluginDetailApiModel {
@@ -9760,15 +9760,15 @@ export interface UserPluginDetailApiModel {
   pluginId: number;
   /** - Format: guid */
   userId: string;
-  pluginAmountCalculationExpression?: string;
-  pluginConfig?: string;
-  pluginLogoFileName?: string;
+  pluginAmountCalculationExpression?: string | null;
+  pluginConfig?: string | null;
+  pluginLogoFileName?: string | null;
   /** - Format: guid */
-  pluginLogoFileUniqueId?: string;
-  pluginLogoFileUrl?: string;
-  pluginName?: string;
-  properties?: PluginPropertyApiModel[];
-  userDisplayName?: string;
+  pluginLogoFileUniqueId?: string | null;
+  pluginLogoFileUrl?: string | null;
+  pluginName?: string | null;
+  properties?: PluginPropertyApiModel[] | null;
+  userDisplayName?: string | null;
 }
 
 export interface UserPluginTogggleApiModel {
@@ -9777,17 +9777,17 @@ export interface UserPluginTogggleApiModel {
 
 export interface UserProfileAvatarInput {
   /** - Format: guid */
-  fileUniqueId?: string;
+  fileUniqueId?: string | null;
 }
 
 export interface UserProfileInput {
-  address?: string;
+  address?: string | null;
   /** - Format: date-time */
-  birthDate?: string;
-  city?: string;
-  email?: string;
-  gender?: Gender;
-  state?: string;
+  birthDate?: string | null;
+  city?: string | null;
+  email?: string | null;
+  gender?: Gender | null;
+  state?: string | null;
 }
 
 export enum UserStatus {
@@ -9800,28 +9800,28 @@ export enum UserStatus {
 }
 
 export interface UserVerifyForgetPasswordInput {
-  newPassword?: string;
-  phoneNumber?: string;
-  token?: string;
-  verifyCode?: string;
+  newPassword?: string | null;
+  phoneNumber?: string | null;
+  token?: string | null;
+  verifyCode?: string | null;
 }
 
 export interface UserWorkspaceQuery {
   /** - Format: guid */
   businessUserId: string;
   workspaceType: WorkspaceType;
-  businessAvatarUrl?: string;
-  businessName?: string;
-  positionTitle?: string;
+  businessAvatarUrl?: string | null;
+  businessName?: string | null;
+  positionTitle?: string | null;
 }
 
 export interface VerifyPhoneNumberInput {
   /** - Format: guid */
   userId: string;
   /** - Format: guid */
-  subDomainId?: string;
-  token?: string;
-  verifyCode?: string;
+  subDomainId?: string | null;
+  token?: string | null;
+  verifyCode?: string | null;
 }
 
 export enum VoucherOperationType {
@@ -9867,9 +9867,9 @@ export type WalletDetailApiModel = WalletDisplayApiModel & {
   posPaidCount: number;
   /** - Format: int32 */
   posScanCount: number;
-  accountQrCodeUrl?: string;
-  actionPolicies?: CommissionPolicyApiModel[];
-  posLinkUrl?: string;
+  accountQrCodeUrl?: string | null;
+  actionPolicies?: CommissionPolicyApiModel[] | null;
+  posLinkUrl?: string | null;
 };
 
 export interface WalletDisplayApiModel {
@@ -9882,20 +9882,20 @@ export interface WalletDisplayApiModel {
   realBalance: number;
   /** - Format: decimal */
   totalBalance: number;
-  directUserBankAccountNumber?: string;
+  directUserBankAccountNumber?: string | null;
   /** - Format: int64 */
-  directUserBankBankId?: number;
-  directUserBankBankName?: string;
-  directUserBankShebaNumber?: string;
-  intermediateUserBankAccountNumber?: string;
+  directUserBankBankId?: number | null;
+  directUserBankBankName?: string | null;
+  directUserBankShebaNumber?: string | null;
+  intermediateUserBankAccountNumber?: string | null;
   /** - Format: int64 */
-  intermediateUserBankBankId?: number;
-  intermediateUserBankBankName?: string;
-  intermediateUserBankShebaNumber?: string;
-  number?: string;
+  intermediateUserBankBankId?: number | null;
+  intermediateUserBankBankName?: string | null;
+  intermediateUserBankShebaNumber?: string | null;
+  number?: string | null;
   /** - Format: int32 */
-  relatedUserAccountIndex?: number;
-  title?: string;
+  relatedUserAccountIndex?: number | null;
+  title?: string | null;
 }
 
 export interface WalletReceiptApiModel {
@@ -9907,22 +9907,22 @@ export interface WalletReceiptApiModel {
   createDate: string;
   /** - Format: int64 */
   payerAccountId: number;
-  callbackUrl?: string;
-  creatorUserAvatarUrl?: string;
-  creatorUserDisplayName?: string;
-  description?: string;
+  callbackUrl?: string | null;
+  creatorUserAvatarUrl?: string | null;
+  creatorUserDisplayName?: string | null;
+  description?: string | null;
   /** - Format: int64 */
-  operationId?: number;
-  payerAccountName?: string;
-  payerAccountNumber?: string;
-  sharerUrl?: string;
+  operationId?: number | null;
+  payerAccountName?: string | null;
+  payerAccountNumber?: string | null;
+  sharerUrl?: string | null;
   /** - Format: int64 */
-  targetAccountId?: number;
-  targetAccountNumber?: string;
-  targetUserAvatarUrl?: string;
-  targetUserDisplayName?: string;
+  targetAccountId?: number | null;
+  targetAccountNumber?: string | null;
+  targetUserAvatarUrl?: string | null;
+  targetUserDisplayName?: string | null;
   /** - Format: int64 */
-  voucherId?: number;
+  voucherId?: number | null;
 }
 
 export enum WorkspaceType {
