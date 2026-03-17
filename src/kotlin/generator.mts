@@ -29,6 +29,14 @@ function generator(
   const types: TypeAST[] = [];
   let constantsCounter = 0;
   const constants: ConstantsAST[] = [];
+  const whitelistFilters = (config.whitelistRegex || []).map(
+    (pattern) => new RegExp(pattern),
+  );
+  const includedOperations: {
+    parameters?: Parameter[];
+    requestBody?: SwaggerRequest["requestBody"];
+    responses?: SwaggerRequest["responses"];
+  }[] = [];
 
   function hasSwagger2ResponseSchema(): boolean {
     return Object.values(input.paths).some((pathItem) =>
@@ -111,6 +119,25 @@ function generator(
             operationId,
             config,
           );
+
+          const whitelistTarget = `${method.toUpperCase()} ${endPoint}`;
+          const matchesWhitelist =
+            !whitelistFilters.length ||
+            whitelistFilters.some((regex) =>
+              [whitelistTarget, endPoint, serviceName, operationId]
+                .filter((value): value is string => Boolean(value))
+                .some((value) => regex.test(value)),
+            );
+
+          if (!matchesWhitelist) {
+            return;
+          }
+
+          includedOperations.push({
+            parameters,
+            requestBody: options.requestBody,
+            responses: options.responses,
+          });
 
           const pathParams = getPathParams(parameters);
 
@@ -223,49 +250,91 @@ function generator(
       );
     });
 
-    if (input?.components?.schemas) {
-      types.push(
-        ...Object.entries(input.components.schemas).map(([name, schema]) => {
-          return {
-            name,
-            schema,
-          };
-        }),
-      );
-    }
-
-    if (input?.definitions) {
-      types.push(
-        ...Object.entries(input.definitions).map(([name, schema]) => {
-          return {
-            name,
-            schema,
-          };
-        }),
-      );
-    }
-
-    if (input?.components?.parameters) {
-      types.push(
-        ...Object.entries(input.components.parameters).map(([key, value]) => ({
-          ...value,
-          name: key,
-        })),
-      );
-    }
-
-    if (input?.components?.requestBodies) {
-      types.push(
-        ...(Object.entries(input.components.requestBodies)
-          .map(([name, _requestBody]) => {
+    if (!whitelistFilters.length) {
+      if (input?.components?.schemas) {
+        types.push(
+          ...Object.entries(input.components.schemas).map(([name, schema]) => {
             return {
-              name: `RequestBody${name}`,
-              schema: Object.values(_requestBody.content || {})[0]?.schema,
-              description: _requestBody.description,
+              name,
+              schema,
             };
-          })
-          .filter((v) => v.schema) as any),
-      );
+          }),
+        );
+      }
+
+      if (input?.definitions) {
+        types.push(
+          ...Object.entries(input.definitions).map(([name, schema]) => {
+            return {
+              name,
+              schema,
+            };
+          }),
+        );
+      }
+
+      if (input?.components?.parameters) {
+        types.push(
+          ...Object.entries(input.components.parameters).map(
+            ([key, value]) => ({
+              ...value,
+              name: key,
+            }),
+          ),
+        );
+      }
+
+      if (input?.components?.requestBodies) {
+        types.push(
+          ...(Object.entries(input.components.requestBodies)
+            .map(([name, _requestBody]) => {
+              return {
+                name: `RequestBody${name}`,
+                schema: Object.values(_requestBody.content || {})[0]?.schema,
+                description: _requestBody.description,
+              };
+            })
+            .filter((v) => v.schema) as any),
+        );
+      }
+    } else {
+      const collected = collectReferencedTypes(input, includedOperations);
+
+      collected.schemas.forEach((name) => {
+        const schema = input.components?.schemas?.[name];
+        if (schema) {
+          types.push({ name, schema });
+        }
+      });
+
+      collected.definitions.forEach((name) => {
+        const schema = input.definitions?.[name];
+        if (schema) {
+          types.push({ name, schema });
+        }
+      });
+
+      collected.parameters.forEach((name) => {
+        const parameter = input.components?.parameters?.[name];
+        if (parameter) {
+          types.push({ ...parameter, name });
+        }
+      });
+
+      collected.requestBodies.forEach((name) => {
+        const requestBody = input.components?.requestBodies?.[name];
+        const schema = requestBody
+          ? Object.values(requestBody.content || {})[0]?.schema
+          : undefined;
+
+        if (schema) {
+          types.push({
+            name: `RequestBody${name}`,
+            schema,
+            description: requestBody?.description,
+          });
+        }
+      });
     }
 
     const code = generateApis(apis, types, config);
@@ -276,6 +345,151 @@ function generator(
     console.error({ error });
     return { code: "", type: "" };
   }
+}
+
+function collectReferencedTypes(
+  input: SwaggerJson,
+  includedOperations: {
+    parameters?: Parameter[];
+    requestBody?: SwaggerRequest["requestBody"];
+    responses?: SwaggerRequest["responses"];
+  }[],
+): {
+  schemas: Set<string>;
+  definitions: Set<string>;
+  parameters: Set<string>;
+  requestBodies: Set<string>;
+} {
+  const collected = {
+    schemas: new Set<string>(),
+    definitions: new Set<string>(),
+    parameters: new Set<string>(),
+    requestBodies: new Set<string>(),
+  };
+
+  const collectRef = ($ref: string): void => {
+    const parts = $ref.split("/");
+    const category = parts[parts.length - 2];
+    const name = parts[parts.length - 1];
+
+    if (!category || !name) {
+      return;
+    }
+
+    switch (category) {
+      case "schemas": {
+        if (collected.schemas.has(name)) {
+          return;
+        }
+
+        collected.schemas.add(name);
+        collectSchema(input.components?.schemas?.[name]);
+        return;
+      }
+      case "definitions": {
+        if (collected.definitions.has(name)) {
+          return;
+        }
+
+        collected.definitions.add(name);
+        collectSchema(input.definitions?.[name]);
+        return;
+      }
+      case "parameters": {
+        if (collected.parameters.has(name)) {
+          return;
+        }
+
+        collected.parameters.add(name);
+        const parameter = input.components?.parameters?.[name];
+        if (parameter?.$ref) {
+          collectRef(parameter.$ref);
+        }
+        collectSchema(parameter?.schema);
+        return;
+      }
+      case "requestBodies": {
+        if (collected.requestBodies.has(name)) {
+          return;
+        }
+
+        collected.requestBodies.add(name);
+        const requestBody = input.components?.requestBodies?.[name];
+        if (requestBody?.$ref) {
+          collectRef(requestBody.$ref);
+        }
+        Object.values(requestBody?.content || {}).forEach((mediaType) => {
+          collectSchema(mediaType.schema);
+        });
+        return;
+      }
+      case "responses": {
+        const response = input.components?.responses?.[name];
+        if (!response) {
+          return;
+        }
+
+        if (response.$ref) {
+          collectRef(response.$ref);
+        }
+        collectSchema(response.schema);
+        Object.values(response.content || {}).forEach((mediaType) => {
+          collectSchema(mediaType.schema);
+        });
+      }
+    }
+  };
+
+  const collectSchema = (schema?: Schema | {} | true): void => {
+    if (!schema || schema === true || typeof schema !== "object") {
+      return;
+    }
+
+    const typedSchema = schema as Schema;
+
+    if (typedSchema.$ref) {
+      collectRef(typedSchema.$ref);
+    }
+
+    collectSchema(typedSchema.items as Schema | {} | true);
+    collectSchema(typedSchema.additionalProperties as Schema | {} | true);
+    collectSchema(typedSchema.not);
+    typedSchema.allOf?.forEach((value) => collectSchema(value));
+    typedSchema.oneOf?.forEach((value) => collectSchema(value));
+    typedSchema.anyOf?.forEach((value) => collectSchema(value));
+    Object.values(typedSchema.properties || {}).forEach((value) =>
+      collectSchema(value),
+    );
+    Object.values(typedSchema.discriminator?.mapping || {}).forEach((value) =>
+      collectRef(value),
+    );
+  };
+
+  for (const operation of includedOperations) {
+    operation.parameters?.forEach((parameter) => {
+      if (parameter.$ref) {
+        collectRef(parameter.$ref);
+      }
+      collectSchema(parameter.schema);
+    });
+
+    if (operation.requestBody?.$ref) {
+      collectRef(operation.requestBody.$ref);
+    }
+    collectSchema(getBodyContent(operation.requestBody));
+
+    Object.values(operation.responses || {}).forEach((response) => {
+      if (response.$ref) {
+        collectRef(response.$ref);
+      }
+      collectSchema(response.schema);
+      Object.values(response.content || {}).forEach((mediaType) => {
+        collectSchema(mediaType.schema);
+      });
+    });
+  }
+
+  return collected;
 }
 
 function getBodyContent(responses?: SwaggerResponse): Schema | undefined {

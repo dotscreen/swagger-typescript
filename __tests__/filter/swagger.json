@@ -1,0 +1,1943 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.1.0-SNAPSHOT",
+    "title": "dynamic-theme-composer API Documentation",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "UI Themes",
+      "description": "Page Controller"
+    }
+  ],
+  "paths": {
+    "/v1.0/admin/ui-themes/layout-cache/invalidate": {
+      "post": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "invalidateLayoutCache",
+        "operationId": "invalidateLayoutCacheUsingPOST",
+        "parameters": [
+          {
+            "name": "Tenant-ID",
+            "in": "header",
+            "description": "Tenant-ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "country",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "9001: authorization token cannot be found neither in the 'token' request param, neither in the 'Authorization' HTTP header.\n9001: invariant violation: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "9007: invalid credentials",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "9000: internal server error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1.0/admin/ui-themes/menus": {
+      "get": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "Get menu set(s) for admin",
+        "description": "Returns menu set data for admin use. Response shape depends on which lookup parameter is supplied:\n\n• **byId** – returns a single MenuSetDto (full detail: all menu items tree and linked layout names). Tenant-ID header is not required.\n\n• **byName** – returns a single MenuSetDto for the matching name + tenant (case-insensitive). Tenant-ID header is required.\n\n• **Neither** – returns a List<MenuSetListItemDto> (summary list, no menu items). Tenant-ID header is required. Use versionFilter to narrow by status.\n\nProviding both byId and byName simultaneously is rejected with HTTP 400 (error code 001). Omitting Tenant-ID when it is required is rejected with HTTP 400 (error code 021).",
+        "operationId": "getMenuSetsUsingGET",
+        "parameters": [
+          {
+            "name": "Tenant-ID",
+            "in": "header",
+            "description": "Tenant identifier. Required when byName lookup or list-all is used.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "byId",
+            "in": "query",
+            "description": "Fetch a single menu set by its database ID. Mutually exclusive with byName. Tenant-ID header is not required for this lookup.",
+            "required": false,
+            "allowEmptyValue": false,
+            "example": 42,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "byName",
+            "in": "query",
+            "description": "Fetch a single menu set by name (case-insensitive). Mutually exclusive with byId. Tenant-ID header is required.",
+            "required": false,
+            "allowEmptyValue": false,
+            "example": "main-nav",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionFilter",
+            "in": "query",
+            "description": "Filter the list result by menu set status. Only applied when neither byId nor byName is provided. Allowed values: ALL (returns DRAFT + PUBLISHED + ARCHIVED), DRAFT, PUBLISHED, ARCHIVED.",
+            "required": false,
+            "allowEmptyValue": false,
+            "example": "ALL",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ALL",
+                "DRAFT",
+                "PUBLISHED",
+                "ARCHIVED"
+              ],
+              "default": "ALL"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. Single-lookup (byId or byName): MenuSetDto with id, name, tenantId, platforms, countries, position, isActive, status, version, changeSummary, changedBy, updatedAt, items (menu item tree), linkedToLayouts. List (no lookup param): List of MenuSetListItemDto with id, name, tenantId, platforms, countries, position, status, version, changeSummary, changedBy, createdAt, updatedAt, linkedLayouts.",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request – (1) both byId and byName supplied simultaneously (error code 001), or (2) Tenant-ID header is missing when byName or list-all is requested (error code 021).",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "9007: invalid credentials",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found – no menu set exists for the provided byId or byName+tenantId combination (error code 025)."
+          },
+          "500": {
+            "description": "Internal server error (error code 000).",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1.0/admin/ui-themes/menus/changes": {
+      "get": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "Get menu set changelog",
+        "description": "Returns changelog entries for the specified menu set entity, sorted by dateTime ascending.",
+        "operationId": "getMenuSetChangelogUsingGET",
+        "parameters": [
+          {
+            "name": "menuSetId",
+            "in": "query",
+            "description": "ID of the menu set.",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": 5,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "9001: authorization token cannot be found neither in the 'token' request param, neither in the 'Authorization' HTTP header.\n9001: invariant violation: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "9007: invalid credentials",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "9000: internal server error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1.0/admin/ui-themes/menus/history": {
+      "get": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "Get menu set version history",
+        "description": "Returns all versions (DRAFT, PUBLISHED, ARCHIVED) for a menu set lineage, ordered by version ascending.",
+        "operationId": "getMenuSetHistoryUsingGET",
+        "parameters": [
+          {
+            "name": "lineageId",
+            "in": "query",
+            "description": "Lineage ID of the menu set. Returned as lineageId in menu set responses.",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": 5,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "9001: authorization token cannot be found neither in the 'token' request param, neither in the 'Authorization' HTTP header.\n9001: invariant violation: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "9007: invalid credentials",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "9000: internal server error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1.0/admin/ui-themes/page": {
+      "get": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "getPageAdmin",
+        "operationId": "getPageAdminUsingGET",
+        "parameters": [
+          {
+            "name": "Client-Type",
+            "in": "header",
+            "description": "Client-Type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Tenant-ID",
+            "in": "header",
+            "description": "Tenant-ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "byId",
+            "in": "query",
+            "description": "byId",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "byName",
+            "in": "query",
+            "description": "byName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "country",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "9001: authorization token cannot be found neither in the 'token' request param, neither in the 'Authorization' HTTP header.\n9001: invariant violation: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "9007: invalid credentials",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "9000: internal server error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "addUpdatePage",
+        "operationId": "addUpdatePageUsingPOST",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUpdatePageRequest"
+              }
+            }
+          },
+          "description": "request",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationResultDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "9001: authorization token cannot be found neither in the 'token' request param, neither in the 'Authorization' HTTP header.\n9001: invariant violation: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "9007: invalid credentials",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "9000: internal server error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1.0/admin/ui-themes/pages": {
+      "get": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "getAllPages",
+        "operationId": "getAllPagesUsingGET",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PageListItemDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "9001: authorization token cannot be found neither in the 'token' request param, neither in the 'Authorization' HTTP header.\n9001: invariant violation: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "9007: invalid credentials",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "9000: internal server error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1.0/admin/ui-themes/themes": {
+      "get": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "getThemes",
+        "operationId": "getThemesUsingGET",
+        "parameters": [
+          {
+            "name": "Tenant-ID",
+            "in": "header",
+            "description": "Tenant-ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "byId",
+            "in": "query",
+            "description": "byId",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "byName",
+            "in": "query",
+            "description": "byName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionFilter",
+            "in": "query",
+            "description": "versionFilter",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ALL"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "9001: authorization token cannot be found neither in the 'token' request param, neither in the 'Authorization' HTTP header.\n9001: invariant violation: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "9007: invalid credentials",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "9000: internal server error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1.0/admin/ui-themes/themes/changes": {
+      "get": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "Get theme changelog",
+        "description": "Returns changelog entries for the specified theme entity, sorted by dateTime ascending.",
+        "operationId": "getThemeChangelogUsingGET",
+        "parameters": [
+          {
+            "name": "themeId",
+            "in": "query",
+            "description": "ID of the theme.",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": 5,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "9001: authorization token cannot be found neither in the 'token' request param, neither in the 'Authorization' HTTP header.\n9001: invariant violation: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "9007: invalid credentials",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "9000: internal server error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1.0/admin/ui-themes/themes/history": {
+      "get": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "Get theme version history",
+        "description": "Returns all versions (DRAFT, PUBLISHED, ARCHIVED) for a theme lineage, ordered by version ascending.",
+        "operationId": "getThemeHistoryUsingGET",
+        "parameters": [
+          {
+            "name": "lineageId",
+            "in": "query",
+            "description": "Lineage ID of the theme. Returned as lineageId in theme responses.",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": 5,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "9001: authorization token cannot be found neither in the 'token' request param, neither in the 'Authorization' HTTP header.\n9001: invariant violation: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "9007: invalid credentials",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "9000: internal server error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1.0/ui-themes/status/{page}": {
+      "get": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "Get page version/status",
+        "description": "Returns version metadata for a page without the full theme or menu payload. Useful for clients to check whether a cached page response is still current.\n\nUses the same 4-step platform+country fallback cascade as the main page endpoint. Returns `null` body (HTTP 200) when no matching page exists — does not throw 404.\n\n**Signature validation:** same rules as `GET /ui-themes/{page}` — `SPX-Auth-Sign` = HMAC-SHA-512 hex over `clientType={platform}&country={country}&tenantId={tenantId}&timestamp={timestamp}`. `timestamp` must be epoch milliseconds in UTC.\n\n**Error codes:** 012 = signature mismatch, 013 = invalid timestamp format, 014 = replay attack detected.",
+        "operationId": "getPageVersionDetailsUsingGET",
+        "parameters": [
+          {
+            "name": "Client-Type",
+            "in": "header",
+            "description": "Client/platform type (e.g. web, android, ios). Sent in Client-Type header.",
+            "required": true,
+            "example": "web",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SPX-Auth-Sign",
+            "in": "header",
+            "description": "HMAC-SHA-512 hex signature for request validation. Sent in SPX-Auth-Sign header.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Tenant-ID",
+            "in": "header",
+            "description": "Tenant identifier. Sent in Tenant-ID header.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Country code for the request context.",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "ae",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Language/locale code.",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "en",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Page name identifier.",
+            "required": true,
+            "example": "home",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timestamp",
+            "in": "query",
+            "description": "Request timestamp as epoch milliseconds in UTC, used for signature validation and replay-attack detection.",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "1748779200000",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. Returns MetaDto: version (Long), page (String), language (String), timestamp (yyyy-MM-dd'T'HH:mm:ss UTC). Returns empty body when page is not found.",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetaDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request – missing/blank required header or query param (error code 001), or invalid timestamp format (error code 013).",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – SPX-Auth-Sign signature mismatch (error code 012), or request is a replay attack (error code 014).",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error (error code 000).",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1.0/ui-themes/{page}": {
+      "get": {
+        "tags": [
+          "UI Themes"
+        ],
+        "summary": "Get page theme and layout",
+        "description": "Returns the full UI theme and layout configuration for a page, resolved dynamically by platform, country, tenant, user segment, and subscription status.\n\n**Resolution order (platform + country fallback cascade):**\n1. exact platform + exact country\n2. exact platform + `all` country\n3. `all` platform + exact country\n4. `all` platform + `all` country\n\nApplied independently for Theme and MenuSet. Menus are further filtered by `x-profile-category`.\n\n**Signature validation:** `SPX-Auth-Sign` must be an HMAC-SHA-512 hex signature over the string `clientType={platform}&country={country}&tenantId={tenantId}&timestamp={timestamp}` (keys sorted alphabetically). `timestamp` must be epoch milliseconds in UTC and must not be outside the replay-attack window.\n\n**Error codes:** 012 = signature mismatch, 013 = invalid timestamp format, 014 = replay attack detected, 016 = page not found, 017 = theme not found, 018 = menu not found, 019 = button not found, 020 = label not found, 023 = label style not found.",
+        "operationId": "getPageUsingGET",
+        "parameters": [
+          {
+            "name": "Client-Type",
+            "in": "header",
+            "description": "Client/platform type (e.g. web, android, ios). Sent in Client-Type header.",
+            "required": true,
+            "example": "web",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SPX-Auth-Sign",
+            "in": "header",
+            "description": "Authentication signature for request validation. Sent in SPX-Auth-Sign header.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Tenant-ID",
+            "in": "header",
+            "description": "Tenant identifier. Sent in Tenant-ID header.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Country code for the request context",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "ae",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Language/locale code",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "en",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Page name (identifier of the page to load theme and layout for)",
+            "required": true,
+            "example": "home",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timestamp",
+            "in": "query",
+            "description": "Request timestamp used for signature validation",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "2025-02-04T12:00:00",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-profile-category",
+            "in": "header",
+            "description": "Profile category used to filter menus (e.g. adult, kids). Sent in x-profile-category header.",
+            "required": true,
+            "example": "adult",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-login",
+            "in": "header",
+            "description": "User login status. Sent in x-user-login header.",
+            "required": false,
+            "example": true,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "x-user-subs",
+            "in": "header",
+            "description": "User subscription statuses. Sent in x-user-subs header.",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. Returns PageDto: name, logo, theme (Map<String,Object>), labelStyles (Map<String,Object>), menus (List<MenuDto>), buttons (List<ButtonDto>), meta (MetaDto with version, page, language, timestamp).",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request – missing/blank required header or query param (error code 001), or invalid timestamp format (error code 013).",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – SPX-Auth-Sign signature mismatch (error code 012), or request is a replay attack (error code 014).",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "9003: invalid token: {}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found – page not found for the given page name, platform, country, and tenant (error code 016). Also 017 (theme not found), 018 (menu not found), 019 (button not found), 020 (label not found), 023 (label style not found) if linked resources are missing."
+          },
+          "500": {
+            "description": "Internal server error (error code 000).",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "//ppf-private-dev-api.aws.playco.com/api/dynamic-theme-composer"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "AddUpdatePageRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "CREATE",
+              "UPDATE",
+              "DELETE",
+              "CLONE",
+              "PUBLISH"
+            ]
+          },
+          "buttons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ButtonRequest"
+            }
+          },
+          "changeSummary": {
+            "type": "string"
+          },
+          "changedBy": {
+            "type": "string"
+          },
+          "countries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "country": {
+            "type": "object"
+          },
+          "description": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "labelStyles": {
+            "$ref": "#/components/schemas/LabelStylesRequest"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LabelRequest"
+            }
+          },
+          "language": {
+            "type": "string"
+          },
+          "linkToLayouts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinkToLayoutItem"
+            }
+          },
+          "logo": {
+            "type": "string"
+          },
+          "menuSet": {
+            "$ref": "#/components/schemas/MenuSetRequest"
+          },
+          "menus": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MenuRequest"
+            }
+          },
+          "pageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageName": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "object"
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rawCountry": {
+            "type": "object"
+          },
+          "rawPlatform": {
+            "type": "object"
+          },
+          "tenantId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tenantName": {
+            "type": "string"
+          },
+          "theme": {
+            "$ref": "#/components/schemas/ThemeRequest"
+          },
+          "updateStrategy": {
+            "type": "string"
+          }
+        },
+        "title": "AddUpdatePageRequest"
+      },
+      "ButtonDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "example": "btn_subscribe",
+            "description": "Button identifier/key."
+          },
+          "nameLocalized": {
+            "type": "object"
+          },
+          "style": {
+            "type": "object",
+            "description": "Style properties for the button (free-form key-value map, e.g. backgroundColor, textColor, borderRadius)."
+          },
+          "type": {
+            "type": "string",
+            "example": "PRIMARY",
+            "description": "Button type/variant (e.g. PRIMARY, SECONDARY, GHOST)."
+          }
+        },
+        "title": "ButtonDto",
+        "description": "A UI button definition. Public fields are returned to runtime clients."
+      },
+      "ButtonRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "CREATE",
+              "UPDATE",
+              "DELETE",
+              "CLONE",
+              "PUBLISH"
+            ]
+          },
+          "buttonId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nameLocalized": {
+            "type": "object"
+          },
+          "style": {
+            "type": "object"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "title": "ButtonRequest"
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "correlation_id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "external_error_code": {
+            "type": "string"
+          }
+        },
+        "title": "ErrorResponse"
+      },
+      "LabelDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nameLocalized": {
+            "type": "object"
+          }
+        },
+        "title": "LabelDto"
+      },
+      "LabelRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "CREATE",
+              "UPDATE",
+              "DELETE",
+              "CLONE",
+              "PUBLISH"
+            ]
+          },
+          "key": {
+            "type": "string"
+          },
+          "labelId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nameLocalized": {
+            "type": "object"
+          }
+        },
+        "title": "LabelRequest"
+      },
+      "LabelStylesRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "CREATE",
+              "UPDATE",
+              "DELETE",
+              "CLONE",
+              "PUBLISH"
+            ]
+          },
+          "labelStyleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "styles": {
+            "type": "object"
+          }
+        },
+        "title": "LabelStylesRequest"
+      },
+      "LinkToLayoutItem": {
+        "type": "object",
+        "properties": {
+          "layoutId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "layoutName": {
+            "type": "string"
+          }
+        },
+        "title": "LinkToLayoutItem"
+      },
+      "MenuDto": {
+        "type": "object",
+        "properties": {
+          "background": {
+            "type": "string",
+            "example": "#1A1A2E",
+            "description": "Background color or key for the menu item."
+          },
+          "children": {
+            "type": "array",
+            "description": "Nested child menu items (recursive). Present only when the item has children.",
+            "items": {
+              "$ref": "#/components/schemas/MenuDto"
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "focusedCollapsedIcon": {
+            "type": "string",
+            "description": "Icon key/URL shown when the item is focused and collapsed (nested menus)."
+          },
+          "focusedExpandedIcon": {
+            "type": "string",
+            "description": "Icon key/URL shown when the item is focused and expanded (nested menus)."
+          },
+          "focusedIcon": {
+            "type": "string",
+            "example": "ic_home_focused",
+            "description": "Icon key/URL shown when the item is focused."
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "label": {
+            "type": "string",
+            "example": "Home",
+            "description": "Display label of the menu item."
+          },
+          "nameLocalized": {
+            "type": "object"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1,
+            "description": "Sort order of the menu item within its level."
+          },
+          "path": {
+            "type": "string",
+            "example": "/browse/home",
+            "description": "Navigation path or deep-link associated with this menu item."
+          },
+          "position": {
+            "type": "string",
+            "example": "LEFT",
+            "description": "Screen position where the menu is rendered. Allowed values: TOP, BOTTOM, LEFT, RIGHT, OVERLAY.",
+            "enum": [
+              "LEFT",
+              "RIGHT",
+              "TOP",
+              "BOTTOM",
+              "PARENT"
+            ]
+          },
+          "style": {
+            "type": "string",
+            "example": "ICON_AND_LABEL",
+            "description": "Visual style variant for the menu item.",
+            "enum": [
+              "HORIZONTAL",
+              "VERTICAL",
+              "PARENT"
+            ]
+          },
+          "supportedProfileCategories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "unfocusedIcon": {
+            "type": "string",
+            "example": "ic_home_unfocused",
+            "description": "Icon key/URL shown when the item is not focused."
+          },
+          "userSegments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "userStatuses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "title": "MenuDto",
+        "description": "A menu item node. Public fields are returned to runtime clients; admin fields are only visible on admin endpoints."
+      },
+      "MenuRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "CREATE",
+              "UPDATE",
+              "DELETE",
+              "CLONE",
+              "PUBLISH"
+            ]
+          },
+          "background": {
+            "type": "string"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MenuRequest"
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "focusedCollapsedIcon": {
+            "type": "string"
+          },
+          "focusedExpandedIcon": {
+            "type": "string"
+          },
+          "focusedIcon": {
+            "type": "string"
+          },
+          "menuId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nameLocalized": {
+            "type": "object"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "parentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "path": {
+            "type": "string"
+          },
+          "position": {
+            "type": "string",
+            "enum": [
+              "LEFT",
+              "RIGHT",
+              "TOP",
+              "BOTTOM",
+              "PARENT"
+            ]
+          },
+          "style": {
+            "type": "string",
+            "enum": [
+              "HORIZONTAL",
+              "VERTICAL",
+              "PARENT"
+            ]
+          },
+          "supportedProfileCategories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ADULT",
+                "KIDS"
+              ]
+            }
+          },
+          "unfocusedIcon": {
+            "type": "string"
+          },
+          "userSegments": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "LOGGED_IN",
+                "LOGGED_OUT",
+                "ALL"
+              ]
+            }
+          },
+          "userStatuses": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "CHURNED",
+                "PROSPECT",
+                "ALL"
+              ]
+            }
+          }
+        },
+        "title": "MenuRequest"
+      },
+      "MenuSetRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "CREATE",
+              "UPDATE",
+              "DELETE",
+              "CLONE",
+              "PUBLISH"
+            ]
+          },
+          "menuSetId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "position": {
+            "type": "string",
+            "enum": [
+              "LEFT",
+              "RIGHT",
+              "TOP",
+              "BOTTOM",
+              "PARENT"
+            ]
+          }
+        },
+        "title": "MenuSetRequest"
+      },
+      "MetaDto": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "example": "en",
+            "description": "Language/locale code as supplied in the request."
+          },
+          "page": {
+            "type": "string",
+            "example": "home",
+            "description": "Page name as supplied in the request path."
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-06-01T10:30:00",
+            "description": "Last-updated timestamp of the page entity (UTC, format yyyy-MM-dd'T'HH:mm:ss)."
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64",
+            "example": 3,
+            "description": "Page configuration version number. Increments on each publish."
+          }
+        },
+        "title": "MetaDto",
+        "description": "Version metadata for a resolved page. Returned by GET /ui-themes/{page} (inside PageDto.meta) and GET /ui-themes/status/{page}."
+      },
+      "OperationResultDto": {
+        "type": "object",
+        "properties": {
+          "entityType": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lineageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "operation": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "OperationResultDto"
+      },
+      "PageDto": {
+        "type": "object",
+        "properties": {
+          "buttons": {
+            "type": "array",
+            "description": "Buttons for the page",
+            "items": {
+              "$ref": "#/components/schemas/ButtonDto"
+            }
+          },
+          "country": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "isEnabled": {
+            "type": "boolean"
+          },
+          "labelStyles": {
+            "type": "object",
+            "description": "Label style definitions keyed by style ID. Each value is a free-form map of CSS/design-token properties (e.g. fontSize, fontWeight, color)."
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LabelDto"
+            }
+          },
+          "logo": {
+            "type": "string",
+            "description": "Page logo URL or key"
+          },
+          "menus": {
+            "type": "array",
+            "description": "Menus (filtered by x-profile-category), hierarchical with children",
+            "items": {
+              "$ref": "#/components/schemas/MenuDto"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaDto"
+          },
+          "name": {
+            "type": "string",
+            "example": "home",
+            "description": "Page name (identifier)"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "tenant": {
+            "type": "string"
+          },
+          "theme": {
+            "type": "object",
+            "description": "Theme configuration resolved for the request context (platform, country, tenant, user segment, subscription status). Free-form key-value map (e.g. primaryColor, fontFamily, backgroundImage). Overrides the page's default theme when a matching dynamic Theme entity is found."
+          }
+        },
+        "title": "PageDto",
+        "description": "Page theme and layout configuration returned by GET /ui-themes/{page}. Public fields: name, logo, theme, labelStyles, menus, buttons, meta. Admin-only fields (via GET /admin/ui-themes/page): id, description, isEnabled, platform, country, tenant, labels."
+      },
+      "PageListItemDto": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isEnabled": {
+            "type": "boolean"
+          },
+          "pageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageName": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "tenant": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "PageListItemDto"
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        },
+        "title": "SuccessResponse"
+      },
+      "ThemeRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "CREATE",
+              "UPDATE",
+              "DELETE",
+              "CLONE",
+              "PUBLISH"
+            ]
+          },
+          "background": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "name": {
+            "type": "string"
+          },
+          "themeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userSegments": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "LOGGED_IN",
+                "LOGGED_OUT",
+                "ALL"
+              ]
+            }
+          },
+          "userStatuses": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "CHURNED",
+                "PROSPECT",
+                "ALL"
+              ]
+            }
+          }
+        },
+        "title": "ThemeRequest"
+      }
+    }
+  }
+}

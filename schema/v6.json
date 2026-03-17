@@ -82,6 +82,13 @@
       },
       "description": "For ignore property from all of api to not generating"
     },
+    "whitelistRegex": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of regex patterns that whitelist endpoint generation (matching \"METHOD /path\", path, service name, or operationId)"
+    },
     "generateEnumAsType": {
       "type": "boolean"
     },

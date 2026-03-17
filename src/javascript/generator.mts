@@ -33,6 +33,14 @@ type GeneratorContext = {
   config: Config;
   includeFilters: RegExp[];
   excludeFilters: RegExp[];
+  whitelistFilters: RegExp[];
+  includedOperations: IncludedOperation[];
+};
+
+type IncludedOperation = {
+  parameters?: Parameter[];
+  requestBody?: SwaggerRequest["requestBody"];
+  responses?: SwaggerRequest["responses"];
 };
 
 function generator(
@@ -52,6 +60,10 @@ function generator(
     excludeFilters: (config.excludes || []).map(
       (pattern) => new RegExp(pattern),
     ),
+    whitelistFilters: (config.whitelistRegex || []).map(
+      (pattern) => new RegExp(pattern),
+    ),
+    includedOperations: [],
   };
 
   function hasSwagger2ResponseSchema(): boolean {
@@ -122,7 +134,19 @@ function getConstantName(context: GeneratorContext, value: string): string {
 function shouldIncludeMethod(
   context: GeneratorContext,
   serviceName: string,
+  endPoint: string,
+  method: string,
+  operationId?: string,
 ): boolean {
+  const whitelistTarget = `${method.toUpperCase()} ${endPoint}`;
+  const matchesWhitelist =
+    !context.whitelistFilters.length ||
+    context.whitelistFilters.some((regex) =>
+      [whitelistTarget, endPoint, serviceName, operationId]
+        .filter((value): value is string => Boolean(value))
+        .some((value) => regex.test(value)),
+    );
+
   const matchesInclude =
     !context.includeFilters.length ||
     context.includeFilters.some((regex) => regex.test(serviceName));
@@ -131,7 +155,7 @@ function shouldIncludeMethod(
     regex.test(serviceName),
   );
 
-  return matchesInclude && !matchesExclude;
+  return matchesWhitelist && matchesInclude && !matchesExclude;
 }
 
 /** Resolve parameter references */
@@ -285,9 +309,17 @@ function processEndpointMethod(
     context.config,
   );
 
-  if (!shouldIncludeMethod(context, serviceName)) {
+  if (
+    !shouldIncludeMethod(context, serviceName, endPoint, method, operationId)
+  ) {
     return;
   }
+
+  context.includedOperations.push({
+    parameters,
+    requestBody: options.requestBody,
+    responses: options.responses,
+  });
 
   // Extract parameters
   const pathParams = getPathParams(parameters);
@@ -361,9 +393,17 @@ function processApiPaths(context: GeneratorContext): void {
 
 /** Extract types from OpenAPI components */
 function extractComponentTypes(context: GeneratorContext): void {
+  if (!context.whitelistFilters.length) {
+    extractAllComponentTypes(context);
+    return;
+  }
+
+  extractReferencedComponentTypes(context);
+}
+
+function extractAllComponentTypes(context: GeneratorContext): void {
   const { components } = context.input;
 
-  // Extract schemas
   if (components?.schemas) {
     Object.entries(components.schemas).forEach(([name, schema]) => {
       context.types.push({ name, schema });
@@ -376,14 +416,12 @@ function extractComponentTypes(context: GeneratorContext): void {
     });
   }
 
-  // Extract parameters
   if (components?.parameters) {
     Object.entries(components.parameters).forEach(([key, value]) => {
       context.types.push({ ...value, name: key });
     });
   }
 
-  // Extract request bodies
   if (components?.requestBodies) {
     Object.entries(components.requestBodies).forEach(([name, requestBody]) => {
       const schema = Object.values(requestBody.content || {})[0]?.schema;
@@ -396,6 +434,188 @@ function extractComponentTypes(context: GeneratorContext): void {
       }
     });
   }
+}
+
+function extractReferencedComponentTypes(context: GeneratorContext): void {
+  const collected = collectReferencedTypes(context);
+  const { components } = context.input;
+
+  collected.schemas.forEach((name) => {
+    const schema = components?.schemas?.[name];
+    if (schema) {
+      context.types.push({ name, schema });
+    }
+  });
+
+  collected.definitions.forEach((name) => {
+    const schema = context.input.definitions?.[name];
+    if (schema) {
+      context.types.push({ name, schema });
+    }
+  });
+
+  collected.parameters.forEach((name) => {
+    const parameter = components?.parameters?.[name];
+    if (parameter) {
+      context.types.push({ ...parameter, name });
+    }
+  });
+
+  collected.requestBodies.forEach((name) => {
+    const requestBody = components?.requestBodies?.[name];
+    const schema = requestBody
+      ? Object.values(requestBody.content || {})[0]?.schema
+      : undefined;
+
+    if (schema) {
+      context.types.push({
+        name: `RequestBody${name}`,
+        schema,
+        description: requestBody?.description,
+      });
+    }
+  });
+}
+
+function collectReferencedTypes(context: GeneratorContext): {
+  schemas: Set<string>;
+  definitions: Set<string>;
+  parameters: Set<string>;
+  requestBodies: Set<string>;
+} {
+  const collected = {
+    schemas: new Set<string>(),
+    definitions: new Set<string>(),
+    parameters: new Set<string>(),
+    requestBodies: new Set<string>(),
+  };
+
+  const { components } = context.input;
+
+  const collectRef = ($ref: string): void => {
+    const parts = $ref.split("/");
+    const category = parts[parts.length - 2];
+    const name = parts[parts.length - 1];
+
+    if (!category || !name) {
+      return;
+    }
+
+    switch (category) {
+      case "schemas": {
+        if (collected.schemas.has(name)) {
+          return;
+        }
+
+        collected.schemas.add(name);
+        collectSchema(components?.schemas?.[name]);
+        return;
+      }
+      case "definitions": {
+        if (collected.definitions.has(name)) {
+          return;
+        }
+
+        collected.definitions.add(name);
+        collectSchema(context.input.definitions?.[name]);
+        return;
+      }
+      case "parameters": {
+        if (collected.parameters.has(name)) {
+          return;
+        }
+
+        collected.parameters.add(name);
+        const parameter = components?.parameters?.[name];
+        if (parameter?.$ref) {
+          collectRef(parameter.$ref);
+        }
+        collectSchema(parameter?.schema);
+        return;
+      }
+      case "requestBodies": {
+        if (collected.requestBodies.has(name)) {
+          return;
+        }
+
+        collected.requestBodies.add(name);
+        const requestBody = components?.requestBodies?.[name];
+        if (requestBody?.$ref) {
+          collectRef(requestBody.$ref);
+        }
+        Object.values(requestBody?.content || {}).forEach((mediaType) => {
+          collectSchema(mediaType.schema);
+        });
+        return;
+      }
+      case "responses": {
+        const response = components?.responses?.[name];
+        if (!response) {
+          return;
+        }
+
+        if (response.$ref) {
+          collectRef(response.$ref);
+        }
+        collectSchema(response.schema);
+        Object.values(response.content || {}).forEach((mediaType) => {
+          collectSchema(mediaType.schema);
+        });
+      }
+    }
+  };
+
+  const collectSchema = (schema?: Schema | {} | true): void => {
+    if (!schema || schema === true || typeof schema !== "object") {
+      return;
+    }
+
+    const typedSchema = schema as Schema;
+
+    if (typedSchema.$ref) {
+      collectRef(typedSchema.$ref);
+    }
+
+    collectSchema(typedSchema.items as Schema | {} | true);
+    collectSchema(typedSchema.additionalProperties as Schema | {} | true);
+    collectSchema(typedSchema.not);
+    typedSchema.allOf?.forEach((value) => collectSchema(value));
+    typedSchema.oneOf?.forEach((value) => collectSchema(value));
+    typedSchema.anyOf?.forEach((value) => collectSchema(value));
+
+    Object.values(typedSchema.properties || {}).forEach((value) =>
+      collectSchema(value),
+    );
+    Object.values(typedSchema.discriminator?.mapping || {}).forEach((value) =>
+      collectRef(value),
+    );
+  };
+
+  for (const operation of context.includedOperations) {
+    operation.parameters?.forEach((parameter) => {
+      if (parameter.$ref) {
+        collectRef(parameter.$ref);
+      }
+      collectSchema(parameter.schema);
+    });
+
+    if (operation.requestBody?.$ref) {
+      collectRef(operation.requestBody.$ref);
+    }
+    collectSchema(getBodyContent(operation.requestBody));
+
+    Object.values(operation.responses || {}).forEach((response) => {
+      if (response.$ref) {
+        collectRef(response.$ref);
+      }
+      collectSchema(response.schema);
+      Object.values(response.content || {}).forEach((mediaType) => {
+        collectSchema(mediaType.schema);
+      });
+    });
+  }
+
+  return collected;
 }
 
 /** Extract body content from response or request body */

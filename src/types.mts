@@ -213,6 +213,7 @@ export interface Components {
   schemas?: Record<string, Schema>;
   parameters?: Record<string, Parameter>;
   requestBodies?: Record<string, SwaggerResponse>;
+  responses?: Record<string, SwaggerResponse>;
 }
 
 export interface SwaggerJson {
@@ -269,6 +270,7 @@ export interface FileConfig {
   reactHooks?: boolean;
   includes?: string[];
   excludes?: string[];
+  whitelistRegex?: string[];
   useQuery?: string[];
   useInfiniteQuery?: string[];
   mock?: string;
