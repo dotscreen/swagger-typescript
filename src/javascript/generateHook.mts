@@ -199,7 +199,12 @@ function buildVariables(api: ApiAST, context: HookContext): string {
   // Request body
   if (api.requestBody) {
     parts.push(
-      getDefineParam("requestBody", true, api.requestBody, context.config),
+      getDefineParam(
+        "requestBody",
+        api.requestBodyRequired,
+        api.requestBody,
+        context.config,
+      ),
     );
   }
 

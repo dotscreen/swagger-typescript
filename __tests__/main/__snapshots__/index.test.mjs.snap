@@ -1508,7 +1508,7 @@ export const getSubDomainSubDomainAddress = (
   subDomainAddress: string,
   headerParams?: {
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SubDomainApiModel>> => {
@@ -2201,7 +2201,7 @@ postAuthLoginOtpGenerate.key = \\"/Auth/login/otp/generate\\";
 export const postAuthRegister = (
   requestBody: RegisterApiModel,
   headerParams?: {
-    platformType:
+    platformType?:
       | \\"Unknown\\"
       | \\"Server\\"
       | \\"Android\\"
@@ -2473,7 +2473,7 @@ postEpayRequestUserWalletId.key = \\"/EpayRequest/{userWalletId}\\";
 
 /** Upload new file [Allowed files are images and pdf / Max Size: 3 MB] */
 export const postFile = (
-  requestBody: RequestBodyFile_Upload,
+  requestBody?: RequestBodyFile_Upload,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<FileApiModel>> => {
   return Http.postRequest(
@@ -2507,7 +2507,7 @@ postGroupTransferExport.key = \\"/GroupTransfer/export\\";
 
 /** [for Business users only] */
 export const postGroupTransferImport = (
-  requestBody: RequestBodyFile_Upload,
+  requestBody?: RequestBodyFile_Upload,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<GroupTransferTargetValidationQuery[]>> => {
   return Http.postRequest(
@@ -2579,7 +2579,7 @@ export const postPosPayTargetAccountNumberOnline = (
   requestBody: PosOnlinePayInput,
   headerParams?: {
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EpayRequestDetailApiModel>> => {
@@ -2627,7 +2627,7 @@ postPosPayTargetAccountNumberWallet.key =
 /** Cancel Amount of an Divided[EpayRequest] */
 export const postServiceCancelAmount = (
   requestBody: DividedEpayRequestCancelInput,
-  headerParams?: { apiKey: string },
+  headerParams?: { apiKey?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<DividedEpayRequestCancelResult>> => {
   return Http.postRequest(
@@ -2653,7 +2653,7 @@ postServiceCancelAmount.key = \\"/Service/CancelAmount\\";
 /** Set [EPayRequest] status to 'Cancel' and cancel the payment */
 export const postServiceCancelPayment = (
   requestBody: string,
-  headerParams?: { apiKey: string },
+  headerParams?: { apiKey?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<boolean>> => {
   return Http.postRequest(
@@ -2679,7 +2679,7 @@ postServiceCancelPayment.key = \\"/Service/CancelPayment\\";
 /** Check the [EpayRequest] based on token */
 export const postServiceCheckEpayRequest = (
   requestBody: string,
-  headerParams?: { apiKey: string },
+  headerParams?: { apiKey?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EpayRequestCheckStatusResult>> => {
   return Http.postRequest(
@@ -2706,9 +2706,9 @@ postServiceCheckEpayRequest.key = \\"/Service/CheckEpayRequest\\";
 export const postServiceNewDivideEpayRequest = (
   requestBody: DivideEpayRequestServiceInput,
   headerParams?: {
-    apiKey: string;
+    apiKey?: string;
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EpayRequestWcfResult>> => {
@@ -2736,9 +2736,9 @@ postServiceNewDivideEpayRequest.key = \\"/Service/NewDivideEpayRequest\\";
 export const postServiceNewEpayRequest = (
   requestBody: EpayRequestServiceInput,
   headerParams?: {
-    apiKey: string;
+    apiKey?: string;
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EpayRequestWcfResult>> => {
@@ -2765,7 +2765,7 @@ postServiceNewEpayRequest.key = \\"/Service/NewEpayRequest\\";
 /** Unblock Amount of an Divided[EpayRequest] */
 export const postServiceUnblockAmount = (
   requestBody: DividedEpayRequestUnblockInput,
-  headerParams?: { apiKey: string },
+  headerParams?: { apiKey?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<DividedEpayRequestUnblockResult>> => {
   return Http.postRequest(
@@ -2790,7 +2790,7 @@ postServiceUnblockAmount.key = \\"/Service/UnblockAmount\\";
 
 /** Verify the ApiKey for authorizing the [User] */
 export const postServiceVerifyApiKey = (
-  headerParams?: { apiKey: string },
+  headerParams?: { apiKey?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<boolean>> => {
   return Http.postRequest(
@@ -2816,8 +2816,8 @@ postServiceVerifyApiKey.key = \\"/Service/VerifyApiKey\\";
 export const postSettingsInit = (
   headerParams?: {
     /** - Format: guid */
-    terminalId: string;
-    terminalVersion: string;
+    terminalId?: string;
+    terminalVersion?: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<InitApiModel>> => {
@@ -2893,7 +2893,7 @@ export const postSettingsTerminalVersion = (
   requestBody: TerminalVersionApiModel,
   headerParams?: {
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string>> => {
@@ -6617,7 +6617,7 @@ export const useGetSubDomainSubDomainAddress = (
   subDomainAddress: string,
   headerParams?: {
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel>,
   configOverride?: AxiosRequestConfig,
@@ -6639,7 +6639,7 @@ useGetSubDomainSubDomainAddress.info = (
   subDomainAddress: string,
   headerParams?: {
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -6664,7 +6664,7 @@ useGetSubDomainSubDomainAddress.prefetch = (
   subDomainAddress: string,
   headerParams?: {
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel>,
   configOverride?: AxiosRequestConfig,
@@ -8143,7 +8143,7 @@ export const usePostAuthRegister = <TExtra,>(
     {
       requestBody: RegisterApiModel;
       headerParams?: {
-        platformType:
+        platformType?:
           | \\"Unknown\\"
           | \\"Server\\"
           | \\"Android\\"
@@ -8409,7 +8409,7 @@ export const usePostEpayRequestUserWalletId = <TExtra,>(
 export const usePostFile = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     FileApiModel,
-    { requestBody: RequestBodyFile_Upload },
+    { requestBody?: RequestBodyFile_Upload },
     TExtra
   >,
 ) => {
@@ -8443,7 +8443,7 @@ export const usePostGroupTransferExport = <TExtra,>(
 export const usePostGroupTransferImport = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     GroupTransferTargetValidationQuery[],
-    { requestBody: RequestBodyFile_Upload },
+    { requestBody?: RequestBodyFile_Upload },
     TExtra
   >,
 ) => {
@@ -8515,7 +8515,7 @@ export const usePostPosPayTargetAccountNumberOnline = <TExtra,>(
       requestBody: PosOnlinePayInput;
       headerParams?: {
         /** - Format: guid */
-        clientId: string;
+        clientId?: string;
       };
     },
     TExtra
@@ -8567,7 +8567,7 @@ export const usePostServiceCancelAmount = <TExtra,>(
     DividedEpayRequestCancelResult,
     {
       requestBody: DividedEpayRequestCancelInput;
-      headerParams?: { apiKey: string };
+      headerParams?: { apiKey?: string };
     },
     TExtra
   >,
@@ -8585,7 +8585,7 @@ export const usePostServiceCancelAmount = <TExtra,>(
 export const usePostServiceCancelPayment = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     boolean,
-    { requestBody: string; headerParams?: { apiKey: string } },
+    { requestBody: string; headerParams?: { apiKey?: string } },
     TExtra
   >,
 ) => {
@@ -8606,7 +8606,7 @@ export const usePostServiceCancelPayment = <TExtra,>(
 export const usePostServiceCheckEpayRequest = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     EpayRequestCheckStatusResult,
-    { requestBody: string; headerParams?: { apiKey: string } },
+    { requestBody: string; headerParams?: { apiKey?: string } },
     TExtra
   >,
 ) => {
@@ -8630,9 +8630,9 @@ export const usePostServiceNewDivideEpayRequest = <TExtra,>(
     {
       requestBody: DivideEpayRequestServiceInput;
       headerParams?: {
-        apiKey: string;
+        apiKey?: string;
         /** - Format: guid */
-        clientId: string;
+        clientId?: string;
       };
     },
     TExtra
@@ -8658,9 +8658,9 @@ export const usePostServiceNewEpayRequest = <TExtra,>(
     {
       requestBody: EpayRequestServiceInput;
       headerParams?: {
-        apiKey: string;
+        apiKey?: string;
         /** - Format: guid */
-        clientId: string;
+        clientId?: string;
       };
     },
     TExtra
@@ -8685,7 +8685,7 @@ export const usePostServiceUnblockAmount = <TExtra,>(
     DividedEpayRequestUnblockResult,
     {
       requestBody: DividedEpayRequestUnblockInput;
-      headerParams?: { apiKey: string };
+      headerParams?: { apiKey?: string };
     },
     TExtra
   >,
@@ -8707,7 +8707,7 @@ export const usePostServiceUnblockAmount = <TExtra,>(
 export const usePostServiceVerifyApiKey = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     boolean,
-    { headerParams?: { apiKey: string } },
+    { headerParams?: { apiKey?: string } },
     TExtra
   >,
 ) => {
@@ -8725,8 +8725,8 @@ export const usePostSettingsInit = <TExtra,>(
     {
       headerParams?: {
         /** - Format: guid */
-        terminalId: string;
-        terminalVersion: string;
+        terminalId?: string;
+        terminalVersion?: string;
       };
     },
     TExtra
@@ -8792,7 +8792,7 @@ export const usePostSettingsTerminalVersion = <TExtra,>(
       requestBody: TerminalVersionApiModel;
       headerParams?: {
         /** - Format: guid */
-        clientId: string;
+        clientId?: string;
       };
     },
     TExtra

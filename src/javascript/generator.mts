@@ -159,23 +159,49 @@ function shouldIncludeMethod(
 }
 
 /** Resolve parameter references */
-function resolveParameters(
+function resolveParameter(
   context: GeneratorContext,
-  parameters?: Parameter[],
-): Parameter[] | undefined {
-  return parameters?.map((parameter) => {
-    const { $ref } = parameter;
-    if (!$ref) {
-      return parameter;
-    }
+  parameter: Parameter,
+): Parameter {
+  const { $ref } = parameter;
+  const resolvedParameter = !$ref
+    ? parameter
+    : {
+        ...context.input.components?.parameters?.[
+          $ref.replace("#/components/parameters/", "")
+        ]!,
+        $ref,
+        schema: { $ref } as Schema,
+      };
 
-    const name = $ref.replace("#/components/parameters/", "");
-    return {
-      ...context.input.components?.parameters?.[name]!,
-      $ref,
-      schema: { $ref } as Schema,
-    };
-  });
+  return resolvedParameter.in === "path"
+    ? {
+        ...resolvedParameter,
+        required: true,
+      }
+    : resolvedParameter;
+}
+
+function mergeParameters(
+  context: GeneratorContext,
+  pathLevelParams?: Parameter[],
+  operationLevelParams?: Parameter[],
+): Parameter[] | undefined {
+  const mergedParameters = new Map<string, Parameter>();
+
+  [...(pathLevelParams || []), ...(operationLevelParams || [])].forEach(
+    (parameter) => {
+      const resolvedParameter = resolveParameter(context, parameter);
+      mergedParameters.set(
+        `${resolvedParameter.in}:${resolvedParameter.name}`,
+        resolvedParameter,
+      );
+    },
+  );
+
+  return mergedParameters.size > 0
+    ? Array.from(mergedParameters.values())
+    : undefined;
 }
 
 /** Create query params type if needed */
@@ -242,6 +268,29 @@ function getAcceptHeader(responses?: SwaggerRequest["responses"]): string {
   return Object.keys(content)[0];
 }
 
+function isRequestBodyRequired(
+  context: GeneratorContext,
+  requestBody?: SwaggerRequest["requestBody"],
+): boolean {
+  if (!requestBody) {
+    return false;
+  }
+
+  if (requestBody.required === true) {
+    return true;
+  }
+
+  if (!requestBody.$ref) {
+    return false;
+  }
+
+  return (
+    context.input.components?.requestBodies?.[
+      getRefName(requestBody.$ref as string)
+    ]?.required === true
+  );
+}
+
 /** Build path params reference string */
 function buildPathParamsRefString(pathParams: Parameter[]): string | undefined {
   if (pathParams.length === 0) {
@@ -296,13 +345,10 @@ function processEndpointMethod(
   const { operationId, security } = options;
 
   // Merge path-level and operation-level parameters
-  const allParameters = [
-    ...(pathLevelParams || []),
-    ...(options.parameters || []),
-  ];
-  const parameters = resolveParameters(
+  const parameters = mergeParameters(
     context,
-    allParameters.length > 0 ? allParameters : undefined,
+    pathLevelParams,
+    options.parameters,
   );
 
   const serviceName = generateServiceName(
@@ -340,6 +386,10 @@ function processEndpointMethod(
 
   // Extract body and response info
   const requestBody = getBodyContent(options.requestBody);
+  const requestBodyRequired = isRequestBodyRequired(
+    context,
+    options.requestBody,
+  );
   const responses = getBodyContent(options.responses?.[200]);
   const contentType = getContentType(context, options.requestBody);
   const accept = getAcceptHeader(options.responses);
@@ -353,6 +403,7 @@ function processEndpointMethod(
     queryParamsTypeName,
     pathParams,
     requestBody,
+    requestBodyRequired,
     headerParams,
     isQueryParamsNullable,
     isHeaderParamsNullable,

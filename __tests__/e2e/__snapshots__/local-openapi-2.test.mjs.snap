@@ -14886,7 +14886,7 @@ export const usePatchAuthGroupsId = <TExtra,>(
     {
       /** A unique integer value identifying this group. */
       id: number;
-      requestBody: PatchedGroupMemberRequest;
+      requestBody?: PatchedGroupMemberRequest;
     },
     TExtra
   >,
@@ -14902,7 +14902,7 @@ export const usePatchAuthGroupsId = <TExtra,>(
 export const usePatchAuthUser = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     CustomUserDetails,
-    { requestBody: PatchedCustomUserDetailsRequest },
+    { requestBody?: PatchedCustomUserDetailsRequest },
     TExtra
   >,
 ) => {
@@ -14938,7 +14938,7 @@ export const usePatchCodesActivitiesId = <TExtra,>(
     {
       /** A UUID string identifying this Activity. */
       id: string;
-      requestBody: PatchedActivityRequest;
+      requestBody?: PatchedActivityRequest;
       queryParams?: PatchCodesActivitiesIdQueryParams;
     },
     TExtra
@@ -14963,7 +14963,7 @@ export const usePatchCodesActivityAccountCodesId = <TExtra,>(
     {
       /** A UUID string identifying this accounting code. */
       id: string;
-      requestBody: PatchedSupplierAccountingCodeRequest;
+      requestBody?: PatchedSupplierAccountingCodeRequest;
     },
     TExtra
   >,
@@ -14982,7 +14982,7 @@ export const usePatchCodesResourcesId = <TExtra,>(
     {
       /** A UUID string identifying this Resource. */
       id: string;
-      requestBody: PatchedResourceRequest;
+      requestBody?: PatchedResourceRequest;
       queryParams?: PatchCodesResourcesIdQueryParams;
     },
     TExtra
@@ -15007,7 +15007,7 @@ export const usePatchCodesWbsId = <TExtra,>(
     {
       /** A UUID string identifying this WBS. */
       id: string;
-      requestBody: PatchedWBSRequest;
+      requestBody?: PatchedWBSRequest;
       queryParams?: PatchCodesWbsIdQueryParams;
     },
     TExtra
@@ -15027,7 +15027,7 @@ export const usePatchCommonBankNamesId = <TExtra,>(
     {
       /** A UUID string identifying this Bank Name. */
       id: string;
-      requestBody: PatchedBankNameRequest;
+      requestBody?: PatchedBankNameRequest;
     },
     TExtra
   >,
@@ -15046,7 +15046,7 @@ export const usePatchCommonCurrenciesId = <TExtra,>(
     {
       /** A UUID string identifying this Currency. */
       id: string;
-      requestBody: PatchedCurrencyRequest;
+      requestBody?: PatchedCurrencyRequest;
     },
     TExtra
   >,
@@ -15065,7 +15065,7 @@ export const usePatchCommonPackagingMethodsId = <TExtra,>(
     {
       /** A UUID string identifying this Packaging Method. */
       id: string;
-      requestBody: PatchedPackagingMethodRequest;
+      requestBody?: PatchedPackagingMethodRequest;
     },
     TExtra
   >,
@@ -15084,7 +15084,7 @@ export const usePatchCommonPaymentMethodsId = <TExtra,>(
     {
       /** A UUID string identifying this Payment Method. */
       id: string;
-      requestBody: PatchedPaymentMethodRequest;
+      requestBody?: PatchedPaymentMethodRequest;
     },
     TExtra
   >,
@@ -15121,7 +15121,7 @@ export const usePatchCommonTaxParametersId = <TExtra,>(
     {
       /** A UUID string identifying this Tax Parameter. */
       id: string;
-      requestBody: PatchedTaxParameterRequest;
+      requestBody?: PatchedTaxParameterRequest;
     },
     TExtra
   >,
@@ -15140,7 +15140,7 @@ export const usePatchCommonVatWitholdingsId = <TExtra,>(
     {
       /** A UUID string identifying this Vat Witholding. */
       id: string;
-      requestBody: PatchedVatwitholdingRequest;
+      requestBody?: PatchedVatwitholdingRequest;
     },
     TExtra
   >,
@@ -15159,7 +15159,7 @@ export const usePatchFinanceAccountsId = <TExtra,>(
     {
       /** A UUID string identifying this account. */
       id: string;
-      requestBody: PatchedAccountRequest;
+      requestBody?: PatchedAccountRequest;
     },
     TExtra
   >,
@@ -15178,7 +15178,7 @@ export const usePatchFinanceBankAccountsId = <TExtra,>(
     {
       /** A UUID string identifying this bank account. */
       id: string;
-      requestBody: PatchedBankAccountRequest;
+      requestBody?: PatchedBankAccountRequest;
     },
     TExtra
   >,
@@ -15197,7 +15197,7 @@ export const usePatchFinanceCashAccountsId = <TExtra,>(
     {
       /** A UUID string identifying this cash account. */
       id: string;
-      requestBody: PatchedCashAccountRequest;
+      requestBody?: PatchedCashAccountRequest;
     },
     TExtra
   >,
@@ -15213,7 +15213,7 @@ export const usePatchFinanceCashAccountsId = <TExtra,>(
 export const usePatchFinanceExpensesCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Expense,
-    { counter__slug: string; requestBody: PatchedExpenseRequest },
+    { counter__slug: string; requestBody?: PatchedExpenseRequest },
     TExtra
   >,
 ) => {
@@ -15235,7 +15235,7 @@ export const usePatchFinanceIncomeInvoiceCategoriesId = <TExtra,>(
     {
       /** A UUID string identifying this income invoice category. */
       id: string;
-      requestBody: PatchedIncomeInvoiceCategoryRequest;
+      requestBody?: PatchedIncomeInvoiceCategoryRequest;
     },
     TExtra
   >,
@@ -15255,7 +15255,7 @@ export const usePatchFinanceIncomeInvoiceCategoriesId = <TExtra,>(
 export const usePatchFinanceIncomeInvoicesCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     IncomeInvoice,
-    { counter__slug: string; requestBody: PatchedIncomeInvoiceRequest },
+    { counter__slug: string; requestBody?: PatchedIncomeInvoiceRequest },
     TExtra
   >,
 ) => {
@@ -15274,7 +15274,7 @@ export const usePatchFinanceIncomeInvoicesCounter__slug = <TExtra,>(
 export const usePatchFinancePaymentBondsCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     PaymentBond,
-    { counter__slug: string; requestBody: PatchedPaymentBondRequest },
+    { counter__slug: string; requestBody?: PatchedPaymentBondRequest },
     TExtra
   >,
 ) => {
@@ -15293,7 +15293,7 @@ export const usePatchFinancePaymentBondsCounter__slug = <TExtra,>(
 export const usePatchFinancePaymentChequesCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     PaymentCheque,
-    { counter__slug: string; requestBody: PatchedPaymentChequeRequest },
+    { counter__slug: string; requestBody?: PatchedPaymentChequeRequest },
     TExtra
   >,
 ) => {
@@ -15315,7 +15315,7 @@ export const usePatchFinancePaymentDetailsId = <TExtra,>(
     {
       /** A UUID string identifying this Payment Detail. */
       id: string;
-      requestBody: PatchedPaymentDetailRequest;
+      requestBody?: PatchedPaymentDetailRequest;
     },
     TExtra
   >,
@@ -15331,7 +15331,7 @@ export const usePatchFinancePaymentDetailsId = <TExtra,>(
 export const usePatchFinanceRevenueBondsCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     RevenueBond,
-    { counter__slug: string; requestBody: PatchedRevenueBondRequest },
+    { counter__slug: string; requestBody?: PatchedRevenueBondRequest },
     TExtra
   >,
 ) => {
@@ -15350,7 +15350,7 @@ export const usePatchFinanceRevenueBondsCounter__slug = <TExtra,>(
 export const usePatchFinanceRevenueChequesCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     RevenueCheque,
-    { counter__slug: string; requestBody: PatchedRevenueChequeRequest },
+    { counter__slug: string; requestBody?: PatchedRevenueChequeRequest },
     TExtra
   >,
 ) => {
@@ -15372,7 +15372,7 @@ export const usePatchFinanceRevenueDetailsId = <TExtra,>(
     {
       /** A UUID string identifying this Revenue Detail. */
       id: string;
-      requestBody: PatchedRevenueDetailRequest;
+      requestBody?: PatchedRevenueDetailRequest;
     },
     TExtra
   >,
@@ -15391,7 +15391,7 @@ export const usePatchFinanceSlipsId = <TExtra,>(
     {
       /** A UUID string identifying this slip. */
       id: string;
-      requestBody: PatchedSlipRequest;
+      requestBody?: PatchedSlipRequest;
     },
     TExtra
   >,
@@ -15410,7 +15410,7 @@ export const usePatchFinanceSupplierAccountsId = <TExtra,>(
     {
       /** A UUID string identifying this supplier account. */
       id: string;
-      requestBody: PatchedSupplierAccountRequest;
+      requestBody?: PatchedSupplierAccountRequest;
     },
     TExtra
   >,
@@ -15429,7 +15429,7 @@ export const usePatchFinanceTxnsId = <TExtra,>(
     {
       /** A UUID string identifying this transaction. */
       id: string;
-      requestBody: PatchedTransactionRequest;
+      requestBody?: PatchedTransactionRequest;
     },
     TExtra
   >,
@@ -15448,7 +15448,7 @@ export const usePatchHrCrewsId = <TExtra,>(
     {
       /** A UUID string identifying this Crew. */
       id: string;
-      requestBody: PatchedCrewRequest;
+      requestBody?: PatchedCrewRequest;
     },
     TExtra
   >,
@@ -15467,7 +15467,7 @@ export const usePatchHrDepartmentsId = <TExtra,>(
     {
       /** A UUID string identifying this Main Department. */
       id: string;
-      requestBody: PatchedMainDepartmentRequest;
+      requestBody?: PatchedMainDepartmentRequest;
     },
     TExtra
   >,
@@ -15486,7 +15486,7 @@ export const usePatchHrLocationsId = <TExtra,>(
     {
       /** A UUID string identifying this Location. */
       id: string;
-      requestBody: PatchedLocationParameterRequest;
+      requestBody?: PatchedLocationParameterRequest;
     },
     TExtra
   >,
@@ -15505,7 +15505,7 @@ export const usePatchHrPersonnelId = <TExtra,>(
     {
       /** A UUID string identifying this Person. */
       id: string;
-      requestBody: PatchedPersonRequest;
+      requestBody?: PatchedPersonRequest;
     },
     TExtra
   >,
@@ -15524,7 +15524,7 @@ export const usePatchHrPositionsId = <TExtra,>(
     {
       /** A UUID string identifying this Main Position. */
       id: string;
-      requestBody: PatchedMainPositionRequest;
+      requestBody?: PatchedMainPositionRequest;
     },
     TExtra
   >,
@@ -15543,7 +15543,7 @@ export const usePatchHrProfessionsId = <TExtra,>(
     {
       /** A UUID string identifying this Profession. */
       id: string;
-      requestBody: PatchedProfessionRequest;
+      requestBody?: PatchedProfessionRequest;
     },
     TExtra
   >,
@@ -15562,7 +15562,7 @@ export const usePatchHrQuitReasonsId = <TExtra,>(
     {
       /** A UUID string identifying this Quit Reason. */
       id: string;
-      requestBody: PatchedQuitReasonRequest;
+      requestBody?: PatchedQuitReasonRequest;
     },
     TExtra
   >,
@@ -15581,7 +15581,7 @@ export const usePatchHrQuitRecordsId = <TExtra,>(
     {
       /** A UUID string identifying this Quit Record. */
       id: string;
-      requestBody: PatchedQuitRecordRequest;
+      requestBody?: PatchedQuitRecordRequest;
     },
     TExtra
   >,
@@ -15600,7 +15600,7 @@ export const usePatchHrSalariesId = <TExtra,>(
     {
       /** A UUID string identifying this Salary. */
       id: string;
-      requestBody: PatchedSalaryRequest;
+      requestBody?: PatchedSalaryRequest;
     },
     TExtra
   >,
@@ -15619,7 +15619,7 @@ export const usePatchHrSalaryPermissionsId = <TExtra,>(
     {
       /** A unique integer value identifying this Project Salary Permission. */
       id: number;
-      requestBody: PatchedProjectSalaryPermissionRequest;
+      requestBody?: PatchedProjectSalaryPermissionRequest;
     },
     TExtra
   >,
@@ -15638,7 +15638,7 @@ export const usePatchProcurementAdvancePaymentsId = <TExtra,>(
     {
       /** A UUID string identifying this order advance payment. */
       id: string;
-      requestBody: PatchedOrderAdvancePaymentRequest;
+      requestBody?: PatchedOrderAdvancePaymentRequest;
     },
     TExtra
   >,
@@ -15654,7 +15654,7 @@ export const usePatchProcurementAdvancePaymentsId = <TExtra,>(
 export const usePatchProcurementInvoicesCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Invoice,
-    { counter__slug: string; requestBody: PatchedInvoiceRequest },
+    { counter__slug: string; requestBody?: PatchedInvoiceRequest },
     TExtra
   >,
 ) => {
@@ -15673,7 +15673,7 @@ export const usePatchProcurementInvoicesCounter__slug = <TExtra,>(
 export const usePatchProcurementOrdersCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Order,
-    { counter__slug: string; requestBody: PatchedOrderRequest },
+    { counter__slug: string; requestBody?: PatchedOrderRequest },
     TExtra
   >,
 ) => {
@@ -15710,7 +15710,7 @@ export const usePatchProcurementRequestTypesId = <TExtra,>(
 export const usePatchProcurementRequestsCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Request,
-    { counter__slug: string; requestBody: PatchedRequestRequest },
+    { counter__slug: string; requestBody?: PatchedRequestRequest },
     TExtra
   >,
 ) => {
@@ -15747,7 +15747,7 @@ export const usePatchProcurementSpecialInvoiceTypesId = <TExtra,>(
 export const usePatchProcurementSpecialInvoicesCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     SpecialInvoice,
-    { counter__slug: string; requestBody: PatchedSpecialInvoiceRequest },
+    { counter__slug: string; requestBody?: PatchedSpecialInvoiceRequest },
     TExtra
   >,
 ) => {
@@ -15769,7 +15769,7 @@ export const usePatchProjectsAccountingtypesId = <TExtra,>(
     {
       /** A UUID string identifying this accounting type. */
       id: string;
-      requestBody: PatchedAccountingTypeRequest;
+      requestBody?: PatchedAccountingTypeRequest;
     },
     TExtra
   >,
@@ -15803,7 +15803,7 @@ export const usePatchProjectsCitiesId = <TExtra,>(
 export const usePatchProjectsCompaniesSlug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Company,
-    { slug: string; requestBody: PatchedCompanyRequest },
+    { slug: string; requestBody?: PatchedCompanyRequest },
     TExtra
   >,
 ) => {
@@ -15856,7 +15856,7 @@ export const usePatchProjectsProjectsSlug = <TExtra,>(
     Project,
     {
       slug: string;
-      requestBody: PatchedProjectRequest;
+      requestBody?: PatchedProjectRequest;
       queryParams?: PatchProjectsProjectsSlugQueryParams;
     },
     TExtra
@@ -15881,7 +15881,7 @@ export const usePatchProjectsProjecttypesId = <TExtra,>(
     {
       /** A UUID string identifying this project type. */
       id: string;
-      requestBody: PatchedProjectTypeParamRequest;
+      requestBody?: PatchedProjectTypeParamRequest;
     },
     TExtra
   >,
@@ -15900,7 +15900,7 @@ export const usePatchProjectsResponsiblesId = <TExtra,>(
     {
       /** A UUID string identifying this responsible. */
       id: string;
-      requestBody: PatchedResponsibleRequest;
+      requestBody?: PatchedResponsibleRequest;
     },
     TExtra
   >,
@@ -15919,7 +15919,7 @@ export const usePatchProjectsResponsibletypesId = <TExtra,>(
     {
       /** A UUID string identifying this responsible type. */
       id: string;
-      requestBody: PatchedResponsibleTypeParamRequest;
+      requestBody?: PatchedResponsibleTypeParamRequest;
     },
     TExtra
   >,
@@ -15938,7 +15938,7 @@ export const usePatchRatesRatesId = <TExtra,>(
     {
       /** A unique integer value identifying this rate. */
       id: number;
-      requestBody: PatchedRateRequest;
+      requestBody?: PatchedRateRequest;
     },
     TExtra
   >,
@@ -16026,7 +16026,7 @@ export const usePatchSubcontractsContractCollateralTypesId = <TExtra,>(
 export const usePatchSubcontractsContractsCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Contract,
-    { counter__slug: string; requestBody: PatchedContractRequest },
+    { counter__slug: string; requestBody?: PatchedContractRequest },
     TExtra
   >,
 ) => {
@@ -16045,7 +16045,7 @@ export const usePatchSubcontractsContractsCounter__slug = <TExtra,>(
 export const usePatchSubcontractsDeductionReturnsCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     DeductionReturn,
-    { counter__slug: string; requestBody: PatchedDeductionReturnRequest },
+    { counter__slug: string; requestBody?: PatchedDeductionReturnRequest },
     TExtra
   >,
 ) => {
@@ -16064,7 +16064,7 @@ export const usePatchSubcontractsDeductionReturnsCounter__slug = <TExtra,>(
 export const usePatchSubcontractsProgressesCounter__slug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Progress,
-    { counter__slug: string; requestBody: PatchedProgressRequest },
+    { counter__slug: string; requestBody?: PatchedProgressRequest },
     TExtra
   >,
 ) => {
@@ -16086,7 +16086,7 @@ export const usePatchSubcontractsRevisionsId = <TExtra,>(
     {
       /** A UUID string identifying this contract revision. */
       id: string;
-      requestBody: PatchedRevisionRequest;
+      requestBody?: PatchedRevisionRequest;
     },
     TExtra
   >,
@@ -16105,7 +16105,7 @@ export const usePatchSuppliersAccountingCodesId = <TExtra,>(
     {
       /** A UUID string identifying this supplier accounting code. */
       id: string;
-      requestBody: PatchedSupplierAccountingCodeRequest;
+      requestBody?: PatchedSupplierAccountingCodeRequest;
     },
     TExtra
   >,
@@ -16124,7 +16124,7 @@ export const usePatchSuppliersBankAccountsId = <TExtra,>(
     {
       /** A UUID string identifying this supplier bank account. */
       id: string;
-      requestBody: PatchedSupplierBankAccountRequest;
+      requestBody?: PatchedSupplierBankAccountRequest;
     },
     TExtra
   >,
@@ -16143,7 +16143,7 @@ export const usePatchSuppliersContactsId = <TExtra,>(
     {
       /** A UUID string identifying this supplier contact. */
       id: string;
-      requestBody: PatchedContactRequest;
+      requestBody?: PatchedContactRequest;
     },
     TExtra
   >,
@@ -16162,7 +16162,7 @@ export const usePatchSuppliersReviewAnswersId = <TExtra,>(
     {
       /** A UUID string identifying this answer. */
       id: string;
-      requestBody: PatchedAnswerRequest;
+      requestBody?: PatchedAnswerRequest;
     },
     TExtra
   >,
@@ -16178,7 +16178,7 @@ export const usePatchSuppliersReviewAnswersId = <TExtra,>(
 export const usePatchSuppliersReviewFormsSlug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Review,
-    { slug: string; requestBody: PatchedReviewRequest },
+    { slug: string; requestBody?: PatchedReviewRequest },
     TExtra
   >,
 ) => {
@@ -16196,7 +16196,7 @@ export const usePatchSuppliersReviewQuestionsId = <TExtra,>(
     {
       /** A UUID string identifying this review question. */
       id: string;
-      requestBody: PatchedReviewQuestionRequest;
+      requestBody?: PatchedReviewQuestionRequest;
     },
     TExtra
   >,
@@ -16212,7 +16212,7 @@ export const usePatchSuppliersReviewQuestionsId = <TExtra,>(
 export const usePatchSuppliersReviewTemplatesSlug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     ReviewTemplate,
-    { slug: string; requestBody: PatchedReviewTemplateRequest },
+    { slug: string; requestBody?: PatchedReviewTemplateRequest },
     TExtra
   >,
 ) => {
@@ -16234,7 +16234,7 @@ export const usePatchSuppliersSupplierActivityTypesId = <TExtra,>(
     {
       /** A UUID string identifying this supplier activity type. */
       id: string;
-      requestBody: PatchedActivityTypeRequest;
+      requestBody?: PatchedActivityTypeRequest;
     },
     TExtra
   >,
@@ -16257,7 +16257,7 @@ export const usePatchSuppliersSupplierBranchesId = <TExtra,>(
     {
       /** A UUID string identifying this supplier branch. */
       id: string;
-      requestBody: PatchedBranchRequest;
+      requestBody?: PatchedBranchRequest;
     },
     TExtra
   >,
@@ -16276,7 +16276,7 @@ export const usePatchSuppliersSupplierTypesId = <TExtra,>(
     {
       /** A UUID string identifying this supplier type. */
       id: string;
-      requestBody: PatchedSupplierTypeRequest;
+      requestBody?: PatchedSupplierTypeRequest;
     },
     TExtra
   >,
@@ -16292,7 +16292,7 @@ export const usePatchSuppliersSupplierTypesId = <TExtra,>(
 export const usePatchSuppliersSuppliersSlug = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Supplier,
-    { slug: string; requestBody: PatchedSupplierRequest },
+    { slug: string; requestBody?: PatchedSupplierRequest },
     TExtra
   >,
 ) => {
@@ -16310,7 +16310,7 @@ export const usePatchWarehouseProductsId = <TExtra,>(
     {
       /** A UUID string identifying this product. */
       id: string;
-      requestBody: PatchedProductCreateRequest;
+      requestBody?: PatchedProductCreateRequest;
       queryParams: PatchWarehouseProductsIdQueryParams;
     },
     TExtra
@@ -16335,7 +16335,7 @@ export const usePatchWarehouseTransactionsId = <TExtra,>(
     {
       /** A UUID string identifying this transaction. */
       id: string;
-      requestBody: PatchedTransactionListCreateRequest;
+      requestBody?: PatchedTransactionListCreateRequest;
     },
     TExtra
   >,
@@ -16354,7 +16354,7 @@ export const usePatchWarehouseWarehousesId = <TExtra,>(
     {
       /** A UUID string identifying this warehouse. */
       id: string;
-      requestBody: PatchedWarehouseRequest;
+      requestBody?: PatchedWarehouseRequest;
     },
     TExtra
   >,
@@ -16725,7 +16725,7 @@ export const usePostCommonCurrencies = <TExtra,>(
 export const usePostCommonPackagingMethods = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { requestBody: PackagingMethodRequest },
+    { requestBody?: PackagingMethodRequest },
     TExtra
   >,
 ) => {
@@ -16856,7 +16856,7 @@ export const usePostFinanceExpenses = <TExtra,>(
 export const usePostFinanceIncomeInvoiceCategories = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { requestBody: IncomeInvoiceCategoryRequest },
+    { requestBody?: IncomeInvoiceCategoryRequest },
     TExtra
   >,
 ) => {
@@ -17889,7 +17889,7 @@ export const usePostProfilesNotifications = <TExtra,>(
 export const usePostProjectsAccountingtypes = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { requestBody: AccountingTypeRequest },
+    { requestBody?: AccountingTypeRequest },
     TExtra
   >,
 ) => {
@@ -18021,7 +18021,7 @@ export const usePostProjectsResponsibles = <TExtra,>(
 export const usePostProjectsResponsibletypes = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { requestBody: ResponsibleTypeParamRequest },
+    { requestBody?: ResponsibleTypeParamRequest },
     TExtra
   >,
 ) => {
@@ -18167,7 +18167,7 @@ export const usePostSubcontractsContractsCounter__slugCreate_revision = <
 >(
   options?: SwaggerTypescriptUseMutationOptions<
     Contract,
-    { counter__slug: string; requestBody: CreateRevisionRequest },
+    { counter__slug: string; requestBody?: CreateRevisionRequest },
     TExtra
   >,
 ) => {
@@ -18389,7 +18389,7 @@ export const usePostSuppliersContacts = <TExtra,>(
 export const usePostSuppliersReviewAnswers = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { requestBody: AnswerRequest },
+    { requestBody?: AnswerRequest },
     TExtra
   >,
 ) => {
@@ -18821,7 +18821,7 @@ export const usePutCommonPackagingMethodsId = <TExtra,>(
     {
       /** A UUID string identifying this Packaging Method. */
       id: string;
-      requestBody: PackagingMethodRequest;
+      requestBody?: PackagingMethodRequest;
     },
     TExtra
   >,
@@ -18991,7 +18991,7 @@ export const usePutFinanceIncomeInvoiceCategoriesId = <TExtra,>(
     {
       /** A UUID string identifying this income invoice category. */
       id: string;
-      requestBody: IncomeInvoiceCategoryRequest;
+      requestBody?: IncomeInvoiceCategoryRequest;
     },
     TExtra
   >,
@@ -19525,7 +19525,7 @@ export const usePutProjectsAccountingtypesId = <TExtra,>(
     {
       /** A UUID string identifying this accounting type. */
       id: string;
-      requestBody: AccountingTypeRequest;
+      requestBody?: AccountingTypeRequest;
     },
     TExtra
   >,
@@ -19675,7 +19675,7 @@ export const usePutProjectsResponsibletypesId = <TExtra,>(
     {
       /** A UUID string identifying this responsible type. */
       id: string;
-      requestBody: ResponsibleTypeParamRequest;
+      requestBody?: ResponsibleTypeParamRequest;
     },
     TExtra
   >,
@@ -19918,7 +19918,7 @@ export const usePutSuppliersReviewAnswersId = <TExtra,>(
     {
       /** A UUID string identifying this answer. */
       id: string;
-      requestBody: AnswerRequest;
+      requestBody?: AnswerRequest;
     },
     TExtra
   >,
@@ -26914,7 +26914,7 @@ getWarehouseWarehousesPermissions.key = \\"/warehouse/warehouses/permissions/\\"
 export const patchAuthGroupsId = (
   /** A unique integer value identifying this group. */
   id: number,
-  requestBody: PatchedGroupMemberRequest,
+  requestBody?: PatchedGroupMemberRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<GroupMember>> => {
   return Http.patchRequest(
@@ -26930,7 +26930,7 @@ export const patchAuthGroupsId = (
 patchAuthGroupsId.key = \\"/auth/groups/{id}/\\";
 
 export const patchAuthUser = (
-  requestBody: PatchedCustomUserDetailsRequest,
+  requestBody?: PatchedCustomUserDetailsRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<CustomUserDetails>> => {
   return Http.patchRequest(
@@ -26965,7 +26965,7 @@ patchAuthUserGroupsId.key = \\"/auth/user/groups/{id}/\\";
 export const patchCodesActivitiesId = (
   /** A UUID string identifying this Activity. */
   id: string,
-  requestBody: PatchedActivityRequest,
+  requestBody?: PatchedActivityRequest,
   queryParams?: PatchCodesActivitiesIdQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Activity>> => {
@@ -26984,7 +26984,7 @@ patchCodesActivitiesId.key = \\"/codes/activities/{id}/\\";
 export const patchCodesActivityAccountCodesId = (
   /** A UUID string identifying this accounting code. */
   id: string,
-  requestBody: PatchedSupplierAccountingCodeRequest,
+  requestBody?: PatchedSupplierAccountingCodeRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SupplierAccountingCode>> => {
   return Http.patchRequest(
@@ -27002,7 +27002,7 @@ patchCodesActivityAccountCodesId.key = \\"/codes/activity-account-codes/{id}/\\"
 export const patchCodesResourcesId = (
   /** A UUID string identifying this Resource. */
   id: string,
-  requestBody: PatchedResourceRequest,
+  requestBody?: PatchedResourceRequest,
   queryParams?: PatchCodesResourcesIdQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Resource>> => {
@@ -27021,7 +27021,7 @@ patchCodesResourcesId.key = \\"/codes/resources/{id}/\\";
 export const patchCodesWbsId = (
   /** A UUID string identifying this WBS. */
   id: string,
-  requestBody: PatchedWBSRequest,
+  requestBody?: PatchedWBSRequest,
   queryParams?: PatchCodesWbsIdQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<WBS>> => {
@@ -27040,7 +27040,7 @@ patchCodesWbsId.key = \\"/codes/wbs/{id}/\\";
 export const patchCommonBankNamesId = (
   /** A UUID string identifying this Bank Name. */
   id: string,
-  requestBody: PatchedBankNameRequest,
+  requestBody?: PatchedBankNameRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<BankName>> => {
   return Http.patchRequest(
@@ -27058,7 +27058,7 @@ patchCommonBankNamesId.key = \\"/common/bank-names/{id}/\\";
 export const patchCommonCurrenciesId = (
   /** A UUID string identifying this Currency. */
   id: string,
-  requestBody: PatchedCurrencyRequest,
+  requestBody?: PatchedCurrencyRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Currency>> => {
   return Http.patchRequest(
@@ -27076,7 +27076,7 @@ patchCommonCurrenciesId.key = \\"/common/currencies/{id}/\\";
 export const patchCommonPackagingMethodsId = (
   /** A UUID string identifying this Packaging Method. */
   id: string,
-  requestBody: PatchedPackagingMethodRequest,
+  requestBody?: PatchedPackagingMethodRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<PackagingMethod>> => {
   return Http.patchRequest(
@@ -27094,7 +27094,7 @@ patchCommonPackagingMethodsId.key = \\"/common/packaging-methods/{id}/\\";
 export const patchCommonPaymentMethodsId = (
   /** A UUID string identifying this Payment Method. */
   id: string,
-  requestBody: PatchedPaymentMethodRequest,
+  requestBody?: PatchedPaymentMethodRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<PaymentMethod>> => {
   return Http.patchRequest(
@@ -27129,7 +27129,7 @@ patchCommonResourceUnitsId.key = \\"/common/resource-units/{id}/\\";
 export const patchCommonTaxParametersId = (
   /** A UUID string identifying this Tax Parameter. */
   id: string,
-  requestBody: PatchedTaxParameterRequest,
+  requestBody?: PatchedTaxParameterRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<TaxParameter>> => {
   return Http.patchRequest(
@@ -27147,7 +27147,7 @@ patchCommonTaxParametersId.key = \\"/common/tax-parameters/{id}/\\";
 export const patchCommonVatWitholdingsId = (
   /** A UUID string identifying this Vat Witholding. */
   id: string,
-  requestBody: PatchedVatwitholdingRequest,
+  requestBody?: PatchedVatwitholdingRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Vatwitholding>> => {
   return Http.patchRequest(
@@ -27165,7 +27165,7 @@ patchCommonVatWitholdingsId.key = \\"/common/vat-witholdings/{id}/\\";
 export const patchFinanceAccountsId = (
   /** A UUID string identifying this account. */
   id: string,
-  requestBody: PatchedAccountRequest,
+  requestBody?: PatchedAccountRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Account>> => {
   return Http.patchRequest(
@@ -27183,7 +27183,7 @@ patchFinanceAccountsId.key = \\"/finance/accounts/{id}/\\";
 export const patchFinanceBankAccountsId = (
   /** A UUID string identifying this bank account. */
   id: string,
-  requestBody: PatchedBankAccountRequest,
+  requestBody?: PatchedBankAccountRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<BankAccount>> => {
   return Http.patchRequest(
@@ -27201,7 +27201,7 @@ patchFinanceBankAccountsId.key = \\"/finance/bank-accounts/{id}/\\";
 export const patchFinanceCashAccountsId = (
   /** A UUID string identifying this cash account. */
   id: string,
-  requestBody: PatchedCashAccountRequest,
+  requestBody?: PatchedCashAccountRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<CashAccount>> => {
   return Http.patchRequest(
@@ -27218,7 +27218,7 @@ patchFinanceCashAccountsId.key = \\"/finance/cash-accounts/{id}/\\";
 
 export const patchFinanceExpensesCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedExpenseRequest,
+  requestBody?: PatchedExpenseRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Expense>> => {
   return Http.patchRequest(
@@ -27236,7 +27236,7 @@ patchFinanceExpensesCounter__slug.key = \\"/finance/expenses/{counter__slug}/\\"
 export const patchFinanceIncomeInvoiceCategoriesId = (
   /** A UUID string identifying this income invoice category. */
   id: string,
-  requestBody: PatchedIncomeInvoiceCategoryRequest,
+  requestBody?: PatchedIncomeInvoiceCategoryRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<IncomeInvoiceCategory>> => {
   return Http.patchRequest(
@@ -27254,7 +27254,7 @@ patchFinanceIncomeInvoiceCategoriesId.key =
 
 export const patchFinanceIncomeInvoicesCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedIncomeInvoiceRequest,
+  requestBody?: PatchedIncomeInvoiceRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<IncomeInvoice>> => {
   return Http.patchRequest(
@@ -27272,7 +27272,7 @@ patchFinanceIncomeInvoicesCounter__slug.key =
 
 export const patchFinancePaymentBondsCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedPaymentBondRequest,
+  requestBody?: PatchedPaymentBondRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<PaymentBond>> => {
   return Http.patchRequest(
@@ -27290,7 +27290,7 @@ patchFinancePaymentBondsCounter__slug.key =
 
 export const patchFinancePaymentChequesCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedPaymentChequeRequest,
+  requestBody?: PatchedPaymentChequeRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<PaymentCheque>> => {
   return Http.patchRequest(
@@ -27309,7 +27309,7 @@ patchFinancePaymentChequesCounter__slug.key =
 export const patchFinancePaymentDetailsId = (
   /** A UUID string identifying this Payment Detail. */
   id: string,
-  requestBody: PatchedPaymentDetailRequest,
+  requestBody?: PatchedPaymentDetailRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<PaymentDetail>> => {
   return Http.patchRequest(
@@ -27326,7 +27326,7 @@ patchFinancePaymentDetailsId.key = \\"/finance/payment-details/{id}/\\";
 
 export const patchFinanceRevenueBondsCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedRevenueBondRequest,
+  requestBody?: PatchedRevenueBondRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<RevenueBond>> => {
   return Http.patchRequest(
@@ -27344,7 +27344,7 @@ patchFinanceRevenueBondsCounter__slug.key =
 
 export const patchFinanceRevenueChequesCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedRevenueChequeRequest,
+  requestBody?: PatchedRevenueChequeRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<RevenueCheque>> => {
   return Http.patchRequest(
@@ -27363,7 +27363,7 @@ patchFinanceRevenueChequesCounter__slug.key =
 export const patchFinanceRevenueDetailsId = (
   /** A UUID string identifying this Revenue Detail. */
   id: string,
-  requestBody: PatchedRevenueDetailRequest,
+  requestBody?: PatchedRevenueDetailRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<RevenueDetail>> => {
   return Http.patchRequest(
@@ -27381,7 +27381,7 @@ patchFinanceRevenueDetailsId.key = \\"/finance/revenue-details/{id}/\\";
 export const patchFinanceSlipsId = (
   /** A UUID string identifying this slip. */
   id: string,
-  requestBody: PatchedSlipRequest,
+  requestBody?: PatchedSlipRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Slip>> => {
   return Http.patchRequest(
@@ -27399,7 +27399,7 @@ patchFinanceSlipsId.key = \\"/finance/slips/{id}/\\";
 export const patchFinanceSupplierAccountsId = (
   /** A UUID string identifying this supplier account. */
   id: string,
-  requestBody: PatchedSupplierAccountRequest,
+  requestBody?: PatchedSupplierAccountRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SupplierAccount>> => {
   return Http.patchRequest(
@@ -27417,7 +27417,7 @@ patchFinanceSupplierAccountsId.key = \\"/finance/supplier-accounts/{id}/\\";
 export const patchFinanceTxnsId = (
   /** A UUID string identifying this transaction. */
   id: string,
-  requestBody: PatchedTransactionRequest,
+  requestBody?: PatchedTransactionRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Transaction>> => {
   return Http.patchRequest(
@@ -27435,7 +27435,7 @@ patchFinanceTxnsId.key = \\"/finance/txns/{id}/\\";
 export const patchHrCrewsId = (
   /** A UUID string identifying this Crew. */
   id: string,
-  requestBody: PatchedCrewRequest,
+  requestBody?: PatchedCrewRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Crew>> => {
   return Http.patchRequest(
@@ -27453,7 +27453,7 @@ patchHrCrewsId.key = \\"/hr/crews/{id}/\\";
 export const patchHrDepartmentsId = (
   /** A UUID string identifying this Main Department. */
   id: string,
-  requestBody: PatchedMainDepartmentRequest,
+  requestBody?: PatchedMainDepartmentRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<MainDepartment>> => {
   return Http.patchRequest(
@@ -27471,7 +27471,7 @@ patchHrDepartmentsId.key = \\"/hr/departments/{id}/\\";
 export const patchHrLocationsId = (
   /** A UUID string identifying this Location. */
   id: string,
-  requestBody: PatchedLocationParameterRequest,
+  requestBody?: PatchedLocationParameterRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<LocationParameter>> => {
   return Http.patchRequest(
@@ -27489,7 +27489,7 @@ patchHrLocationsId.key = \\"/hr/locations/{id}/\\";
 export const patchHrPersonnelId = (
   /** A UUID string identifying this Person. */
   id: string,
-  requestBody: PatchedPersonRequest,
+  requestBody?: PatchedPersonRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Person>> => {
   return Http.patchRequest(
@@ -27507,7 +27507,7 @@ patchHrPersonnelId.key = \\"/hr/personnel/{id}/\\";
 export const patchHrPositionsId = (
   /** A UUID string identifying this Main Position. */
   id: string,
-  requestBody: PatchedMainPositionRequest,
+  requestBody?: PatchedMainPositionRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<MainPosition>> => {
   return Http.patchRequest(
@@ -27525,7 +27525,7 @@ patchHrPositionsId.key = \\"/hr/positions/{id}/\\";
 export const patchHrProfessionsId = (
   /** A UUID string identifying this Profession. */
   id: string,
-  requestBody: PatchedProfessionRequest,
+  requestBody?: PatchedProfessionRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Profession>> => {
   return Http.patchRequest(
@@ -27543,7 +27543,7 @@ patchHrProfessionsId.key = \\"/hr/professions/{id}/\\";
 export const patchHrQuitReasonsId = (
   /** A UUID string identifying this Quit Reason. */
   id: string,
-  requestBody: PatchedQuitReasonRequest,
+  requestBody?: PatchedQuitReasonRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<QuitReason>> => {
   return Http.patchRequest(
@@ -27561,7 +27561,7 @@ patchHrQuitReasonsId.key = \\"/hr/quit-reasons-/{id}/\\";
 export const patchHrQuitRecordsId = (
   /** A UUID string identifying this Quit Record. */
   id: string,
-  requestBody: PatchedQuitRecordRequest,
+  requestBody?: PatchedQuitRecordRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<QuitRecord>> => {
   return Http.patchRequest(
@@ -27579,7 +27579,7 @@ patchHrQuitRecordsId.key = \\"/hr/quit-records/{id}/\\";
 export const patchHrSalariesId = (
   /** A UUID string identifying this Salary. */
   id: string,
-  requestBody: PatchedSalaryRequest,
+  requestBody?: PatchedSalaryRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Salary>> => {
   return Http.patchRequest(
@@ -27597,7 +27597,7 @@ patchHrSalariesId.key = \\"/hr/salaries/{id}/\\";
 export const patchHrSalaryPermissionsId = (
   /** A unique integer value identifying this Project Salary Permission. */
   id: number,
-  requestBody: PatchedProjectSalaryPermissionRequest,
+  requestBody?: PatchedProjectSalaryPermissionRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ProjectSalaryPermission>> => {
   return Http.patchRequest(
@@ -27615,7 +27615,7 @@ patchHrSalaryPermissionsId.key = \\"/hr/salary-permissions/{id}/\\";
 export const patchProcurementAdvancePaymentsId = (
   /** A UUID string identifying this order advance payment. */
   id: string,
-  requestBody: PatchedOrderAdvancePaymentRequest,
+  requestBody?: PatchedOrderAdvancePaymentRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<OrderAdvancePayment>> => {
   return Http.patchRequest(
@@ -27632,7 +27632,7 @@ patchProcurementAdvancePaymentsId.key = \\"/procurement/advance-payments/{id}/\\
 
 export const patchProcurementInvoicesCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedInvoiceRequest,
+  requestBody?: PatchedInvoiceRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Invoice>> => {
   return Http.patchRequest(
@@ -27650,7 +27650,7 @@ patchProcurementInvoicesCounter__slug.key =
 
 export const patchProcurementOrdersCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedOrderRequest,
+  requestBody?: PatchedOrderRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Order>> => {
   return Http.patchRequest(
@@ -27685,7 +27685,7 @@ patchProcurementRequestTypesId.key = \\"/procurement/request-types/{id}/\\";
 
 export const patchProcurementRequestsCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedRequestRequest,
+  requestBody?: PatchedRequestRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Request>> => {
   return Http.patchRequest(
@@ -27721,7 +27721,7 @@ patchProcurementSpecialInvoiceTypesId.key =
 
 export const patchProcurementSpecialInvoicesCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedSpecialInvoiceRequest,
+  requestBody?: PatchedSpecialInvoiceRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SpecialInvoice>> => {
   return Http.patchRequest(
@@ -27742,7 +27742,7 @@ patchProcurementSpecialInvoicesCounter__slug.key =
 export const patchProjectsAccountingtypesId = (
   /** A UUID string identifying this accounting type. */
   id: string,
-  requestBody: PatchedAccountingTypeRequest,
+  requestBody?: PatchedAccountingTypeRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<AccountingType>> => {
   return Http.patchRequest(
@@ -27776,7 +27776,7 @@ patchProjectsCitiesId.key = \\"/projects/cities/{id}/\\";
 
 export const patchProjectsCompaniesSlug = (
   slug: string,
-  requestBody: PatchedCompanyRequest,
+  requestBody?: PatchedCompanyRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Company>> => {
   return Http.patchRequest(
@@ -27827,7 +27827,7 @@ patchProjectsDistrictsId.key = \\"/projects/districts/{id}/\\";
 
 export const patchProjectsProjectsSlug = (
   slug: string,
-  requestBody: PatchedProjectRequest,
+  requestBody?: PatchedProjectRequest,
   queryParams?: PatchProjectsProjectsSlugQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Project>> => {
@@ -27846,7 +27846,7 @@ patchProjectsProjectsSlug.key = \\"/projects/projects/{slug}/\\";
 export const patchProjectsProjecttypesId = (
   /** A UUID string identifying this project type. */
   id: string,
-  requestBody: PatchedProjectTypeParamRequest,
+  requestBody?: PatchedProjectTypeParamRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ProjectTypeParam>> => {
   return Http.patchRequest(
@@ -27864,7 +27864,7 @@ patchProjectsProjecttypesId.key = \\"/projects/projecttypes/{id}/\\";
 export const patchProjectsResponsiblesId = (
   /** A UUID string identifying this responsible. */
   id: string,
-  requestBody: PatchedResponsibleRequest,
+  requestBody?: PatchedResponsibleRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Responsible>> => {
   return Http.patchRequest(
@@ -27882,7 +27882,7 @@ patchProjectsResponsiblesId.key = \\"/projects/responsibles/{id}/\\";
 export const patchProjectsResponsibletypesId = (
   /** A UUID string identifying this responsible type. */
   id: string,
-  requestBody: PatchedResponsibleTypeParamRequest,
+  requestBody?: PatchedResponsibleTypeParamRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ResponsibleTypeParam>> => {
   return Http.patchRequest(
@@ -27900,7 +27900,7 @@ patchProjectsResponsibletypesId.key = \\"/projects/responsibletypes/{id}/\\";
 export const patchRatesRatesId = (
   /** A unique integer value identifying this rate. */
   id: number,
-  requestBody: PatchedRateRequest,
+  requestBody?: PatchedRateRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Rate>> => {
   return Http.patchRequest(
@@ -27989,7 +27989,7 @@ patchSubcontractsContractCollateralTypesId.key =
 
 export const patchSubcontractsContractsCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedContractRequest,
+  requestBody?: PatchedContractRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Contract>> => {
   return Http.patchRequest(
@@ -28007,7 +28007,7 @@ patchSubcontractsContractsCounter__slug.key =
 
 export const patchSubcontractsDeductionReturnsCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedDeductionReturnRequest,
+  requestBody?: PatchedDeductionReturnRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<DeductionReturn>> => {
   return Http.patchRequest(
@@ -28027,7 +28027,7 @@ patchSubcontractsDeductionReturnsCounter__slug.key =
 
 export const patchSubcontractsProgressesCounter__slug = (
   counter__slug: string,
-  requestBody: PatchedProgressRequest,
+  requestBody?: PatchedProgressRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Progress>> => {
   return Http.patchRequest(
@@ -28046,7 +28046,7 @@ patchSubcontractsProgressesCounter__slug.key =
 export const patchSubcontractsRevisionsId = (
   /** A UUID string identifying this contract revision. */
   id: string,
-  requestBody: PatchedRevisionRequest,
+  requestBody?: PatchedRevisionRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Revision>> => {
   return Http.patchRequest(
@@ -28064,7 +28064,7 @@ patchSubcontractsRevisionsId.key = \\"/subcontracts/revisions/{id}/\\";
 export const patchSuppliersAccountingCodesId = (
   /** A UUID string identifying this supplier accounting code. */
   id: string,
-  requestBody: PatchedSupplierAccountingCodeRequest,
+  requestBody?: PatchedSupplierAccountingCodeRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SupplierAccountingCode>> => {
   return Http.patchRequest(
@@ -28082,7 +28082,7 @@ patchSuppliersAccountingCodesId.key = \\"/suppliers/accounting-codes/{id}/\\";
 export const patchSuppliersBankAccountsId = (
   /** A UUID string identifying this supplier bank account. */
   id: string,
-  requestBody: PatchedSupplierBankAccountRequest,
+  requestBody?: PatchedSupplierBankAccountRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SupplierBankAccount>> => {
   return Http.patchRequest(
@@ -28100,7 +28100,7 @@ patchSuppliersBankAccountsId.key = \\"/suppliers/bank-accounts/{id}/\\";
 export const patchSuppliersContactsId = (
   /** A UUID string identifying this supplier contact. */
   id: string,
-  requestBody: PatchedContactRequest,
+  requestBody?: PatchedContactRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Contact>> => {
   return Http.patchRequest(
@@ -28118,7 +28118,7 @@ patchSuppliersContactsId.key = \\"/suppliers/contacts/{id}/\\";
 export const patchSuppliersReviewAnswersId = (
   /** A UUID string identifying this answer. */
   id: string,
-  requestBody: PatchedAnswerRequest,
+  requestBody?: PatchedAnswerRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Answer>> => {
   return Http.patchRequest(
@@ -28135,7 +28135,7 @@ patchSuppliersReviewAnswersId.key = \\"/suppliers/review-answers/{id}/\\";
 
 export const patchSuppliersReviewFormsSlug = (
   slug: string,
-  requestBody: PatchedReviewRequest,
+  requestBody?: PatchedReviewRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Review>> => {
   return Http.patchRequest(
@@ -28153,7 +28153,7 @@ patchSuppliersReviewFormsSlug.key = \\"/suppliers/review-forms/{slug}/\\";
 export const patchSuppliersReviewQuestionsId = (
   /** A UUID string identifying this review question. */
   id: string,
-  requestBody: PatchedReviewQuestionRequest,
+  requestBody?: PatchedReviewQuestionRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ReviewQuestion>> => {
   return Http.patchRequest(
@@ -28170,7 +28170,7 @@ patchSuppliersReviewQuestionsId.key = \\"/suppliers/review-questions/{id}/\\";
 
 export const patchSuppliersReviewTemplatesSlug = (
   slug: string,
-  requestBody: PatchedReviewTemplateRequest,
+  requestBody?: PatchedReviewTemplateRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ReviewTemplate>> => {
   return Http.patchRequest(
@@ -28188,7 +28188,7 @@ patchSuppliersReviewTemplatesSlug.key = \\"/suppliers/review-templates/{slug}/\\
 export const patchSuppliersSupplierActivityTypesId = (
   /** A UUID string identifying this supplier activity type. */
   id: string,
-  requestBody: PatchedActivityTypeRequest,
+  requestBody?: PatchedActivityTypeRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ActivityType>> => {
   return Http.patchRequest(
@@ -28207,7 +28207,7 @@ patchSuppliersSupplierActivityTypesId.key =
 export const patchSuppliersSupplierBranchesId = (
   /** A UUID string identifying this supplier branch. */
   id: string,
-  requestBody: PatchedBranchRequest,
+  requestBody?: PatchedBranchRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Branch>> => {
   return Http.patchRequest(
@@ -28225,7 +28225,7 @@ patchSuppliersSupplierBranchesId.key = \\"/suppliers/supplier-branches/{id}/\\";
 export const patchSuppliersSupplierTypesId = (
   /** A UUID string identifying this supplier type. */
   id: string,
-  requestBody: PatchedSupplierTypeRequest,
+  requestBody?: PatchedSupplierTypeRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SupplierType>> => {
   return Http.patchRequest(
@@ -28242,7 +28242,7 @@ patchSuppliersSupplierTypesId.key = \\"/suppliers/supplier-types/{id}/\\";
 
 export const patchSuppliersSuppliersSlug = (
   slug: string,
-  requestBody: PatchedSupplierRequest,
+  requestBody?: PatchedSupplierRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Supplier>> => {
   return Http.patchRequest(
@@ -28260,7 +28260,7 @@ patchSuppliersSuppliersSlug.key = \\"/suppliers/suppliers/{slug}/\\";
 export const patchWarehouseProductsId = (
   /** A UUID string identifying this product. */
   id: string,
-  requestBody: PatchedProductCreateRequest,
+  requestBody?: PatchedProductCreateRequest,
   queryParams: PatchWarehouseProductsIdQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Product>> => {
@@ -28279,7 +28279,7 @@ patchWarehouseProductsId.key = \\"/warehouse/products/{id}/\\";
 export const patchWarehouseTransactionsId = (
   /** A UUID string identifying this transaction. */
   id: string,
-  requestBody: PatchedTransactionListCreateRequest,
+  requestBody?: PatchedTransactionListCreateRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<TransactionList>> => {
   return Http.patchRequest(
@@ -28297,7 +28297,7 @@ patchWarehouseTransactionsId.key = \\"/warehouse/transactions/{id}/\\";
 export const patchWarehouseWarehousesId = (
   /** A UUID string identifying this warehouse. */
   id: string,
-  requestBody: PatchedWarehouseRequest,
+  requestBody?: PatchedWarehouseRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Warehouse>> => {
   return Http.patchRequest(
@@ -28614,7 +28614,7 @@ export const postCommonCurrencies = (
 postCommonCurrencies.key = \\"/common/currencies/\\";
 
 export const postCommonPackagingMethods = (
-  requestBody: PackagingMethodRequest,
+  requestBody?: PackagingMethodRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
@@ -28757,7 +28757,7 @@ export const postFinanceExpenses = (
 postFinanceExpenses.key = \\"/finance/expenses/\\";
 
 export const postFinanceIncomeInvoiceCategories = (
-  requestBody: IncomeInvoiceCategoryRequest,
+  requestBody?: IncomeInvoiceCategoryRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
@@ -29781,7 +29781,7 @@ export const postProfilesNotifications = (
 postProfilesNotifications.key = \\"/profiles/notifications/\\";
 
 export const postProjectsAccountingtypes = (
-  requestBody: AccountingTypeRequest,
+  requestBody?: AccountingTypeRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
@@ -29927,7 +29927,7 @@ export const postProjectsResponsibles = (
 postProjectsResponsibles.key = \\"/projects/responsibles/\\";
 
 export const postProjectsResponsibletypes = (
-  requestBody: ResponsibleTypeParamRequest,
+  requestBody?: ResponsibleTypeParamRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
@@ -30089,7 +30089,7 @@ postSubcontractsContractsApprove.key = \\"/subcontracts/contracts/approve/\\";
 
 export const postSubcontractsContractsCounter__slugCreate_revision = (
   counter__slug: string,
-  requestBody: CreateRevisionRequest,
+  requestBody?: CreateRevisionRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Contract>> => {
   return Http.postRequest(
@@ -30306,7 +30306,7 @@ export const postSuppliersContacts = (
 postSuppliersContacts.key = \\"/suppliers/contacts/\\";
 
 export const postSuppliersReviewAnswers = (
-  requestBody: AnswerRequest,
+  requestBody?: AnswerRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
@@ -30720,7 +30720,7 @@ putCommonCurrenciesId.key = \\"/common/currencies/{id}/\\";
 export const putCommonPackagingMethodsId = (
   /** A UUID string identifying this Packaging Method. */
   id: string,
-  requestBody: PackagingMethodRequest,
+  requestBody?: PackagingMethodRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<PackagingMethod>> => {
   return Http.putRequest(
@@ -30880,7 +30880,7 @@ putFinanceExpensesCounter__slug.key = \\"/finance/expenses/{counter__slug}/\\";
 export const putFinanceIncomeInvoiceCategoriesId = (
   /** A UUID string identifying this income invoice category. */
   id: string,
-  requestBody: IncomeInvoiceCategoryRequest,
+  requestBody?: IncomeInvoiceCategoryRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<IncomeInvoiceCategory>> => {
   return Http.putRequest(
@@ -31383,7 +31383,7 @@ putProcurementSpecialInvoicesCounter__slug.key =
 export const putProjectsAccountingtypesId = (
   /** A UUID string identifying this accounting type. */
   id: string,
-  requestBody: AccountingTypeRequest,
+  requestBody?: AccountingTypeRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<AccountingType>> => {
   return Http.putRequest(
@@ -31523,7 +31523,7 @@ putProjectsResponsiblesId.key = \\"/projects/responsibles/{id}/\\";
 export const putProjectsResponsibletypesId = (
   /** A UUID string identifying this responsible type. */
   id: string,
-  requestBody: ResponsibleTypeParamRequest,
+  requestBody?: ResponsibleTypeParamRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ResponsibleTypeParam>> => {
   return Http.putRequest(
@@ -31759,7 +31759,7 @@ putSuppliersContactsId.key = \\"/suppliers/contacts/{id}/\\";
 export const putSuppliersReviewAnswersId = (
   /** A UUID string identifying this answer. */
   id: string,
-  requestBody: AnswerRequest,
+  requestBody?: AnswerRequest,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Answer>> => {
   return Http.putRequest(

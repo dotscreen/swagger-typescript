@@ -231,7 +231,7 @@ type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> =
 export const useDelete_allauthBrowserV1AccountAuthenticatorsTotp = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     StatusOK,
-    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    { headerParams?: { \\"X-Session-Token\\"?: SessionToken } },
     TExtra
   >,
 ) => {
@@ -252,8 +252,8 @@ export const useDelete_allauthBrowserV1AccountEmail = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     EmailAddresses,
     {
-      requestBody: RequestBodyEmail;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      requestBody?: RequestBodyEmail;
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -276,8 +276,8 @@ export const useDelete_allauthBrowserV1AccountProviders = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     ProviderAccounts,
     {
-      requestBody: RequestBodyProviderAccount;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      requestBody?: RequestBodyProviderAccount;
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -299,7 +299,7 @@ export const useDelete_allauthBrowserV1AccountProviders = <TExtra,>(
 export const useDelete_allauthBrowserV1AuthSession = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    { headerParams?: { \\"X-Session-Token\\"?: SessionToken } },
     TExtra
   >,
 ) => {
@@ -318,7 +318,7 @@ export const useDelete_allauthBrowserV1AuthSessions = <TExtra,>(
     Sessions,
     {
       requestBody: RequestBodyEndSessions;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -338,7 +338,7 @@ export const useDelete_allauthBrowserV1AuthSessions = <TExtra,>(
 
 /** List authenticators */
 export const useGet_allauthBrowserV1AccountAuthenticators = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<Authenticators>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -354,7 +354,7 @@ export const useGet_allauthBrowserV1AccountAuthenticators = (
   });
 };
 useGet_allauthBrowserV1AccountAuthenticators.info = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -368,7 +368,7 @@ useGet_allauthBrowserV1AccountAuthenticators.info = (
 };
 useGet_allauthBrowserV1AccountAuthenticators.prefetch = (
   client: QueryClient,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<Authenticators>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -388,7 +388,7 @@ useGet_allauthBrowserV1AccountAuthenticators.prefetch = (
 
 /** List recovery codes */
 export const useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<RecoveryCodes>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -405,7 +405,7 @@ export const useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = (
   });
 };
 useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.info = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -422,7 +422,7 @@ useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.info = (
 };
 useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.prefetch = (
   client: QueryClient,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<RecoveryCodes>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -443,7 +443,7 @@ useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.prefetch = (
 
 /** TOTP authenticator status */
 export const useGet_allauthBrowserV1AccountAuthenticatorsTotp = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<TOTPAuthenticator>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -459,7 +459,7 @@ export const useGet_allauthBrowserV1AccountAuthenticatorsTotp = (
   });
 };
 useGet_allauthBrowserV1AccountAuthenticatorsTotp.info = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -476,7 +476,7 @@ useGet_allauthBrowserV1AccountAuthenticatorsTotp.info = (
 };
 useGet_allauthBrowserV1AccountAuthenticatorsTotp.prefetch = (
   client: QueryClient,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<TOTPAuthenticator>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -496,7 +496,7 @@ useGet_allauthBrowserV1AccountAuthenticatorsTotp.prefetch = (
 
 /** List email addresses */
 export const useGet_allauthBrowserV1AccountEmail = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<EmailAddresses>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -512,7 +512,7 @@ export const useGet_allauthBrowserV1AccountEmail = (
   });
 };
 useGet_allauthBrowserV1AccountEmail.info = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -522,7 +522,7 @@ useGet_allauthBrowserV1AccountEmail.info = (
 };
 useGet_allauthBrowserV1AccountEmail.prefetch = (
   client: QueryClient,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<EmailAddresses>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -542,7 +542,7 @@ useGet_allauthBrowserV1AccountEmail.prefetch = (
 
 /** Get the phone number */
 export const useGet_allauthBrowserV1AccountPhone = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<PhoneNumbers>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -558,7 +558,7 @@ export const useGet_allauthBrowserV1AccountPhone = (
   });
 };
 useGet_allauthBrowserV1AccountPhone.info = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -568,7 +568,7 @@ useGet_allauthBrowserV1AccountPhone.info = (
 };
 useGet_allauthBrowserV1AccountPhone.prefetch = (
   client: QueryClient,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<PhoneNumbers>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -588,7 +588,7 @@ useGet_allauthBrowserV1AccountPhone.prefetch = (
 
 /** List the connected third-party provider accounts */
 export const useGet_allauthBrowserV1AccountProviders = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<ProviderAccounts>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -604,7 +604,7 @@ export const useGet_allauthBrowserV1AccountProviders = (
   });
 };
 useGet_allauthBrowserV1AccountProviders.info = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -615,7 +615,7 @@ useGet_allauthBrowserV1AccountProviders.info = (
 };
 useGet_allauthBrowserV1AccountProviders.prefetch = (
   client: QueryClient,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<ProviderAccounts>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -635,7 +635,7 @@ useGet_allauthBrowserV1AccountProviders.prefetch = (
 
 /** Get email verification information */
 export const useGet_allauthBrowserV1AuthEmailVerify = (
-  headerParams?: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
+  headerParams: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
   options?: SwaggerTypescriptUseQueryOptions<EmailVerificationInfo>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -651,7 +651,7 @@ export const useGet_allauthBrowserV1AuthEmailVerify = (
   });
 };
 useGet_allauthBrowserV1AuthEmailVerify.info = (
-  headerParams?: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
+  headerParams: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -662,7 +662,7 @@ useGet_allauthBrowserV1AuthEmailVerify.info = (
 };
 useGet_allauthBrowserV1AuthEmailVerify.prefetch = (
   client: QueryClient,
-  headerParams?: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
+  headerParams: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
   options?: SwaggerTypescriptUseQueryOptions<EmailVerificationInfo>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -682,7 +682,7 @@ useGet_allauthBrowserV1AuthEmailVerify.prefetch = (
 
 /** Get password reset information */
 export const useGet_allauthBrowserV1AuthPasswordReset = (
-  headerParams?: { \\"X-Password-Reset-Key\\": PasswordResetKey },
+  headerParams: { \\"X-Password-Reset-Key\\": PasswordResetKey },
   options?: SwaggerTypescriptUseQueryOptions<PasswordResetInfo>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -698,7 +698,7 @@ export const useGet_allauthBrowserV1AuthPasswordReset = (
   });
 };
 useGet_allauthBrowserV1AuthPasswordReset.info = (
-  headerParams?: { \\"X-Password-Reset-Key\\": PasswordResetKey },
+  headerParams: { \\"X-Password-Reset-Key\\": PasswordResetKey },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -709,7 +709,7 @@ useGet_allauthBrowserV1AuthPasswordReset.info = (
 };
 useGet_allauthBrowserV1AuthPasswordReset.prefetch = (
   client: QueryClient,
-  headerParams?: { \\"X-Password-Reset-Key\\": PasswordResetKey },
+  headerParams: { \\"X-Password-Reset-Key\\": PasswordResetKey },
   options?: SwaggerTypescriptUseQueryOptions<PasswordResetInfo>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -768,7 +768,7 @@ useGet_allauthBrowserV1AuthProviderSignup.prefetch = (
 
 /** Get authentication status */
 export const useGet_allauthBrowserV1AuthSession = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<Authenticated>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -784,7 +784,7 @@ export const useGet_allauthBrowserV1AuthSession = (
   });
 };
 useGet_allauthBrowserV1AuthSession.info = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -794,7 +794,7 @@ useGet_allauthBrowserV1AuthSession.info = (
 };
 useGet_allauthBrowserV1AuthSession.prefetch = (
   client: QueryClient,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<Authenticated>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -814,7 +814,7 @@ useGet_allauthBrowserV1AuthSession.prefetch = (
 
 /** List sessions */
 export const useGet_allauthBrowserV1AuthSessions = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<Sessions>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -830,7 +830,7 @@ export const useGet_allauthBrowserV1AuthSessions = (
   });
 };
 useGet_allauthBrowserV1AuthSessions.info = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -840,7 +840,7 @@ useGet_allauthBrowserV1AuthSessions.info = (
 };
 useGet_allauthBrowserV1AuthSessions.prefetch = (
   client: QueryClient,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   options?: SwaggerTypescriptUseQueryOptions<Sessions>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -898,8 +898,8 @@ export const usePatch_allauthBrowserV1AccountEmail = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     EmailAddresses,
     {
-      requestBody: RequestBodyMarkPrimaryEmail;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      requestBody?: RequestBodyMarkPrimaryEmail;
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -923,7 +923,7 @@ export const usePost_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = <
 >(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
-    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    { headerParams?: { \\"X-Session-Token\\"?: SessionToken } },
     TExtra
   >,
 ) => {
@@ -944,8 +944,8 @@ export const usePost_allauthBrowserV1AccountAuthenticatorsTotp = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     TOTPAuthenticator,
     {
-      requestBody: RequestBodySetupTOTP;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      requestBody?: RequestBodySetupTOTP;
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -968,8 +968,8 @@ export const usePost_allauthBrowserV1AccountEmail = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     EmailAddresses,
     {
-      requestBody: RequestBodyEmail;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      requestBody?: RequestBodyEmail;
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -992,8 +992,8 @@ export const usePost_allauthBrowserV1AccountPasswordChange = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
     {
-      requestBody: RequestBodyChangePassword;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      requestBody?: RequestBodyChangePassword;
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -1016,8 +1016,8 @@ export const usePost_allauthBrowserV1AccountPhone = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     any,
     {
-      requestBody: RequestBodyPhone;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      requestBody?: RequestBodyPhone;
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -1041,7 +1041,7 @@ export const usePost_allauthBrowserV1Auth2faAuthenticate = <TExtra,>(
     AuthenticatedByPasswordAnd2FA,
     {
       requestBody: RequestBodyMFAAuthenticate;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -1063,7 +1063,7 @@ export const usePost_allauthBrowserV1Auth2faAuthenticate = <TExtra,>(
 export const usePost_allauthBrowserV1Auth2faReauthenticate = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     AuthenticatedByPasswordAnd2FA,
-    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    { headerParams?: { \\"X-Session-Token\\"?: SessionToken } },
     TExtra
   >,
 ) => {
@@ -1118,8 +1118,8 @@ export const usePost_allauthBrowserV1AuthEmailVerify = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Authenticated,
     {
-      requestBody: RequestBodyVerifyEmail;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      requestBody?: RequestBodyVerifyEmail;
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -1141,7 +1141,7 @@ export const usePost_allauthBrowserV1AuthEmailVerify = <TExtra,>(
 export const usePost_allauthBrowserV1AuthEmailVerifyResend = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     StatusOK,
-    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    { headerParams?: { \\"X-Session-Token\\"?: SessionToken } },
     TExtra
   >,
 ) => {
@@ -1198,7 +1198,7 @@ export const usePost_allauthBrowserV1AuthPasswordRequest = <TExtra,>(
 export const usePost_allauthBrowserV1AuthPasswordReset = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     AuthenticatedByPassword,
-    { requestBody: RequestBodyResetPassword },
+    { requestBody?: RequestBodyResetPassword },
     TExtra
   >,
 ) => {
@@ -1219,8 +1219,8 @@ export const usePost_allauthBrowserV1AuthPhoneVerify = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Authenticated,
     {
-      requestBody: RequestBodyVerifyPhone;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      requestBody?: RequestBodyVerifyPhone;
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -1242,7 +1242,7 @@ export const usePost_allauthBrowserV1AuthPhoneVerify = <TExtra,>(
 export const usePost_allauthBrowserV1AuthPhoneVerifyResend = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     StatusOK,
-    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    { headerParams?: { \\"X-Session-Token\\"?: SessionToken } },
     TExtra
   >,
 ) => {
@@ -1304,7 +1304,7 @@ export const usePost_allauthBrowserV1AuthProviderToken = <TExtra,>(
     Authenticated,
     {
       requestBody: RequestBodyProviderToken;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -1328,7 +1328,7 @@ export const usePost_allauthBrowserV1AuthReauthenticate = <TExtra,>(
     AuthenticatedByPassword,
     {
       requestBody: RequestBodyReauthenticate;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -1368,8 +1368,8 @@ export const usePut_allauthBrowserV1AccountEmail = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     StatusOK,
     {
-      requestBody: RequestBodyEmail;
-      headerParams?: { \\"X-Session-Token\\": SessionToken };
+      requestBody?: RequestBodyEmail;
+      headerParams?: { \\"X-Session-Token\\"?: SessionToken };
     },
     TExtra
   >,
@@ -1668,7 +1668,7 @@ function objToUrlencoded(requestBody: object) {
 
 /** Deactivate TOTP */
 export const delete_allauthBrowserV1AccountAuthenticatorsTotp = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<StatusOK>> => {
   return Http.deleteRequest(
@@ -1694,8 +1694,8 @@ delete_allauthBrowserV1AccountAuthenticatorsTotp.key =
 
 /** Remove an email address */
 export const delete_allauthBrowserV1AccountEmail = (
-  requestBody: RequestBodyEmail,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  requestBody?: RequestBodyEmail,
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EmailAddresses>> => {
   return Http.deleteRequest(
@@ -1720,8 +1720,8 @@ delete_allauthBrowserV1AccountEmail.key = \\"/_allauth/browser/v1/account/email\
 
 /** Disconnect a third-party provider account */
 export const delete_allauthBrowserV1AccountProviders = (
-  requestBody: RequestBodyProviderAccount,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  requestBody?: RequestBodyProviderAccount,
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ProviderAccounts>> => {
   return Http.deleteRequest(
@@ -1747,7 +1747,7 @@ delete_allauthBrowserV1AccountProviders.key =
 
 /** Logout */
 export const delete_allauthBrowserV1AuthSession = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.deleteRequest(
@@ -1773,7 +1773,7 @@ delete_allauthBrowserV1AuthSession.key = \\"/_allauth/browser/v1/auth/session\\"
 /** End one or more sessions */
 export const delete_allauthBrowserV1AuthSessions = (
   requestBody: RequestBodyEndSessions,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Sessions>> => {
   return Http.deleteRequest(
@@ -1798,7 +1798,7 @@ delete_allauthBrowserV1AuthSessions.key = \\"/_allauth/browser/v1/auth/sessions\
 
 /** List authenticators */
 export const get_allauthBrowserV1AccountAuthenticators = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Authenticators>> => {
   return Http.getRequest(
@@ -1824,7 +1824,7 @@ get_allauthBrowserV1AccountAuthenticators.key =
 
 /** List recovery codes */
 export const get_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<RecoveryCodes>> => {
   return Http.getRequest(
@@ -1850,7 +1850,7 @@ get_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.key =
 
 /** TOTP authenticator status */
 export const get_allauthBrowserV1AccountAuthenticatorsTotp = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<TOTPAuthenticator>> => {
   return Http.getRequest(
@@ -1876,7 +1876,7 @@ get_allauthBrowserV1AccountAuthenticatorsTotp.key =
 
 /** List email addresses */
 export const get_allauthBrowserV1AccountEmail = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EmailAddresses>> => {
   return Http.getRequest(
@@ -1901,7 +1901,7 @@ get_allauthBrowserV1AccountEmail.key = \\"/_allauth/browser/v1/account/email\\";
 
 /** Get the phone number */
 export const get_allauthBrowserV1AccountPhone = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<PhoneNumbers>> => {
   return Http.getRequest(
@@ -1926,7 +1926,7 @@ get_allauthBrowserV1AccountPhone.key = \\"/_allauth/browser/v1/account/phone\\";
 
 /** List the connected third-party provider accounts */
 export const get_allauthBrowserV1AccountProviders = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ProviderAccounts>> => {
   return Http.getRequest(
@@ -1952,7 +1952,7 @@ get_allauthBrowserV1AccountProviders.key =
 
 /** Get email verification information */
 export const get_allauthBrowserV1AuthEmailVerify = (
-  headerParams?: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
+  headerParams: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EmailVerificationInfo>> => {
   return Http.getRequest(
@@ -1978,7 +1978,7 @@ get_allauthBrowserV1AuthEmailVerify.key =
 
 /** Get password reset information */
 export const get_allauthBrowserV1AuthPasswordReset = (
-  headerParams?: { \\"X-Password-Reset-Key\\": PasswordResetKey },
+  headerParams: { \\"X-Password-Reset-Key\\": PasswordResetKey },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<PasswordResetInfo>> => {
   return Http.getRequest(
@@ -2021,7 +2021,7 @@ get_allauthBrowserV1AuthProviderSignup.key =
 
 /** Get authentication status */
 export const get_allauthBrowserV1AuthSession = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Authenticated>> => {
   return Http.getRequest(
@@ -2046,7 +2046,7 @@ get_allauthBrowserV1AuthSession.key = \\"/_allauth/browser/v1/auth/session\\";
 
 /** List sessions */
 export const get_allauthBrowserV1AuthSessions = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Sessions>> => {
   return Http.getRequest(
@@ -2087,8 +2087,8 @@ get_allauthBrowserV1Config.key = \\"/_allauth/browser/v1/config\\";
 
 /** Change primary email address */
 export const patch_allauthBrowserV1AccountEmail = (
-  requestBody: RequestBodyMarkPrimaryEmail,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  requestBody?: RequestBodyMarkPrimaryEmail,
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EmailAddresses>> => {
   return Http.patchRequest(
@@ -2113,7 +2113,7 @@ patch_allauthBrowserV1AccountEmail.key = \\"/_allauth/browser/v1/account/email\\
 
 /** Regenerate recovery codes */
 export const post_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
@@ -2139,8 +2139,8 @@ post_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.key =
 
 /** Activate TOTP */
 export const post_allauthBrowserV1AccountAuthenticatorsTotp = (
-  requestBody: RequestBodySetupTOTP,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  requestBody?: RequestBodySetupTOTP,
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<TOTPAuthenticator>> => {
   return Http.postRequest(
@@ -2166,8 +2166,8 @@ post_allauthBrowserV1AccountAuthenticatorsTotp.key =
 
 /** Add/Change email address */
 export const post_allauthBrowserV1AccountEmail = (
-  requestBody: RequestBodyEmail,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  requestBody?: RequestBodyEmail,
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<EmailAddresses>> => {
   return Http.postRequest(
@@ -2192,8 +2192,8 @@ post_allauthBrowserV1AccountEmail.key = \\"/_allauth/browser/v1/account/email\\"
 
 /** Change password */
 export const post_allauthBrowserV1AccountPasswordChange = (
-  requestBody: RequestBodyChangePassword,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  requestBody?: RequestBodyChangePassword,
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
@@ -2219,8 +2219,8 @@ post_allauthBrowserV1AccountPasswordChange.key =
 
 /** Change the phone number */
 export const post_allauthBrowserV1AccountPhone = (
-  requestBody: RequestBodyPhone,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  requestBody?: RequestBodyPhone,
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
@@ -2246,7 +2246,7 @@ post_allauthBrowserV1AccountPhone.key = \\"/_allauth/browser/v1/account/phone\\"
 /** Two-factor authentication */
 export const post_allauthBrowserV1Auth2faAuthenticate = (
   requestBody: RequestBodyMFAAuthenticate,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<AuthenticatedByPasswordAnd2FA>> => {
   return Http.postRequest(
@@ -2272,7 +2272,7 @@ post_allauthBrowserV1Auth2faAuthenticate.key =
 
 /** Reauthenticate using 2FA */
 export const post_allauthBrowserV1Auth2faReauthenticate = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<AuthenticatedByPasswordAnd2FA>> => {
   return Http.postRequest(
@@ -2334,8 +2334,8 @@ post_allauthBrowserV1AuthCodeRequest.key =
 
 /** Verify an email */
 export const post_allauthBrowserV1AuthEmailVerify = (
-  requestBody: RequestBodyVerifyEmail,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  requestBody?: RequestBodyVerifyEmail,
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Authenticated>> => {
   return Http.postRequest(
@@ -2361,7 +2361,7 @@ post_allauthBrowserV1AuthEmailVerify.key =
 
 /** Resend email verification code */
 export const post_allauthBrowserV1AuthEmailVerifyResend = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<StatusOK>> => {
   return Http.postRequest(
@@ -2422,7 +2422,7 @@ post_allauthBrowserV1AuthPasswordRequest.key =
 
 /** Reset password */
 export const post_allauthBrowserV1AuthPasswordReset = (
-  requestBody: RequestBodyResetPassword,
+  requestBody?: RequestBodyResetPassword,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<AuthenticatedByPassword>> => {
   return Http.postRequest(
@@ -2440,8 +2440,8 @@ post_allauthBrowserV1AuthPasswordReset.key =
 
 /** Verify a phone number */
 export const post_allauthBrowserV1AuthPhoneVerify = (
-  requestBody: RequestBodyVerifyPhone,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  requestBody?: RequestBodyVerifyPhone,
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Authenticated>> => {
   return Http.postRequest(
@@ -2467,7 +2467,7 @@ post_allauthBrowserV1AuthPhoneVerify.key =
 
 /** Resend phone number verification code */
 export const post_allauthBrowserV1AuthPhoneVerifyResend = (
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<StatusOK>> => {
   return Http.postRequest(
@@ -2530,7 +2530,7 @@ post_allauthBrowserV1AuthProviderSignup.key =
 /** Provider token */
 export const post_allauthBrowserV1AuthProviderToken = (
   requestBody: RequestBodyProviderToken,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Authenticated>> => {
   return Http.postRequest(
@@ -2557,7 +2557,7 @@ post_allauthBrowserV1AuthProviderToken.key =
 /** Reauthenticate */
 export const post_allauthBrowserV1AuthReauthenticate = (
   requestBody: RequestBodyReauthenticate,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<AuthenticatedByPassword>> => {
   return Http.postRequest(
@@ -2600,8 +2600,8 @@ post_allauthBrowserV1AuthSignup.key = \\"/_allauth/browser/v1/auth/signup\\";
 
 /** Request email verification */
 export const put_allauthBrowserV1AccountEmail = (
-  requestBody: RequestBodyEmail,
-  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  requestBody?: RequestBodyEmail,
+  headerParams?: { \\"X-Session-Token\\"?: SessionToken },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<StatusOK>> => {
   return Http.putRequest(

@@ -1220,7 +1220,7 @@ export const getSubDomainSubDomainAddress = (
   subDomainAddress: string,
   headerParams?: {
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<SubDomainApiModel>> => {
@@ -4420,7 +4420,7 @@ export const useGetSubDomainSubDomainAddress = (
   subDomainAddress: string,
   headerParams?: {
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel>,
   configOverride?: AxiosRequestConfig,
@@ -4442,7 +4442,7 @@ useGetSubDomainSubDomainAddress.info = (
   subDomainAddress: string,
   headerParams?: {
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4467,7 +4467,7 @@ useGetSubDomainSubDomainAddress.prefetch = (
   subDomainAddress: string,
   headerParams?: {
     /** - Format: guid */
-    clientId: string;
+    clientId?: string;
   },
   options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel>,
   configOverride?: AxiosRequestConfig,

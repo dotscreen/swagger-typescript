@@ -166,6 +166,7 @@ export type Parameter = {
 export interface SwaggerResponse {
     $ref?: string;
     description?: string;
+    required?: boolean;
     schema?: Schema;
     content?: Partial<Record<ApiAST["contentType"], Pick<Schema, "example" | "examples"> & {
         schema?: Schema;
@@ -286,6 +287,7 @@ export type ApiAST = {
     serviceName: string;
     pathParams: Parameter[];
     requestBody: Schema | undefined;
+    requestBodyRequired: boolean;
     queryParamsTypeName: string | false;
     headerParams: string | Parameter[];
     isQueryParamsNullable: boolean;

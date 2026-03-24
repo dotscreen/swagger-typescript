@@ -70,6 +70,68 @@ function generator(
     return name;
   }
 
+  function isRequestBodyRequired(
+    requestBody?: SwaggerRequest["requestBody"],
+  ): boolean {
+    if (!requestBody) {
+      return false;
+    }
+
+    if (requestBody.required === true) {
+      return true;
+    }
+
+    if (!requestBody.$ref) {
+      return false;
+    }
+
+    return (
+      input.components?.requestBodies?.[getRefName(requestBody.$ref as string)]
+        ?.required === true
+    );
+  }
+
+  function resolveParameter(parameter: Parameter): Parameter {
+    const { $ref } = parameter;
+    const resolvedParameter = $ref
+      ? {
+          ...input.components?.parameters?.[
+            $ref.replace("#/components/parameters/", "")
+          ]!,
+          $ref,
+          schema: { $ref } as Schema,
+        }
+      : parameter;
+
+    return resolvedParameter.in === "path"
+      ? {
+          ...resolvedParameter,
+          required: true,
+        }
+      : resolvedParameter;
+  }
+
+  function mergeParameters(
+    pathLevelParams?: Parameter[],
+    operationLevelParams?: Parameter[],
+  ): Parameter[] | undefined {
+    const mergedParameters = new Map<string, Parameter>();
+
+    [...(pathLevelParams || []), ...(operationLevelParams || [])].forEach(
+      (parameter) => {
+        const resolvedParameter = resolveParameter(parameter);
+        mergedParameters.set(
+          `${resolvedParameter.in}:${resolvedParameter.name}`,
+          resolvedParameter,
+        );
+      },
+    );
+
+    return mergedParameters.size > 0
+      ? Array.from(mergedParameters.values())
+      : undefined;
+  }
+
   try {
     if (input.openapi) {
       if (input.definitions) {
@@ -95,23 +157,10 @@ function generator(
 
           const { operationId, security } = options;
 
-          const allParameters =
-            parametersExtended || options.parameters
-              ? [...(parametersExtended || []), ...(options.parameters || [])]
-              : undefined;
-
-          const parameters = allParameters?.map<Parameter>((parameter) => {
-            const { $ref } = parameter;
-            if ($ref) {
-              const name = $ref.replace("#/components/parameters/", "");
-              return {
-                ...input.components?.parameters?.[name]!,
-                $ref,
-                schema: { $ref } as Schema,
-              };
-            }
-            return parameter;
-          });
+          const parameters = mergeParameters(
+            parametersExtended,
+            options.parameters,
+          );
 
           const serviceName = generateServiceName(
             endPoint,
@@ -180,6 +229,9 @@ function generator(
             getHeaderParams(parameters, config);
 
           const requestBody = getBodyContent(options.requestBody);
+          const requestBodyRequired = isRequestBodyRequired(
+            options.requestBody,
+          );
 
           const contentType = Object.keys(
             options.requestBody?.content ||
@@ -233,6 +285,7 @@ function generator(
             queryParamsTypeName,
             pathParams,
             requestBody,
+            requestBodyRequired,
             headerParams,
             isQueryParamsNullable,
             isHeaderParamsNullable: hasNullableHeaderParams,

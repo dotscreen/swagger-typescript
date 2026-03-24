@@ -10,6 +10,10 @@ function getPathParams(parameters?: Parameter[]): Parameter[] {
   );
 }
 
+function isParameterRequired(parameter: Parameter): boolean {
+  return parameter.required === true;
+}
+
 function getHeaderParams(parameters: Parameter[] | undefined, config: Config) {
   const params =
     parameters?.filter(({ in: In, name }) => {
@@ -18,13 +22,21 @@ function getHeaderParams(parameters: Parameter[] | undefined, config: Config) {
 
   return {
     params,
-    isNullable: params.every(({ schema = {} }) => !schema.required),
+    isNullable: params.every((parameter) => !isParameterRequired(parameter)),
   };
 }
 
 function toPascalCase(str: string): string {
   return `${str.substring(0, 1).toUpperCase()}${str.substring(1)}`;
 }
+
+function toCamelCase(str: string): string {
+  const schemaName = getSchemaName(str);
+  return `${schemaName.substring(0, 1).toLowerCase()}${schemaName.substring(
+    1,
+  )}`;
+}
+
 function replaceWithUpper(str: string, sp: string) {
   let pointArray = str.split(sp);
   pointArray = pointArray.map((point) => toPascalCase(point));
@@ -84,16 +96,17 @@ function getDefineParam(
   config: Config,
   description?: string,
 ): string {
-  return getParamString(
-    name,
-    required,
-    getKotlinType(schema, config),
+  return `${getJsdoc({
     description,
-  );
+  })}@Path(${JSON.stringify(name)}) ${toCamelCase(name)}: ${getKotlinType(
+    schema,
+    config,
+  )}${required ? "" : "?"}`;
 }
 
 function getDefinitionBody(
   name: string,
+  required: boolean = false,
   schema: Schema | undefined,
   config: Config,
   description?: string,
@@ -101,10 +114,10 @@ function getDefinitionBody(
   const type = getKotlinType(schema, config);
   return `${getJsdoc({
     description,
-  })}@Body ${name}: ${type}`;
+  })}@Body ${name}: ${type}${required ? "" : "?"}`;
 }
 
-function getHeaderString(
+function getHeaderParamString(
   name: string,
   required: boolean = false,
   type: string,
@@ -115,11 +128,12 @@ function getHeaderString(
     //   description,
     // })
     ""
-  }
-@Headers("Content-Type: ${type}")`;
+  }@Header(${JSON.stringify(name)}) ${toCamelCase(name)}: ${type}${
+    required ? "" : "?"
+  }`;
 }
 
-function getParamString(
+function getQueryParamString(
   name: string,
   required: boolean = false,
   type: string,
@@ -131,7 +145,9 @@ function getParamString(
     //   description,
     // })
     ""
-  }@Path("${name}") ${name}: ${type}${required ? "" : "?"}`;
+  }@Query(${JSON.stringify(name)}) ${toCamelCase(name)}: ${type}${
+    required ? "" : "?"
+  }`;
 }
 //x-nullable
 function normalizeObjectPropertyNullable(
@@ -323,13 +339,7 @@ function getParametersInfo(
   return {
     params,
     exist: params.length > 0,
-    isNullable: !params.some(
-      ({ schema, required }) =>
-        //swagger 2
-        required ||
-        // openapi 3
-        schema?.required,
-    ),
+    isNullable: !params.some((parameter) => isParameterRequired(parameter)),
   };
 }
 
@@ -372,12 +382,13 @@ export {
   getRefName,
   isAscending,
   getDefineParam,
-  getParamString,
+  getQueryParamString,
   getParametersInfo,
   isTypeAny,
   template,
   toPascalCase,
   getSchemaName,
   getDefinitionBody,
-  getHeaderString,
+  getHeaderParamString,
+  toCamelCase,
 };

@@ -187,7 +187,7 @@ export const useDeletePetPetId = <TExtra,>(
     {
       /** Pet id to delete */
       petId: number;
-      headerParams?: { api_key: string };
+      headerParams?: { api_key?: string };
     },
     TExtra
   >,
@@ -608,7 +608,7 @@ export const usePostPetPetIdUploadImage = <TExtra,>(
     {
       /** ID of pet to update */
       petId: number;
-      requestBody: string;
+      requestBody?: string;
       queryParams?: PostPetPetIdUploadImageQueryParams;
     },
     TExtra
@@ -632,7 +632,7 @@ export const usePostPetPetIdUploadImage = <TExtra,>(
 export const usePostStoreOrder = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     Order,
-    { requestBody: Order },
+    { requestBody?: Order },
     TExtra
   >,
 ) => {
@@ -649,7 +649,7 @@ export const usePostStoreOrder = <TExtra,>(
 export const usePostUser = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     User,
-    { requestBody: User },
+    { requestBody?: User },
     TExtra
   >,
 ) => {
@@ -666,7 +666,7 @@ export const usePostUser = <TExtra,>(
 export const usePostUserCreateWithList = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     User,
-    { requestBody: User[] },
+    { requestBody?: User[] },
     TExtra
   >,
 ) => {
@@ -703,7 +703,7 @@ export const usePutUserUsername = <TExtra,>(
     {
       /** Name that need to be deleted */
       username: string;
-      requestBody: User;
+      requestBody?: User;
     },
     TExtra
   >,
@@ -974,7 +974,7 @@ function objToUrlencoded(requestBody: object) {
 export const deletePetPetId = (
   /** Pet id to delete */
   petId: number,
-  headerParams?: { api_key: string },
+  headerParams?: { api_key?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.deleteRequest(
@@ -1210,7 +1210,7 @@ postPetPetId.key = \\"/pet/{petId}\\";
 export const postPetPetIdUploadImage = (
   /** ID of pet to update */
   petId: number,
-  requestBody: string,
+  requestBody?: string,
   queryParams?: PostPetPetIdUploadImageQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ApiResponse>> => {
@@ -1228,7 +1228,7 @@ postPetPetIdUploadImage.key = \\"/pet/{petId}/uploadImage\\";
 
 /** Place an order for a pet. */
 export const postStoreOrder = (
-  requestBody: Order,
+  requestBody?: Order,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<Order>> => {
   return Http.postRequest(
@@ -1245,7 +1245,7 @@ postStoreOrder.key = \\"/store/order\\";
 
 /** Create user. */
 export const postUser = (
-  requestBody: User,
+  requestBody?: User,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<User>> => {
   return Http.postRequest(
@@ -1262,7 +1262,7 @@ postUser.key = \\"/user\\";
 
 /** Creates list of users with given input array. */
 export const postUserCreateWithList = (
-  requestBody: User[],
+  requestBody?: User[],
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<User>> => {
   return Http.postRequest(
@@ -1298,7 +1298,7 @@ putPet.key = \\"/pet\\";
 export const putUserUsername = (
   /** Name that need to be deleted */
   username: string,
-  requestBody: User,
+  requestBody?: User,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<any>> => {
   return Http.putRequest(

@@ -1,15 +1,12 @@
 import {
   getDefineParam,
-  getParamString,
+  getQueryParamString,
   getDefinitionBody,
-  getHeaderString,
+  getHeaderParamString,
   getKotlinType,
 } from "./utils.mjs";
 import { ApiAST, Config, Parameter, TypeAST } from "../types.mjs";
-import {
-  SERVICE_BEGINNING,
-  DEPRECATED_WARM_MESSAGE,
-} from "./strings.mjs";
+import { SERVICE_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings.mjs";
 import { getJsdoc } from "../utilities/jsdoc.mjs";
 import { isAscending } from "../utils.mjs";
 
@@ -33,8 +30,10 @@ function generateApis(
             deprecated,
             serviceName,
             queryParamsTypeName,
+            queryParameters,
             pathParams,
             requestBody,
+            requestBodyRequired,
             headerParams,
             isQueryParamsNullable,
             isHeaderParamsNullable,
@@ -46,42 +45,48 @@ function generateApis(
             security,
           },
         ) => {
+          const functionParams = [
+            ...pathParams.map(({ name, required, schema, description }) =>
+              getDefineParam(name, required, schema, config, description),
+            ),
+            ...(requestBody
+              ? [
+                  getDefinitionBody(
+                    "requestBody",
+                    requestBodyRequired,
+                    requestBody,
+                    config,
+                  ),
+                ]
+              : []),
+            ...queryParameters.map(({ name, required, schema, description }) =>
+              getQueryParamString(
+                name,
+                required,
+                getKotlinType(schema, config),
+                description,
+              ),
+            ),
+            ...((headerParams as Parameter[]) || []).map(
+              ({ name, required, description, schema }) =>
+                getHeaderParamString(
+                  name,
+                  required,
+                  getKotlinType(schema, config),
+                  description,
+                ),
+            ),
+          ];
+
           return (
             prev +
             `${getJsdoc({
               description: summary,
               deprecated: deprecated ? DEPRECATED_WARM_MESSAGE : undefined,
-            })}${(headerParams as Parameter[])?.map(
-              ({ name, required, description, schema }) => {
-                return getHeaderString(
-                  name,
-                  required,
-                  getKotlinType(schema, config),
-                  description,
-                );
-              },
-            )}
+            })}
   @${method.toUpperCase()}("${endPoint}")
   suspend fun ${serviceName}(
-    ${pathParams
-      ?.map(({ name, required, schema, description }) =>
-        getDefineParam(name, required, schema, config, description),
-      )
-      .join(",\n")}${pathParams.length ? "," : ""}${
-              requestBody
-                ? `
-    ${getDefinitionBody("requestBody", requestBody, config)},`
-                : ""
-            }${
-              queryParamsTypeName
-                ? `
-    ${getParamString(
-      "queryParams",
-      !isQueryParamsNullable,
-      queryParamsTypeName,
-    )},`
-                : ""
-            }
+    ${functionParams.join(",\n    ")}
   ): Response<${responses ? getKotlinType(responses, config) : "Any"}>
 
 `
@@ -100,7 +105,9 @@ import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Header
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface IApis {
     ${apisCode}

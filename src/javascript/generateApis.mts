@@ -35,6 +35,7 @@ function generateApis(
             queryParamsTypeName,
             pathParams,
             requestBody,
+            requestBodyRequired,
             headerParams,
             isQueryParamsNullable,
             isHeaderParamsNullable,
@@ -61,29 +62,34 @@ ${getJsdoc({
         )
         .join(",")
     }${pathParams.length > 0 ? "," : ""}${
-              /** Request Body */
-              requestBody
-                ? `${getDefineParam("requestBody", true, requestBody, config)},`
-                : ""
-            }${
-              /** Query parameters */
-              queryParamsTypeName
-                ? `${getParamString(
-                    "queryParams",
-                    !isQueryParamsNullable,
-                    queryParamsTypeName,
-                  )},`
-                : ""
-            }${
-              /** Header parameters */
-              headerParams
-                ? `${getParamString(
-                    "headerParams",
-                    !isHeaderParamsNullable,
-                    headerParams as string,
-                  )},`
-                : ""
-            }configOverride?:AxiosRequestConfig
+      /** Request Body */
+      requestBody
+        ? `${getDefineParam(
+            "requestBody",
+            requestBodyRequired,
+            requestBody,
+            config,
+          )},`
+        : ""
+    }${
+      /** Query parameters */
+      queryParamsTypeName
+        ? `${getParamString(
+            "queryParams",
+            !isQueryParamsNullable,
+            queryParamsTypeName,
+          )},`
+        : ""
+    }${
+      /** Header parameters */
+      headerParams
+        ? `${getParamString(
+            "headerParams",
+            !isHeaderParamsNullable,
+            headerParams as string,
+          )},`
+        : ""
+    }configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<${
               responses ? getTsType(responses, config) : "any"
             }>> => {

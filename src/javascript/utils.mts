@@ -10,6 +10,10 @@ function getPathParams(parameters?: Parameter[]): Parameter[] {
   );
 }
 
+function isParameterRequired(parameter: Parameter): boolean {
+  return parameter.required === true;
+}
+
 function getHeaderParams(parameters: Parameter[] | undefined, config: Config) {
   const headerParamsArray =
     parameters?.filter(({ in: location, name }) => {
@@ -18,11 +22,23 @@ function getHeaderParams(parameters: Parameter[] | undefined, config: Config) {
       );
     }) || [];
 
-  const params = getObjectType(headerParamsArray, config, undefined);
+  const params = getObjectType(
+    headerParamsArray.map((parameter) => ({
+      ...parameter,
+      schema: {
+        ...parameter.schema,
+        optional: !isParameterRequired(parameter),
+      },
+    })),
+    config,
+    undefined,
+  );
 
   return {
     params,
-    isNullable: headerParamsArray.every(({ schema = {} }) => !schema.required),
+    isNullable: headerParamsArray.every(
+      (parameter) => !isParameterRequired(parameter),
+    ),
   };
 }
 
@@ -511,13 +527,7 @@ function getParametersInfo(
   return {
     params,
     exist: params.length > 0,
-    isNullable: !params.some(
-      ({ schema, required }) =>
-        //swagger 2
-        required ||
-        // openapi 3
-        schema?.required,
-    ),
+    isNullable: !params.some((parameter) => isParameterRequired(parameter)),
   };
 }
 

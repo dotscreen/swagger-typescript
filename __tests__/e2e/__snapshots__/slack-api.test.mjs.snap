@@ -650,7 +650,7 @@ useGetAdminConversationsEkmListOriginalConnectedChannelInfo.prefetch = (
 };
 export const useGetAdminConversationsGetConversationPrefs = (
   queryParams: GetAdminConversationsGetConversationPrefsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{
     ok: Defs_ok_true;
     prefs?: {
@@ -674,7 +674,7 @@ export const useGetAdminConversationsGetConversationPrefs = (
 };
 useGetAdminConversationsGetConversationPrefs.info = (
   queryParams: GetAdminConversationsGetConversationPrefsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -694,7 +694,7 @@ useGetAdminConversationsGetConversationPrefs.info = (
 useGetAdminConversationsGetConversationPrefs.prefetch = (
   client: QueryClient,
   queryParams: GetAdminConversationsGetConversationPrefsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{
     ok: Defs_ok_true;
     prefs?: {
@@ -720,7 +720,7 @@ useGetAdminConversationsGetConversationPrefs.prefetch = (
 };
 export const useGetAdminConversationsGetTeams = (
   queryParams: GetAdminConversationsGetTeamsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{
     ok: Defs_ok_true;
     team_ids: Defs_team[];
@@ -742,7 +742,7 @@ export const useGetAdminConversationsGetTeams = (
 };
 useGetAdminConversationsGetTeams.info = (
   queryParams: GetAdminConversationsGetTeamsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -758,7 +758,7 @@ useGetAdminConversationsGetTeams.info = (
 useGetAdminConversationsGetTeams.prefetch = (
   client: QueryClient,
   queryParams: GetAdminConversationsGetTeamsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{
     ok: Defs_ok_true;
     team_ids: Defs_team[];
@@ -833,7 +833,7 @@ useGetAdminConversationsRestrictAccessListGroups.prefetch = (
 };
 export const useGetAdminConversationsSearch = (
   queryParams?: GetAdminConversationsSearchQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{
     channels: Objs_channel[];
     next_cursor: string;
@@ -854,7 +854,7 @@ export const useGetAdminConversationsSearch = (
 };
 useGetAdminConversationsSearch.info = (
   queryParams?: GetAdminConversationsSearchQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -870,7 +870,7 @@ useGetAdminConversationsSearch.info = (
 useGetAdminConversationsSearch.prefetch = (
   client: QueryClient,
   queryParams?: GetAdminConversationsSearchQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{
     channels: Objs_channel[];
     next_cursor: string;
@@ -931,7 +931,7 @@ useGetAdminEmojiList.prefetch = (
 };
 export const useGetAdminInviteRequestsApprovedList = (
   queryParams?: GetAdminInviteRequestsApprovedListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -949,7 +949,7 @@ export const useGetAdminInviteRequestsApprovedList = (
 };
 useGetAdminInviteRequestsApprovedList.info = (
   queryParams?: GetAdminInviteRequestsApprovedListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -969,7 +969,7 @@ useGetAdminInviteRequestsApprovedList.info = (
 useGetAdminInviteRequestsApprovedList.prefetch = (
   client: QueryClient,
   queryParams?: GetAdminInviteRequestsApprovedListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -989,7 +989,7 @@ useGetAdminInviteRequestsApprovedList.prefetch = (
 };
 export const useGetAdminInviteRequestsDeniedList = (
   queryParams?: GetAdminInviteRequestsDeniedListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1007,7 +1007,7 @@ export const useGetAdminInviteRequestsDeniedList = (
 };
 useGetAdminInviteRequestsDeniedList.info = (
   queryParams?: GetAdminInviteRequestsDeniedListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1027,7 +1027,7 @@ useGetAdminInviteRequestsDeniedList.info = (
 useGetAdminInviteRequestsDeniedList.prefetch = (
   client: QueryClient,
   queryParams?: GetAdminInviteRequestsDeniedListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1047,7 +1047,7 @@ useGetAdminInviteRequestsDeniedList.prefetch = (
 };
 export const useGetAdminInviteRequestsList = (
   queryParams?: GetAdminInviteRequestsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1065,7 +1065,7 @@ export const useGetAdminInviteRequestsList = (
 };
 useGetAdminInviteRequestsList.info = (
   queryParams?: GetAdminInviteRequestsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1081,7 +1081,7 @@ useGetAdminInviteRequestsList.info = (
 useGetAdminInviteRequestsList.prefetch = (
   client: QueryClient,
   queryParams?: GetAdminInviteRequestsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1145,7 +1145,7 @@ useGetAdminTeamsAdminsList.prefetch = (
 };
 export const useGetAdminTeamsList = (
   queryParams?: GetAdminTeamsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1163,7 +1163,7 @@ export const useGetAdminTeamsList = (
 };
 useGetAdminTeamsList.info = (
   queryParams?: GetAdminTeamsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1174,7 +1174,7 @@ useGetAdminTeamsList.info = (
 useGetAdminTeamsList.prefetch = (
   client: QueryClient,
   queryParams?: GetAdminTeamsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1238,7 +1238,7 @@ useGetAdminTeamsOwnersList.prefetch = (
 };
 export const useGetAdminTeamsSettingsInfo = (
   queryParams: GetAdminTeamsSettingsInfoQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1256,7 +1256,7 @@ export const useGetAdminTeamsSettingsInfo = (
 };
 useGetAdminTeamsSettingsInfo.info = (
   queryParams: GetAdminTeamsSettingsInfoQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1268,7 +1268,7 @@ useGetAdminTeamsSettingsInfo.info = (
 useGetAdminTeamsSettingsInfo.prefetch = (
   client: QueryClient,
   queryParams: GetAdminTeamsSettingsInfoQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1288,7 +1288,7 @@ useGetAdminTeamsSettingsInfo.prefetch = (
 };
 export const useGetAdminUsergroupsListChannels = (
   queryParams: GetAdminUsergroupsListChannelsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1306,7 +1306,7 @@ export const useGetAdminUsergroupsListChannels = (
 };
 useGetAdminUsergroupsListChannels.info = (
   queryParams: GetAdminUsergroupsListChannelsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1322,7 +1322,7 @@ useGetAdminUsergroupsListChannels.info = (
 useGetAdminUsergroupsListChannels.prefetch = (
   client: QueryClient,
   queryParams: GetAdminUsergroupsListChannelsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1342,7 +1342,7 @@ useGetAdminUsergroupsListChannels.prefetch = (
 };
 export const useGetAdminUsersList = (
   queryParams: GetAdminUsersListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1360,7 +1360,7 @@ export const useGetAdminUsersList = (
 };
 useGetAdminUsersList.info = (
   queryParams: GetAdminUsersListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1371,7 +1371,7 @@ useGetAdminUsersList.info = (
 useGetAdminUsersList.prefetch = (
   client: QueryClient,
   queryParams: GetAdminUsersListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1429,7 +1429,7 @@ useGetApiTest.prefetch = (
 };
 export const useGetAppsEventAuthorizationsList = (
   queryParams: GetAppsEventAuthorizationsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1447,7 +1447,7 @@ export const useGetAppsEventAuthorizationsList = (
 };
 useGetAppsEventAuthorizationsList.info = (
   queryParams: GetAppsEventAuthorizationsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1463,7 +1463,7 @@ useGetAppsEventAuthorizationsList.info = (
 useGetAppsEventAuthorizationsList.prefetch = (
   client: QueryClient,
   queryParams: GetAppsEventAuthorizationsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -1888,7 +1888,7 @@ useGetAuthRevoke.prefetch = (
       });
 };
 export const useGetAuthTest = (
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{
     ok: Defs_ok_true;
     team: string;
@@ -1910,7 +1910,7 @@ export const useGetAuthTest = (
   });
 };
 useGetAuthTest.info = (
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -1920,7 +1920,7 @@ useGetAuthTest.info = (
 };
 useGetAuthTest.prefetch = (
   client: QueryClient,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{
     ok: Defs_ok_true;
     team: string;
@@ -2019,7 +2019,7 @@ useGetBotsInfo.prefetch = (
 };
 export const useGetCallsInfo = (
   queryParams: GetCallsInfoQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -2037,7 +2037,7 @@ export const useGetCallsInfo = (
 };
 useGetCallsInfo.info = (
   queryParams: GetCallsInfoQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2048,7 +2048,7 @@ useGetCallsInfo.info = (
 useGetCallsInfo.prefetch = (
   client: QueryClient,
   queryParams: GetCallsInfoQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -2116,7 +2116,7 @@ useGetChatGetPermalink.prefetch = (
 };
 export const useGetChatScheduledMessagesList = (
   queryParams?: GetChatScheduledMessagesListQueryParams,
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   options?: SwaggerTypescriptUseQueryOptions<{
     ok: Defs_ok_true;
     response_metadata: { next_cursor: string };
@@ -2147,7 +2147,7 @@ export const useGetChatScheduledMessagesList = (
 };
 useGetChatScheduledMessagesList.info = (
   queryParams?: GetChatScheduledMessagesListQueryParams,
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2163,7 +2163,7 @@ useGetChatScheduledMessagesList.info = (
 useGetChatScheduledMessagesList.prefetch = (
   client: QueryClient,
   queryParams?: GetChatScheduledMessagesListQueryParams,
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   options?: SwaggerTypescriptUseQueryOptions<{
     ok: Defs_ok_true;
     response_metadata: { next_cursor: string };
@@ -2524,7 +2524,7 @@ useGetConversationsReplies.prefetch = (
 };
 export const useGetDialogOpen = (
   queryParams: GetDialogOpenQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -2542,7 +2542,7 @@ export const useGetDialogOpen = (
 };
 useGetDialogOpen.info = (
   queryParams: GetDialogOpenQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -2553,7 +2553,7 @@ useGetDialogOpen.info = (
 useGetDialogOpen.prefetch = (
   client: QueryClient,
   queryParams: GetDialogOpenQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4375,7 +4375,7 @@ useGetUsersProfileGet.prefetch = (
 };
 export const useGetViewsOpen = (
   queryParams: GetViewsOpenQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4393,7 +4393,7 @@ export const useGetViewsOpen = (
 };
 useGetViewsOpen.info = (
   queryParams: GetViewsOpenQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4404,7 +4404,7 @@ useGetViewsOpen.info = (
 useGetViewsOpen.prefetch = (
   client: QueryClient,
   queryParams: GetViewsOpenQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4424,7 +4424,7 @@ useGetViewsOpen.prefetch = (
 };
 export const useGetViewsPublish = (
   queryParams: GetViewsPublishQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4442,7 +4442,7 @@ export const useGetViewsPublish = (
 };
 useGetViewsPublish.info = (
   queryParams: GetViewsPublishQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4453,7 +4453,7 @@ useGetViewsPublish.info = (
 useGetViewsPublish.prefetch = (
   client: QueryClient,
   queryParams: GetViewsPublishQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4473,7 +4473,7 @@ useGetViewsPublish.prefetch = (
 };
 export const useGetViewsPush = (
   queryParams: GetViewsPushQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4491,7 +4491,7 @@ export const useGetViewsPush = (
 };
 useGetViewsPush.info = (
   queryParams: GetViewsPushQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4502,7 +4502,7 @@ useGetViewsPush.info = (
 useGetViewsPush.prefetch = (
   client: QueryClient,
   queryParams: GetViewsPushQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4522,7 +4522,7 @@ useGetViewsPush.prefetch = (
 };
 export const useGetViewsUpdate = (
   queryParams?: GetViewsUpdateQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4540,7 +4540,7 @@ export const useGetViewsUpdate = (
 };
 useGetViewsUpdate.info = (
   queryParams?: GetViewsUpdateQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4551,7 +4551,7 @@ useGetViewsUpdate.info = (
 useGetViewsUpdate.prefetch = (
   client: QueryClient,
   queryParams?: GetViewsUpdateQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4571,7 +4571,7 @@ useGetViewsUpdate.prefetch = (
 };
 export const useGetWorkflowsStepCompleted = (
   queryParams: GetWorkflowsStepCompletedQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4589,7 +4589,7 @@ export const useGetWorkflowsStepCompleted = (
 };
 useGetWorkflowsStepCompleted.info = (
   queryParams: GetWorkflowsStepCompletedQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4601,7 +4601,7 @@ useGetWorkflowsStepCompleted.info = (
 useGetWorkflowsStepCompleted.prefetch = (
   client: QueryClient,
   queryParams: GetWorkflowsStepCompletedQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4621,7 +4621,7 @@ useGetWorkflowsStepCompleted.prefetch = (
 };
 export const useGetWorkflowsStepFailed = (
   queryParams: GetWorkflowsStepFailedQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4639,7 +4639,7 @@ export const useGetWorkflowsStepFailed = (
 };
 useGetWorkflowsStepFailed.info = (
   queryParams: GetWorkflowsStepFailedQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4651,7 +4651,7 @@ useGetWorkflowsStepFailed.info = (
 useGetWorkflowsStepFailed.prefetch = (
   client: QueryClient,
   queryParams: GetWorkflowsStepFailedQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4671,7 +4671,7 @@ useGetWorkflowsStepFailed.prefetch = (
 };
 export const useGetWorkflowsUpdateStep = (
   queryParams: GetWorkflowsUpdateStepQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4689,7 +4689,7 @@ export const useGetWorkflowsUpdateStep = (
 };
 useGetWorkflowsUpdateStep.info = (
   queryParams: GetWorkflowsUpdateStepQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ) => {
   return {
@@ -4701,7 +4701,7 @@ useGetWorkflowsUpdateStep.info = (
 useGetWorkflowsUpdateStep.prefetch = (
   client: QueryClient,
   queryParams: GetWorkflowsUpdateStepQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   options?: SwaggerTypescriptUseQueryOptions<{ ok: Defs_ok_true }>,
   configOverride?: AxiosRequestConfig,
 ) => {
@@ -4723,14 +4723,14 @@ export const usePostAdminAppsApprove = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** The id of the app to approve. */
         app_id?: string;
         /** The id of the request to approve. */
         request_id?: string;
         team_id?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -4747,14 +4747,14 @@ export const usePostAdminAppsRestrict = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** The id of the app to restrict. */
         app_id?: string;
         /** The id of the request to restrict. */
         request_id?: string;
         team_id?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -4775,7 +4775,7 @@ export const usePostAdminConversationsArchive = <TExtra,>(
         /** The channel to archive. */
         channel_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -4800,7 +4800,7 @@ export const usePostAdminConversationsConvertToPrivate = <TExtra,>(
         /** The channel to convert to private. */
         channel_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -4839,7 +4839,7 @@ export const usePostAdminConversationsCreate = <TExtra,>(
          */
         team_id?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -4864,7 +4864,7 @@ export const usePostAdminConversationsDelete = <TExtra,>(
         /** The channel to delete. */
         channel_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -4894,7 +4894,7 @@ export const usePostAdminConversationsDisconnectShared = <TExtra,>(
          */
         leaving_team_ids?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -4921,7 +4921,7 @@ export const usePostAdminConversationsInvite = <TExtra,>(
         /** The users to invite. */
         user_ids: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -4947,7 +4947,7 @@ export const usePostAdminConversationsRename = <TExtra,>(
         channel_id: string;
         name: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5048,7 +5048,7 @@ export const usePostAdminConversationsSetConversationPrefs = <TExtra,>(
         /** The prefs for this channel in a stringified JSON format. */
         prefs: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5085,7 +5085,7 @@ export const usePostAdminConversationsSetTeams = <TExtra,>(
          */
         team_id?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5110,7 +5110,7 @@ export const usePostAdminConversationsUnarchive = <TExtra,>(
         /** The channel to unarchive. */
         channel_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5240,8 +5240,8 @@ export const usePostAdminInviteRequestsApprove = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: RequestBodyAdmin_inviteRequests_approve;
-      headerParams?: { token: string };
+      requestBody?: RequestBodyAdmin_inviteRequests_approve;
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5262,8 +5262,8 @@ export const usePostAdminInviteRequestsDeny = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: RequestBodyAdmin_inviteRequests_approve;
-      headerParams?: { token: string };
+      requestBody?: RequestBodyAdmin_inviteRequests_approve;
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5297,7 +5297,7 @@ export const usePostAdminTeamsCreate = <TExtra,>(
          */
         team_discoverability?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5347,7 +5347,7 @@ export const usePostAdminTeamsSettingsSetDescription = <TExtra,>(
         /** ID for the workspace to set the description for. */
         team_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5377,7 +5377,7 @@ export const usePostAdminTeamsSettingsSetDiscoverability = <TExtra,>(
         /** The ID of the workspace to set discoverability on. */
         team_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5428,7 +5428,7 @@ export const usePostAdminTeamsSettingsSetName = <TExtra,>(
         /** ID for the workspace to set the name for. */
         team_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5457,7 +5457,7 @@ export const usePostAdminUsergroupsAddChannels = <TExtra,>(
         /** The workspace to add default channels in. */
         team_id?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5492,7 +5492,7 @@ export const usePostAdminUsergroupsAddTeams = <TExtra,>(
          */
         auto_provision?: boolean;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5519,7 +5519,7 @@ export const usePostAdminUsergroupsRemoveChannels = <TExtra,>(
         /** ID of the IDP Group */
         usergroup_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5552,7 +5552,7 @@ export const usePostAdminUsersAssign = <TExtra,>(
         /** True if user should be added to the workspace as a single-channel guest. */
         is_ultra_restricted?: boolean;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5599,7 +5599,7 @@ export const usePostAdminUsersInvite = <TExtra,>(
          */
         resend?: boolean;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5622,7 +5622,7 @@ export const usePostAdminUsersRemove = <TExtra,>(
         /** The ID of the user to remove. */
         user_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5644,7 +5644,7 @@ export const usePostAdminUsersSessionInvalidate = <TExtra,>(
         /** ID of the team that the session belongs to */
         team_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5673,7 +5673,7 @@ export const usePostAdminUsersSessionReset = <TExtra,>(
         /** Only expire web sessions (default: false) */
         web_only?: boolean;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5700,7 +5700,7 @@ export const usePostAdminUsersSetAdmin = <TExtra,>(
         /** The ID of the user to designate as an admin. */
         user_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5725,7 +5725,7 @@ export const usePostAdminUsersSetExpiration = <TExtra,>(
         /** The ID of the user to set an expiration for. */
         user_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5752,7 +5752,7 @@ export const usePostAdminUsersSetOwner = <TExtra,>(
         /** Id of the user to promote to owner. */
         user_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5775,7 +5775,7 @@ export const usePostAdminUsersSetRegular = <TExtra,>(
         /** The ID of the user to designate as a regular user. */
         user_id: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5830,7 +5830,7 @@ export const usePostCallsAdd = <TExtra,>(
          */
         users?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5856,7 +5856,7 @@ export const usePostCallsEnd = <TExtra,>(
         /** Call duration in seconds */
         duration?: number;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5882,7 +5882,7 @@ export const usePostCallsParticipantsAdd = <TExtra,>(
          */
         users: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5912,7 +5912,7 @@ export const usePostCallsParticipantsRemove = <TExtra,>(
          */
         users: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5946,7 +5946,7 @@ export const usePostCallsUpdate = <TExtra,>(
         /** The name of the Call. */
         title?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -5963,7 +5963,7 @@ export const usePostChatDelete = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { channel: Defs_channel; ok: Defs_ok_true; ts: Defs_ts },
     {
-      requestBody: {
+      requestBody?: {
         /**
          * Pass true to delete the message as the authed user with \`chat:write:user\`
          * scope. [Bot users](/bot-users) in this context are considered authed users.
@@ -5975,7 +5975,7 @@ export const usePostChatDelete = <TExtra,>(
         /** Timestamp of the message to be deleted. */
         ts?: number;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -5992,7 +5992,7 @@ export const usePostChatDeleteScheduledMessage = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** The channel the scheduled_message is posting to */
         channel: string;
         /** \`scheduled_message_id\` returned from call to chat.scheduleMessage */
@@ -6004,7 +6004,7 @@ export const usePostChatDeleteScheduledMessage = <TExtra,>(
          */
         as_user?: boolean;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -6025,7 +6025,7 @@ export const usePostChatMeMessage = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true; channel?: Defs_channel; ts?: Defs_ts },
     {
-      requestBody: {
+      requestBody?: {
         /**
          * Channel to send message to. Can be a public channel, private group or IM
          * channel. Can be an encoded ID, or a name.
@@ -6034,7 +6034,7 @@ export const usePostChatMeMessage = <TExtra,>(
         /** Text of the message to send. */
         text?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6051,7 +6051,7 @@ export const usePostChatPostEphemeral = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { message_ts: Defs_ts; ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /**
          * Channel, private group, or IM channel to send message to. Can be an encoded
          * ID, or a name.
@@ -6110,7 +6110,7 @@ export const usePostChatPostEphemeral = <TExtra,>(
          */
         username?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -6132,7 +6132,7 @@ export const usePostChatPostMessage = <TExtra,>(
       ts: Defs_ts;
     },
     {
-      requestBody: {
+      requestBody?: {
         /**
          * Channel, private group, or IM channel to send message to. Can be an encoded
          * ID, or a name. See [below](#channels) for more details.
@@ -6197,7 +6197,7 @@ export const usePostChatPostMessage = <TExtra,>(
          */
         username?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -6234,7 +6234,7 @@ export const usePostChatScheduleMessage = <TExtra,>(
       scheduled_message_id: string;
     },
     {
-      requestBody: {
+      requestBody?: {
         /**
          * Pass true to post the message as the authed user, instead of as a bot.
          * Defaults to false. See [chat.postMessage](chat.postMessage#authorship).
@@ -6282,7 +6282,7 @@ export const usePostChatScheduleMessage = <TExtra,>(
         /** Pass false to disable unfurling of media content. */
         unfurl_media?: boolean;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6325,7 +6325,7 @@ export const usePostChatUnfurl = <TExtra,>(
          */
         user_auth_url?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -6353,7 +6353,7 @@ export const usePostChatUpdate = <TExtra,>(
       ts: string;
     },
     {
-      requestBody: {
+      requestBody?: {
         /** Channel containing the message to be updated. */
         channel: string;
         /** Timestamp of the message to be updated. */
@@ -6397,7 +6397,7 @@ export const usePostChatUpdate = <TExtra,>(
          */
         text?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -6414,11 +6414,11 @@ export const usePostConversationsArchive = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** ID of conversation to archive */
         channel?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6439,11 +6439,11 @@ export const usePostConversationsClose = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true; already_closed?: boolean; no_op?: boolean },
     {
-      requestBody: {
+      requestBody?: {
         /** Conversation to close. */
         channel?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6460,13 +6460,13 @@ export const usePostConversationsCreate = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { channel: Objs_conversation; ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** Create a private channel instead of a public one */
         is_private?: boolean;
         /** Name of the public or private channel to create */
         name?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6483,13 +6483,13 @@ export const usePostConversationsInvite = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { channel: Objs_conversation; ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** The ID of the public or private channel to invite user(s) to. */
         channel?: string;
         /** A comma separated list of user IDs. Up to 1000 users may be listed. */
         users?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6512,11 +6512,11 @@ export const usePostConversationsJoin = <TExtra,>(
       warning?: string;
     },
     {
-      requestBody: {
+      requestBody?: {
         /** ID of conversation to join */
         channel?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6533,13 +6533,13 @@ export const usePostConversationsKick = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** ID of conversation to remove user from. */
         channel?: string;
         /** User ID to be removed. */
         user?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6556,11 +6556,11 @@ export const usePostConversationsLeave = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true; not_in_channel?: true },
     {
-      requestBody: {
+      requestBody?: {
         /** Conversation to leave */
         channel?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6577,7 +6577,7 @@ export const usePostConversationsMark = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** Channel or conversation to set the read cursor for. */
         channel?: string;
         /**
@@ -6586,7 +6586,7 @@ export const usePostConversationsMark = <TExtra,>(
          */
         ts?: number;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6621,7 +6621,7 @@ export const usePostConversationsOpen = <TExtra,>(
       no_op?: boolean;
     },
     {
-      requestBody: {
+      requestBody?: {
         /**
          * Resume a conversation by supplying an \`im\` or \`mpim\`'s ID. Or provide the
          * \`users\` field instead.
@@ -6636,7 +6636,7 @@ export const usePostConversationsOpen = <TExtra,>(
          */
         users?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6653,13 +6653,13 @@ export const usePostConversationsRename = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { channel: Objs_conversation; ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** ID of conversation to rename */
         channel?: string;
         /** New name for conversation. */
         name?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6676,13 +6676,13 @@ export const usePostConversationsSetPurpose = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { channel: Objs_conversation; ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** Conversation to set the purpose of */
         channel?: string;
         /** A new, specialer purpose */
         purpose?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6703,13 +6703,13 @@ export const usePostConversationsSetTopic = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { channel: Objs_conversation; ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** Conversation to set the topic of */
         channel?: string;
         /** The new topic string. Does not support formatting or linkification. */
         topic?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6730,11 +6730,11 @@ export const usePostConversationsUnarchive = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** ID of conversation to unarchive */
         channel?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6754,7 +6754,7 @@ export const usePostConversationsUnarchive = <TExtra,>(
 export const usePostDndEndDnd = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
-    { headerParams?: { token: string } },
+    { headerParams: { token: string } },
     TExtra
   >,
 ) => {
@@ -6775,7 +6775,7 @@ export const usePostDndEndSnooze = <TExtra,>(
       ok: Defs_ok_true;
       snooze_enabled: boolean;
     },
-    { headerParams?: { token: string } },
+    { headerParams: { token: string } },
     TExtra
   >,
 ) => {
@@ -6818,13 +6818,13 @@ export const usePostFilesCommentsDelete = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** File to delete a comment from. */
         file?: string;
         /** The comment to delete. */
         id?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6841,11 +6841,11 @@ export const usePostFilesDelete = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** ID of file to delete. */
         file?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6862,7 +6862,7 @@ export const usePostFilesRemoteAdd = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** Creator defined GUID for the file. */
         external_id?: string;
         /** URL of the remote file. */
@@ -6897,7 +6897,7 @@ export const usePostFilesRemoteRemove = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** Creator defined GUID for the file. */
         external_id?: string;
         /** Specify a file by providing its ID. */
@@ -6921,7 +6921,7 @@ export const usePostFilesRemoteUpdate = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** Creator defined GUID for the file. */
         external_id?: string;
         /** URL of the remote file. */
@@ -6958,11 +6958,11 @@ export const usePostFilesRevokePublicURL = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { file: Objs_file; ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** File to revoke */
         file?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -6983,11 +6983,11 @@ export const usePostFilesSharedPublicURL = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { file: Objs_file; ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** File to share */
         file?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -7008,7 +7008,7 @@ export const usePostFilesUpload = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { file: Objs_file; ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** Comma-separated list of channel names or IDs where the file will be shared. */
         channels?: string;
         /**
@@ -7059,7 +7059,7 @@ export const usePostPinsAdd = <TExtra,>(
         /** Timestamp of the message to pin. */
         timestamp?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7082,7 +7082,7 @@ export const usePostPinsRemove = <TExtra,>(
         /** Timestamp of the message to un-pin. */
         timestamp?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7107,7 +7107,7 @@ export const usePostReactionsAdd = <TExtra,>(
         /** Timestamp of the message to add reaction to. */
         timestamp: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7136,7 +7136,7 @@ export const usePostReactionsRemove = <TExtra,>(
         /** Timestamp of the message to remove reaction from. */
         timestamp?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7168,7 +7168,7 @@ export const usePostRemindersAdd = <TExtra,>(
          */
         user?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7185,11 +7185,11 @@ export const usePostRemindersComplete = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** The ID of the reminder to be marked as complete */
         reminder?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -7206,11 +7206,11 @@ export const usePostRemindersDelete = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /** The ID of the reminder */
         reminder?: string;
       };
-      headerParams?: { token: string };
+      headerParams?: { token?: string };
     },
     TExtra
   >,
@@ -7227,7 +7227,7 @@ export const usePostStarsAdd = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /**
          * Channel to add star to, or channel where the message to add star to was
          * posted (used with \`timestamp\`).
@@ -7240,7 +7240,7 @@ export const usePostStarsAdd = <TExtra,>(
         /** Timestamp of the message to add star to. */
         timestamp?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7257,7 +7257,7 @@ export const usePostStarsRemove = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
     {
-      requestBody: {
+      requestBody?: {
         /**
          * Channel to remove star from, or channel where the message to remove star from
          * was posted (used with \`timestamp\`).
@@ -7270,7 +7270,7 @@ export const usePostStarsRemove = <TExtra,>(
         /** Timestamp of the message to remove star from. */
         timestamp?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7287,7 +7287,7 @@ export const usePostUsergroupsCreate = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true; usergroup: Objs_subteam },
     {
-      requestBody: {
+      requestBody?: {
         /** A name for the User Group. Must be unique among User Groups. */
         name: string;
         /**
@@ -7302,7 +7302,7 @@ export const usePostUsergroupsCreate = <TExtra,>(
         /** Include the number of users in each User Group. */
         include_count?: boolean;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7319,13 +7319,13 @@ export const usePostUsergroupsDisable = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true; usergroup: Objs_subteam },
     {
-      requestBody: {
+      requestBody?: {
         /** The encoded ID of the User Group to disable. */
         usergroup: string;
         /** Include the number of users in the User Group. */
         include_count?: boolean;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7342,13 +7342,13 @@ export const usePostUsergroupsEnable = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true; usergroup: Objs_subteam },
     {
-      requestBody: {
+      requestBody?: {
         /** The encoded ID of the User Group to enable. */
         usergroup: string;
         /** Include the number of users in the User Group. */
         include_count?: boolean;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7365,7 +7365,7 @@ export const usePostUsergroupsUpdate = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true; usergroup: Objs_subteam },
     {
-      requestBody: {
+      requestBody?: {
         /** The encoded ID of the User Group to update. */
         usergroup: string;
         /**
@@ -7382,7 +7382,7 @@ export const usePostUsergroupsUpdate = <TExtra,>(
         /** A name for the User Group. Must be unique among User Groups. */
         name?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7399,7 +7399,7 @@ export const usePostUsergroupsUsersUpdate = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true; usergroup: Objs_subteam },
     {
-      requestBody: {
+      requestBody?: {
         /** The encoded ID of the User Group to update. */
         usergroup: string;
         /**
@@ -7410,7 +7410,7 @@ export const usePostUsergroupsUsersUpdate = <TExtra,>(
         /** Include the number of users in the User Group. */
         include_count?: boolean;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7457,7 +7457,7 @@ export const usePostUsersProfileSet = <TExtra,>(
       email_pending?: string;
     },
     {
-      requestBody: {
+      requestBody?: {
         /** Name of a single key to set. Usable only if \`profile\` is not passed. */
         name?: string;
         /**
@@ -7473,7 +7473,7 @@ export const usePostUsersProfileSet = <TExtra,>(
         /** Value to set a single key to. Usable only if \`profile\` is not passed. */
         value?: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7489,7 +7489,7 @@ export const usePostUsersProfileSet = <TExtra,>(
 export const usePostUsersSetActive = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     { ok: Defs_ok_true },
-    { headerParams?: { token: string } },
+    { headerParams: { token: string } },
     TExtra
   >,
 ) => {
@@ -7559,7 +7559,7 @@ export const usePostUsersSetPresence = <TExtra,>(
         /** Either \`auto\` or \`away\` */
         presence: string;
       };
-      headerParams?: { token: string };
+      headerParams: { token: string };
     },
     TExtra
   >,
@@ -7991,7 +7991,7 @@ getAdminConversationsEkmListOriginalConnectedChannelInfo.key =
 
 export const getAdminConversationsGetConversationPrefs = (
   queryParams: GetAdminConversationsGetConversationPrefsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -8025,7 +8025,7 @@ getAdminConversationsGetConversationPrefs.key =
 
 export const getAdminConversationsGetTeams = (
   queryParams: GetAdminConversationsGetTeamsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -8073,7 +8073,7 @@ getAdminConversationsRestrictAccessListGroups.key =
 
 export const getAdminConversationsSearch = (
   queryParams?: GetAdminConversationsSearchQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{ channels: Objs_channel[]; next_cursor: string }>
@@ -8116,7 +8116,7 @@ getAdminEmojiList.key = \\"/admin.emoji.list\\";
 
 export const getAdminInviteRequestsApprovedList = (
   queryParams?: GetAdminInviteRequestsApprovedListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -8141,7 +8141,7 @@ getAdminInviteRequestsApprovedList.key = \\"/admin.inviteRequests.approved.list\
 
 export const getAdminInviteRequestsDeniedList = (
   queryParams?: GetAdminInviteRequestsDeniedListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -8166,7 +8166,7 @@ getAdminInviteRequestsDeniedList.key = \\"/admin.inviteRequests.denied.list\\";
 
 export const getAdminInviteRequestsList = (
   queryParams?: GetAdminInviteRequestsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -8207,7 +8207,7 @@ getAdminTeamsAdminsList.key = \\"/admin.teams.admins.list\\";
 
 export const getAdminTeamsList = (
   queryParams?: GetAdminTeamsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -8248,7 +8248,7 @@ getAdminTeamsOwnersList.key = \\"/admin.teams.owners.list\\";
 
 export const getAdminTeamsSettingsInfo = (
   queryParams: GetAdminTeamsSettingsInfoQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -8273,7 +8273,7 @@ getAdminTeamsSettingsInfo.key = \\"/admin.teams.settings.info\\";
 
 export const getAdminUsergroupsListChannels = (
   queryParams: GetAdminUsergroupsListChannelsQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -8298,7 +8298,7 @@ getAdminUsergroupsListChannels.key = \\"/admin.usergroups.listChannels\\";
 
 export const getAdminUsersList = (
   queryParams: GetAdminUsersListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -8339,7 +8339,7 @@ getApiTest.key = \\"/api.test\\";
 
 export const getAppsEventAuthorizationsList = (
   queryParams: GetAppsEventAuthorizationsListQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -8527,7 +8527,7 @@ export const getAuthRevoke = (
 getAuthRevoke.key = \\"/auth.revoke\\";
 
 export const getAuthTest = (
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -8599,7 +8599,7 @@ getBotsInfo.key = \\"/bots.info\\";
 
 export const getCallsInfo = (
   queryParams: GetCallsInfoQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -8647,7 +8647,7 @@ getChatGetPermalink.key = \\"/chat.getPermalink\\";
 
 export const getChatScheduledMessagesList = (
   queryParams?: GetChatScheduledMessagesListQueryParams,
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -8828,7 +8828,7 @@ getConversationsReplies.key = \\"/conversations.replies\\";
 
 export const getDialogOpen = (
   queryParams: GetDialogOpenQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -9647,7 +9647,7 @@ getUsersProfileGet.key = \\"/users.profile.get\\";
 
 export const getViewsOpen = (
   queryParams: GetViewsOpenQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -9672,7 +9672,7 @@ getViewsOpen.key = \\"/views.open\\";
 
 export const getViewsPublish = (
   queryParams: GetViewsPublishQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -9697,7 +9697,7 @@ getViewsPublish.key = \\"/views.publish\\";
 
 export const getViewsPush = (
   queryParams: GetViewsPushQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -9722,7 +9722,7 @@ getViewsPush.key = \\"/views.push\\";
 
 export const getViewsUpdate = (
   queryParams?: GetViewsUpdateQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -9747,7 +9747,7 @@ getViewsUpdate.key = \\"/views.update\\";
 
 export const getWorkflowsStepCompleted = (
   queryParams: GetWorkflowsStepCompletedQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -9772,7 +9772,7 @@ getWorkflowsStepCompleted.key = \\"/workflows.stepCompleted\\";
 
 export const getWorkflowsStepFailed = (
   queryParams: GetWorkflowsStepFailedQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -9797,7 +9797,7 @@ getWorkflowsStepFailed.key = \\"/workflows.stepFailed\\";
 
 export const getWorkflowsUpdateStep = (
   queryParams: GetWorkflowsUpdateStepQueryParams,
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.getRequest(
@@ -9821,14 +9821,14 @@ export const getWorkflowsUpdateStep = (
 getWorkflowsUpdateStep.key = \\"/workflows.updateStep\\";
 
 export const postAdminAppsApprove = (
-  requestBody: {
+  requestBody?: {
     /** The id of the app to approve. */
     app_id?: string;
     /** The id of the request to approve. */
     request_id?: string;
     team_id?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -9852,14 +9852,14 @@ export const postAdminAppsApprove = (
 postAdminAppsApprove.key = \\"/admin.apps.approve\\";
 
 export const postAdminAppsRestrict = (
-  requestBody: {
+  requestBody?: {
     /** The id of the app to restrict. */
     app_id?: string;
     /** The id of the request to restrict. */
     request_id?: string;
     team_id?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -9887,7 +9887,7 @@ export const postAdminConversationsArchive = (
     /** The channel to archive. */
     channel_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -9915,7 +9915,7 @@ export const postAdminConversationsConvertToPrivate = (
     /** The channel to convert to private. */
     channel_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -9958,7 +9958,7 @@ export const postAdminConversationsCreate = (
      */
     team_id?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{ ok: Defs_ok_true; channel_id?: Defs_channel_id }>
@@ -9988,7 +9988,7 @@ export const postAdminConversationsDelete = (
     /** The channel to delete. */
     channel_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10021,7 +10021,7 @@ export const postAdminConversationsDisconnectShared = (
      */
     leaving_team_ids?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10052,7 +10052,7 @@ export const postAdminConversationsInvite = (
     /** The users to invite. */
     user_ids: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10081,7 +10081,7 @@ export const postAdminConversationsRename = (
     channel_id: string;
     name: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10179,7 +10179,7 @@ export const postAdminConversationsSetConversationPrefs = (
     /** The prefs for this channel in a stringified JSON format. */
     prefs: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10220,7 +10220,7 @@ export const postAdminConversationsSetTeams = (
      */
     team_id?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10248,7 +10248,7 @@ export const postAdminConversationsUnarchive = (
     /** The channel to unarchive. */
     channel_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10377,8 +10377,8 @@ export const postAdminEmojiRename = (
 postAdminEmojiRename.key = \\"/admin.emoji.rename\\";
 
 export const postAdminInviteRequestsApprove = (
-  requestBody: RequestBodyAdmin_inviteRequests_approve,
-  headerParams?: { token: string },
+  requestBody?: RequestBodyAdmin_inviteRequests_approve,
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10402,8 +10402,8 @@ export const postAdminInviteRequestsApprove = (
 postAdminInviteRequestsApprove.key = \\"/admin.inviteRequests.approve\\";
 
 export const postAdminInviteRequestsDeny = (
-  requestBody: RequestBodyAdmin_inviteRequests_approve,
-  headerParams?: { token: string },
+  requestBody?: RequestBodyAdmin_inviteRequests_approve,
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10440,7 +10440,7 @@ export const postAdminTeamsCreate = (
      */
     team_discoverability?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10494,7 +10494,7 @@ export const postAdminTeamsSettingsSetDescription = (
     /** ID for the workspace to set the description for. */
     team_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10528,7 +10528,7 @@ export const postAdminTeamsSettingsSetDiscoverability = (
     /** The ID of the workspace to set discoverability on. */
     team_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10582,7 +10582,7 @@ export const postAdminTeamsSettingsSetName = (
     /** ID for the workspace to set the name for. */
     team_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10614,7 +10614,7 @@ export const postAdminUsergroupsAddChannels = (
     /** The workspace to add default channels in. */
     team_id?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10652,7 +10652,7 @@ export const postAdminUsergroupsAddTeams = (
      */
     auto_provision?: boolean;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10682,7 +10682,7 @@ export const postAdminUsergroupsRemoveChannels = (
     /** ID of the IDP Group */
     usergroup_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10718,7 +10718,7 @@ export const postAdminUsersAssign = (
     /** True if user should be added to the workspace as a single-channel guest. */
     is_ultra_restricted?: boolean;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10772,7 +10772,7 @@ export const postAdminUsersInvite = (
      */
     resend?: boolean;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10802,7 +10802,7 @@ export const postAdminUsersRemove = (
     /** The ID of the user to remove. */
     user_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10831,7 +10831,7 @@ export const postAdminUsersSessionInvalidate = (
     /** ID of the team that the session belongs to */
     team_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10863,7 +10863,7 @@ export const postAdminUsersSessionReset = (
     /** Only expire web sessions (default: false) */
     web_only?: boolean;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10893,7 +10893,7 @@ export const postAdminUsersSetAdmin = (
     /** The ID of the user to designate as an admin. */
     user_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10925,7 +10925,7 @@ export const postAdminUsersSetExpiration = (
     /** The ID of the user to set an expiration for. */
     user_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10955,7 +10955,7 @@ export const postAdminUsersSetOwner = (
     /** Id of the user to promote to owner. */
     user_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -10985,7 +10985,7 @@ export const postAdminUsersSetRegular = (
     /** The ID of the user to designate as a regular user. */
     user_id: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11043,7 +11043,7 @@ export const postCallsAdd = (
      */
     users?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11076,7 +11076,7 @@ export const postCallsEnd = (
     /** Call duration in seconds */
     duration?: number;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11109,7 +11109,7 @@ export const postCallsParticipantsAdd = (
      */
     users: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11142,7 +11142,7 @@ export const postCallsParticipantsRemove = (
      */
     users: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11179,7 +11179,7 @@ export const postCallsUpdate = (
     /** The name of the Call. */
     title?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11203,7 +11203,7 @@ export const postCallsUpdate = (
 postCallsUpdate.key = \\"/calls.update\\";
 
 export const postChatDelete = (
-  requestBody: {
+  requestBody?: {
     /**
      * Pass true to delete the message as the authed user with \`chat:write:user\`
      * scope. [Bot users](/bot-users) in this context are considered authed users.
@@ -11215,7 +11215,7 @@ export const postChatDelete = (
     /** Timestamp of the message to be deleted. */
     ts?: number;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{ channel: Defs_channel; ok: Defs_ok_true; ts: Defs_ts }>
@@ -11241,7 +11241,7 @@ export const postChatDelete = (
 postChatDelete.key = \\"/chat.delete\\";
 
 export const postChatDeleteScheduledMessage = (
-  requestBody: {
+  requestBody?: {
     /** The channel the scheduled_message is posting to */
     channel: string;
     /** \`scheduled_message_id\` returned from call to chat.scheduleMessage */
@@ -11253,7 +11253,7 @@ export const postChatDeleteScheduledMessage = (
      */
     as_user?: boolean;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11277,7 +11277,7 @@ export const postChatDeleteScheduledMessage = (
 postChatDeleteScheduledMessage.key = \\"/chat.deleteScheduledMessage\\";
 
 export const postChatMeMessage = (
-  requestBody: {
+  requestBody?: {
     /**
      * Channel to send message to. Can be a public channel, private group or IM
      * channel. Can be an encoded ID, or a name.
@@ -11286,7 +11286,7 @@ export const postChatMeMessage = (
     /** Text of the message to send. */
     text?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{ ok: Defs_ok_true; channel?: Defs_channel; ts?: Defs_ts }>
@@ -11312,7 +11312,7 @@ export const postChatMeMessage = (
 postChatMeMessage.key = \\"/chat.meMessage\\";
 
 export const postChatPostEphemeral = (
-  requestBody: {
+  requestBody?: {
     /**
      * Channel, private group, or IM channel to send message to. Can be an encoded
      * ID, or a name.
@@ -11371,7 +11371,7 @@ export const postChatPostEphemeral = (
      */
     username?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ message_ts: Defs_ts; ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11395,7 +11395,7 @@ export const postChatPostEphemeral = (
 postChatPostEphemeral.key = \\"/chat.postEphemeral\\";
 
 export const postChatPostMessage = (
-  requestBody: {
+  requestBody?: {
     /**
      * Channel, private group, or IM channel to send message to. Can be an encoded
      * ID, or a name. See [below](#channels) for more details.
@@ -11460,7 +11460,7 @@ export const postChatPostMessage = (
      */
     username?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -11491,7 +11491,7 @@ export const postChatPostMessage = (
 postChatPostMessage.key = \\"/chat.postMessage\\";
 
 export const postChatScheduleMessage = (
-  requestBody: {
+  requestBody?: {
     /**
      * Pass true to post the message as the authed user, instead of as a bot.
      * Defaults to false. See [chat.postMessage](chat.postMessage#authorship).
@@ -11539,7 +11539,7 @@ export const postChatScheduleMessage = (
     /** Pass false to disable unfurling of media content. */
     unfurl_media?: boolean;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -11611,7 +11611,7 @@ export const postChatUnfurl = (
      */
     user_auth_url?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11635,7 +11635,7 @@ export const postChatUnfurl = (
 postChatUnfurl.key = \\"/chat.unfurl\\";
 
 export const postChatUpdate = (
-  requestBody: {
+  requestBody?: {
     /** Channel containing the message to be updated. */
     channel: string;
     /** Timestamp of the message to be updated. */
@@ -11679,7 +11679,7 @@ export const postChatUpdate = (
      */
     text?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -11716,11 +11716,11 @@ export const postChatUpdate = (
 postChatUpdate.key = \\"/chat.update\\";
 
 export const postConversationsArchive = (
-  requestBody: {
+  requestBody?: {
     /** ID of conversation to archive */
     channel?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11744,11 +11744,11 @@ export const postConversationsArchive = (
 postConversationsArchive.key = \\"/conversations.archive\\";
 
 export const postConversationsClose = (
-  requestBody: {
+  requestBody?: {
     /** Conversation to close. */
     channel?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -11778,13 +11778,13 @@ export const postConversationsClose = (
 postConversationsClose.key = \\"/conversations.close\\";
 
 export const postConversationsCreate = (
-  requestBody: {
+  requestBody?: {
     /** Create a private channel instead of a public one */
     is_private?: boolean;
     /** Name of the public or private channel to create */
     name?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{ channel: Objs_conversation; ok: Defs_ok_true }>
@@ -11810,13 +11810,13 @@ export const postConversationsCreate = (
 postConversationsCreate.key = \\"/conversations.create\\";
 
 export const postConversationsInvite = (
-  requestBody: {
+  requestBody?: {
     /** The ID of the public or private channel to invite user(s) to. */
     channel?: string;
     /** A comma separated list of user IDs. Up to 1000 users may be listed. */
     users?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{ channel: Objs_conversation; ok: Defs_ok_true }>
@@ -11842,11 +11842,11 @@ export const postConversationsInvite = (
 postConversationsInvite.key = \\"/conversations.invite\\";
 
 export const postConversationsJoin = (
-  requestBody: {
+  requestBody?: {
     /** ID of conversation to join */
     channel?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -11878,13 +11878,13 @@ export const postConversationsJoin = (
 postConversationsJoin.key = \\"/conversations.join\\";
 
 export const postConversationsKick = (
-  requestBody: {
+  requestBody?: {
     /** ID of conversation to remove user from. */
     channel?: string;
     /** User ID to be removed. */
     user?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11908,11 +11908,11 @@ export const postConversationsKick = (
 postConversationsKick.key = \\"/conversations.kick\\";
 
 export const postConversationsLeave = (
-  requestBody: {
+  requestBody?: {
     /** Conversation to leave */
     channel?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true; not_in_channel?: true }>> => {
   return Http.postRequest(
@@ -11936,7 +11936,7 @@ export const postConversationsLeave = (
 postConversationsLeave.key = \\"/conversations.leave\\";
 
 export const postConversationsMark = (
-  requestBody: {
+  requestBody?: {
     /** Channel or conversation to set the read cursor for. */
     channel?: string;
     /**
@@ -11945,7 +11945,7 @@ export const postConversationsMark = (
      */
     ts?: number;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -11969,7 +11969,7 @@ export const postConversationsMark = (
 postConversationsMark.key = \\"/conversations.mark\\";
 
 export const postConversationsOpen = (
-  requestBody: {
+  requestBody?: {
     /**
      * Resume a conversation by supplying an \`im\` or \`mpim\`'s ID. Or provide the
      * \`users\` field instead.
@@ -11984,7 +11984,7 @@ export const postConversationsOpen = (
      */
     users?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -12028,13 +12028,13 @@ export const postConversationsOpen = (
 postConversationsOpen.key = \\"/conversations.open\\";
 
 export const postConversationsRename = (
-  requestBody: {
+  requestBody?: {
     /** ID of conversation to rename */
     channel?: string;
     /** New name for conversation. */
     name?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{ channel: Objs_conversation; ok: Defs_ok_true }>
@@ -12060,13 +12060,13 @@ export const postConversationsRename = (
 postConversationsRename.key = \\"/conversations.rename\\";
 
 export const postConversationsSetPurpose = (
-  requestBody: {
+  requestBody?: {
     /** Conversation to set the purpose of */
     channel?: string;
     /** A new, specialer purpose */
     purpose?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{ channel: Objs_conversation; ok: Defs_ok_true }>
@@ -12092,13 +12092,13 @@ export const postConversationsSetPurpose = (
 postConversationsSetPurpose.key = \\"/conversations.setPurpose\\";
 
 export const postConversationsSetTopic = (
-  requestBody: {
+  requestBody?: {
     /** Conversation to set the topic of */
     channel?: string;
     /** The new topic string. Does not support formatting or linkification. */
     topic?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{ channel: Objs_conversation; ok: Defs_ok_true }>
@@ -12124,11 +12124,11 @@ export const postConversationsSetTopic = (
 postConversationsSetTopic.key = \\"/conversations.setTopic\\";
 
 export const postConversationsUnarchive = (
-  requestBody: {
+  requestBody?: {
     /** ID of conversation to unarchive */
     channel?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12152,7 +12152,7 @@ export const postConversationsUnarchive = (
 postConversationsUnarchive.key = \\"/conversations.unarchive\\";
 
 export const postDndEndDnd = (
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12176,7 +12176,7 @@ export const postDndEndDnd = (
 postDndEndDnd.key = \\"/dnd.endDnd\\";
 
 export const postDndEndSnooze = (
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -12236,13 +12236,13 @@ export const postDndSetSnooze = (
 postDndSetSnooze.key = \\"/dnd.setSnooze\\";
 
 export const postFilesCommentsDelete = (
-  requestBody: {
+  requestBody?: {
     /** File to delete a comment from. */
     file?: string;
     /** The comment to delete. */
     id?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12266,11 +12266,11 @@ export const postFilesCommentsDelete = (
 postFilesCommentsDelete.key = \\"/files.comments.delete\\";
 
 export const postFilesDelete = (
-  requestBody: {
+  requestBody?: {
     /** ID of file to delete. */
     file?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12294,7 +12294,7 @@ export const postFilesDelete = (
 postFilesDelete.key = \\"/files.delete\\";
 
 export const postFilesRemoteAdd = (
-  requestBody: {
+  requestBody?: {
     /** Creator defined GUID for the file. */
     external_id?: string;
     /** URL of the remote file. */
@@ -12328,7 +12328,7 @@ export const postFilesRemoteAdd = (
 postFilesRemoteAdd.key = \\"/files.remote.add\\";
 
 export const postFilesRemoteRemove = (
-  requestBody: {
+  requestBody?: {
     /** Creator defined GUID for the file. */
     external_id?: string;
     /** Specify a file by providing its ID. */
@@ -12351,7 +12351,7 @@ export const postFilesRemoteRemove = (
 postFilesRemoteRemove.key = \\"/files.remote.remove\\";
 
 export const postFilesRemoteUpdate = (
-  requestBody: {
+  requestBody?: {
     /** Creator defined GUID for the file. */
     external_id?: string;
     /** URL of the remote file. */
@@ -12387,11 +12387,11 @@ export const postFilesRemoteUpdate = (
 postFilesRemoteUpdate.key = \\"/files.remote.update\\";
 
 export const postFilesRevokePublicURL = (
-  requestBody: {
+  requestBody?: {
     /** File to revoke */
     file?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ file: Objs_file; ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12415,11 +12415,11 @@ export const postFilesRevokePublicURL = (
 postFilesRevokePublicURL.key = \\"/files.revokePublicURL\\";
 
 export const postFilesSharedPublicURL = (
-  requestBody: {
+  requestBody?: {
     /** File to share */
     file?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ file: Objs_file; ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12443,7 +12443,7 @@ export const postFilesSharedPublicURL = (
 postFilesSharedPublicURL.key = \\"/files.sharedPublicURL\\";
 
 export const postFilesUpload = (
-  requestBody: {
+  requestBody?: {
     /** Comma-separated list of channel names or IDs where the file will be shared. */
     channels?: string;
     /**
@@ -12493,7 +12493,7 @@ export const postPinsAdd = (
     /** Timestamp of the message to pin. */
     timestamp?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12523,7 +12523,7 @@ export const postPinsRemove = (
     /** Timestamp of the message to un-pin. */
     timestamp?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12555,7 +12555,7 @@ export const postReactionsAdd = (
     /** Timestamp of the message to add reaction to. */
     timestamp: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12591,7 +12591,7 @@ export const postReactionsRemove = (
     /** Timestamp of the message to remove reaction from. */
     timestamp?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12630,7 +12630,7 @@ export const postRemindersAdd = (
      */
     user?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true; reminder: Objs_reminder }>> => {
   return Http.postRequest(
@@ -12654,11 +12654,11 @@ export const postRemindersAdd = (
 postRemindersAdd.key = \\"/reminders.add\\";
 
 export const postRemindersComplete = (
-  requestBody: {
+  requestBody?: {
     /** The ID of the reminder to be marked as complete */
     reminder?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12682,11 +12682,11 @@ export const postRemindersComplete = (
 postRemindersComplete.key = \\"/reminders.complete\\";
 
 export const postRemindersDelete = (
-  requestBody: {
+  requestBody?: {
     /** The ID of the reminder */
     reminder?: string;
   },
-  headerParams?: { token: string },
+  headerParams?: { token?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12710,7 +12710,7 @@ export const postRemindersDelete = (
 postRemindersDelete.key = \\"/reminders.delete\\";
 
 export const postStarsAdd = (
-  requestBody: {
+  requestBody?: {
     /**
      * Channel to add star to, or channel where the message to add star to was
      * posted (used with \`timestamp\`).
@@ -12723,7 +12723,7 @@ export const postStarsAdd = (
     /** Timestamp of the message to add star to. */
     timestamp?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12747,7 +12747,7 @@ export const postStarsAdd = (
 postStarsAdd.key = \\"/stars.add\\";
 
 export const postStarsRemove = (
-  requestBody: {
+  requestBody?: {
     /**
      * Channel to remove star from, or channel where the message to remove star from
      * was posted (used with \`timestamp\`).
@@ -12760,7 +12760,7 @@ export const postStarsRemove = (
     /** Timestamp of the message to remove star from. */
     timestamp?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -12784,7 +12784,7 @@ export const postStarsRemove = (
 postStarsRemove.key = \\"/stars.remove\\";
 
 export const postUsergroupsCreate = (
-  requestBody: {
+  requestBody?: {
     /** A name for the User Group. Must be unique among User Groups. */
     name: string;
     /**
@@ -12799,7 +12799,7 @@ export const postUsergroupsCreate = (
     /** Include the number of users in each User Group. */
     include_count?: boolean;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true; usergroup: Objs_subteam }>> => {
   return Http.postRequest(
@@ -12823,13 +12823,13 @@ export const postUsergroupsCreate = (
 postUsergroupsCreate.key = \\"/usergroups.create\\";
 
 export const postUsergroupsDisable = (
-  requestBody: {
+  requestBody?: {
     /** The encoded ID of the User Group to disable. */
     usergroup: string;
     /** Include the number of users in the User Group. */
     include_count?: boolean;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true; usergroup: Objs_subteam }>> => {
   return Http.postRequest(
@@ -12853,13 +12853,13 @@ export const postUsergroupsDisable = (
 postUsergroupsDisable.key = \\"/usergroups.disable\\";
 
 export const postUsergroupsEnable = (
-  requestBody: {
+  requestBody?: {
     /** The encoded ID of the User Group to enable. */
     usergroup: string;
     /** Include the number of users in the User Group. */
     include_count?: boolean;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true; usergroup: Objs_subteam }>> => {
   return Http.postRequest(
@@ -12883,7 +12883,7 @@ export const postUsergroupsEnable = (
 postUsergroupsEnable.key = \\"/usergroups.enable\\";
 
 export const postUsergroupsUpdate = (
-  requestBody: {
+  requestBody?: {
     /** The encoded ID of the User Group to update. */
     usergroup: string;
     /**
@@ -12900,7 +12900,7 @@ export const postUsergroupsUpdate = (
     /** A name for the User Group. Must be unique among User Groups. */
     name?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true; usergroup: Objs_subteam }>> => {
   return Http.postRequest(
@@ -12924,7 +12924,7 @@ export const postUsergroupsUpdate = (
 postUsergroupsUpdate.key = \\"/usergroups.update\\";
 
 export const postUsergroupsUsersUpdate = (
-  requestBody: {
+  requestBody?: {
     /** The encoded ID of the User Group to update. */
     usergroup: string;
     /**
@@ -12935,7 +12935,7 @@ export const postUsergroupsUsersUpdate = (
     /** Include the number of users in the User Group. */
     include_count?: boolean;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true; usergroup: Objs_subteam }>> => {
   return Http.postRequest(
@@ -12978,7 +12978,7 @@ export const postUsersDeletePhoto = (
 postUsersDeletePhoto.key = \\"/users.deletePhoto\\";
 
 export const postUsersProfileSet = (
-  requestBody: {
+  requestBody?: {
     /** Name of a single key to set. Usable only if \`profile\` is not passed. */
     name?: string;
     /**
@@ -12994,7 +12994,7 @@ export const postUsersProfileSet = (
     /** Value to set a single key to. Usable only if \`profile\` is not passed. */
     value?: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<
   SwaggerResponse<{
@@ -13026,7 +13026,7 @@ export const postUsersProfileSet = (
 postUsersProfileSet.key = \\"/users.profile.set\\";
 
 export const postUsersSetActive = (
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
@@ -13105,7 +13105,7 @@ export const postUsersSetPresence = (
     /** Either \`auto\` or \`away\` */
     presence: string;
   },
-  headerParams?: { token: string },
+  headerParams: { token: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<{ ok: Defs_ok_true }>> => {
   return Http.postRequest(
