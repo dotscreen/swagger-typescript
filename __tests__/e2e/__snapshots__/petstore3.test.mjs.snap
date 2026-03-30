@@ -2,10 +2,11 @@
 
 exports[`E2E: Petstore3 API Tests should generate Petstore3 API files with correct enum handling: petstore3-generated-files 1`] = `
 Object {
-  "config.ts": "/**
+  "config.ts": "/* eslint-disable */
+/**
  * You can modify this file
  *
- * @version 6
+ * @version 7
  */
 import Axios, {
   AxiosRequestConfig,
@@ -51,20 +52,6 @@ function getAxiosInstance(security: Security): AxiosInstance {
       (error: AxiosError) => {
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         // Do something with response error
-
-        if (error.response) {
-          return Promise.reject(
-            new RequestError(
-              error.response.data,
-              error.response.status,
-              error.response,
-            ),
-          );
-        }
-
-        if (error.isAxiosError) {
-          return Promise.reject(new RequestError(\\"noInternetConnection\\"));
-        }
         return Promise.reject(error);
       },
     );
@@ -90,28 +77,12 @@ function getAxiosInstance(security: Security): AxiosInstance {
   return axiosInstance;
 }
 
-class RequestError extends Error {
-  constructor(
-    public message: string,
-    public status?: number,
-    public response?: AxiosResponse,
-  ) {
-    super(message);
-  }
-
-  isApiException = true;
-
-  static isRequestError(error: any): error is RequestError {
-    return error.isApiException;
-  }
-}
-
 export type Security = any[] | undefined;
 
 // export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 export type SwaggerResponse<R> = R;
 
-export { getAxiosInstance, RequestError };
+export { getAxiosInstance };
 ",
   "hooks.ts": "//@ts-nocheck
 /**

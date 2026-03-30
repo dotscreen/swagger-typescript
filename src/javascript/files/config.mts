@@ -1,15 +1,15 @@
-const getConfigFile = ({ baseUrl }: { baseUrl: string }) => `/**
+const getConfigFile = ({
+  baseUrl,
+}: {
+  baseUrl: string;
+}) => `/* eslint-disable */
+/**
  * You can modify this file
  *
- * @version ${6}
- * 
+ * @version ${7}
+ *
  */
-import Axios, {
-  AxiosRequestConfig,
-  AxiosError,
-  AxiosResponse,
-  AxiosInstance,
-} from "axios";
+import Axios, { AxiosRequestConfig, AxiosError, AxiosResponse, AxiosInstance } from "axios";
 //@ts-ignore
 import qs from "qs";
 
@@ -20,7 +20,7 @@ const baseConfig: AxiosRequestConfig = {
     Accept: "application/json",
     "Content-Type": "application/json-patch+json",
   },
-  paramsSerializer: (param) => qs.stringify(param, { indices: false }),
+  paramsSerializer: param => qs.stringify(param, { indices: false }),
 };
 
 let axiosInstance: AxiosInstance;
@@ -48,32 +48,14 @@ function getAxiosInstance(security: Security): AxiosInstance {
       (error: AxiosError) => {
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         // Do something with response error
-
-        if (error.response) {
-          return Promise.reject(
-            new RequestError(
-              error.response.data,
-              error.response.status,
-              error.response,
-            ),
-          );
-        }
-
-        if (error.isAxiosError) {
-          return Promise.reject(
-            new RequestError(
-              "noInternetConnection",
-            ),
-          );
-        }
         return Promise.reject(error);
-      },
+      }
     );
   }
 
   // ًًRequest interceptor
   axiosInstance.interceptors.request.use(
-    async (requestConfig) => {
+    async requestConfig => {
       // Do something before request is sent
       /** Example on how to add authorization based on security */
       if (security?.[0]) {
@@ -82,39 +64,21 @@ function getAxiosInstance(security: Security): AxiosInstance {
 
       return requestConfig;
     },
-    (error) => {
+    error => {
       // Do something with request error
       return Promise.reject(error);
-    },
+    }
   );
 
   return axiosInstance;
 }
 
-class RequestError extends Error {
-  constructor(
-    public message: string,
-    public status?: number,
-    public response?: AxiosResponse,
-  ) {
-    super(message);
-  }
-
-  isApiException = true;
-
-  static isRequestError(error: any): error is RequestError {
-    return error.isApiException;
-  }
-}
-
 export type Security = any[] | undefined;
 
 // export interface SwaggerResponse<R> extends AxiosResponse<R> {}
-export type SwaggerResponse<R> = R
+export type SwaggerResponse<R> = R;
 
-export {
-  getAxiosInstance,
-  RequestError,
-};`;
+export { getAxiosInstance };
+`;
 
 export default getConfigFile;

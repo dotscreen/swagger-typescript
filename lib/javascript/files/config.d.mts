@@ -1,4 +1,4 @@
-declare const getConfigFile: ({ baseUrl }: {
+declare const getConfigFile: ({ baseUrl, }: {
     baseUrl: string;
 }) => string;
 export default getConfigFile;
