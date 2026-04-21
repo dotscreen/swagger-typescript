@@ -5,7 +5,7 @@ import {
   toPascalCase,
   getSchemaName,
 } from "./utils.mjs";
-import { ApiAST, Config, TypeAST } from "../types.mjs";
+import { ApiAST, Config, Schema, TypeAST } from "../types.mjs";
 import {
   DEPRECATED_WARM_MESSAGE,
   getHooksFunctions,
@@ -20,6 +20,7 @@ type HookContext = {
   config: Config;
   hasInfiniteQuery: boolean;
   hasMutationWithoutVariables: boolean;
+  schemasMap: Map<string, Schema>;
 };
 
 function generateHook(
@@ -28,10 +29,17 @@ function generateHook(
   config: Config,
 ): string {
   try {
+    const schemasMap = new Map(
+      types
+        .filter(({ schema }) => Boolean(schema))
+        .map(({ name, schema }) => [getSchemaName(name), schema!] as const),
+    );
+
     const context: HookContext = {
       config,
       hasInfiniteQuery: !!config.useInfiniteQuery?.length,
       hasMutationWithoutVariables: false,
+      schemasMap,
     };
 
     const sortedApis = apis.sort(({ serviceName }, { serviceName: other }) =>
@@ -39,7 +47,7 @@ function generateHook(
     );
 
     const apisCode = sortedApis
-      .map((api) => generateSingleHook(api, context))
+      .map((api) => generateSingleHook(api, context, schemasMap))
       .join("\n");
 
     return buildFinalCode(apisCode, types, sortedApis, context);
@@ -50,12 +58,22 @@ function generateHook(
 }
 
 /** Generate code for a single hook */
-function generateSingleHook(api: ApiAST, context: HookContext): string {
+function generateSingleHook(
+  api: ApiAST,
+  context: HookContext,
+  schemasMap: Map<string, Schema>,
+): string {
   const hookName = `use${toPascalCase(api.serviceName)}`;
   const isInfiniteQuery = shouldUseInfiniteQuery(api, hookName, context);
   const isQuery = isInfiniteQuery || shouldUseQuery(api, hookName, context);
 
-  const hookConfig = buildHookConfig(api, isQuery, isInfiniteQuery, context);
+  const hookConfig = buildHookConfig(
+    api,
+    isQuery,
+    isInfiniteQuery,
+    context,
+    schemasMap,
+  );
 
   let code = generateHookJsDoc(api);
   code += generateHookSignature(hookName, isQuery, hookConfig);
@@ -75,9 +93,10 @@ function buildHookConfig(
   isQuery: boolean,
   isInfiniteQuery: boolean,
   context: HookContext,
+  schemasMap: Map<string, Schema>,
 ) {
   const TData = api.responses
-    ? getTsType(api.responses, context.config)
+    ? getTsType(api.responses, context.config, schemasMap)
     : "any";
   const TQueryFnData = `SwaggerResponse<${TData}>`;
   const TError = "RequestError | Error";
@@ -192,7 +211,14 @@ function buildVariables(api: ApiAST, context: HookContext): string {
   // Path parameters
   api.pathParams.forEach(({ name, required, schema, description }) => {
     parts.push(
-      getDefineParam(name, required, schema, context.config, description),
+      getDefineParam(
+        name,
+        required,
+        schema,
+        context.config,
+        description,
+        context.schemasMap,
+      ),
     );
   });
 
@@ -204,6 +230,8 @@ function buildVariables(api: ApiAST, context: HookContext): string {
         api.requestBodyRequired,
         api.requestBody,
         context.config,
+        undefined,
+        context.schemasMap,
       ),
     );
   }
@@ -247,6 +275,7 @@ function buildHookParams(
 
   if (isQuery) {
     const variables = buildVariables(api, {
+      ...context,
       config: {} as Config,
       hasInfiniteQuery: false,
       hasMutationWithoutVariables: false,
@@ -264,6 +293,7 @@ function buildHookParams(
     optionsType = `SwaggerTypescriptUseQueryOptions<${TData}>`;
   } else {
     const variables = buildVariables(api, {
+      ...context,
       config: {} as Config,
       hasInfiniteQuery: false,
       hasMutationWithoutVariables: false,

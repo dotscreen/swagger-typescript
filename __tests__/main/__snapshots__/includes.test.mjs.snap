@@ -102,7 +102,7 @@ export const deleteBusinessUserConnectionConnectionId = (
   /** Connection Id */
   connectionId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel>> => {
+): Promise<SwaggerResponse<SubUserConnectionApiModel | null>> => {
   return Http.deleteRequest(
     template(deleteBusinessUserConnectionConnectionId.key, { connectionId }),
     undefined,
@@ -150,7 +150,7 @@ export const deleteSubUserConnectionConnectionId = (
   /** Connection id */
   connectionId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BusinessUserConnectionApiModel>> => {
+): Promise<SwaggerResponse<BusinessUserConnectionApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"deleteSubUserConnectionConnectionId\\",
@@ -177,7 +177,7 @@ export const deleteUserConnectionConnectionId = (
   /** Connection id */
   connectionId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BusinessUserConnectionApiModel>> => {
+): Promise<SwaggerResponse<BusinessUserConnectionApiModel | null>> => {
   return Http.deleteRequest(
     template(deleteUserConnectionConnectionId.key, { connectionId }),
     undefined,
@@ -198,7 +198,7 @@ export const getBusinessUserConnectionConnectionId = (
   /** Connection Id */
   connectionId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel>> => {
+): Promise<SwaggerResponse<SubUserConnectionApiModel | null>> => {
   return Http.getRequest(
     template(getBusinessUserConnectionConnectionId.key, { connectionId }),
     undefined,
@@ -217,7 +217,7 @@ export const getEpayRequestEpayId = (
   /** EpayRequest's Id */
   epayId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<EpayRequestDetailApiModel>> => {
+): Promise<SwaggerResponse<EpayRequestDetailApiModel | null>> => {
   return Http.getRequest(
     template(getEpayRequestEpayId.key, { epayId }),
     undefined,
@@ -233,7 +233,7 @@ getEpayRequestEpayId.key = \\"/EpayRequest/{epayId}\\";
 export const getPluginPluginId = (
   pluginId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<PluginApiModel>> => {
+): Promise<SwaggerResponse<PluginApiModel | null>> => {
   return Http.getRequest(
     template(getPluginPluginId.key, { pluginId }),
     undefined,
@@ -251,7 +251,7 @@ export const getReceiptBankEpayTryId = (
   /** EpayTry's id to get receipt for */
   epayTryId: string,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BankReceiptApiModel>> => {
+): Promise<SwaggerResponse<BankReceiptApiModel | null>> => {
   return Http.getRequest(
     template(getReceiptBankEpayTryId.key, { epayTryId }),
     undefined,
@@ -268,7 +268,7 @@ getReceiptBankEpayTryId.key = \\"/Receipt/bank/{epayTryId}\\";
 export const getSubUserAccountUserWalletId = (
   userWalletId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserAccountDetailQuery>> => {
+): Promise<SwaggerResponse<SubUserAccountDetailQuery | null>> => {
   return Http.getRequest(
     template(getSubUserAccountUserWalletId.key, { userWalletId }),
     undefined,
@@ -285,7 +285,7 @@ getSubUserAccountUserWalletId.key = \\"/SubUser/account/{userWalletId}\\";
 export const getTransactionTransactionId = (
   transactionId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<TransactionApiModel>> => {
+): Promise<SwaggerResponse<TransactionApiModel | null>> => {
   return Http.getRequest(
     template(getTransactionTransactionId.key, { transactionId }),
     undefined,
@@ -303,7 +303,7 @@ export const getUserBankUserBankId = (
   /** User bank id */
   userBankId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserBankDetailApiModel>> => {
+): Promise<SwaggerResponse<UserBankDetailApiModel | null>> => {
   return Http.getRequest(
     template(getUserBankUserBankId.key, { userBankId }),
     undefined,
@@ -319,7 +319,7 @@ getUserBankUserBankId.key = \\"/UserBank/{userBankId}\\";
 export const getUserWalletUserWalletId = (
   userWalletId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<WalletDetailApiModel>> => {
+): Promise<SwaggerResponse<WalletDetailApiModel | null>> => {
   return Http.getRequest(
     template(getUserWalletUserWalletId.key, { userWalletId }),
     undefined,
@@ -343,7 +343,7 @@ export const postBusinessUserResendInvitationId = (
   /** Invitation Id */
   invitationId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel>> => {
+): Promise<SwaggerResponse<SubUserConnectionApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"postBusinessUserResendInvitationId\\",
@@ -367,7 +367,7 @@ export const postEpayRequestEpayTokenPayUserWalletId = (
   userWalletId: number,
   requestBody: EpayRequestPayInput,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<WalletReceiptApiModel>> => {
+): Promise<SwaggerResponse<WalletReceiptApiModel | null>> => {
   return Http.postRequest(
     template(postEpayRequestEpayTokenPayUserWalletId.key, {
       epayToken,
@@ -389,7 +389,7 @@ export const postEpayRequestUserWalletId = (
   userWalletId: number,
   requestBody: RequestBodyNewEpayRequestInput,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<EpayRequestDetailApiModel>> => {
+): Promise<SwaggerResponse<EpayRequestDetailApiModel | null>> => {
   return Http.postRequest(
     template(postEpayRequestUserWalletId.key, { userWalletId }),
     undefined,
@@ -436,7 +436,7 @@ export const postTransferUserWalletId = (
   userWalletId: number,
   requestBody: RequestBodyTransferMoneyInput,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<TransferMoneyApiModel>> => {
+): Promise<SwaggerResponse<TransferMoneyApiModel | null>> => {
   return Http.postRequest(
     template(postTransferUserWalletId.key, { userWalletId }),
     undefined,
@@ -458,7 +458,7 @@ export const putBusinessUserConnectionConnectionId = (
   connectionId: number,
   requestBody: EditConnectionInfoInput,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel>> => {
+): Promise<SwaggerResponse<SubUserConnectionApiModel | null>> => {
   return Http.putRequest(
     template(putBusinessUserConnectionConnectionId.key, { connectionId }),
     undefined,
@@ -501,7 +501,7 @@ export const putUserBankUserBankId = (
   userBankId: number,
   requestBody: RequestBodyUserBankInput,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserBankApiModel>> => {
+): Promise<SwaggerResponse<UserBankApiModel | null>> => {
   return Http.putRequest(
     template(putUserBankUserBankId.key, { userBankId }),
     undefined,
@@ -518,7 +518,7 @@ export const putUserWalletUserWalletId = (
   userWalletId: number,
   requestBody: RequestBodyAccountCreationApiModel,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<WalletDisplayApiModel>> => {
+): Promise<SwaggerResponse<WalletDisplayApiModel | null>> => {
   return Http.putRequest(
     template(putUserWalletUserWalletId.key, { userWalletId }),
     undefined,
@@ -647,7 +647,7 @@ type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> =
  */
 export const useDeleteBusinessUserConnectionConnectionId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    SubUserConnectionApiModel,
+    SubUserConnectionApiModel | null,
     {
       /** Connection Id */
       connectionId: number;
@@ -701,7 +701,7 @@ export const useDeleteBusinessUserConnectionConnectionIdPermissionUserWalletId =
  */
 export const useDeleteSubUserConnectionConnectionId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    BusinessUserConnectionApiModel,
+    BusinessUserConnectionApiModel | null,
     {
       /** Connection id */
       connectionId: number;
@@ -724,7 +724,7 @@ export const useDeleteSubUserConnectionConnectionId = <TExtra,>(
  */
 export const useDeleteUserConnectionConnectionId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    BusinessUserConnectionApiModel,
+    BusinessUserConnectionApiModel | null,
     {
       /** Connection id */
       connectionId: number;
@@ -748,7 +748,7 @@ export const useDeleteUserConnectionConnectionId = <TExtra,>(
 export const useGetBusinessUserConnectionConnectionId = (
   /** Connection Id */
   connectionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserConnectionApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<SubUserConnectionApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionId.info(
@@ -778,7 +778,7 @@ useGetBusinessUserConnectionConnectionId.prefetch = (
 
   /** Connection Id */
   connectionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserConnectionApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<SubUserConnectionApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionId.info(
@@ -799,7 +799,7 @@ useGetBusinessUserConnectionConnectionId.prefetch = (
 export const useGetEpayRequestEpayId = (
   /** EpayRequest's Id */
   epayId: number,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestDetailApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestDetailApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestEpayId.info(epayId, configOverride);
@@ -825,7 +825,7 @@ useGetEpayRequestEpayId.prefetch = (
 
   /** EpayRequest's Id */
   epayId: number,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestDetailApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestDetailApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestEpayId.info(epayId, configOverride);
@@ -840,7 +840,7 @@ useGetEpayRequestEpayId.prefetch = (
 };
 export const useGetPluginPluginId = (
   pluginId: number,
-  options?: SwaggerTypescriptUseQueryOptions<PluginApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<PluginApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPluginPluginId.info(pluginId, configOverride);
@@ -863,7 +863,7 @@ useGetPluginPluginId.info = (
 useGetPluginPluginId.prefetch = (
   client: QueryClient,
   pluginId: number,
-  options?: SwaggerTypescriptUseQueryOptions<PluginApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<PluginApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPluginPluginId.info(pluginId, configOverride);
@@ -881,7 +881,7 @@ useGetPluginPluginId.prefetch = (
 export const useGetReceiptBankEpayTryId = (
   /** EpayTry's id to get receipt for */
   epayTryId: string,
-  options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetReceiptBankEpayTryId.info(
@@ -910,7 +910,7 @@ useGetReceiptBankEpayTryId.prefetch = (
 
   /** EpayTry's id to get receipt for */
   epayTryId: string,
-  options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetReceiptBankEpayTryId.info(
@@ -930,7 +930,7 @@ useGetReceiptBankEpayTryId.prefetch = (
 /** Get permission details of an Account [Feature just allowed for SubUsers] */
 export const useGetSubUserAccountUserWalletId = (
   userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserAccountDetailQuery>,
+  options?: SwaggerTypescriptUseQueryOptions<SubUserAccountDetailQuery | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSubUserAccountUserWalletId.info(
@@ -956,7 +956,7 @@ useGetSubUserAccountUserWalletId.info = (
 useGetSubUserAccountUserWalletId.prefetch = (
   client: QueryClient,
   userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserAccountDetailQuery>,
+  options?: SwaggerTypescriptUseQueryOptions<SubUserAccountDetailQuery | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSubUserAccountUserWalletId.info(
@@ -976,7 +976,7 @@ useGetSubUserAccountUserWalletId.prefetch = (
 /** Get a Transaction by it's Id [Needs secure login] */
 export const useGetTransactionTransactionId = (
   transactionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<TransactionApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<TransactionApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransactionTransactionId.info(
@@ -1002,7 +1002,7 @@ useGetTransactionTransactionId.info = (
 useGetTransactionTransactionId.prefetch = (
   client: QueryClient,
   transactionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<TransactionApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<TransactionApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransactionTransactionId.info(
@@ -1023,7 +1023,7 @@ useGetTransactionTransactionId.prefetch = (
 export const useGetUserBankUserBankId = (
   /** User bank id */
   userBankId: number,
-  options?: SwaggerTypescriptUseQueryOptions<UserBankDetailApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<UserBankDetailApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserBankUserBankId.info(
@@ -1052,7 +1052,7 @@ useGetUserBankUserBankId.prefetch = (
 
   /** User bank id */
   userBankId: number,
-  options?: SwaggerTypescriptUseQueryOptions<UserBankDetailApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<UserBankDetailApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserBankUserBankId.info(
@@ -1070,7 +1070,7 @@ useGetUserBankUserBankId.prefetch = (
 };
 export const useGetUserWalletUserWalletId = (
   userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<WalletDetailApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<WalletDetailApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletUserWalletId.info(
@@ -1096,7 +1096,7 @@ useGetUserWalletUserWalletId.info = (
 useGetUserWalletUserWalletId.prefetch = (
   client: QueryClient,
   userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<WalletDetailApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<WalletDetailApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletUserWalletId.info(
@@ -1122,7 +1122,7 @@ useGetUserWalletUserWalletId.prefetch = (
  */
 export const usePostBusinessUserResendInvitationId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    SubUserConnectionApiModel,
+    SubUserConnectionApiModel | null,
     {
       /** Invitation Id */
       invitationId: number;
@@ -1140,7 +1140,7 @@ export const usePostBusinessUserResendInvitationId = <TExtra,>(
 };
 export const usePostEpayRequestEpayTokenPayUserWalletId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    WalletReceiptApiModel,
+    WalletReceiptApiModel | null,
     {
       epayToken: string;
       userWalletId: number;
@@ -1164,7 +1164,7 @@ export const usePostEpayRequestEpayTokenPayUserWalletId = <TExtra,>(
 };
 export const usePostEpayRequestUserWalletId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    EpayRequestDetailApiModel,
+    EpayRequestDetailApiModel | null,
     {
       /** User Wallet id */
       userWalletId: number;
@@ -1217,7 +1217,7 @@ export const usePostSubUserNotificationUserWalletId = <TExtra,>(
 /** Transfer money */
 export const usePostTransferUserWalletId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    TransferMoneyApiModel,
+    TransferMoneyApiModel | null,
     { userWalletId: number; requestBody: RequestBodyTransferMoneyInput },
     TExtra
   >,
@@ -1241,7 +1241,7 @@ export const usePostTransferUserWalletId = <TExtra,>(
  */
 export const usePutBusinessUserConnectionConnectionId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    SubUserConnectionApiModel,
+    SubUserConnectionApiModel | null,
     {
       /** Connection Id */
       connectionId: number;
@@ -1294,7 +1294,7 @@ export const usePutBusinessUserConnectionConnectionIdPermissionUserWalletId = <
 /** Edit user bank [Needs secure login] */
 export const usePutUserBankUserBankId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    UserBankApiModel,
+    UserBankApiModel | null,
     {
       /** User bank id */
       userBankId: number;
@@ -1313,7 +1313,7 @@ export const usePutUserBankUserBankId = <TExtra,>(
 };
 export const usePutUserWalletUserWalletId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    WalletDisplayApiModel,
+    WalletDisplayApiModel | null,
     { userWalletId: number; requestBody: RequestBodyAccountCreationApiModel },
     TExtra
   >,

@@ -22,8 +22,9 @@ declare function toPascalCase(str: string): string;
  * @returns Generated service method name
  */
 declare function generateServiceName(endPoint: string, method: string, operationId: string | undefined, config: Config): string;
-declare function getDefineParam(name: string, required: boolean | undefined, schema: Schema | undefined, config: Config, description?: string): string;
+declare function getDefineParam(name: string, required: boolean | undefined, schema: Schema | undefined, config: Config, description?: string, schemasMap?: Map<string, Schema>): string;
 declare function getParamString(name: string, required: boolean | undefined, type: string, description?: string, isPartial?: boolean): string;
+declare function isSchemaNullable(schema: Schema | undefined, schemasMap?: Map<string, Schema>, visitedRefs?: Set<string>): boolean;
 /**
  * Main function to convert a schema to TypeScript type
  *
@@ -47,5 +48,5 @@ declare function isTypeAny(type: true | undefined | {} | Schema): boolean;
 declare function template(str: string, obj?: {
     [x: string]: string;
 }): string;
-export { getPathParams, getHeaderParams, generateServiceName, getTsType, getRefName, isAscending, getDefineParam, getParamString, getParametersInfo, isTypeAny, template, toPascalCase, getSchemaName, };
+export { getPathParams, getHeaderParams, generateServiceName, getTsType, isSchemaNullable, getRefName, isAscending, getDefineParam, getParamString, getParametersInfo, isTypeAny, template, toPascalCase, getSchemaName, };
 //# sourceMappingURL=utils.d.mts.map

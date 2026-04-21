@@ -3,6 +3,7 @@ import {
   getDefineParam,
   getParamString,
   getSchemaName,
+  getRefName,
 } from "./utils.mjs";
 import { ApiAST, Config, TypeAST } from "../types.mjs";
 import {
@@ -20,6 +21,12 @@ function generateApis(
 ): string {
   let code = SERVICE_BEGINNING;
   try {
+    const schemasMap = new Map(
+      types
+        .filter(({ schema }) => Boolean(schema))
+        .map(({ name, schema }) => [getSchemaName(name), schema!] as const),
+    );
+
     const apisCode = apis
       .sort(({ serviceName }, { serviceName: _serviceName }) =>
         isAscending(serviceName, _serviceName),
@@ -58,7 +65,7 @@ ${getJsdoc({
       /** Path parameters */
       pathParams
         .map(({ name, required, schema, description }) =>
-          getDefineParam(name, required, schema, config, description),
+          getDefineParam(name, required, schema, config, description, schemasMap),
         )
         .join(",")
     }${pathParams.length > 0 ? "," : ""}${
@@ -69,6 +76,8 @@ ${getJsdoc({
             requestBodyRequired,
             requestBody,
             config,
+            undefined,
+            schemasMap,
           )},`
         : ""
     }${
@@ -91,7 +100,7 @@ ${getJsdoc({
         : ""
     }configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<${
-              responses ? getTsType(responses, config) : "any"
+              responses ? getTsType(responses, config, schemasMap) : "any"
             }>> => {
   ${
     deprecated

@@ -199,7 +199,7 @@ getAccessUserWalletIdLogicalAction.key =
 /** Get available banks */
 export const getBank = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BankApiModel[]>> => {
+): Promise<SwaggerResponse<BankApiModel[] | null>> => {
   return Http.getRequest(
     getBank.key,
     undefined,
@@ -215,7 +215,7 @@ getBank.key = \\"/Bank\\";
 /** Get Business categories */
 export const getBusinessUserCategory = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BusinessCategoryApiModel[]>> => {
+): Promise<SwaggerResponse<BusinessCategoryApiModel[] | null>> => {
   return Http.getRequest(
     getBusinessUserCategory.key,
     undefined,
@@ -232,7 +232,7 @@ getBusinessUserCategory.key = \\"/BusinessUser/category\\";
 export const getBusinessUserConnection = (
   queryParams?: GetBusinessUserConnectionQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel[]>> => {
+): Promise<SwaggerResponse<SubUserConnectionApiModel[] | null>> => {
   return Http.getRequest(
     getBusinessUserConnection.key,
     queryParams,
@@ -252,7 +252,7 @@ getBusinessUserConnection.key = \\"/BusinessUser/connection\\";
 export const getBusinessUserConnectionActive = (
   queryParams?: GetBusinessUserConnectionActiveQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel[]>> => {
+): Promise<SwaggerResponse<SubUserConnectionApiModel[] | null>> => {
   return Http.getRequest(
     getBusinessUserConnectionActive.key,
     queryParams,
@@ -273,7 +273,7 @@ export const getBusinessUserConnectionConnectionIdActivity = (
   /** Connection Id */
   connectionId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserActivityApiModel>> => {
+): Promise<SwaggerResponse<SubUserActivityApiModel | null>> => {
   return Http.getRequest(
     template(getBusinessUserConnectionConnectionIdActivity.key, {
       connectionId,
@@ -293,7 +293,7 @@ export const getBusinessUserConnectionConnectionIdEpay = (
   connectionId: number,
   queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<EpayRequestApiModel[]>> => {
+): Promise<SwaggerResponse<EpayRequestApiModel[] | null>> => {
   return Http.getRequest(
     template(getBusinessUserConnectionConnectionIdEpay.key, { connectionId }),
     queryParams,
@@ -315,7 +315,7 @@ export const getBusinessUserConnectionConnectionIdPermission = (
   /** Connection Id */
   connectionId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserPermissionApiModel[]>> => {
+): Promise<SwaggerResponse<SubUserPermissionApiModel[] | null>> => {
   return Http.getRequest(
     template(getBusinessUserConnectionConnectionIdPermission.key, {
       connectionId,
@@ -334,7 +334,7 @@ getBusinessUserConnectionConnectionIdPermission.key =
 export const getEpayRequest = (
   queryParams?: GetEpayRequestQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<EpayRequestApiModel[]>> => {
+): Promise<SwaggerResponse<EpayRequestApiModel[] | null>> => {
   return Http.getRequest(
     getEpayRequest.key,
     queryParams,
@@ -349,7 +349,7 @@ getEpayRequest.key = \\"/EpayRequest\\";
 
 export const getEpayRequestAudiencesRecent = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ContactApiModel[]>> => {
+): Promise<SwaggerResponse<ContactApiModel[] | null>> => {
   return Http.getRequest(
     getEpayRequestAudiencesRecent.key,
     undefined,
@@ -365,7 +365,7 @@ getEpayRequestAudiencesRecent.key = \\"/EpayRequest/audiences/recent\\";
 export const getEpayRequestCount = (
   queryParams?: GetEpayRequestCountQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AggregationApiModel>> => {
+): Promise<SwaggerResponse<AggregationApiModel | null>> => {
   return Http.getRequest(
     getEpayRequestCount.key,
     queryParams,
@@ -381,7 +381,7 @@ getEpayRequestCount.key = \\"/EpayRequest/count\\";
 export const getEpayRequestEpayTokenDetail = (
   epayToken: string,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<EpayRequestPublicInfoApiModel>> => {
+): Promise<SwaggerResponse<EpayRequestPublicInfoApiModel | null>> => {
   return Http.getRequest(
     template(getEpayRequestEpayTokenDetail.key, { epayToken }),
     undefined,
@@ -435,7 +435,7 @@ getEpayRequestExcel.key = \\"/EpayRequest/excel\\";
 export const getEpayRequestForMe = (
   queryParams?: GetEpayRequestForMeQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<EpayRequestForUserQuery[]>> => {
+): Promise<SwaggerResponse<EpayRequestForUserQuery[] | null>> => {
   return Http.getRequest(
     getEpayRequestForMe.key,
     queryParams,
@@ -451,7 +451,7 @@ getEpayRequestForMe.key = \\"/EpayRequest/forMe\\";
 export const getEpayRequestForMeCount = (
   queryParams?: GetEpayRequestForMeCountQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AggregationApiModel>> => {
+): Promise<SwaggerResponse<AggregationApiModel | null>> => {
   return Http.getRequest(
     getEpayRequestForMeCount.key,
     queryParams,
@@ -467,7 +467,7 @@ getEpayRequestForMeCount.key = \\"/EpayRequest/forMe/count\\";
 export const getEpayRequestForMeReport = (
   queryParams?: GetEpayRequestForMeReportQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ReportApiModel[]>> => {
+): Promise<SwaggerResponse<ReportApiModel[] | null>> => {
   return Http.getRequest(
     getEpayRequestForMeReport.key,
     queryParams,
@@ -512,7 +512,7 @@ getEpayRequestPosQrAccountNumber.key = \\"/EpayRequest/pos/Qr/{accountNumber}\\"
 export const getEpayRequestReport = (
   queryParams?: GetEpayRequestReportQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ReportApiModel[]>> => {
+): Promise<SwaggerResponse<ReportApiModel[] | null>> => {
   return Http.getRequest(
     getEpayRequestReport.key,
     queryParams,
@@ -530,7 +530,7 @@ export const getEpayRequestUserWalletIdCommission = (
   userWalletId: number,
   queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<CommissionAmountApiModel>> => {
+): Promise<SwaggerResponse<CommissionAmountApiModel | null>> => {
   return Http.getRequest(
     template(getEpayRequestUserWalletIdCommission.key, { userWalletId }),
     queryParams,
@@ -547,7 +547,7 @@ getEpayRequestUserWalletIdCommission.key =
 export const getEpayRequestUserWalletIdCreators = (
   userWalletId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserMinimalDto[]>> => {
+): Promise<SwaggerResponse<UserMinimalDto[] | null>> => {
   return Http.getRequest(
     template(getEpayRequestUserWalletIdCreators.key, { userWalletId }),
     undefined,
@@ -627,7 +627,7 @@ getFileFileGuid.key = \\"/File/{fileGuid}\\";
 export const getGroupTransferCommission = (
   queryParams?: GetGroupTransferCommissionQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<CommissionAmountApiModel>> => {
+): Promise<SwaggerResponse<CommissionAmountApiModel | null>> => {
   return Http.getRequest(
     getGroupTransferCommission.key,
     queryParams,
@@ -644,7 +644,7 @@ getGroupTransferCommission.key = \\"/GroupTransfer/commission\\";
 export const getIntegration = (
   queryParams?: GetIntegrationQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<DriverInfoResult>> => {
+): Promise<SwaggerResponse<DriverInfoResult | null>> => {
   return Http.getRequest(
     getIntegration.key,
     queryParams,
@@ -660,7 +660,7 @@ getIntegration.key = \\"/Integration\\";
 export const getKpi = (
   queryParams?: GetKpiQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<KpiResult[]>> => {
+): Promise<SwaggerResponse<KpiResult[] | null>> => {
   return Http.getRequest(
     getKpi.key,
     queryParams,
@@ -676,7 +676,7 @@ getKpi.key = \\"/Kpi\\";
 export const getKpiCurrent = (
   queryParams?: GetKpiCurrentQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<KpiResult[]>> => {
+): Promise<SwaggerResponse<KpiResult[] | null>> => {
   return Http.getRequest(
     getKpiCurrent.key,
     queryParams,
@@ -692,7 +692,7 @@ getKpiCurrent.key = \\"/Kpi/Current\\";
 export const getKpiLast = (
   queryParams?: GetKpiLastQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<KpiResult[]>> => {
+): Promise<SwaggerResponse<KpiResult[] | null>> => {
   return Http.getRequest(
     getKpiLast.key,
     queryParams,
@@ -708,7 +708,7 @@ getKpiLast.key = \\"/Kpi/Last\\";
 /** Get all Important Actions of current user. */
 export const getNotificationIa = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ImportantActionApiModel[]>> => {
+): Promise<SwaggerResponse<ImportantActionApiModel[] | null>> => {
   return Http.getRequest(
     getNotificationIa.key,
     undefined,
@@ -724,7 +724,7 @@ getNotificationIa.key = \\"/Notification/ia\\";
 /** Get Notifications of current user. Maximum 99 items will be returned. */
 export const getNotificationNotif = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<NotificationApiModel[]>> => {
+): Promise<SwaggerResponse<NotificationApiModel[] | null>> => {
   return Http.getRequest(
     getNotificationNotif.key,
     undefined,
@@ -740,7 +740,7 @@ getNotificationNotif.key = \\"/Notification/notif\\";
 export const getNotificationUnread = (
   queryParams?: GetNotificationUnreadQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UnreadNotificationCountApiModel[]>> => {
+): Promise<SwaggerResponse<UnreadNotificationCountApiModel[] | null>> => {
   return Http.getRequest(
     getNotificationUnread.key,
     queryParams,
@@ -759,7 +759,7 @@ export const getPosAccountNumber = (
   accountNumber: string,
   queryParams?: GetPosAccountNumberQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<PosLandingPageApiModel>> => {
+): Promise<SwaggerResponse<PosLandingPageApiModel | null>> => {
   return Http.getRequest(
     template(getPosAccountNumber.key, { accountNumber }),
     queryParams,
@@ -783,7 +783,7 @@ export const getReceiptEpayToken = (
   /** EpayRequest's token to get receipt for */
   epayToken: string,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BankReceiptApiModel>> => {
+): Promise<SwaggerResponse<BankReceiptApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getReceiptEpayToken\\",
@@ -807,7 +807,7 @@ export const getReceiptWalletEpayToken = (
   /** EpayRequest's token to get receipt for */
   epayToken: string,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<WalletReceiptApiModel>> => {
+): Promise<SwaggerResponse<WalletReceiptApiModel | null>> => {
   return Http.getRequest(
     template(getReceiptWalletEpayToken.key, { epayToken }),
     undefined,
@@ -826,7 +826,7 @@ getReceiptWalletEpayToken.key = \\"/Receipt/wallet/{epayToken}\\";
  */
 export const getResellerUser = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ResellerApiModel>> => {
+): Promise<SwaggerResponse<ResellerApiModel | null>> => {
   return Http.getRequest(
     getResellerUser.key,
     undefined,
@@ -849,7 +849,7 @@ getResellerUser.key = \\"/ResellerUser\\";
 export const getResellerUserDashboardCommissionReport = (
   queryParams?: GetResellerUserDashboardCommissionReportQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<DateReportApiModelOfDecimal[]>> => {
+): Promise<SwaggerResponse<DateReportApiModelOfDecimal[] | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getResellerUserDashboardCommissionReport\\",
@@ -879,7 +879,7 @@ getResellerUserDashboardCommissionReport.key =
 export const getResellerUserDashboardCommissionSum = (
   queryParams?: GetResellerUserDashboardCommissionSumQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AggregationApiModel>> => {
+): Promise<SwaggerResponse<AggregationApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getResellerUserDashboardCommissionSum\\",
@@ -909,7 +909,7 @@ getResellerUserDashboardCommissionSum.key =
 export const getResellerUserDashboardIntroducedCount = (
   queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AggregationApiModel>> => {
+): Promise<SwaggerResponse<AggregationApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getResellerUserDashboardIntroducedCount\\",
@@ -939,7 +939,7 @@ getResellerUserDashboardIntroducedCount.key =
 export const getResellerUserDashboardIntroducedReport = (
   queryParams?: GetResellerUserDashboardIntroducedReportQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<DateReportApiModelOfInteger[]>> => {
+): Promise<SwaggerResponse<DateReportApiModelOfInteger[] | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getResellerUserDashboardIntroducedReport\\",
@@ -969,7 +969,7 @@ getResellerUserDashboardIntroducedReport.key =
 export const getResellerUserDashboardLinksCount = (
   queryParams?: GetResellerUserDashboardLinksCountQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AggregationApiModel>> => {
+): Promise<SwaggerResponse<AggregationApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getResellerUserDashboardLinksCount\\",
@@ -998,7 +998,7 @@ getResellerUserDashboardLinksCount.key = \\"/ResellerUser/dashboard/links/count\
 export const getResellerUserDashboardLinksPaidCount = (
   queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AggregationApiModel>> => {
+): Promise<SwaggerResponse<AggregationApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getResellerUserDashboardLinksPaidCount\\",
@@ -1028,7 +1028,7 @@ getResellerUserDashboardLinksPaidCount.key =
 export const getResellerUserDashboardLinksPaidReport = (
   queryParams?: GetResellerUserDashboardLinksPaidReportQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<DateReportApiModelOfInteger[]>> => {
+): Promise<SwaggerResponse<DateReportApiModelOfInteger[] | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getResellerUserDashboardLinksPaidReport\\",
@@ -1058,7 +1058,7 @@ getResellerUserDashboardLinksPaidReport.key =
 export const getResellerUserDashboardLinksReport = (
   queryParams?: GetResellerUserDashboardLinksReportQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<DateReportApiModelOfInteger[]>> => {
+): Promise<SwaggerResponse<DateReportApiModelOfInteger[] | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getResellerUserDashboardLinksReport\\",
@@ -1088,7 +1088,7 @@ getResellerUserDashboardLinksReport.key =
 export const getResellerUserDashboardTransactionsCount = (
   queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AggregationApiModel>> => {
+): Promise<SwaggerResponse<AggregationApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getResellerUserDashboardTransactionsCount\\",
@@ -1118,7 +1118,7 @@ getResellerUserDashboardTransactionsCount.key =
 export const getResellerUserDashboardTransactionsReport = (
   queryParams?: GetResellerUserDashboardTransactionsReportQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<DateReportApiModelOfInteger[]>> => {
+): Promise<SwaggerResponse<DateReportApiModelOfInteger[] | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getResellerUserDashboardTransactionsReport\\",
@@ -1145,7 +1145,7 @@ getResellerUserDashboardTransactionsReport.key =
 export const getResellerUserIntroduced = (
   queryParams?: GetResellerUserIntroducedQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ReselledUserApiModel[]>> => {
+): Promise<SwaggerResponse<ReselledUserApiModel[] | null>> => {
   return Http.getRequest(
     getResellerUserIntroduced.key,
     queryParams,
@@ -1164,7 +1164,7 @@ getResellerUserIntroduced.key = \\"/ResellerUser/introduced\\";
  */
 export const getResellerUserIntroducedFilterData = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ReselledUserFilterData>> => {
+): Promise<SwaggerResponse<ReselledUserFilterData | null>> => {
   return Http.getRequest(
     getResellerUserIntroducedFilterData.key,
     undefined,
@@ -1181,7 +1181,7 @@ getResellerUserIntroducedFilterData.key = \\"/ResellerUser/introduced/filterData
 export const getResellerUserIntroducedUserIdActivity = (
   userId: string,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ReselledUserActivityApiModel>> => {
+): Promise<SwaggerResponse<ReselledUserActivityApiModel | null>> => {
   return Http.getRequest(
     template(getResellerUserIntroducedUserIdActivity.key, { userId }),
     undefined,
@@ -1201,7 +1201,7 @@ getResellerUserIntroducedUserIdActivity.key =
  */
 export const getSubDomain = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubDomainApiModel>> => {
+): Promise<SwaggerResponse<SubDomainApiModel | null>> => {
   return Http.getRequest(
     getSubDomain.key,
     undefined,
@@ -1223,7 +1223,7 @@ export const getSubDomainSubDomainAddress = (
     clientId?: string;
   },
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubDomainApiModel>> => {
+): Promise<SwaggerResponse<SubDomainApiModel | null>> => {
   return Http.getRequest(
     template(getSubDomainSubDomainAddress.key, { subDomainAddress }),
     undefined,
@@ -1253,7 +1253,7 @@ getSubDomainSubDomainAddress.key = \\"/SubDomain/{subDomainAddress}\\";
  */
 export const getSubUserConnection = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BusinessUserConnectionApiModel[]>> => {
+): Promise<SwaggerResponse<BusinessUserConnectionApiModel[] | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getSubUserConnection\\",
@@ -1275,7 +1275,7 @@ getSubUserConnection.key = \\"/SubUser/connection\\";
 export const getTransaction = (
   queryParams?: GetTransactionQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<TransactionApiModel[]>> => {
+): Promise<SwaggerResponse<TransactionApiModel[] | null>> => {
   return Http.getRequest(
     getTransaction.key,
     queryParams,
@@ -1311,7 +1311,7 @@ getTransactionExcel.key = \\"/Transaction/excel\\";
 export const getTransactionReport = (
   queryParams?: GetTransactionReportQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ReportApiModel[]>> => {
+): Promise<SwaggerResponse<ReportApiModel[] | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getTransactionReport\\",
@@ -1337,7 +1337,7 @@ getTransactionReport.key = \\"/Transaction/report\\";
 export const getTransactionReportAll = (
   queryParams?: GetTransactionReportAllQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AllTransactionsReportApiModel>> => {
+): Promise<SwaggerResponse<AllTransactionsReportApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getTransactionReportAll\\",
@@ -1360,7 +1360,7 @@ getTransactionReportAll.key = \\"/Transaction/report/all\\";
 export const getTransferRecent = (
   queryParams?: GetTransferRecentQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<TransferMoneyApiModel[]>> => {
+): Promise<SwaggerResponse<TransferMoneyApiModel[] | null>> => {
   return Http.getRequest(
     getTransferRecent.key,
     queryParams,
@@ -1376,7 +1376,7 @@ getTransferRecent.key = \\"/Transfer/recent\\";
 export const getTransferSearch = (
   queryParams?: GetTransferSearchQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AccountInfoApiModel>> => {
+): Promise<SwaggerResponse<AccountInfoApiModel | null>> => {
   return Http.getRequest(
     getTransferSearch.key,
     queryParams,
@@ -1394,7 +1394,7 @@ export const getTransferUserWalletIdCommission = (
   userWalletId: number,
   queryParams?: GetTransferUserWalletIdCommissionQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<CommissionAmountApiModel>> => {
+): Promise<SwaggerResponse<CommissionAmountApiModel | null>> => {
   return Http.getRequest(
     template(getTransferUserWalletIdCommission.key, { userWalletId }),
     queryParams,
@@ -1410,7 +1410,7 @@ getTransferUserWalletIdCommission.key = \\"/Transfer/{userWalletId}/commission\\
 /** Get [normal/sub/business] user profile detail */
 export const getUser = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserDetailQuery>> => {
+): Promise<SwaggerResponse<UserDetailQuery | null>> => {
   return Http.getRequest(
     getUser.key,
     undefined,
@@ -1426,7 +1426,7 @@ getUser.key = \\"/User\\";
 /** Get user banks [Feature is not allowed for sub users.] */
 export const getUserBank = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserBankApiModel[]>> => {
+): Promise<SwaggerResponse<UserBankApiModel[] | null>> => {
   return Http.getRequest(
     getUserBank.key,
     undefined,
@@ -1442,7 +1442,7 @@ getUserBank.key = \\"/UserBank\\";
 /** Get available user banks [Feature is not allowed for sub users.] */
 export const getUserBankReady = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserBankApiModel[]>> => {
+): Promise<SwaggerResponse<UserBankApiModel[] | null>> => {
   return Http.getRequest(
     getUserBankReady.key,
     undefined,
@@ -1458,7 +1458,7 @@ getUserBankReady.key = \\"/UserBank/ready\\";
 /** Get the connections [Feature is allowed for normal users noly] */
 export const getUserConnection = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BusinessUserConnectionApiModel[]>> => {
+): Promise<SwaggerResponse<BusinessUserConnectionApiModel[] | null>> => {
   return Http.getRequest(
     getUserConnection.key,
     undefined,
@@ -1474,7 +1474,7 @@ getUserConnection.key = \\"/User/connection\\";
 export const getUserContactInput = (
   input: string,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ContactApiModel>> => {
+): Promise<SwaggerResponse<ContactApiModel | null>> => {
   return Http.getRequest(
     template(getUserContactInput.key, { input }),
     undefined,
@@ -1493,7 +1493,7 @@ getUserContactInput.key = \\"/User/contact/{input}\\";
  */
 export const getUserIdentityRequest = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserIdentityRequestQuery>> => {
+): Promise<SwaggerResponse<UserIdentityRequestQuery | null>> => {
   return Http.getRequest(
     getUserIdentityRequest.key,
     undefined,
@@ -1509,7 +1509,7 @@ getUserIdentityRequest.key = \\"/User/identityRequest\\";
 /** Get business user invitations for me [Feature is not allowed for sub users] */
 export const getUserInvitation = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserInvitationApiModel[]>> => {
+): Promise<SwaggerResponse<SubUserInvitationApiModel[] | null>> => {
   return Http.getRequest(
     getUserInvitation.key,
     undefined,
@@ -1526,7 +1526,7 @@ getUserInvitation.key = \\"/User/invitation\\";
 export const getUserInvitationInvitationToken = (
   invitationToken: string,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserInvitationApiModel>> => {
+): Promise<SwaggerResponse<SubUserInvitationApiModel | null>> => {
   return Http.getRequest(
     template(getUserInvitationInvitationToken.key, { invitationToken }),
     undefined,
@@ -1542,7 +1542,7 @@ getUserInvitationInvitationToken.key = \\"/User/invitation/{invitationToken}\\";
 /** Get user profile summary */
 export const getUserMe = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserMeQuery>> => {
+): Promise<SwaggerResponse<UserMeQuery | null>> => {
   return Http.getRequest(
     getUserMe.key,
     undefined,
@@ -1557,7 +1557,7 @@ getUserMe.key = \\"/User/me\\";
 
 export const getUserPlugin = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserPluginDetailApiModel[]>> => {
+): Promise<SwaggerResponse<UserPluginDetailApiModel[] | null>> => {
   return Http.getRequest(
     getUserPlugin.key,
     undefined,
@@ -1576,7 +1576,7 @@ getUserPlugin.key = \\"/UserPlugin\\";
  */
 export const getUserUpgradeToBusinessRequest = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UpgradeToBusinessApiModel>> => {
+): Promise<SwaggerResponse<UpgradeToBusinessApiModel | null>> => {
   return Http.getRequest(
     getUserUpgradeToBusinessRequest.key,
     undefined,
@@ -1591,7 +1591,7 @@ getUserUpgradeToBusinessRequest.key = \\"/User/upgradeToBusinessRequest\\";
 
 export const getUserWallet = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<WalletDisplayApiModel[]>> => {
+): Promise<SwaggerResponse<WalletDisplayApiModel[] | null>> => {
   return Http.getRequest(
     getUserWallet.key,
     undefined,
@@ -1628,7 +1628,7 @@ getUserWalletAccountNumberQrcode.key = \\"/UserWallet/{accountNumber}/qrcode\\";
 export const getUserWalletSearch = (
   queryParams?: GetUserWalletSearchQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AccountInfoApiModel>> => {
+): Promise<SwaggerResponse<AccountInfoApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getUserWalletSearch\\",
@@ -1651,7 +1651,7 @@ getUserWalletSearch.key = \\"/UserWallet/search\\";
 export const getUserWalletUserWalletIdBalance = (
   userWalletId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AccountBalanceApiModel>> => {
+): Promise<SwaggerResponse<AccountBalanceApiModel | null>> => {
   return Http.getRequest(
     template(getUserWalletUserWalletIdBalance.key, { userWalletId }),
     undefined,
@@ -1672,7 +1672,7 @@ export const getUserWalletUserWalletIdEpayRequestComission = (
   userWalletId: number,
   queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<CommissionAmountApiModel>> => {
+): Promise<SwaggerResponse<CommissionAmountApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getUserWalletUserWalletIdEpayRequestComission\\",
@@ -1697,7 +1697,7 @@ getUserWalletUserWalletIdEpayRequestComission.key =
 export const getUserWalletUserWalletIdPermittedsubusers = (
   userWalletId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AccountPermittedSubUserQuery[]>> => {
+): Promise<SwaggerResponse<AccountPermittedSubUserQuery[] | null>> => {
   return Http.getRequest(
     template(getUserWalletUserWalletIdPermittedsubusers.key, { userWalletId }),
     undefined,
@@ -1715,7 +1715,7 @@ export const getUserWalletUserWalletIdSettlementRequestComission = (
   userWalletId: number,
   queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<CommissionAmountApiModel>> => {
+): Promise<SwaggerResponse<CommissionAmountApiModel | null>> => {
   return Http.getRequest(
     template(getUserWalletUserWalletIdSettlementRequestComission.key, {
       userWalletId,
@@ -1739,7 +1739,7 @@ export const getUserWalletUserWalletIdTransferMoneyCommission = (
   userWalletId: number,
   queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<CommissionAmountApiModel>> => {
+): Promise<SwaggerResponse<CommissionAmountApiModel | null>> => {
   if (__DEV__) {
     console.warn(
       \\"getUserWalletUserWalletIdTransferMoneyCommission\\",
@@ -1764,7 +1764,7 @@ getUserWalletUserWalletIdTransferMoneyCommission.key =
 /** Get user work spaces */
 export const getUserWorkspace = (
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserWorkspaceQuery[]>> => {
+): Promise<SwaggerResponse<UserWorkspaceQuery[] | null>> => {
   return Http.getRequest(
     getUserWorkspace.key,
     undefined,
@@ -2118,7 +2118,7 @@ useGetAccessUserWalletIdLogicalAction.prefetch = (
 
 /** Get available banks */
 export const useGetBank = (
-  options?: SwaggerTypescriptUseQueryOptions<BankApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<BankApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBank.info(configOverride);
@@ -2137,7 +2137,7 @@ useGetBank.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetBank.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<BankApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<BankApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBank.info(configOverride);
@@ -2153,7 +2153,7 @@ useGetBank.prefetch = (
 
 /** Get Business categories */
 export const useGetBusinessUserCategory = (
-  options?: SwaggerTypescriptUseQueryOptions<BusinessCategoryApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<BusinessCategoryApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserCategory.info(configOverride);
@@ -2172,7 +2172,7 @@ useGetBusinessUserCategory.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetBusinessUserCategory.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<BusinessCategoryApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<BusinessCategoryApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserCategory.info(configOverride);
@@ -2189,7 +2189,9 @@ useGetBusinessUserCategory.prefetch = (
 /** Get the connections [Feature just allowed for the business users] */
 export const useGetBusinessUserConnection = (
   queryParams?: GetBusinessUserConnectionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserConnectionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    SubUserConnectionApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnection.info(
@@ -2215,7 +2217,9 @@ useGetBusinessUserConnection.info = (
 useGetBusinessUserConnection.prefetch = (
   client: QueryClient,
   queryParams?: GetBusinessUserConnectionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserConnectionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    SubUserConnectionApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnection.info(
@@ -2238,7 +2242,9 @@ useGetBusinessUserConnection.prefetch = (
  */
 export const useGetBusinessUserConnectionActive = (
   queryParams?: GetBusinessUserConnectionActiveQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserConnectionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    SubUserConnectionApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnectionActive.info(
@@ -2264,7 +2270,9 @@ useGetBusinessUserConnectionActive.info = (
 useGetBusinessUserConnectionActive.prefetch = (
   client: QueryClient,
   queryParams?: GetBusinessUserConnectionActiveQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserConnectionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    SubUserConnectionApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnectionActive.info(
@@ -2288,7 +2296,7 @@ useGetBusinessUserConnectionActive.prefetch = (
 export const useGetBusinessUserConnectionConnectionIdActivity = (
   /** Connection Id */
   connectionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserActivityApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<SubUserActivityApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdActivity.info(
@@ -2324,7 +2332,7 @@ useGetBusinessUserConnectionConnectionIdActivity.prefetch = (
 
   /** Connection Id */
   connectionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserActivityApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<SubUserActivityApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdActivity.info(
@@ -2343,7 +2351,7 @@ useGetBusinessUserConnectionConnectionIdActivity.prefetch = (
 export const useGetBusinessUserConnectionConnectionIdEpay = (
   connectionId: number,
   queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdEpay.info(
@@ -2381,7 +2389,7 @@ useGetBusinessUserConnectionConnectionIdEpay.prefetch = (
   client: QueryClient,
   connectionId: number,
   queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdEpay.info(
@@ -2406,7 +2414,9 @@ useGetBusinessUserConnectionConnectionIdEpay.prefetch = (
 export const useGetBusinessUserConnectionConnectionIdPermission = (
   /** Connection Id */
   connectionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserPermissionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    SubUserPermissionApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdPermission.info(
@@ -2442,7 +2452,9 @@ useGetBusinessUserConnectionConnectionIdPermission.prefetch = (
 
   /** Connection Id */
   connectionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserPermissionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    SubUserPermissionApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdPermission.info(
@@ -2460,7 +2472,7 @@ useGetBusinessUserConnectionConnectionIdPermission.prefetch = (
 };
 export const useGetEpayRequest = (
   queryParams?: GetEpayRequestQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequest.info(queryParams, configOverride);
@@ -2483,7 +2495,7 @@ useGetEpayRequest.info = (
 useGetEpayRequest.prefetch = (
   client: QueryClient,
   queryParams?: GetEpayRequestQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequest.info(queryParams, configOverride);
@@ -2497,7 +2509,7 @@ useGetEpayRequest.prefetch = (
       });
 };
 export const useGetEpayRequestAudiencesRecent = (
-  options?: SwaggerTypescriptUseQueryOptions<ContactApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ContactApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestAudiencesRecent.info(configOverride);
@@ -2518,7 +2530,7 @@ useGetEpayRequestAudiencesRecent.info = (
 };
 useGetEpayRequestAudiencesRecent.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<ContactApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ContactApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestAudiencesRecent.info(configOverride);
@@ -2533,7 +2545,7 @@ useGetEpayRequestAudiencesRecent.prefetch = (
 };
 export const useGetEpayRequestCount = (
   queryParams?: GetEpayRequestCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestCount.info(queryParams, configOverride);
@@ -2556,7 +2568,7 @@ useGetEpayRequestCount.info = (
 useGetEpayRequestCount.prefetch = (
   client: QueryClient,
   queryParams?: GetEpayRequestCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestCount.info(queryParams, configOverride);
@@ -2571,7 +2583,7 @@ useGetEpayRequestCount.prefetch = (
 };
 export const useGetEpayRequestEpayTokenDetail = (
   epayToken: string,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestPublicInfoApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestPublicInfoApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestEpayTokenDetail.info(
@@ -2597,7 +2609,7 @@ useGetEpayRequestEpayTokenDetail.info = (
 useGetEpayRequestEpayTokenDetail.prefetch = (
   client: QueryClient,
   epayToken: string,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestPublicInfoApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestPublicInfoApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestEpayTokenDetail.info(
@@ -2708,7 +2720,7 @@ useGetEpayRequestExcel.prefetch = (
  */
 export const useGetEpayRequestForMe = (
   queryParams?: GetEpayRequestForMeQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestForUserQuery[]>,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestForUserQuery[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestForMe.info(queryParams, configOverride);
@@ -2731,7 +2743,7 @@ useGetEpayRequestForMe.info = (
 useGetEpayRequestForMe.prefetch = (
   client: QueryClient,
   queryParams?: GetEpayRequestForMeQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestForUserQuery[]>,
+  options?: SwaggerTypescriptUseQueryOptions<EpayRequestForUserQuery[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestForMe.info(queryParams, configOverride);
@@ -2746,7 +2758,7 @@ useGetEpayRequestForMe.prefetch = (
 };
 export const useGetEpayRequestForMeCount = (
   queryParams?: GetEpayRequestForMeCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestForMeCount.info(
@@ -2772,7 +2784,7 @@ useGetEpayRequestForMeCount.info = (
 useGetEpayRequestForMeCount.prefetch = (
   client: QueryClient,
   queryParams?: GetEpayRequestForMeCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestForMeCount.info(
@@ -2790,7 +2802,7 @@ useGetEpayRequestForMeCount.prefetch = (
 };
 export const useGetEpayRequestForMeReport = (
   queryParams?: GetEpayRequestForMeReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestForMeReport.info(
@@ -2816,7 +2828,7 @@ useGetEpayRequestForMeReport.info = (
 useGetEpayRequestForMeReport.prefetch = (
   client: QueryClient,
   queryParams?: GetEpayRequestForMeReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestForMeReport.info(
@@ -2899,7 +2911,7 @@ useGetEpayRequestPosQrAccountNumber.prefetch = (
 };
 export const useGetEpayRequestReport = (
   queryParams?: GetEpayRequestReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestReport.info(
@@ -2925,7 +2937,7 @@ useGetEpayRequestReport.info = (
 useGetEpayRequestReport.prefetch = (
   client: QueryClient,
   queryParams?: GetEpayRequestReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestReport.info(
@@ -2946,7 +2958,7 @@ useGetEpayRequestReport.prefetch = (
 export const useGetEpayRequestUserWalletIdCommission = (
   userWalletId: number,
   queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestUserWalletIdCommission.info(
@@ -2984,7 +2996,7 @@ useGetEpayRequestUserWalletIdCommission.prefetch = (
   client: QueryClient,
   userWalletId: number,
   queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestUserWalletIdCommission.info(
@@ -3003,7 +3015,7 @@ useGetEpayRequestUserWalletIdCommission.prefetch = (
 };
 export const useGetEpayRequestUserWalletIdCreators = (
   userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<UserMinimalDto[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserMinimalDto[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestUserWalletIdCreators.info(
@@ -3029,7 +3041,7 @@ useGetEpayRequestUserWalletIdCreators.info = (
 useGetEpayRequestUserWalletIdCreators.prefetch = (
   client: QueryClient,
   userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<UserMinimalDto[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserMinimalDto[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestUserWalletIdCreators.info(
@@ -3195,7 +3207,7 @@ useGetFileFileGuid.prefetch = (
 };
 export const useGetGroupTransferCommission = (
   queryParams?: GetGroupTransferCommissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetGroupTransferCommission.info(
@@ -3221,7 +3233,7 @@ useGetGroupTransferCommission.info = (
 useGetGroupTransferCommission.prefetch = (
   client: QueryClient,
   queryParams?: GetGroupTransferCommissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetGroupTransferCommission.info(
@@ -3241,7 +3253,7 @@ useGetGroupTransferCommission.prefetch = (
 /** Get detailed driver,taxi and fair amount information */
 export const useGetIntegration = (
   queryParams?: GetIntegrationQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DriverInfoResult>,
+  options?: SwaggerTypescriptUseQueryOptions<DriverInfoResult | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetIntegration.info(queryParams, configOverride);
@@ -3264,7 +3276,7 @@ useGetIntegration.info = (
 useGetIntegration.prefetch = (
   client: QueryClient,
   queryParams?: GetIntegrationQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DriverInfoResult>,
+  options?: SwaggerTypescriptUseQueryOptions<DriverInfoResult | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetIntegration.info(queryParams, configOverride);
@@ -3279,7 +3291,7 @@ useGetIntegration.prefetch = (
 };
 export const useGetKpi = (
   queryParams?: GetKpiQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<KpiResult[]>,
+  options?: SwaggerTypescriptUseQueryOptions<KpiResult[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetKpi.info(queryParams, configOverride);
@@ -3302,7 +3314,7 @@ useGetKpi.info = (
 useGetKpi.prefetch = (
   client: QueryClient,
   queryParams?: GetKpiQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<KpiResult[]>,
+  options?: SwaggerTypescriptUseQueryOptions<KpiResult[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetKpi.info(queryParams, configOverride);
@@ -3317,7 +3329,7 @@ useGetKpi.prefetch = (
 };
 export const useGetKpiCurrent = (
   queryParams?: GetKpiCurrentQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<KpiResult[]>,
+  options?: SwaggerTypescriptUseQueryOptions<KpiResult[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetKpiCurrent.info(queryParams, configOverride);
@@ -3340,7 +3352,7 @@ useGetKpiCurrent.info = (
 useGetKpiCurrent.prefetch = (
   client: QueryClient,
   queryParams?: GetKpiCurrentQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<KpiResult[]>,
+  options?: SwaggerTypescriptUseQueryOptions<KpiResult[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetKpiCurrent.info(queryParams, configOverride);
@@ -3355,7 +3367,7 @@ useGetKpiCurrent.prefetch = (
 };
 export const useGetKpiLast = (
   queryParams?: GetKpiLastQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<KpiResult[]>,
+  options?: SwaggerTypescriptUseQueryOptions<KpiResult[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetKpiLast.info(queryParams, configOverride);
@@ -3378,7 +3390,7 @@ useGetKpiLast.info = (
 useGetKpiLast.prefetch = (
   client: QueryClient,
   queryParams?: GetKpiLastQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<KpiResult[]>,
+  options?: SwaggerTypescriptUseQueryOptions<KpiResult[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetKpiLast.info(queryParams, configOverride);
@@ -3394,7 +3406,7 @@ useGetKpiLast.prefetch = (
 
 /** Get all Important Actions of current user. */
 export const useGetNotificationIa = (
-  options?: SwaggerTypescriptUseQueryOptions<ImportantActionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ImportantActionApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetNotificationIa.info(configOverride);
@@ -3413,7 +3425,7 @@ useGetNotificationIa.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetNotificationIa.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<ImportantActionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ImportantActionApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetNotificationIa.info(configOverride);
@@ -3429,7 +3441,7 @@ useGetNotificationIa.prefetch = (
 
 /** Get Notifications of current user. Maximum 99 items will be returned. */
 export const useGetNotificationNotif = (
-  options?: SwaggerTypescriptUseQueryOptions<NotificationApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<NotificationApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetNotificationNotif.info(configOverride);
@@ -3448,7 +3460,7 @@ useGetNotificationNotif.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetNotificationNotif.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<NotificationApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<NotificationApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetNotificationNotif.info(configOverride);
@@ -3463,7 +3475,9 @@ useGetNotificationNotif.prefetch = (
 };
 export const useGetNotificationUnread = (
   queryParams?: GetNotificationUnreadQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<UnreadNotificationCountApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    UnreadNotificationCountApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetNotificationUnread.info(
@@ -3489,7 +3503,9 @@ useGetNotificationUnread.info = (
 useGetNotificationUnread.prefetch = (
   client: QueryClient,
   queryParams?: GetNotificationUnreadQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<UnreadNotificationCountApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    UnreadNotificationCountApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetNotificationUnread.info(
@@ -3511,7 +3527,7 @@ export const useGetPosAccountNumber = (
   /** Account Number */
   accountNumber: string,
   queryParams?: GetPosAccountNumberQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<PosLandingPageApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<PosLandingPageApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPosAccountNumber.info(
@@ -3543,7 +3559,7 @@ useGetPosAccountNumber.prefetch = (
   /** Account Number */
   accountNumber: string,
   queryParams?: GetPosAccountNumberQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<PosLandingPageApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<PosLandingPageApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPosAccountNumber.info(
@@ -3571,7 +3587,7 @@ useGetPosAccountNumber.prefetch = (
 export const useGetReceiptEpayToken = (
   /** EpayRequest's token to get receipt for */
   epayToken: string,
-  options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetReceiptEpayToken.info(epayToken, configOverride);
@@ -3597,7 +3613,7 @@ useGetReceiptEpayToken.prefetch = (
 
   /** EpayRequest's token to get receipt for */
   epayToken: string,
-  options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetReceiptEpayToken.info(epayToken, configOverride);
@@ -3615,7 +3631,7 @@ useGetReceiptEpayToken.prefetch = (
 export const useGetReceiptWalletEpayToken = (
   /** EpayRequest's token to get receipt for */
   epayToken: string,
-  options?: SwaggerTypescriptUseQueryOptions<WalletReceiptApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<WalletReceiptApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetReceiptWalletEpayToken.info(
@@ -3644,7 +3660,7 @@ useGetReceiptWalletEpayToken.prefetch = (
 
   /** EpayRequest's token to get receipt for */
   epayToken: string,
-  options?: SwaggerTypescriptUseQueryOptions<WalletReceiptApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<WalletReceiptApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetReceiptWalletEpayToken.info(
@@ -3666,7 +3682,7 @@ useGetReceiptWalletEpayToken.prefetch = (
  * Resellers]
  */
 export const useGetResellerUser = (
-  options?: SwaggerTypescriptUseQueryOptions<ResellerApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<ResellerApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUser.info(configOverride);
@@ -3685,7 +3701,7 @@ useGetResellerUser.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetResellerUser.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<ResellerApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<ResellerApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUser.info(configOverride);
@@ -3708,7 +3724,9 @@ useGetResellerUser.prefetch = (
  */
 export const useGetResellerUserDashboardCommissionReport = (
   queryParams?: GetResellerUserDashboardCommissionReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DateReportApiModelOfDecimal[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    DateReportApiModelOfDecimal[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardCommissionReport.info(
@@ -3738,7 +3756,9 @@ useGetResellerUserDashboardCommissionReport.info = (
 useGetResellerUserDashboardCommissionReport.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserDashboardCommissionReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DateReportApiModelOfDecimal[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    DateReportApiModelOfDecimal[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardCommissionReport.info(
@@ -3764,7 +3784,7 @@ useGetResellerUserDashboardCommissionReport.prefetch = (
  */
 export const useGetResellerUserDashboardCommissionSum = (
   queryParams?: GetResellerUserDashboardCommissionSumQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardCommissionSum.info(
@@ -3791,7 +3811,7 @@ useGetResellerUserDashboardCommissionSum.info = (
 useGetResellerUserDashboardCommissionSum.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserDashboardCommissionSumQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardCommissionSum.info(
@@ -3817,7 +3837,7 @@ useGetResellerUserDashboardCommissionSum.prefetch = (
  */
 export const useGetResellerUserDashboardIntroducedCount = (
   queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardIntroducedCount.info(
@@ -3844,7 +3864,7 @@ useGetResellerUserDashboardIntroducedCount.info = (
 useGetResellerUserDashboardIntroducedCount.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardIntroducedCount.info(
@@ -3870,7 +3890,9 @@ useGetResellerUserDashboardIntroducedCount.prefetch = (
  */
 export const useGetResellerUserDashboardIntroducedReport = (
   queryParams?: GetResellerUserDashboardIntroducedReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DateReportApiModelOfInteger[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    DateReportApiModelOfInteger[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardIntroducedReport.info(
@@ -3900,7 +3922,9 @@ useGetResellerUserDashboardIntroducedReport.info = (
 useGetResellerUserDashboardIntroducedReport.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserDashboardIntroducedReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DateReportApiModelOfInteger[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    DateReportApiModelOfInteger[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardIntroducedReport.info(
@@ -3926,7 +3950,7 @@ useGetResellerUserDashboardIntroducedReport.prefetch = (
  */
 export const useGetResellerUserDashboardLinksCount = (
   queryParams?: GetResellerUserDashboardLinksCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardLinksCount.info(
@@ -3952,7 +3976,7 @@ useGetResellerUserDashboardLinksCount.info = (
 useGetResellerUserDashboardLinksCount.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserDashboardLinksCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardLinksCount.info(
@@ -3978,7 +4002,7 @@ useGetResellerUserDashboardLinksCount.prefetch = (
  */
 export const useGetResellerUserDashboardLinksPaidCount = (
   queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardLinksPaidCount.info(
@@ -4005,7 +4029,7 @@ useGetResellerUserDashboardLinksPaidCount.info = (
 useGetResellerUserDashboardLinksPaidCount.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardLinksPaidCount.info(
@@ -4031,7 +4055,9 @@ useGetResellerUserDashboardLinksPaidCount.prefetch = (
  */
 export const useGetResellerUserDashboardLinksPaidReport = (
   queryParams?: GetResellerUserDashboardLinksPaidReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DateReportApiModelOfInteger[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    DateReportApiModelOfInteger[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardLinksPaidReport.info(
@@ -4058,7 +4084,9 @@ useGetResellerUserDashboardLinksPaidReport.info = (
 useGetResellerUserDashboardLinksPaidReport.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserDashboardLinksPaidReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DateReportApiModelOfInteger[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    DateReportApiModelOfInteger[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardLinksPaidReport.info(
@@ -4084,7 +4112,9 @@ useGetResellerUserDashboardLinksPaidReport.prefetch = (
  */
 export const useGetResellerUserDashboardLinksReport = (
   queryParams?: GetResellerUserDashboardLinksReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DateReportApiModelOfInteger[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    DateReportApiModelOfInteger[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardLinksReport.info(
@@ -4110,7 +4140,9 @@ useGetResellerUserDashboardLinksReport.info = (
 useGetResellerUserDashboardLinksReport.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserDashboardLinksReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DateReportApiModelOfInteger[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    DateReportApiModelOfInteger[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardLinksReport.info(
@@ -4136,7 +4168,7 @@ useGetResellerUserDashboardLinksReport.prefetch = (
  */
 export const useGetResellerUserDashboardTransactionsCount = (
   queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardTransactionsCount.info(
@@ -4166,7 +4198,7 @@ useGetResellerUserDashboardTransactionsCount.info = (
 useGetResellerUserDashboardTransactionsCount.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AggregationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardTransactionsCount.info(
@@ -4192,7 +4224,9 @@ useGetResellerUserDashboardTransactionsCount.prefetch = (
  */
 export const useGetResellerUserDashboardTransactionsReport = (
   queryParams?: GetResellerUserDashboardTransactionsReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DateReportApiModelOfInteger[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    DateReportApiModelOfInteger[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardTransactionsReport.info(
@@ -4222,7 +4256,9 @@ useGetResellerUserDashboardTransactionsReport.info = (
 useGetResellerUserDashboardTransactionsReport.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserDashboardTransactionsReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<DateReportApiModelOfInteger[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    DateReportApiModelOfInteger[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserDashboardTransactionsReport.info(
@@ -4245,7 +4281,7 @@ useGetResellerUserDashboardTransactionsReport.prefetch = (
  */
 export const useGetResellerUserIntroduced = (
   queryParams?: GetResellerUserIntroducedQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<ReselledUserApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ReselledUserApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserIntroduced.info(
@@ -4271,7 +4307,7 @@ useGetResellerUserIntroduced.info = (
 useGetResellerUserIntroduced.prefetch = (
   client: QueryClient,
   queryParams?: GetResellerUserIntroducedQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<ReselledUserApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ReselledUserApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserIntroduced.info(
@@ -4293,7 +4329,7 @@ useGetResellerUserIntroduced.prefetch = (
  * Resellers]
  */
 export const useGetResellerUserIntroducedFilterData = (
-  options?: SwaggerTypescriptUseQueryOptions<ReselledUserFilterData>,
+  options?: SwaggerTypescriptUseQueryOptions<ReselledUserFilterData | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -4315,7 +4351,7 @@ useGetResellerUserIntroducedFilterData.info = (
 };
 useGetResellerUserIntroducedFilterData.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<ReselledUserFilterData>,
+  options?: SwaggerTypescriptUseQueryOptions<ReselledUserFilterData | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -4333,7 +4369,7 @@ useGetResellerUserIntroducedFilterData.prefetch = (
 /** Get the User activity [Feature just allowed for Resellers] */
 export const useGetResellerUserIntroducedUserIdActivity = (
   userId: string,
-  options?: SwaggerTypescriptUseQueryOptions<ReselledUserActivityApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<ReselledUserActivityApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserIntroducedUserIdActivity.info(
@@ -4359,7 +4395,7 @@ useGetResellerUserIntroducedUserIdActivity.info = (
 useGetResellerUserIntroducedUserIdActivity.prefetch = (
   client: QueryClient,
   userId: string,
-  options?: SwaggerTypescriptUseQueryOptions<ReselledUserActivityApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<ReselledUserActivityApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUserIntroducedUserIdActivity.info(
@@ -4381,7 +4417,7 @@ useGetResellerUserIntroducedUserIdActivity.prefetch = (
  * Resellers]
  */
 export const useGetSubDomain = (
-  options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSubDomain.info(configOverride);
@@ -4400,7 +4436,7 @@ useGetSubDomain.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetSubDomain.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSubDomain.info(configOverride);
@@ -4422,7 +4458,7 @@ export const useGetSubDomainSubDomainAddress = (
     /** - Format: guid */
     clientId?: string;
   },
-  options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSubDomainSubDomainAddress.info(
@@ -4469,7 +4505,7 @@ useGetSubDomainSubDomainAddress.prefetch = (
     /** - Format: guid */
     clientId?: string;
   },
-  options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<SubDomainApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSubDomainSubDomainAddress.info(
@@ -4495,7 +4531,9 @@ useGetSubDomainSubDomainAddress.prefetch = (
  *   alternative
  */
 export const useGetSubUserConnection = (
-  options?: SwaggerTypescriptUseQueryOptions<BusinessUserConnectionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    BusinessUserConnectionApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSubUserConnection.info(configOverride);
@@ -4514,7 +4552,9 @@ useGetSubUserConnection.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetSubUserConnection.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<BusinessUserConnectionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    BusinessUserConnectionApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSubUserConnection.info(configOverride);
@@ -4529,7 +4569,7 @@ useGetSubUserConnection.prefetch = (
 };
 export const useGetTransaction = (
   queryParams?: GetTransactionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<TransactionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<TransactionApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransaction.info(queryParams, configOverride);
@@ -4552,7 +4592,7 @@ useGetTransaction.info = (
 useGetTransaction.prefetch = (
   client: QueryClient,
   queryParams?: GetTransactionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<TransactionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<TransactionApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransaction.info(queryParams, configOverride);
@@ -4610,7 +4650,7 @@ useGetTransactionExcel.prefetch = (
  */
 export const useGetTransactionReport = (
   queryParams?: GetTransactionReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransactionReport.info(
@@ -4636,7 +4676,7 @@ useGetTransactionReport.info = (
 useGetTransactionReport.prefetch = (
   client: QueryClient,
   queryParams?: GetTransactionReportQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<ReportApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransactionReport.info(
@@ -4659,7 +4699,7 @@ useGetTransactionReport.prefetch = (
  */
 export const useGetTransactionReportAll = (
   queryParams?: GetTransactionReportAllQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AllTransactionsReportApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AllTransactionsReportApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransactionReportAll.info(
@@ -4685,7 +4725,7 @@ useGetTransactionReportAll.info = (
 useGetTransactionReportAll.prefetch = (
   client: QueryClient,
   queryParams?: GetTransactionReportAllQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AllTransactionsReportApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AllTransactionsReportApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransactionReportAll.info(
@@ -4705,7 +4745,7 @@ useGetTransactionReportAll.prefetch = (
 /** Get recent money transfers */
 export const useGetTransferRecent = (
   queryParams?: GetTransferRecentQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<TransferMoneyApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<TransferMoneyApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransferRecent.info(queryParams, configOverride);
@@ -4728,7 +4768,7 @@ useGetTransferRecent.info = (
 useGetTransferRecent.prefetch = (
   client: QueryClient,
   queryParams?: GetTransferRecentQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<TransferMoneyApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<TransferMoneyApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransferRecent.info(queryParams, configOverride);
@@ -4743,7 +4783,7 @@ useGetTransferRecent.prefetch = (
 };
 export const useGetTransferSearch = (
   queryParams?: GetTransferSearchQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AccountInfoApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AccountInfoApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransferSearch.info(queryParams, configOverride);
@@ -4766,7 +4806,7 @@ useGetTransferSearch.info = (
 useGetTransferSearch.prefetch = (
   client: QueryClient,
   queryParams?: GetTransferSearchQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AccountInfoApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AccountInfoApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransferSearch.info(queryParams, configOverride);
@@ -4784,7 +4824,7 @@ useGetTransferSearch.prefetch = (
 export const useGetTransferUserWalletIdCommission = (
   userWalletId: number,
   queryParams?: GetTransferUserWalletIdCommissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransferUserWalletIdCommission.info(
@@ -4822,7 +4862,7 @@ useGetTransferUserWalletIdCommission.prefetch = (
   client: QueryClient,
   userWalletId: number,
   queryParams?: GetTransferUserWalletIdCommissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransferUserWalletIdCommission.info(
@@ -4842,7 +4882,7 @@ useGetTransferUserWalletIdCommission.prefetch = (
 
 /** Get [normal/sub/business] user profile detail */
 export const useGetUser = (
-  options?: SwaggerTypescriptUseQueryOptions<UserDetailQuery>,
+  options?: SwaggerTypescriptUseQueryOptions<UserDetailQuery | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUser.info(configOverride);
@@ -4861,7 +4901,7 @@ useGetUser.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetUser.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserDetailQuery>,
+  options?: SwaggerTypescriptUseQueryOptions<UserDetailQuery | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUser.info(configOverride);
@@ -4877,7 +4917,7 @@ useGetUser.prefetch = (
 
 /** Get user banks [Feature is not allowed for sub users.] */
 export const useGetUserBank = (
-  options?: SwaggerTypescriptUseQueryOptions<UserBankApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserBankApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserBank.info(configOverride);
@@ -4896,7 +4936,7 @@ useGetUserBank.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetUserBank.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserBankApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserBankApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserBank.info(configOverride);
@@ -4912,7 +4952,7 @@ useGetUserBank.prefetch = (
 
 /** Get available user banks [Feature is not allowed for sub users.] */
 export const useGetUserBankReady = (
-  options?: SwaggerTypescriptUseQueryOptions<UserBankApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserBankApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserBankReady.info(configOverride);
@@ -4931,7 +4971,7 @@ useGetUserBankReady.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetUserBankReady.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserBankApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserBankApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserBankReady.info(configOverride);
@@ -4947,7 +4987,9 @@ useGetUserBankReady.prefetch = (
 
 /** Get the connections [Feature is allowed for normal users noly] */
 export const useGetUserConnection = (
-  options?: SwaggerTypescriptUseQueryOptions<BusinessUserConnectionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    BusinessUserConnectionApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserConnection.info(configOverride);
@@ -4966,7 +5008,9 @@ useGetUserConnection.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetUserConnection.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<BusinessUserConnectionApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    BusinessUserConnectionApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserConnection.info(configOverride);
@@ -4981,7 +5025,7 @@ useGetUserConnection.prefetch = (
 };
 export const useGetUserContactInput = (
   input: string,
-  options?: SwaggerTypescriptUseQueryOptions<ContactApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<ContactApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserContactInput.info(input, configOverride);
@@ -5004,7 +5048,7 @@ useGetUserContactInput.info = (
 useGetUserContactInput.prefetch = (
   client: QueryClient,
   input: string,
-  options?: SwaggerTypescriptUseQueryOptions<ContactApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<ContactApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserContactInput.info(input, configOverride);
@@ -5023,7 +5067,7 @@ useGetUserContactInput.prefetch = (
  * users]
  */
 export const useGetUserIdentityRequest = (
-  options?: SwaggerTypescriptUseQueryOptions<UserIdentityRequestQuery>,
+  options?: SwaggerTypescriptUseQueryOptions<UserIdentityRequestQuery | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserIdentityRequest.info(configOverride);
@@ -5042,7 +5086,7 @@ useGetUserIdentityRequest.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetUserIdentityRequest.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserIdentityRequestQuery>,
+  options?: SwaggerTypescriptUseQueryOptions<UserIdentityRequestQuery | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserIdentityRequest.info(configOverride);
@@ -5058,7 +5102,9 @@ useGetUserIdentityRequest.prefetch = (
 
 /** Get business user invitations for me [Feature is not allowed for sub users] */
 export const useGetUserInvitation = (
-  options?: SwaggerTypescriptUseQueryOptions<SubUserInvitationApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    SubUserInvitationApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserInvitation.info(configOverride);
@@ -5077,7 +5123,9 @@ useGetUserInvitation.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetUserInvitation.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserInvitationApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    SubUserInvitationApiModel[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserInvitation.info(configOverride);
@@ -5094,7 +5142,7 @@ useGetUserInvitation.prefetch = (
 /** Get business user invitations for me [Feature is not allowed for sub users] */
 export const useGetUserInvitationInvitationToken = (
   invitationToken: string,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserInvitationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<SubUserInvitationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserInvitationInvitationToken.info(
@@ -5121,7 +5169,7 @@ useGetUserInvitationInvitationToken.info = (
 useGetUserInvitationInvitationToken.prefetch = (
   client: QueryClient,
   invitationToken: string,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserInvitationApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<SubUserInvitationApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserInvitationInvitationToken.info(
@@ -5140,7 +5188,7 @@ useGetUserInvitationInvitationToken.prefetch = (
 
 /** Get user profile summary */
 export const useGetUserMe = (
-  options?: SwaggerTypescriptUseQueryOptions<UserMeQuery>,
+  options?: SwaggerTypescriptUseQueryOptions<UserMeQuery | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserMe.info(configOverride);
@@ -5159,7 +5207,7 @@ useGetUserMe.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetUserMe.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserMeQuery>,
+  options?: SwaggerTypescriptUseQueryOptions<UserMeQuery | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserMe.info(configOverride);
@@ -5173,7 +5221,7 @@ useGetUserMe.prefetch = (
       });
 };
 export const useGetUserPlugin = (
-  options?: SwaggerTypescriptUseQueryOptions<UserPluginDetailApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserPluginDetailApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserPlugin.info(configOverride);
@@ -5192,7 +5240,7 @@ useGetUserPlugin.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetUserPlugin.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserPluginDetailApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserPluginDetailApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserPlugin.info(configOverride);
@@ -5211,7 +5259,7 @@ useGetUserPlugin.prefetch = (
  * normal users only]
  */
 export const useGetUserUpgradeToBusinessRequest = (
-  options?: SwaggerTypescriptUseQueryOptions<UpgradeToBusinessApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<UpgradeToBusinessApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserUpgradeToBusinessRequest.info(configOverride);
@@ -5232,7 +5280,7 @@ useGetUserUpgradeToBusinessRequest.info = (
 };
 useGetUserUpgradeToBusinessRequest.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UpgradeToBusinessApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<UpgradeToBusinessApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserUpgradeToBusinessRequest.info(configOverride);
@@ -5246,7 +5294,7 @@ useGetUserUpgradeToBusinessRequest.prefetch = (
       });
 };
 export const useGetUserWallet = (
-  options?: SwaggerTypescriptUseQueryOptions<WalletDisplayApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<WalletDisplayApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWallet.info(configOverride);
@@ -5265,7 +5313,7 @@ useGetUserWallet.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetUserWallet.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<WalletDisplayApiModel[]>,
+  options?: SwaggerTypescriptUseQueryOptions<WalletDisplayApiModel[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWallet.info(configOverride);
@@ -5343,7 +5391,7 @@ useGetUserWalletAccountNumberQrcode.prefetch = (
  */
 export const useGetUserWalletSearch = (
   queryParams?: GetUserWalletSearchQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AccountInfoApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AccountInfoApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletSearch.info(queryParams, configOverride);
@@ -5366,7 +5414,7 @@ useGetUserWalletSearch.info = (
 useGetUserWalletSearch.prefetch = (
   client: QueryClient,
   queryParams?: GetUserWalletSearchQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<AccountInfoApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AccountInfoApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletSearch.info(queryParams, configOverride);
@@ -5383,7 +5431,7 @@ useGetUserWalletSearch.prefetch = (
 /** Get user account balance */
 export const useGetUserWalletUserWalletIdBalance = (
   userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<AccountBalanceApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AccountBalanceApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdBalance.info(
@@ -5409,7 +5457,7 @@ useGetUserWalletUserWalletIdBalance.info = (
 useGetUserWalletUserWalletIdBalance.prefetch = (
   client: QueryClient,
   userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<AccountBalanceApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<AccountBalanceApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdBalance.info(
@@ -5433,7 +5481,7 @@ useGetUserWalletUserWalletIdBalance.prefetch = (
 export const useGetUserWalletUserWalletIdEpayRequestComission = (
   userWalletId: number,
   queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdEpayRequestComission.info(
@@ -5471,7 +5519,7 @@ useGetUserWalletUserWalletIdEpayRequestComission.prefetch = (
   client: QueryClient,
   userWalletId: number,
   queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdEpayRequestComission.info(
@@ -5490,7 +5538,9 @@ useGetUserWalletUserWalletIdEpayRequestComission.prefetch = (
 };
 export const useGetUserWalletUserWalletIdPermittedsubusers = (
   userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<AccountPermittedSubUserQuery[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    AccountPermittedSubUserQuery[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdPermittedsubusers.info(
@@ -5520,7 +5570,9 @@ useGetUserWalletUserWalletIdPermittedsubusers.info = (
 useGetUserWalletUserWalletIdPermittedsubusers.prefetch = (
   client: QueryClient,
   userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<AccountPermittedSubUserQuery[]>,
+  options?: SwaggerTypescriptUseQueryOptions<
+    AccountPermittedSubUserQuery[] | null
+  >,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdPermittedsubusers.info(
@@ -5539,7 +5591,7 @@ useGetUserWalletUserWalletIdPermittedsubusers.prefetch = (
 export const useGetUserWalletUserWalletIdSettlementRequestComission = (
   userWalletId: number,
   queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -5578,7 +5630,7 @@ useGetUserWalletUserWalletIdSettlementRequestComission.prefetch = (
   client: QueryClient,
   userWalletId: number,
   queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } =
@@ -5604,7 +5656,7 @@ useGetUserWalletUserWalletIdSettlementRequestComission.prefetch = (
 export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
   userWalletId: number,
   queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdTransferMoneyCommission.info(
@@ -5642,7 +5694,7 @@ useGetUserWalletUserWalletIdTransferMoneyCommission.prefetch = (
   client: QueryClient,
   userWalletId: number,
   queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel>,
+  options?: SwaggerTypescriptUseQueryOptions<CommissionAmountApiModel | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdTransferMoneyCommission.info(
@@ -5662,7 +5714,7 @@ useGetUserWalletUserWalletIdTransferMoneyCommission.prefetch = (
 
 /** Get user work spaces */
 export const useGetUserWorkspace = (
-  options?: SwaggerTypescriptUseQueryOptions<UserWorkspaceQuery[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserWorkspaceQuery[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWorkspace.info(configOverride);
@@ -5681,7 +5733,7 @@ useGetUserWorkspace.info = (configOverride?: AxiosRequestConfig) => {
 };
 useGetUserWorkspace.prefetch = (
   client: QueryClient,
-  options?: SwaggerTypescriptUseQueryOptions<UserWorkspaceQuery[]>,
+  options?: SwaggerTypescriptUseQueryOptions<UserWorkspaceQuery[] | null>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWorkspace.info(configOverride);
@@ -6433,7 +6485,7 @@ export enum Gender {
   \\"Female\\" = \\"Female\\",
 }
 
-export interface GetBusinessUserConnectionActiveQueryParams {
+export type GetBusinessUserConnectionActiveQueryParams = {
   /**
    * Defaults to 0
    *
@@ -6446,9 +6498,9 @@ export interface GetBusinessUserConnectionActiveQueryParams {
    * - Format: int32
    */
   take?: number;
-}
+} | null;
 
-export interface GetBusinessUserConnectionConnectionIdEpayQueryParams {
+export type GetBusinessUserConnectionConnectionIdEpayQueryParams = {
   /** - Format: date-time */
   endDate?: string;
   epayRequestStatus?: \\"Initiated\\" | \\"Paid\\" | \\"Cancelled\\" | \\"Expired\\" | \\"Viewed\\";
@@ -6482,16 +6534,16 @@ export interface GetBusinessUserConnectionConnectionIdEpayQueryParams {
   take?: number;
   /** - Format: int64 */
   userWalletId?: number;
-}
+} | null;
 
-export interface GetBusinessUserConnectionQueryParams {
+export type GetBusinessUserConnectionQueryParams = {
   /**
    * Defaults to 0
    *
    * - Format: int32
    */
   skip?: number;
-  states?: SubUserConnectionStatus[];
+  states?: (SubUserConnectionStatus | null)[];
   subUserConnectionStatus?:
     | \\"Pending\\"
     | \\"Rejected\\"
@@ -6504,9 +6556,9 @@ export interface GetBusinessUserConnectionQueryParams {
    * - Format: int32
    */
   take?: number;
-}
+} | null;
 
-export interface GetEpayRequestCountQueryParams {
+export type GetEpayRequestCountQueryParams = {
   /** - Format: int32 */
   FromMonth?: number;
   /** - Format: int32 */
@@ -6525,10 +6577,10 @@ export interface GetEpayRequestCountQueryParams {
   ToYear?: number;
   /** - Format: int32 */
   Year?: number;
-}
+} | null;
 
-export interface GetEpayRequestExcelQueryParams {
-  accountIds?: number[];
+export type GetEpayRequestExcelQueryParams = {
+  accountIds?: (number | null)[];
   /** - Format: date-time */
   endDate?: string;
   epayRequestStatus?: \\"Initiated\\" | \\"Paid\\" | \\"Cancelled\\" | \\"Expired\\" | \\"Viewed\\";
@@ -6554,12 +6606,12 @@ export interface GetEpayRequestExcelQueryParams {
   skip?: number;
   /** - Format: date-time */
   startDate?: string;
-  states?: EpayRequestActualState[];
+  states?: (EpayRequestActualState | null)[];
   /** - Format: int64 */
   userWalletId?: number;
-}
+} | null;
 
-export interface GetEpayRequestForMeCountQueryParams {
+export type GetEpayRequestForMeCountQueryParams = {
   /** - Format: int32 */
   FromMonth?: number;
   /** - Format: int32 */
@@ -6578,9 +6630,9 @@ export interface GetEpayRequestForMeCountQueryParams {
   ToYear?: number;
   /** - Format: int32 */
   Year?: number;
-}
+} | null;
 
-export interface GetEpayRequestForMeQueryParams {
+export type GetEpayRequestForMeQueryParams = {
   applicantName?: string;
   applicantPhoneNumber?: string;
   endDate?: string;
@@ -6593,16 +6645,16 @@ export interface GetEpayRequestForMeQueryParams {
    */
   skip?: number;
   startDate?: string;
-  states?: EpayRequestActualState[];
+  states?: (EpayRequestActualState | null)[];
   /**
    * Defaults to 10
    *
    * - Format: int32
    */
   take?: number;
-}
+} | null;
 
-export interface GetEpayRequestForMeReportQueryParams {
+export type GetEpayRequestForMeReportQueryParams = {
   /** - Format: int32 */
   FromMonth?: number;
   /** - Format: int32 */
@@ -6621,17 +6673,17 @@ export interface GetEpayRequestForMeReportQueryParams {
   ToYear?: number;
   /** - Format: int32 */
   Year?: number;
-}
+} | null;
 
-export interface GetEpayRequestPosQrAccountNumberQueryParams {
+export type GetEpayRequestPosQrAccountNumberQueryParams = {
   /** - Format: decimal */
   amount?: number;
   /** - Format: int64 */
   subUserConId?: number;
-}
+} | null;
 
-export interface GetEpayRequestQueryParams {
-  accountIds?: number[];
+export type GetEpayRequestQueryParams = {
+  accountIds?: (number | null)[];
   /** - Format: date-time */
   endDate?: string;
   epayRequestStatus?: \\"Initiated\\" | \\"Paid\\" | \\"Cancelled\\" | \\"Expired\\" | \\"Viewed\\";
@@ -6657,7 +6709,7 @@ export interface GetEpayRequestQueryParams {
   skip?: number;
   /** - Format: date-time */
   startDate?: string;
-  states?: EpayRequestActualState[];
+  states?: (EpayRequestActualState | null)[];
   /**
    * Defaults to 10
    *
@@ -6666,9 +6718,9 @@ export interface GetEpayRequestQueryParams {
   take?: number;
   /** - Format: int64 */
   userWalletId?: number;
-}
+} | null;
 
-export interface GetEpayRequestReportQueryParams {
+export type GetEpayRequestReportQueryParams = {
   /** - Format: int32 */
   FromMonth?: number;
   /** - Format: int32 */
@@ -6687,21 +6739,21 @@ export interface GetEpayRequestReportQueryParams {
   ToYear?: number;
   /** - Format: int32 */
   Year?: number;
-}
+} | null;
 
-export interface GetEpayRequestUserWalletIdCommissionQueryParams {
+export type GetEpayRequestUserWalletIdCommissionQueryParams = {
   /** - Format: decimal */
   amount?: number;
-}
+} | null;
 
-export interface GetGroupTransferCommissionQueryParams {
+export type GetGroupTransferCommissionQueryParams = {
   /** - Format: decimal */
   amount?: number;
   /** - Format: int64 */
   userWalletId?: number;
-}
+} | null;
 
-export interface GetIntegrationQueryParams {
+export type GetIntegrationQueryParams = {
   /**
    * Code of the corresponding institude
    *
@@ -6710,22 +6762,22 @@ export interface GetIntegrationQueryParams {
   instituteCode?: number;
   /** Code specific to each driver */
   termainalId?: string;
-}
+} | null;
 
-export interface GetKpiCurrentQueryParams {
+export type GetKpiCurrentQueryParams = {
   datePart?: DatePart[];
   kpiName?: string[];
-}
+} | null;
 
-export interface GetKpiLastQueryParams {
+export type GetKpiLastQueryParams = {
   /** - Format: int32 */
   count?: number;
   datePart?: DatePart[];
   endPartial?: boolean;
   kpiName?: string[];
-}
+} | null;
 
-export interface GetKpiQueryParams {
+export type GetKpiQueryParams = {
   datePart?: DatePart[];
   /** - Format: date-time */
   end?: string;
@@ -6734,22 +6786,22 @@ export interface GetKpiQueryParams {
   /** - Format: date-time */
   start?: string;
   startPartial?: boolean;
-}
+} | null;
 
-export interface GetNotificationUnreadQueryParams {
+export type GetNotificationUnreadQueryParams = {
   channels?: NotificationChannel[];
-}
+} | null;
 
-export interface GetPosAccountNumberQueryParams {
+export type GetPosAccountNumberQueryParams = {
   /**
    * Subuser Connection Id
    *
    * - Format: int64
    */
   subUserConId?: number;
-}
+} | null;
 
-export interface GetResellerUserDashboardCommissionReportQueryParams {
+export type GetResellerUserDashboardCommissionReportQueryParams = {
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -6768,9 +6820,9 @@ export interface GetResellerUserDashboardCommissionReportQueryParams {
   toYear?: number;
   /** - Format: int32 */
   year?: number;
-}
+} | null;
 
-export interface GetResellerUserDashboardCommissionSumQueryParams {
+export type GetResellerUserDashboardCommissionSumQueryParams = {
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -6789,9 +6841,9 @@ export interface GetResellerUserDashboardCommissionSumQueryParams {
   toYear?: number;
   /** - Format: int32 */
   year?: number;
-}
+} | null;
 
-export interface GetResellerUserDashboardIntroducedCountQueryParams {
+export type GetResellerUserDashboardIntroducedCountQueryParams = {
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -6810,9 +6862,9 @@ export interface GetResellerUserDashboardIntroducedCountQueryParams {
   toYear?: number;
   /** - Format: int32 */
   year?: number;
-}
+} | null;
 
-export interface GetResellerUserDashboardIntroducedReportQueryParams {
+export type GetResellerUserDashboardIntroducedReportQueryParams = {
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -6831,9 +6883,9 @@ export interface GetResellerUserDashboardIntroducedReportQueryParams {
   toYear?: number;
   /** - Format: int32 */
   year?: number;
-}
+} | null;
 
-export interface GetResellerUserDashboardLinksCountQueryParams {
+export type GetResellerUserDashboardLinksCountQueryParams = {
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -6852,9 +6904,9 @@ export interface GetResellerUserDashboardLinksCountQueryParams {
   toYear?: number;
   /** - Format: int32 */
   year?: number;
-}
+} | null;
 
-export interface GetResellerUserDashboardLinksPaidCountQueryParams {
+export type GetResellerUserDashboardLinksPaidCountQueryParams = {
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -6873,9 +6925,9 @@ export interface GetResellerUserDashboardLinksPaidCountQueryParams {
   toYear?: number;
   /** - Format: int32 */
   year?: number;
-}
+} | null;
 
-export interface GetResellerUserDashboardLinksPaidReportQueryParams {
+export type GetResellerUserDashboardLinksPaidReportQueryParams = {
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -6894,9 +6946,9 @@ export interface GetResellerUserDashboardLinksPaidReportQueryParams {
   toYear?: number;
   /** - Format: int32 */
   year?: number;
-}
+} | null;
 
-export interface GetResellerUserDashboardLinksReportQueryParams {
+export type GetResellerUserDashboardLinksReportQueryParams = {
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -6915,9 +6967,9 @@ export interface GetResellerUserDashboardLinksReportQueryParams {
   toYear?: number;
   /** - Format: int32 */
   year?: number;
-}
+} | null;
 
-export interface GetResellerUserDashboardTransactionsCountQueryParams {
+export type GetResellerUserDashboardTransactionsCountQueryParams = {
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -6936,9 +6988,9 @@ export interface GetResellerUserDashboardTransactionsCountQueryParams {
   toYear?: number;
   /** - Format: int32 */
   year?: number;
-}
+} | null;
 
-export interface GetResellerUserDashboardTransactionsReportQueryParams {
+export type GetResellerUserDashboardTransactionsReportQueryParams = {
   /** - Format: int32 */
   fromMonth?: number;
   /** - Format: int32 */
@@ -6957,9 +7009,9 @@ export interface GetResellerUserDashboardTransactionsReportQueryParams {
   toYear?: number;
   /** - Format: int32 */
   year?: number;
-}
+} | null;
 
-export interface GetResellerUserIntroducedQueryParams {
+export type GetResellerUserIntroducedQueryParams = {
   identityStatuses?: IdentityStatus[];
   isActive?: boolean;
   isPerson?: boolean;
@@ -6994,16 +7046,16 @@ export interface GetResellerUserIntroducedQueryParams {
   skip?: number;
   /** - Format: int32 */
   take?: number;
-}
+} | null;
 
-export interface GetTransactionExcelQueryParams {
+export type GetTransactionExcelQueryParams = {
   /** - Format: decimal */
   amountFrom?: number;
   /** - Format: decimal */
   amountTo?: number;
   /** - Format: date-time */
   endDate?: string;
-  logicalActions?: LogicalActionType[];
+  logicalActions?: (LogicalActionType | null)[];
   operationType?:
     | \\"Unknown\\"
     | \\"Normal\\"
@@ -7023,7 +7075,7 @@ export interface GetTransactionExcelQueryParams {
     | \\"BlockchainIncomingTransaction\\"
     | \\"BlockchainWithdrawUserWalletOffchain\\"
     | \\"BlockchainFee\\";
-  operationTypes?: TransactionOperationType[];
+  operationTypes?: (TransactionOperationType | null)[];
   /** - Format: int32 */
   skip?: number;
   /** - Format: date-time */
@@ -7035,13 +7087,13 @@ export interface GetTransactionExcelQueryParams {
    */
   take?: number;
   transactionType?: \\"Debt\\" | \\"Credit\\";
-  transactionTypes?: TransactionType[];
+  transactionTypes?: (TransactionType | null)[];
   /** - Format: int64 */
   userWalletId?: number;
-  voucherTypes?: VoucherOperationType[];
-}
+  voucherTypes?: (VoucherOperationType | null)[];
+} | null;
 
-export interface GetTransactionQueryParams {
+export type GetTransactionQueryParams = {
   /** - Format: decimal */
   amountFrom?: number;
   /** - Format: decimal */
@@ -7054,7 +7106,7 @@ export interface GetTransactionQueryParams {
    * - Format: int32
    */
   limit?: number;
-  logicalActions?: LogicalActionType[];
+  logicalActions?: (LogicalActionType | null)[];
   operationType?:
     | \\"Unknown\\"
     | \\"Normal\\"
@@ -7074,7 +7126,7 @@ export interface GetTransactionQueryParams {
     | \\"BlockchainIncomingTransaction\\"
     | \\"BlockchainWithdrawUserWalletOffchain\\"
     | \\"BlockchainFee\\";
-  operationTypes?: TransactionOperationType[];
+  operationTypes?: (TransactionOperationType | null)[];
   /** - Format: int32 */
   skip?: number;
   /** - Format: date-time */
@@ -7086,13 +7138,13 @@ export interface GetTransactionQueryParams {
    */
   take?: number;
   transactionType?: \\"Debt\\" | \\"Credit\\";
-  transactionTypes?: TransactionType[];
+  transactionTypes?: (TransactionType | null)[];
   /** - Format: int64 */
   userWalletId?: number;
-  voucherTypes?: VoucherOperationType[];
-}
+  voucherTypes?: (VoucherOperationType | null)[];
+} | null;
 
-export interface GetTransactionReportAllQueryParams {
+export type GetTransactionReportAllQueryParams = {
   /** - Format: int32 */
   FromMonth?: number;
   /** - Format: int32 */
@@ -7135,9 +7187,9 @@ export interface GetTransactionReportAllQueryParams {
     | \\"BlockchainWithdrawUserWalletOffchain\\"
     | \\"BlockchainFee\\";
   type?: \\"Debt\\" | \\"Credit\\";
-}
+} | null;
 
-export interface GetTransactionReportQueryParams {
+export type GetTransactionReportQueryParams = {
   /** - Format: int32 */
   FromMonth?: number;
   /** - Format: int32 */
@@ -7180,18 +7232,18 @@ export interface GetTransactionReportQueryParams {
     | \\"BlockchainWithdrawUserWalletOffchain\\"
     | \\"BlockchainFee\\";
   type?: \\"Debt\\" | \\"Credit\\";
-}
+} | null;
 
-export interface GetTransferRecentQueryParams {
+export type GetTransferRecentQueryParams = {
   /**
    * Defaults to 10
    *
    * - Format: int32
    */
   take?: number;
-}
+} | null;
 
-export interface GetTransferSearchQueryParams {
+export type GetTransferSearchQueryParams = {
   accountNumber?: string;
   /** Phone number or email address */
   contact?: string;
@@ -7201,21 +7253,21 @@ export interface GetTransferSearchQueryParams {
   userId?: string;
   /** - Format: int64 */
   userWalletId?: number;
-}
+} | null;
 
-export interface GetTransferUserWalletIdCommissionQueryParams {
+export type GetTransferUserWalletIdCommissionQueryParams = {
   /** - Format: decimal */
   amount?: number;
-}
+} | null;
 
-export interface GetUserWalletAccountNumberQrcodeQueryParams {
+export type GetUserWalletAccountNumberQrcodeQueryParams = {
   /** - Format: decimal */
   amount?: number;
   /** - Format: int64 */
   subUserConId?: number;
-}
+} | null;
 
-export interface GetUserWalletSearchQueryParams {
+export type GetUserWalletSearchQueryParams = {
   accountNumber?: string;
   contact?: string;
   /** - Format: int64 */
@@ -7224,22 +7276,22 @@ export interface GetUserWalletSearchQueryParams {
   userId?: string;
   /** - Format: int64 */
   userWalletId?: number;
-}
+} | null;
 
-export interface GetUserWalletUserWalletIdEpayRequestComissionQueryParams {
+export type GetUserWalletUserWalletIdEpayRequestComissionQueryParams = {
   /** - Format: decimal */
   amount?: number;
-}
+} | null;
 
-export interface GetUserWalletUserWalletIdSettlementRequestComissionQueryParams {
+export type GetUserWalletUserWalletIdSettlementRequestComissionQueryParams = {
   /** - Format: decimal */
   amount?: number;
-}
+} | null;
 
-export interface GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams {
+export type GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams = {
   /** - Format: decimal */
   amount?: number;
-}
+} | null;
 
 export interface GroupTransferInput {
   /** - Format: decimal */

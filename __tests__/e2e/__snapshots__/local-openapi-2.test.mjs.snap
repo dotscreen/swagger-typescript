@@ -20,7 +20,6 @@ import qs from \\"qs\\";
 const baseConfig: AxiosRequestConfig = {
   baseURL: \\"\\", // <--- Add your base url
   headers: {
-    \\"Content-Encoding\\": \\"UTF-8\\",
     Accept: \\"application/json\\",
     \\"Content-Type\\": \\"application/json-patch+json\\",
   },
@@ -34355,21 +34354,15 @@ export interface DeductionReturnRequest {
   planned_payments?: DeductionReturnPlannedPaymentRequest[];
 }
 
-export interface DeleteCodesActivitiesIdQueryParams {
-  search?: string;
-}
+export type DeleteCodesActivitiesIdQueryParams = { search?: string } | null;
 
-export interface DeleteCodesResourcesIdQueryParams {
-  search?: string;
-}
+export type DeleteCodesResourcesIdQueryParams = { search?: string } | null;
 
-export interface DeleteCodesWbsIdQueryParams {
-  search?: string;
-}
+export type DeleteCodesWbsIdQueryParams = { search?: string } | null;
 
-export interface DeleteProjectsProjectsSlugQueryParams {
+export type DeleteProjectsProjectsSlugQueryParams = {
   has_wbs?: boolean;
-}
+} | null;
 
 export interface DeleteWarehouseProductsIdQueryParams {
   /** Product status */
@@ -34554,64 +34547,54 @@ export interface FeatureFlags {
 
 export type GenderEnum = \\"MALE\\" | \\"FEMALE\\";
 
-export interface GetApiSchemaQueryParams {
+export type GetApiSchemaQueryParams = {
   format?: \\"json\\" | \\"yaml\\";
   lang?: \\"en\\" | \\"tr\\";
-}
+} | null;
 
-export interface GetCodesActivitiesIdQueryParams {
+export type GetCodesActivitiesIdQueryParams = { search?: string } | null;
+
+export type GetCodesActivitiesPermissionsQueryParams = {
   search?: string;
-}
+} | null;
 
-export interface GetCodesActivitiesPermissionsQueryParams {
-  search?: string;
-}
-
-export interface GetCodesActivitiesQueryParams {
+export type GetCodesActivitiesQueryParams = {
   full_code__istartswith?: string;
   /** Which field to use when ordering the results. */
   ordering?: string;
   path?: string;
   search?: string;
-}
+} | null;
 
-export interface GetCodesResourcesIdQueryParams {
+export type GetCodesResourcesIdQueryParams = { search?: string } | null;
+
+export type GetCodesResourcesPermissionsQueryParams = {
   search?: string;
-}
+} | null;
 
-export interface GetCodesResourcesPermissionsQueryParams {
-  search?: string;
-}
-
-export interface GetCodesResourcesQueryParams {
+export type GetCodesResourcesQueryParams = {
   full_code__istartswith?: string;
   /** Which field to use when ordering the results. */
   ordering?: string;
   path?: string;
   search?: string;
-}
+} | null;
 
-export interface GetCodesWbsIdQueryParams {
-  search?: string;
-}
+export type GetCodesWbsIdQueryParams = { search?: string } | null;
 
-export interface GetCodesWbsPermissionsQueryParams {
-  search?: string;
-}
+export type GetCodesWbsPermissionsQueryParams = { search?: string } | null;
 
-export interface GetCodesWbsProjectsQueryParams {
-  search?: string;
-}
+export type GetCodesWbsProjectsQueryParams = { search?: string } | null;
 
-export interface GetCodesWbsQueryParams {
+export type GetCodesWbsQueryParams = {
   /** Which field to use when ordering the results. */
   ordering?: string;
   /** - Format: uuid */
   project?: string;
   search?: string;
-}
+} | null;
 
-export interface GetFinanceAccountsQueryParams {
+export type GetFinanceAccountsQueryParams = {
   /** Currency */
   currency?: string[];
   /** Number of results to return per page. */
@@ -34642,9 +34625,9 @@ export interface GetFinanceAccountsQueryParams {
     | \\"SUBCONTRACTOR\\"
     | \\"VENDOR\\"
   )[];
-}
+} | null;
 
-export interface GetFinanceBankAccountsQueryParams {
+export type GetFinanceBankAccountsQueryParams = {
   /** Bank */
   bank?: string[];
   /** Company */
@@ -34693,9 +34676,9 @@ export interface GetFinanceBankAccountsQueryParams {
     | \\"SUBCONTRACTOR\\"
     | \\"VENDOR\\"
   )[];
-}
+} | null;
 
-export interface GetFinanceCashAccountsQueryParams {
+export type GetFinanceCashAccountsQueryParams = {
   /** Company */
   company?: string[];
   /** Currency */
@@ -34734,9 +34717,9 @@ export interface GetFinanceCashAccountsQueryParams {
     | \\"SUBCONTRACTOR\\"
     | \\"VENDOR\\"
   )[];
-}
+} | null;
 
-export interface GetFinanceExpensesQueryParams {
+export type GetFinanceExpensesQueryParams = {
   account_from?: string[];
   account_to?: string[];
   /**
@@ -34764,14 +34747,14 @@ export interface GetFinanceExpensesQueryParams {
   txn_date?: string;
   /** - \`EXPENSE\` - Expense \`INCOME\` - Income \`REFUND\` - Refund \`TRANSFER\` - Transfer */
   type?: \\"EXPENSE\\" | \\"INCOME\\" | \\"REFUND\\" | \\"TRANSFER\\";
-}
+} | null;
 
-export interface GetFinanceIncomeInvoiceCategoriesQueryParams {
+export type GetFinanceIncomeInvoiceCategoriesQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetFinanceIncomeInvoicesCounter__slugApprovalHistoryQueryParams {
+export type GetFinanceIncomeInvoicesCounter__slugApprovalHistoryQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -34807,9 +34790,9 @@ export interface GetFinanceIncomeInvoicesCounter__slugApprovalHistoryQueryParams
   search?: string;
   status?: string[] | string;
   supplier?: string;
-}
+} | null;
 
-export interface GetFinanceIncomeInvoicesQueryParams {
+export type GetFinanceIncomeInvoicesQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -34845,9 +34828,9 @@ export interface GetFinanceIncomeInvoicesQueryParams {
   search?: string;
   status?: string[] | string;
   supplier?: string;
-}
+} | null;
 
-export interface GetFinanceIncomeInvoicesStatesQueryParams {
+export type GetFinanceIncomeInvoicesStatesQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -34879,9 +34862,9 @@ export interface GetFinanceIncomeInvoicesStatesQueryParams {
   search?: string;
   status?: string[] | string;
   supplier?: string;
-}
+} | null;
 
-export interface GetFinanceInstrumentsQueryParams {
+export type GetFinanceInstrumentsQueryParams = {
   /** Amount between */
   amount_max?: string;
   /** Amount between */
@@ -34920,9 +34903,9 @@ export interface GetFinanceInstrumentsQueryParams {
   supplier?: string;
   /** Supplier Id */
   supplier_id?: string;
-}
+} | null;
 
-export interface GetFinancePaymentBondsQueryParams {
+export type GetFinancePaymentBondsQueryParams = {
   amount?: number;
   company?: string[];
   counter_party?: string;
@@ -34940,9 +34923,9 @@ export interface GetFinancePaymentBondsQueryParams {
   /** A search term. */
   search?: string;
   state?: string[];
-}
+} | null;
 
-export interface GetFinancePaymentChequesQueryParams {
+export type GetFinancePaymentChequesQueryParams = {
   amount?: number;
   company?: string[];
   counter_party?: string;
@@ -34960,9 +34943,9 @@ export interface GetFinancePaymentChequesQueryParams {
   /** A search term. */
   search?: string;
   state?: string[];
-}
+} | null;
 
-export interface GetFinancePaymentDetailsQueryParams {
+export type GetFinancePaymentDetailsQueryParams = {
   company?: string[];
   currency?: string[];
   /** Number of results to return per page. */
@@ -34977,9 +34960,9 @@ export interface GetFinancePaymentDetailsQueryParams {
   realized?: boolean;
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetFinancePlannedPaymentsQueryParams {
+export type GetFinancePlannedPaymentsQueryParams = {
   /** Amount between */
   amount_max?: string;
   /** Amount between */
@@ -35018,9 +35001,9 @@ export interface GetFinancePlannedPaymentsQueryParams {
   supplier?: string;
   /** Supplier Id */
   supplier_id?: string;
-}
+} | null;
 
-export interface GetFinancePlannedRevenueQueryParams {
+export type GetFinancePlannedRevenueQueryParams = {
   /** Amount between */
   amount_max?: string;
   /** Amount between */
@@ -35059,9 +35042,9 @@ export interface GetFinancePlannedRevenueQueryParams {
   supplier?: string;
   /** Supplier Id */
   supplier_id?: string;
-}
+} | null;
 
-export interface GetFinanceRevenueBondsQueryParams {
+export type GetFinanceRevenueBondsQueryParams = {
   amount?: number;
   company?: string[];
   counter_party?: string;
@@ -35079,9 +35062,9 @@ export interface GetFinanceRevenueBondsQueryParams {
   /** A search term. */
   search?: string;
   state?: string[];
-}
+} | null;
 
-export interface GetFinanceRevenueChequesQueryParams {
+export type GetFinanceRevenueChequesQueryParams = {
   amount?: number;
   company?: string[];
   counter_party?: string;
@@ -35099,9 +35082,9 @@ export interface GetFinanceRevenueChequesQueryParams {
   /** A search term. */
   search?: string;
   state?: string[];
-}
+} | null;
 
-export interface GetFinanceRevenueDetailsQueryParams {
+export type GetFinanceRevenueDetailsQueryParams = {
   company?: string[];
   currency?: string[];
   /** Number of results to return per page. */
@@ -35116,9 +35099,9 @@ export interface GetFinanceRevenueDetailsQueryParams {
   realized?: boolean;
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetFinanceSlipsQueryParams {
+export type GetFinanceSlipsQueryParams = {
   /** Number of results to return per page. */
   limit?: string;
   /** - Format: uuid */
@@ -35129,9 +35112,9 @@ export interface GetFinanceSlipsQueryParams {
   ordering?: string;
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetFinanceSupplierAccountsQueryParams {
+export type GetFinanceSupplierAccountsQueryParams = {
   /** Currency */
   currency?: string[];
   /** Number of results to return per page. */
@@ -35168,9 +35151,9 @@ export interface GetFinanceSupplierAccountsQueryParams {
     | \\"SUBCONTRACTOR\\"
     | \\"VENDOR\\"
   )[];
-}
+} | null;
 
-export interface GetFinanceTxnsExportQueryParams {
+export type GetFinanceTxnsExportQueryParams = {
   account?: string[];
   /** Account Name */
   account_name?: string;
@@ -35226,9 +35209,9 @@ export interface GetFinanceTxnsExportQueryParams {
    * Transaction Type
    */
   txn_type?: string;
-}
+} | null;
 
-export interface GetFinanceTxnsQueryParams {
+export type GetFinanceTxnsQueryParams = {
   account?: string[];
   /** Account Name */
   account_name?: string;
@@ -35288,9 +35271,9 @@ export interface GetFinanceTxnsQueryParams {
    * Transaction Type
    */
   txn_type?: string;
-}
+} | null;
 
-export interface GetHrCrewsQueryParams {
+export type GetHrCrewsQueryParams = {
   activities?: string[];
   /** Number of results to return per page. */
   limit?: string;
@@ -35304,13 +35287,11 @@ export interface GetHrCrewsQueryParams {
   projects?: string[];
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetHrDepartmentsQueryParams {
-  value?: string;
-}
+export type GetHrDepartmentsQueryParams = { value?: string } | null;
 
-export interface GetHrPersonnelQueryParams {
+export type GetHrPersonnelQueryParams = {
   /** - Format: uuid */
   company?: string;
   /** - Format: uuid */
@@ -35341,13 +35322,11 @@ export interface GetHrPersonnelQueryParams {
   start_date?: string;
   /** - \`ACTIVE\` - Active \`DEACTIVE\` - Deactive */
   status?: \\"ACTIVE\\" | \\"DEACTIVE\\";
-}
+} | null;
 
-export interface GetHrPositionsQueryParams {
-  value?: string;
-}
+export type GetHrPositionsQueryParams = { value?: string } | null;
 
-export interface GetHrSalariesQueryParams {
+export type GetHrSalariesQueryParams = {
   /** - Format: uuid */
   currency?: string;
   /** Number of results to return per page. */
@@ -35360,17 +35339,17 @@ export interface GetHrSalariesQueryParams {
   salary_type?: \\"hourly\\" | \\"monthly\\";
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetHrSalaryPermissionsQueryParams {
+export type GetHrSalaryPermissionsQueryParams = {
   can_edit_salary?: boolean;
   can_view_salary?: boolean;
   /** - Format: uuid */
   project?: string;
   user?: number;
-}
+} | null;
 
-export interface GetProcurementApprovedOrderItemsQueryParams {
+export type GetProcurementApprovedOrderItemsQueryParams = {
   approver?: string[] | string;
   company?: string[] | string;
   counter?: string[] | string;
@@ -35440,9 +35419,9 @@ export interface GetProcurementApprovedOrderItemsQueryParams {
     | \\"NOT_INVOICED\\"
     | \\"PARTIALLY_INVOICED\\";
   supplier?: string;
-}
+} | null;
 
-export interface GetProcurementApprovedRequestItemsQueryParams {
+export type GetProcurementApprovedRequestItemsQueryParams = {
   approver?: string[] | string;
   company?: string[] | string;
   counter?: string[] | string;
@@ -35464,23 +35443,23 @@ export interface GetProcurementApprovedRequestItemsQueryParams {
     | \\"COMPLETELY_ORDERED\\"
     | \\"NOT_ORDERED\\"
     | \\"PARTIALLY_ORDERED\\";
-}
+} | null;
 
 export interface GetProcurementInvoiceAdvanceBalanceCounter__slugQueryParams {
   /** Currency code */
   currency: string;
 }
 
-export interface GetProcurementInvoiceItemsQueryParams {
+export type GetProcurementInvoiceItemsQueryParams = {
   /** A search term. */
   search?: string;
   \\"var-activity_group\\"?: string;
   \\"var-company\\"?: string;
   \\"var-project\\"?: string;
   \\"var-resource_group\\"?: string;
-}
+} | null;
 
-export interface GetProcurementInvoicesCounter__slugApprovalHistoryQueryParams {
+export type GetProcurementInvoicesCounter__slugApprovalHistoryQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -35514,9 +35493,9 @@ export interface GetProcurementInvoicesCounter__slugApprovalHistoryQueryParams {
   search?: string;
   status?: string[] | string;
   supplier?: string;
-}
+} | null;
 
-export interface GetProcurementInvoicesQueryParams {
+export type GetProcurementInvoicesQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -35550,9 +35529,9 @@ export interface GetProcurementInvoicesQueryParams {
   search?: string;
   status?: string[] | string;
   supplier?: string;
-}
+} | null;
 
-export interface GetProcurementInvoicesStatesQueryParams {
+export type GetProcurementInvoicesStatesQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -35582,9 +35561,9 @@ export interface GetProcurementInvoicesStatesQueryParams {
   search?: string;
   status?: string[] | string;
   supplier?: string;
-}
+} | null;
 
-export interface GetProcurementOrdersCounter__slugApprovalHistoryQueryParams {
+export type GetProcurementOrdersCounter__slugApprovalHistoryQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   counter?: string;
@@ -35622,9 +35601,9 @@ export interface GetProcurementOrdersCounter__slugApprovalHistoryQueryParams {
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
   totals_with_vat_min?: string | null;
-}
+} | null;
 
-export interface GetProcurementOrdersQueryParams {
+export type GetProcurementOrdersQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   counter?: string;
@@ -35662,9 +35641,9 @@ export interface GetProcurementOrdersQueryParams {
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
   totals_with_vat_min?: string | null;
-}
+} | null;
 
-export interface GetProcurementOrdersStatesQueryParams {
+export type GetProcurementOrdersStatesQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   counter?: string;
@@ -35698,14 +35677,14 @@ export interface GetProcurementOrdersStatesQueryParams {
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
   totals_with_vat_min?: string | null;
-}
+} | null;
 
-export interface GetProcurementRequestTypesQueryParams {
+export type GetProcurementRequestTypesQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetProcurementRequestsCounter__slugApprovalHistoryQueryParams {
+export type GetProcurementRequestsCounter__slugApprovalHistoryQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   counter?: string;
@@ -35726,9 +35705,9 @@ export interface GetProcurementRequestsCounter__slugApprovalHistoryQueryParams {
   status?: string[] | string;
   /** - Format: uuid */
   type?: string;
-}
+} | null;
 
-export interface GetProcurementRequestsQueryParams {
+export type GetProcurementRequestsQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   counter?: string;
@@ -35749,9 +35728,9 @@ export interface GetProcurementRequestsQueryParams {
   status?: string[] | string;
   /** - Format: uuid */
   type?: string;
-}
+} | null;
 
-export interface GetProcurementRequestsStatesQueryParams {
+export type GetProcurementRequestsStatesQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   counter?: string;
@@ -35768,23 +35747,62 @@ export interface GetProcurementRequestsStatesQueryParams {
   status?: string[] | string;
   /** - Format: uuid */
   type?: string;
-}
+} | null;
 
-export interface GetProcurementSpecialInvoiceItemsQueryParams {
+export type GetProcurementSpecialInvoiceItemsQueryParams = {
   /** A search term. */
   search?: string;
   \\"var-activity_group\\"?: string;
   \\"var-company\\"?: string;
   \\"var-project\\"?: string;
   \\"var-resource_group\\"?: string;
-}
+} | null;
 
-export interface GetProcurementSpecialInvoiceTypesQueryParams {
+export type GetProcurementSpecialInvoiceTypesQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetProcurementSpecialInvoicesCounter__slugApprovalHistoryQueryParams {
+export type GetProcurementSpecialInvoicesCounter__slugApprovalHistoryQueryParams =
+  {
+    approver?: number[] | number;
+    /**
+     * Balance between
+     *
+     * - Format: decimal
+     * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
+     */
+    balance_max?: string | null;
+    /**
+     * Balance between
+     *
+     * - Format: decimal
+     * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
+     */
+    balance_min?: string | null;
+    company?: string[] | string;
+    counter?: string;
+    /** - Format: date */
+    created_after?: string;
+    /** - Format: date */
+    created_before?: string;
+    finalized?: boolean;
+    /** Number of results to return per page. */
+    limit?: string;
+    /** The initial index from which to return the results. */
+    offset?: string;
+    /** Which field to use when ordering the results. */
+    ordering?: string;
+    project?: string[] | string;
+    /** A search term. */
+    search?: string;
+    status?: string[] | string;
+    supplier?: string;
+    /** - Format: uuid */
+    type?: string;
+  } | null;
+
+export type GetProcurementSpecialInvoicesQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -35820,47 +35838,9 @@ export interface GetProcurementSpecialInvoicesCounter__slugApprovalHistoryQueryP
   supplier?: string;
   /** - Format: uuid */
   type?: string;
-}
+} | null;
 
-export interface GetProcurementSpecialInvoicesQueryParams {
-  approver?: number[] | number;
-  /**
-   * Balance between
-   *
-   * - Format: decimal
-   * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
-   */
-  balance_max?: string | null;
-  /**
-   * Balance between
-   *
-   * - Format: decimal
-   * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
-   */
-  balance_min?: string | null;
-  company?: string[] | string;
-  counter?: string;
-  /** - Format: date */
-  created_after?: string;
-  /** - Format: date */
-  created_before?: string;
-  finalized?: boolean;
-  /** Number of results to return per page. */
-  limit?: string;
-  /** The initial index from which to return the results. */
-  offset?: string;
-  /** Which field to use when ordering the results. */
-  ordering?: string;
-  project?: string[] | string;
-  /** A search term. */
-  search?: string;
-  status?: string[] | string;
-  supplier?: string;
-  /** - Format: uuid */
-  type?: string;
-}
-
-export interface GetProcurementSpecialInvoicesStatesQueryParams {
+export type GetProcurementSpecialInvoicesStatesQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -35892,25 +35872,25 @@ export interface GetProcurementSpecialInvoicesStatesQueryParams {
   supplier?: string;
   /** - Format: uuid */
   type?: string;
-}
+} | null;
 
-export interface GetProjectsCitiesQueryParams {
+export type GetProjectsCitiesQueryParams = {
   /** - Format: uuid */
   country?: string;
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetProjectsCompaniesAvailableQueryParams {
+export type GetProjectsCompaniesAvailableQueryParams = {
   company_code?: string;
   name?: string;
   /** Which field to use when ordering the results. */
   ordering?: string;
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetProjectsCompaniesQueryParams {
+export type GetProjectsCompaniesQueryParams = {
   company_code?: string;
   /** Number of results to return per page. */
   limit?: string;
@@ -35921,21 +35901,21 @@ export interface GetProjectsCompaniesQueryParams {
   ordering?: string;
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetProjectsCountriesQueryParams {
+export type GetProjectsCountriesQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetProjectsDistrictsQueryParams {
+export type GetProjectsDistrictsQueryParams = {
   /** - Format: uuid */
   city?: string;
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetProjectsProjectsAvailableQueryParams {
+export type GetProjectsProjectsAvailableQueryParams = {
   has_wbs?: boolean;
   name?: string;
   /** Which field to use when ordering the results. */
@@ -35944,13 +35924,13 @@ export interface GetProjectsProjectsAvailableQueryParams {
   /** A search term. */
   search?: string;
   wbs?: string[];
-}
+} | null;
 
-export interface GetProjectsProjectsPermissionsQueryParams {
+export type GetProjectsProjectsPermissionsQueryParams = {
   has_wbs?: boolean;
-}
+} | null;
 
-export interface GetProjectsProjectsQueryParams {
+export type GetProjectsProjectsQueryParams = {
   has_wbs?: boolean;
   /** Number of results to return per page. */
   limit?: string;
@@ -35963,19 +35943,17 @@ export interface GetProjectsProjectsQueryParams {
   /** A search term. */
   search?: string;
   wbs?: string[];
-}
+} | null;
 
-export interface GetProjectsProjectsSlugHistoryQueryParams {
+export type GetProjectsProjectsSlugHistoryQueryParams = {
   has_wbs?: boolean;
-}
+} | null;
 
-export interface GetProjectsProjectsSlugQueryParams {
-  has_wbs?: boolean;
-}
+export type GetProjectsProjectsSlugQueryParams = { has_wbs?: boolean } | null;
 
-export interface GetProjectsProjectsSlugResponsibilitiesQueryParams {
+export type GetProjectsProjectsSlugResponsibilitiesQueryParams = {
   has_wbs?: boolean;
-}
+} | null;
 
 export interface GetRatesRatesQueryParams {
   /** - Format: date */
@@ -35988,27 +35966,27 @@ export interface GetRatesRatesQueryParams {
   rate_to_value?: string;
 }
 
-export interface GetSubcontractsContractCategoriesQueryParams {
+export type GetSubcontractsContractCategoriesQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSubcontractsContractCollateralReasonQueryParams {
+export type GetSubcontractsContractCollateralReasonQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSubcontractsContractCollateralStatusQueryParams {
+export type GetSubcontractsContractCollateralStatusQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSubcontractsContractCollateralTypesQueryParams {
+export type GetSubcontractsContractCollateralTypesQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSubcontractsContractCollateralsQueryParams {
+export type GetSubcontractsContractCollateralsQueryParams = {
   /**
    * Collateral amount between
    *
@@ -36047,9 +36025,9 @@ export interface GetSubcontractsContractCollateralsQueryParams {
   valid_until_after?: string;
   /** - Format: date */
   valid_until_before?: string;
-}
+} | null;
 
-export interface GetSubcontractsContractsCounter__slugApprovalHistoryQueryParams {
+export type GetSubcontractsContractsCounter__slugApprovalHistoryQueryParams = {
   approver?: number[] | number;
   /** - Format: uuid */
   category?: string;
@@ -36072,9 +36050,9 @@ export interface GetSubcontractsContractsCounter__slugApprovalHistoryQueryParams
   status?: string[] | string;
   /** Supplier name */
   subcontractor?: string;
-}
+} | null;
 
-export interface GetSubcontractsContractsQueryParams {
+export type GetSubcontractsContractsQueryParams = {
   approver?: number[] | number;
   /** - Format: uuid */
   category?: string;
@@ -36097,9 +36075,9 @@ export interface GetSubcontractsContractsQueryParams {
   status?: string[] | string;
   /** Supplier name */
   subcontractor?: string;
-}
+} | null;
 
-export interface GetSubcontractsContractsStatesQueryParams {
+export type GetSubcontractsContractsStatesQueryParams = {
   approver?: number[] | number;
   /** - Format: uuid */
   category?: string;
@@ -36118,9 +36096,38 @@ export interface GetSubcontractsContractsStatesQueryParams {
   status?: string[] | string;
   /** Supplier name */
   subcontractor?: string;
-}
+} | null;
 
-export interface GetSubcontractsDeductionReturnsCounter__slugApprovalHistoryQueryParams {
+export type GetSubcontractsDeductionReturnsCounter__slugApprovalHistoryQueryParams =
+  {
+    approver?: number[] | number;
+    company?: string[] | string;
+    /** - Format: uuid */
+    contract__category?: string;
+    contract_code?: string | null;
+    counter?: string;
+    /** - Format: date */
+    created_after?: string;
+    /** - Format: date */
+    created_before?: string;
+    finalized?: boolean;
+    /** Number of results to return per page. */
+    limit?: string;
+    /** The initial index from which to return the results. */
+    offset?: string;
+    /** Which field to use when ordering the results. */
+    ordering?: string;
+    project?: string[] | string;
+    /** A search term. */
+    search?: string;
+    status?: string[] | string;
+    /** Supplier name */
+    subcontractor?: string;
+    /** - Format: uuid */
+    type?: string;
+  } | null;
+
+export type GetSubcontractsDeductionReturnsQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   /** - Format: uuid */
@@ -36146,37 +36153,9 @@ export interface GetSubcontractsDeductionReturnsCounter__slugApprovalHistoryQuer
   subcontractor?: string;
   /** - Format: uuid */
   type?: string;
-}
+} | null;
 
-export interface GetSubcontractsDeductionReturnsQueryParams {
-  approver?: number[] | number;
-  company?: string[] | string;
-  /** - Format: uuid */
-  contract__category?: string;
-  contract_code?: string | null;
-  counter?: string;
-  /** - Format: date */
-  created_after?: string;
-  /** - Format: date */
-  created_before?: string;
-  finalized?: boolean;
-  /** Number of results to return per page. */
-  limit?: string;
-  /** The initial index from which to return the results. */
-  offset?: string;
-  /** Which field to use when ordering the results. */
-  ordering?: string;
-  project?: string[] | string;
-  /** A search term. */
-  search?: string;
-  status?: string[] | string;
-  /** Supplier name */
-  subcontractor?: string;
-  /** - Format: uuid */
-  type?: string;
-}
-
-export interface GetSubcontractsDeductionReturnsStatesQueryParams {
+export type GetSubcontractsDeductionReturnsStatesQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   /** - Format: uuid */
@@ -36198,28 +36177,28 @@ export interface GetSubcontractsDeductionReturnsStatesQueryParams {
   subcontractor?: string;
   /** - Format: uuid */
   type?: string;
-}
+} | null;
 
-export interface GetSubcontractsProgressAdditionTypesQueryParams {
+export type GetSubcontractsProgressAdditionTypesQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSubcontractsProgressDeductionTypesQueryParams {
+export type GetSubcontractsProgressDeductionTypesQueryParams = {
   is_invoiceable?: boolean;
   is_returnable?: boolean;
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSubcontractsProgressItemsQueryParams {
+export type GetSubcontractsProgressItemsQueryParams = {
   \\"var-activity_group\\"?: string;
   \\"var-company\\"?: string;
   \\"var-project\\"?: string;
   \\"var-resource_group\\"?: string;
-}
+} | null;
 
-export interface GetSubcontractsProgressesCounter__slugApprovalHistoryQueryParams {
+export type GetSubcontractsProgressesCounter__slugApprovalHistoryQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   /** - Format: uuid */
@@ -36246,9 +36225,9 @@ export interface GetSubcontractsProgressesCounter__slugApprovalHistoryQueryParam
   /** Supplier name */
   subcontractor?: string;
   totals?: number;
-}
+} | null;
 
-export interface GetSubcontractsProgressesQueryParams {
+export type GetSubcontractsProgressesQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   /** - Format: uuid */
@@ -36275,9 +36254,9 @@ export interface GetSubcontractsProgressesQueryParams {
   /** Supplier name */
   subcontractor?: string;
   totals?: number;
-}
+} | null;
 
-export interface GetSubcontractsProgressesStatesQueryParams {
+export type GetSubcontractsProgressesStatesQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   /** - Format: uuid */
@@ -36300,30 +36279,30 @@ export interface GetSubcontractsProgressesStatesQueryParams {
   /** Supplier name */
   subcontractor?: string;
   totals?: number;
-}
+} | null;
 
-export interface GetSubcontractsRevisionsQueryParams {
+export type GetSubcontractsRevisionsQueryParams = {
   /** Number of results to return per page. */
   limit?: string;
   /** The initial index from which to return the results. */
   offset?: string;
-}
+} | null;
 
-export interface GetSuppliersAccountingCodesQueryParams {
+export type GetSuppliersAccountingCodesQueryParams = {
   code?: string;
   /** - Format: uuid */
   currency?: string;
   /** A search term. */
   search?: string;
   supplier__slug?: string;
-}
+} | null;
 
 export interface GetSuppliersAdvanceBalancesSlugQueryParams {
   /** Currency code */
   currency: string;
 }
 
-export interface GetSuppliersBankAccountsQueryParams {
+export type GetSuppliersBankAccountsQueryParams = {
   /** - Format: uuid */
   bank_name?: string;
   /** - Format: uuid */
@@ -36331,15 +36310,15 @@ export interface GetSuppliersBankAccountsQueryParams {
   /** A search term. */
   search?: string;
   supplier__slug?: string;
-}
+} | null;
 
-export interface GetSuppliersContactsQueryParams {
+export type GetSuppliersContactsQueryParams = {
   /** A search term. */
   search?: string;
   supplier__slug?: string;
-}
+} | null;
 
-export interface GetSuppliersReviewAnswersQueryParams {
+export type GetSuppliersReviewAnswersQueryParams = {
   /** - Format: uuid */
   review?: string;
   score__gte?: number;
@@ -36348,9 +36327,9 @@ export interface GetSuppliersReviewAnswersQueryParams {
   score__range?: number[];
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSuppliersReviewFormsQueryParams {
+export type GetSuppliersReviewFormsQueryParams = {
   /** - Format: date */
   created_after?: string;
   /** - Format: date */
@@ -36378,46 +36357,46 @@ export interface GetSuppliersReviewFormsQueryParams {
   supplier__name?: string;
   supplier__slug?: string;
   template?: string[] | string;
-}
+} | null;
 
-export interface GetSuppliersReviewQuestionsQueryParams {
+export type GetSuppliersReviewQuestionsQueryParams = {
   /** A search term. */
   search?: string;
   /** - Format: uuid */
   template?: string;
-}
+} | null;
 
-export interface GetSuppliersReviewTemplatesQueryParams {
+export type GetSuppliersReviewTemplatesQueryParams = {
   pass_mark?: number;
   review_type?: string;
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSuppliersSupplierActivityTypesQueryParams {
+export type GetSuppliersSupplierActivityTypesQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSuppliersSupplierBranchesQueryParams {
+export type GetSuppliersSupplierBranchesQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSuppliersSupplierTypesQueryParams {
+export type GetSuppliersSupplierTypesQueryParams = {
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetSuppliersSuppliersAutocompleteQueryParams {
+export type GetSuppliersSuppliersAutocompleteQueryParams = {
   /** Which field to use when ordering the results. */
   ordering?: string;
   /** A search term. */
   search?: string;
   search_value?: string;
-}
+} | null;
 
-export interface GetSuppliersSuppliersQueryParams {
+export type GetSuppliersSuppliersQueryParams = {
   activity_type?: string[] | string;
   branch?: string[] | string;
   country?: string;
@@ -36440,7 +36419,7 @@ export interface GetSuppliersSuppliersQueryParams {
   /** A search term. */
   search?: string;
   type?: string[] | string;
-}
+} | null;
 
 export interface GetWarehouseProductsIdAttachmentsQueryParams {
   /** Product status */
@@ -36640,14 +36619,14 @@ export interface GetWarehouseProductsQueryParams {
   warehouse?: string[];
 }
 
-export interface GetWarehouseWarehousesAvailableQueryParams {
+export type GetWarehouseWarehousesAvailableQueryParams = {
   /** Which field to use when ordering the results. */
   ordering?: string;
   /** A search term. */
   search?: string;
-}
+} | null;
 
-export interface GetWarehouseWarehousesQueryParams {
+export type GetWarehouseWarehousesQueryParams = {
   /** Number of results to return per page. */
   limit?: string;
   /** The initial index from which to return the results. */
@@ -36656,7 +36635,7 @@ export interface GetWarehouseWarehousesQueryParams {
   ordering?: string;
   /** A search term. */
   search?: string;
-}
+} | null;
 
 export interface Group {
   id: number;
@@ -38070,21 +38049,13 @@ export interface PaginatedWarehouseList {
   results?: Warehouse[];
 }
 
-export interface PatchCodesActivitiesIdQueryParams {
-  search?: string;
-}
+export type PatchCodesActivitiesIdQueryParams = { search?: string } | null;
 
-export interface PatchCodesResourcesIdQueryParams {
-  search?: string;
-}
+export type PatchCodesResourcesIdQueryParams = { search?: string } | null;
 
-export interface PatchCodesWbsIdQueryParams {
-  search?: string;
-}
+export type PatchCodesWbsIdQueryParams = { search?: string } | null;
 
-export interface PatchProjectsProjectsSlugQueryParams {
-  has_wbs?: boolean;
-}
+export type PatchProjectsProjectsSlugQueryParams = { has_wbs?: boolean } | null;
 
 export interface PatchWarehouseProductsIdQueryParams {
   /** Product status */
@@ -40513,55 +40484,43 @@ export interface PersonRequest {
   tckn?: string;
 }
 
-export interface PostCodesActivitiesAdd_rootQueryParams {
-  search?: string;
-}
+export type PostCodesActivitiesAdd_rootQueryParams = { search?: string } | null;
 
-export interface PostCodesActivitiesIdAdd_childQueryParams {
+export type PostCodesActivitiesIdAdd_childQueryParams = {
   search?: string;
-}
+} | null;
 
-export interface PostCodesActivitiesIdAdd_siblingQueryParams {
+export type PostCodesActivitiesIdAdd_siblingQueryParams = {
   search?: string;
-}
+} | null;
 
-export interface PostCodesActivitiesIdMove_underQueryParams {
+export type PostCodesActivitiesIdMove_underQueryParams = {
   search?: string;
-}
+} | null;
 
-export interface PostCodesResourcesAdd_rootQueryParams {
+export type PostCodesResourcesAdd_rootQueryParams = { search?: string } | null;
+
+export type PostCodesResourcesIdAdd_childQueryParams = {
   search?: string;
-}
+} | null;
 
-export interface PostCodesResourcesIdAdd_childQueryParams {
+export type PostCodesResourcesIdAdd_siblingQueryParams = {
   search?: string;
-}
+} | null;
 
-export interface PostCodesResourcesIdAdd_siblingQueryParams {
+export type PostCodesResourcesIdMove_underQueryParams = {
   search?: string;
-}
+} | null;
 
-export interface PostCodesResourcesIdMove_underQueryParams {
-  search?: string;
-}
+export type PostCodesWbsAdd_rootQueryParams = { search?: string } | null;
 
-export interface PostCodesWbsAdd_rootQueryParams {
-  search?: string;
-}
+export type PostCodesWbsIdAdd_childQueryParams = { search?: string } | null;
 
-export interface PostCodesWbsIdAdd_childQueryParams {
-  search?: string;
-}
+export type PostCodesWbsIdAdd_siblingQueryParams = { search?: string } | null;
 
-export interface PostCodesWbsIdAdd_siblingQueryParams {
-  search?: string;
-}
+export type PostCodesWbsIdMove_underQueryParams = { search?: string } | null;
 
-export interface PostCodesWbsIdMove_underQueryParams {
-  search?: string;
-}
-
-export interface PostFinanceIncomeInvoicesApprovalsQueryParams {
+export type PostFinanceIncomeInvoicesApprovalsQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -40597,63 +40556,63 @@ export interface PostFinanceIncomeInvoicesApprovalsQueryParams {
   search?: string;
   status?: string[] | string;
   supplier?: string;
-}
+} | null;
 
-export interface PostFinancePlannedPaymentsPay_by_bondQueryParams {
+export type PostFinancePlannedPaymentsPay_by_bondQueryParams = {
   company?: string[];
   /** - Format: uuid */
   currency?: string;
   project?: string[];
   /** - Format: uuid */
   supplier_id?: string;
-}
+} | null;
 
-export interface PostFinancePlannedPaymentsPay_by_chequeQueryParams {
+export type PostFinancePlannedPaymentsPay_by_chequeQueryParams = {
   company?: string[];
   /** - Format: uuid */
   currency?: string;
   project?: string[];
   /** - Format: uuid */
   supplier_id?: string;
-}
+} | null;
 
-export interface PostFinancePlannedPaymentsPay_by_filterQueryParams {
+export type PostFinancePlannedPaymentsPay_by_filterQueryParams = {
   company?: string[];
   /** - Format: uuid */
   currency?: string;
   project?: string[];
   /** - Format: uuid */
   supplier_id?: string;
-}
+} | null;
 
-export interface PostFinancePlannedRevenuePay_by_bondQueryParams {
+export type PostFinancePlannedRevenuePay_by_bondQueryParams = {
   company?: string[];
   /** - Format: uuid */
   currency?: string;
   project?: string[];
   /** - Format: uuid */
   supplier_id?: string;
-}
+} | null;
 
-export interface PostFinancePlannedRevenuePay_by_chequeQueryParams {
+export type PostFinancePlannedRevenuePay_by_chequeQueryParams = {
   company?: string[];
   /** - Format: uuid */
   currency?: string;
   project?: string[];
   /** - Format: uuid */
   supplier_id?: string;
-}
+} | null;
 
-export interface PostFinancePlannedRevenuePay_by_filterQueryParams {
+export type PostFinancePlannedRevenuePay_by_filterQueryParams = {
   company?: string[];
   /** - Format: uuid */
   currency?: string;
   project?: string[];
   /** - Format: uuid */
   supplier_id?: string;
-}
+} | null;
 
-export interface PostProcurementInvoicesApprovalsQueryParams {
+export type PostProcurementInvoicesApprovalsQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -40687,9 +40646,9 @@ export interface PostProcurementInvoicesApprovalsQueryParams {
   search?: string;
   status?: string[] | string;
   supplier?: string;
-}
+} | null;
 
-export interface PostProcurementOrdersApprovalsQueryParams {
+export type PostProcurementOrdersApprovalsQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   counter?: string;
@@ -40727,9 +40686,9 @@ export interface PostProcurementOrdersApprovalsQueryParams {
    * - Pattern: ^-?\\\\d{0,15}(?:.\\\\d{0,4})?$
    */
   totals_with_vat_min?: string | null;
-}
+} | null;
 
-export interface PostProcurementRequestsApprovalsQueryParams {
+export type PostProcurementRequestsApprovalsQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   counter?: string;
@@ -40750,9 +40709,9 @@ export interface PostProcurementRequestsApprovalsQueryParams {
   status?: string[] | string;
   /** - Format: uuid */
   type?: string;
-}
+} | null;
 
-export interface PostProcurementSpecialInvoicesApprovalsQueryParams {
+export type PostProcurementSpecialInvoicesApprovalsQueryParams = {
   approver?: number[] | number;
   /**
    * Balance between
@@ -40788,13 +40747,11 @@ export interface PostProcurementSpecialInvoicesApprovalsQueryParams {
   supplier?: string;
   /** - Format: uuid */
   type?: string;
-}
+} | null;
 
-export interface PostProjectsProjectsQueryParams {
-  has_wbs?: boolean;
-}
+export type PostProjectsProjectsQueryParams = { has_wbs?: boolean } | null;
 
-export interface PostSubcontractsContractsApprovalsQueryParams {
+export type PostSubcontractsContractsApprovalsQueryParams = {
   approver?: number[] | number;
   /** - Format: uuid */
   category?: string;
@@ -40817,9 +40774,9 @@ export interface PostSubcontractsContractsApprovalsQueryParams {
   status?: string[] | string;
   /** Supplier name */
   subcontractor?: string;
-}
+} | null;
 
-export interface PostSubcontractsDeductionReturnsApprovalsQueryParams {
+export type PostSubcontractsDeductionReturnsApprovalsQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   /** - Format: uuid */
@@ -40845,9 +40802,9 @@ export interface PostSubcontractsDeductionReturnsApprovalsQueryParams {
   subcontractor?: string;
   /** - Format: uuid */
   type?: string;
-}
+} | null;
 
-export interface PostSubcontractsProgressesApprovalsQueryParams {
+export type PostSubcontractsProgressesApprovalsQueryParams = {
   approver?: number[] | number;
   company?: string[] | string;
   /** - Format: uuid */
@@ -40874,7 +40831,7 @@ export interface PostSubcontractsProgressesApprovalsQueryParams {
   /** Supplier name */
   subcontractor?: string;
   totals?: number;
-}
+} | null;
 
 export interface PostWarehouseProductsAdd_attachmentQueryParams {
   /** Product status */
@@ -41880,21 +41837,13 @@ export interface ProjectTypeValue {
   value: string;
 }
 
-export interface PutCodesActivitiesIdQueryParams {
-  search?: string;
-}
+export type PutCodesActivitiesIdQueryParams = { search?: string } | null;
 
-export interface PutCodesResourcesIdQueryParams {
-  search?: string;
-}
+export type PutCodesResourcesIdQueryParams = { search?: string } | null;
 
-export interface PutCodesWbsIdQueryParams {
-  search?: string;
-}
+export type PutCodesWbsIdQueryParams = { search?: string } | null;
 
-export interface PutProjectsProjectsSlugQueryParams {
-  has_wbs?: boolean;
-}
+export type PutProjectsProjectsSlugQueryParams = { has_wbs?: boolean } | null;
 
 export interface PutWarehouseProductsIdQueryParams {
   /** Product status */

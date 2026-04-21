@@ -95,13 +95,15 @@ function getDefineParam(
   schema: Schema | undefined,
   config: Config,
   description?: string,
+  schemasMap?: Map<string, Schema>,
 ): string {
+  const type = getKotlinType(schema, config, schemasMap);
   return `${getJsdoc({
     description,
-  })}@Path(${JSON.stringify(name)}) ${toCamelCase(name)}: ${getKotlinType(
-    schema,
-    config,
-  )}${required ? "" : "?"}`;
+  })}@Path(${JSON.stringify(name)}) ${toCamelCase(name)}: ${appendNullable(
+    type,
+    !required || isSchemaNullable(schema, schemasMap),
+  )}`;
 }
 
 function getDefinitionBody(
@@ -110,11 +112,82 @@ function getDefinitionBody(
   schema: Schema | undefined,
   config: Config,
   description?: string,
+  schemasMap?: Map<string, Schema>,
 ): string {
-  const type = getKotlinType(schema, config);
+  const type = getKotlinType(schema, config, schemasMap);
   return `${getJsdoc({
     description,
-  })}@Body ${name}: ${type}${required ? "" : "?"}`;
+  })}@Body ${name}: ${appendNullable(
+    type,
+    !required || isSchemaNullable(schema, schemasMap),
+  )}`;
+}
+
+function isSchemaMarkedNullable(schema?: Schema): boolean {
+  return schema?.nullable === true || schema?.["x-nullable"] === true;
+}
+
+function resolveReferencedSchema(
+  $ref: string,
+  schemasMap?: Map<string, Schema>,
+  visitedRefs: Set<string> = new Set(),
+): Schema | undefined {
+  if (!schemasMap) {
+    return undefined;
+  }
+
+  const refName = getRefName($ref);
+  const referencedSchema = schemasMap.get(refName);
+
+  if (!referencedSchema?.$ref) {
+    return referencedSchema;
+  }
+
+  if (visitedRefs.has(referencedSchema.$ref)) {
+    return referencedSchema;
+  }
+
+  const nextVisitedRefs = new Set(visitedRefs);
+  nextVisitedRefs.add(referencedSchema.$ref);
+  return resolveReferencedSchema(
+    referencedSchema.$ref,
+    schemasMap,
+    nextVisitedRefs,
+  );
+}
+
+function isSchemaNullable(
+  schema: Schema | undefined,
+  schemasMap?: Map<string, Schema>,
+  visitedRefs: Set<string> = new Set(),
+): boolean {
+  if (!schema) {
+    return false;
+  }
+
+  if (isSchemaMarkedNullable(schema)) {
+    return true;
+  }
+
+  if (schema.$ref) {
+    if (visitedRefs.has(schema.$ref)) {
+      return false;
+    }
+
+    const nextVisitedRefs = new Set(visitedRefs);
+    nextVisitedRefs.add(schema.$ref);
+    return isSchemaNullable(
+      resolveReferencedSchema(schema.$ref, schemasMap, nextVisitedRefs),
+      schemasMap,
+      nextVisitedRefs,
+    );
+  }
+
+  return false;
+}
+
+function appendNullable(type: string, nullable: boolean): string {
+  return nullable && !type.endsWith("?") ? `${type}?` : type;
 }
 
 function getHeaderParamString(
@@ -128,9 +201,10 @@ function getHeaderParamString(
     //   description,
     // })
     ""
-  }@Header(${JSON.stringify(name)}) ${toCamelCase(name)}: ${type}${
-    required ? "" : "?"
-  }`;
+  }@Header(${JSON.stringify(name)}) ${toCamelCase(name)}: ${appendNullable(
+    type,
+    !required,
+  )}`;
 }
 
 function getQueryParamString(
@@ -145,9 +219,10 @@ function getQueryParamString(
     //   description,
     // })
     ""
-  }@Query(${JSON.stringify(name)}) ${toCamelCase(name)}: ${type}${
-    required ? "" : "?"
-  }`;
+  }@Query(${JSON.stringify(name)}) ${toCamelCase(name)}: ${appendNullable(
+    type,
+    !required,
+  )}`;
 }
 //x-nullable
 function normalizeObjectPropertyNullable(
@@ -170,6 +245,7 @@ function normalizeObjectPropertyNullable(
 function getClassBody(
   schema: undefined | true | {} | Schema,
   config: Config,
+  schemasMap?: Map<string, Schema>,
 ): string {
   if (isTypeAny(schema)) {
     return "Any";
@@ -182,11 +258,14 @@ function getClassBody(
       Object.entries(properties).map(([pName, _schema]) => ({
         schema: {
           ..._schema,
-          nullable: normalizeObjectPropertyNullable(pName, _schema, required),
+          nullable:
+            normalizeObjectPropertyNullable(pName, _schema, required) ||
+            isSchemaNullable(_schema, schemasMap),
         },
         name: pName,
       })),
       config,
+      schemasMap,
     );
   }
 
@@ -196,6 +275,7 @@ function getClassBody(
 function getKotlinType(
   schema: undefined | true | {} | Schema,
   config: Config,
+  schemasMap?: Map<string, Schema>,
 ): string {
   if (isTypeAny(schema)) {
     return "Any";
@@ -213,12 +293,14 @@ function getKotlinType(
     allOf,
   } = schema as Schema;
 
+  const schemaNullable = isSchemaNullable(schema as Schema, schemasMap);
+
   if ($ref) {
     const refArray = $ref.split("/");
     if (refArray[refArray.length - 2] === "requestBodies") {
-      return `RequestBody${getRefName($ref)}`;
+      return appendNullable(`RequestBody${getRefName($ref)}`, schemaNullable);
     } else {
-      return getRefName($ref);
+      return appendNullable(getRefName($ref), schemaNullable);
     }
   }
   if (Enum) {
@@ -227,7 +309,7 @@ function getKotlinType(
   }
 
   if (items) {
-    return `List<${getKotlinType(items, config)}>`;
+    return appendNullable(`List<${getKotlinType(items, config, schemasMap)}>`, schemaNullable);
   }
 
   let result = "";
@@ -259,12 +341,13 @@ function getKotlinType(
     return "Any";
   }
 
-  return result || TYPES[type as keyof typeof TYPES];
+  return appendNullable(result || TYPES[type as keyof typeof TYPES], schemaNullable);
 }
 
 function getObjectType(
   parameter: { schema?: Schema; name: string }[],
   config: Config,
+  schemasMap?: Map<string, Schema>,
 ) {
   const object = parameter
     .sort(
@@ -307,7 +390,10 @@ function getObjectType(
   ${prev}`
             : ""
         }${jsdoc}
-  val ${name}: ${getKotlinType(schema, config)}${nullable ? "?" : ""},`;
+  val ${name}: ${appendNullable(
+          getKotlinType(schema, config, schemasMap),
+          Boolean(nullable),
+        )},`;
       },
       "",
     );
@@ -379,6 +465,7 @@ export {
   generateServiceName,
   getKotlinType,
   getClassBody,
+  isSchemaNullable,
   getRefName,
   isAscending,
   getDefineParam,

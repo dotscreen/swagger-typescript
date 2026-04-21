@@ -20,7 +20,6 @@ import qs from \\"qs\\";
 const baseConfig: AxiosRequestConfig = {
   baseURL: \\"https://slack.com/api\\", // <--- Add your base url
   headers: {
-    \\"Content-Encoding\\": \\"UTF-8\\",
     Accept: \\"application/json\\",
     \\"Content-Type\\": \\"application/json-patch+json\\",
   },
@@ -13297,7 +13296,7 @@ export interface GetAdminConversationsRestrictAccessListGroupsQueryParams {
   team_id?: string;
 }
 
-export interface GetAdminConversationsSearchQueryParams {
+export type GetAdminConversationsSearchQueryParams = {
   /**
    * Set \`cursor\` to \`next_cursor\` returned by the previous call to list items in
    * the next page.
@@ -13333,7 +13332,7 @@ export interface GetAdminConversationsSearchQueryParams {
    * through.
    */
   team_ids?: string;
-}
+} | null;
 
 export interface GetAdminEmojiListQueryParams {
   /** Authentication token. Requires scope: \`admin.teams:read\` */
@@ -13350,7 +13349,7 @@ export interface GetAdminEmojiListQueryParams {
   limit?: number;
 }
 
-export interface GetAdminInviteRequestsApprovedListQueryParams {
+export type GetAdminInviteRequestsApprovedListQueryParams = {
   /** Value of the \`next_cursor\` field sent as part of the previous API response */
   cursor?: string;
   /**
@@ -13360,9 +13359,9 @@ export interface GetAdminInviteRequestsApprovedListQueryParams {
   limit?: number;
   /** ID for the workspace where the invite requests were made. */
   team_id?: string;
-}
+} | null;
 
-export interface GetAdminInviteRequestsDeniedListQueryParams {
+export type GetAdminInviteRequestsDeniedListQueryParams = {
   /** Value of the \`next_cursor\` field sent as part of the previous api response */
   cursor?: string;
   /**
@@ -13372,9 +13371,9 @@ export interface GetAdminInviteRequestsDeniedListQueryParams {
   limit?: number;
   /** ID for the workspace where the invite requests were made. */
   team_id?: string;
-}
+} | null;
 
-export interface GetAdminInviteRequestsListQueryParams {
+export type GetAdminInviteRequestsListQueryParams = {
   /** Value of the \`next_cursor\` field sent as part of the previous API response */
   cursor?: string;
   /**
@@ -13384,7 +13383,7 @@ export interface GetAdminInviteRequestsListQueryParams {
   limit?: number;
   /** ID for the workspace where the invite requests were made. */
   team_id?: string;
-}
+} | null;
 
 export interface GetAdminTeamsAdminsListQueryParams {
   team_id: string;
@@ -13399,7 +13398,7 @@ export interface GetAdminTeamsAdminsListQueryParams {
   limit?: number;
 }
 
-export interface GetAdminTeamsListQueryParams {
+export type GetAdminTeamsListQueryParams = {
   /**
    * Set \`cursor\` to \`next_cursor\` returned by the previous call to list items in
    * the next page.
@@ -13410,7 +13409,7 @@ export interface GetAdminTeamsListQueryParams {
    * inclusive.
    */
   limit?: number;
-}
+} | null;
 
 export interface GetAdminTeamsOwnersListQueryParams {
   team_id: string;
@@ -13453,12 +13452,12 @@ export interface GetAdminUsersListQueryParams {
   limit?: number;
 }
 
-export interface GetApiTestQueryParams {
+export type GetApiTestQueryParams = {
   /** Error response to return */
   error?: string;
   /** Example property to return */
   foo?: string;
-}
+} | null;
 
 export interface GetAppsEventAuthorizationsListQueryParams {
   event_context: string;
@@ -13466,10 +13465,10 @@ export interface GetAppsEventAuthorizationsListQueryParams {
   limit?: number;
 }
 
-export interface GetAppsPermissionsInfoQueryParams {
+export type GetAppsPermissionsInfoQueryParams = {
   /** Authentication token. Requires scope: \`none\` */
   token?: string;
-}
+} | null;
 
 export interface GetAppsPermissionsRequestQueryParams {
   /** A comma separated list of scopes to request for */
@@ -13524,14 +13523,14 @@ export interface GetAppsPermissionsUsersRequestQueryParams {
   user: string;
 }
 
-export interface GetAppsUninstallQueryParams {
+export type GetAppsUninstallQueryParams = {
   /** Issued when you created your application. */
   client_id?: string;
   /** Issued when you created your application. */
   client_secret?: string;
   /** Authentication token. Requires scope: \`none\` */
   token?: string;
-}
+} | null;
 
 export interface GetAuthRevokeQueryParams {
   /** Authentication token. Requires scope: \`none\` */
@@ -13564,7 +13563,7 @@ export interface GetChatGetPermalinkQueryParams {
   token: string;
 }
 
-export interface GetChatScheduledMessagesListQueryParams {
+export type GetChatScheduledMessagesListQueryParams = {
   /** The channel of the scheduled messages */
   channel?: string;
   /**
@@ -13579,9 +13578,9 @@ export interface GetChatScheduledMessagesListQueryParams {
   limit?: number;
   /** A UNIX timestamp of the oldest value in the time range */
   oldest?: number;
-}
+} | null;
 
-export interface GetConversationsHistoryQueryParams {
+export type GetConversationsHistoryQueryParams = {
   /** Conversation ID to fetch history for. */
   channel?: string;
   /**
@@ -13608,9 +13607,9 @@ export interface GetConversationsHistoryQueryParams {
   oldest?: number;
   /** Authentication token. Requires scope: \`conversations:history\` */
   token?: string;
-}
+} | null;
 
-export interface GetConversationsInfoQueryParams {
+export type GetConversationsInfoQueryParams = {
   /** Conversation ID to learn more about */
   channel?: string;
   /**
@@ -13625,9 +13624,9 @@ export interface GetConversationsInfoQueryParams {
   include_num_members?: boolean;
   /** Authentication token. Requires scope: \`conversations:read\` */
   token?: string;
-}
+} | null;
 
-export interface GetConversationsListQueryParams {
+export type GetConversationsListQueryParams = {
   /**
    * Paginate through collections of data by setting the \`cursor\` parameter to a
    * \`next_cursor\` attribute returned by a previous request's \`response_metadata\`.
@@ -13650,9 +13649,9 @@ export interface GetConversationsListQueryParams {
    * combination of \`public_channel\`, \`private_channel\`, \`mpim\`, \`im\`
    */
   types?: string;
-}
+} | null;
 
-export interface GetConversationsMembersQueryParams {
+export type GetConversationsMembersQueryParams = {
   /** ID of the conversation to retrieve members for */
   channel?: string;
   /**
@@ -13670,9 +13669,9 @@ export interface GetConversationsMembersQueryParams {
   limit?: number;
   /** Authentication token. Requires scope: \`conversations:read\` */
   token?: string;
-}
+} | null;
 
-export interface GetConversationsRepliesQueryParams {
+export type GetConversationsRepliesQueryParams = {
   /** Conversation ID to fetch thread from. */
   channel?: string;
   /**
@@ -13706,7 +13705,7 @@ export interface GetConversationsRepliesQueryParams {
    * unthreaded message.
    */
   ts?: number;
-}
+} | null;
 
 export interface GetDialogOpenQueryParams {
   /** The dialog definition. This must be a JSON-encoded string. */
@@ -13715,26 +13714,26 @@ export interface GetDialogOpenQueryParams {
   trigger_id: string;
 }
 
-export interface GetDndInfoQueryParams {
+export type GetDndInfoQueryParams = {
   /** Authentication token. Requires scope: \`dnd:read\` */
   token?: string;
   /** User to fetch status for (defaults to current user) */
   user?: string;
-}
+} | null;
 
-export interface GetDndTeamInfoQueryParams {
+export type GetDndTeamInfoQueryParams = {
   /** Authentication token. Requires scope: \`dnd:read\` */
   token?: string;
   /** Comma-separated list of users to fetch Do Not Disturb status for */
   users?: string;
-}
+} | null;
 
 export interface GetEmojiListQueryParams {
   /** Authentication token. Requires scope: \`emoji:read\` */
   token: string;
 }
 
-export interface GetFilesInfoQueryParams {
+export type GetFilesInfoQueryParams = {
   count?: string;
   /**
    * Parameter for pagination. File comments are paginated for a single file. Set
@@ -13754,9 +13753,9 @@ export interface GetFilesInfoQueryParams {
   page?: string;
   /** Authentication token. Requires scope: \`files:read\` */
   token?: string;
-}
+} | null;
 
-export interface GetFilesListQueryParams {
+export type GetFilesListQueryParams = {
   /** Filter files appearing in a specific channel, indicated by its ID. */
   channel?: string;
   count?: string;
@@ -13780,18 +13779,18 @@ export interface GetFilesListQueryParams {
   types?: string;
   /** Filter files created by a single user. */
   user?: string;
-}
+} | null;
 
-export interface GetFilesRemoteInfoQueryParams {
+export type GetFilesRemoteInfoQueryParams = {
   /** Creator defined GUID for the file. */
   external_id?: string;
   /** Specify a file by providing its ID. */
   file?: string;
   /** Authentication token. Requires scope: \`remote_files:read\` */
   token?: string;
-}
+} | null;
 
-export interface GetFilesRemoteListQueryParams {
+export type GetFilesRemoteListQueryParams = {
   /** Filter files appearing in a specific channel, indicated by its ID. */
   channel?: string;
   /**
@@ -13809,9 +13808,9 @@ export interface GetFilesRemoteListQueryParams {
   ts_from?: number;
   /** Filter files created before this timestamp (inclusive). */
   ts_to?: number;
-}
+} | null;
 
-export interface GetFilesRemoteShareQueryParams {
+export type GetFilesRemoteShareQueryParams = {
   /** Comma-separated list of channel IDs where the file will be shared. */
   channels?: string;
   /**
@@ -13827,7 +13826,7 @@ export interface GetFilesRemoteShareQueryParams {
   file?: string;
   /** Authentication token. Requires scope: \`remote_files:share\` */
   token?: string;
-}
+} | null;
 
 export interface GetMigrationExchangeQueryParams {
   /** Authentication token. Requires scope: \`tokens.basic\` */
@@ -13843,7 +13842,7 @@ export interface GetMigrationExchangeQueryParams {
   to_old?: boolean;
 }
 
-export interface GetOauthAccessQueryParams {
+export type GetOauthAccessQueryParams = {
   /** Issued when you created your application. */
   client_id?: string;
   /** Issued when you created your application. */
@@ -13857,9 +13856,9 @@ export interface GetOauthAccessQueryParams {
    * [legacy workspace app](https://api.slack.com/legacy-workspace-apps).
    */
   single_channel?: boolean;
-}
+} | null;
 
-export interface GetOauthTokenQueryParams {
+export type GetOauthTokenQueryParams = {
   /** Issued when you created your application. */
   client_id?: string;
   /** Issued when you created your application. */
@@ -13870,7 +13869,7 @@ export interface GetOauthTokenQueryParams {
   redirect_uri?: string;
   /** Request the user to add your app only to a single channel. */
   single_channel?: boolean;
-}
+} | null;
 
 export interface GetOauthV2AccessQueryParams {
   /** The \`code\` param returned via the OAuth callback. */
@@ -13929,17 +13928,17 @@ export interface GetReactionsListQueryParams {
   user?: string;
 }
 
-export interface GetRemindersInfoQueryParams {
+export type GetRemindersInfoQueryParams = {
   /** The ID of the reminder */
   reminder?: string;
   /** Authentication token. Requires scope: \`reminders:read\` */
   token?: string;
-}
+} | null;
 
-export interface GetRemindersListQueryParams {
+export type GetRemindersListQueryParams = {
   /** Authentication token. Requires scope: \`reminders:read\` */
   token?: string;
-}
+} | null;
 
 export interface GetRtmConnectQueryParams {
   /** Authentication token. Requires scope: \`rtm:stream\` */
@@ -13973,7 +13972,7 @@ export interface GetSearchMessagesQueryParams {
   sort_dir?: string;
 }
 
-export interface GetStarsListQueryParams {
+export type GetStarsListQueryParams = {
   count?: string;
   /**
    * Parameter for pagination. Set \`cursor\` equal to the \`next_cursor\` attribute
@@ -13991,7 +13990,7 @@ export interface GetStarsListQueryParams {
   page?: string;
   /** Authentication token. Requires scope: \`stars:read\` */
   token?: string;
-}
+} | null;
 
 export interface GetTeamAccessLogsQueryParams {
   /** Authentication token. Requires scope: \`admin\` */
@@ -14062,7 +14061,7 @@ export interface GetUsergroupsUsersListQueryParams {
   include_disabled?: boolean;
 }
 
-export interface GetUsersConversationsQueryParams {
+export type GetUsersConversationsQueryParams = {
   /**
    * Paginate through collections of data by setting the \`cursor\` parameter to a
    * \`next_cursor\` attribute returned by a previous request's \`response_metadata\`.
@@ -14090,7 +14089,7 @@ export interface GetUsersConversationsQueryParams {
    * are restricted to those where the calling user shares membership.
    */
   user?: string;
-}
+} | null;
 
 export interface GetUsersGetPresenceQueryParams {
   /** Authentication token. Requires scope: \`users:read\` */
@@ -14099,10 +14098,10 @@ export interface GetUsersGetPresenceQueryParams {
   user?: string;
 }
 
-export interface GetUsersIdentityQueryParams {
+export type GetUsersIdentityQueryParams = {
   /** Authentication token. Requires scope: \`identity.basic\` */
   token?: string;
-}
+} | null;
 
 export interface GetUsersInfoQueryParams {
   /** Authentication token. Requires scope: \`users:read\` */
@@ -14113,7 +14112,7 @@ export interface GetUsersInfoQueryParams {
   user?: string;
 }
 
-export interface GetUsersListQueryParams {
+export type GetUsersListQueryParams = {
   /**
    * Paginate through collections of data by setting the \`cursor\` parameter to a
    * \`next_cursor\` attribute returned by a previous request's \`response_metadata\`.
@@ -14133,7 +14132,7 @@ export interface GetUsersListQueryParams {
   limit?: number;
   /** Authentication token. Requires scope: \`users:read\` */
   token?: string;
-}
+} | null;
 
 export interface GetUsersLookupByEmailQueryParams {
   /** An email address belonging to a user in the workspace */
@@ -14186,7 +14185,7 @@ export interface GetViewsPushQueryParams {
   view: string;
 }
 
-export interface GetViewsUpdateQueryParams {
+export type GetViewsUpdateQueryParams = {
   /**
    * A unique identifier of the view set by the developer. Must be unique for all
    * views on a team. Max length of 255 characters. Either \`view_id\` or
@@ -14208,7 +14207,7 @@ export interface GetViewsUpdateQueryParams {
    * \`external_id\` is required.
    */
   view_id?: string;
-}
+} | null;
 
 export interface GetWorkflowsStepCompletedQueryParams {
   /** Context identifier that maps to the correct workflow step execution. */

@@ -4,6 +4,7 @@ import {
   getDefinitionBody,
   getHeaderParamString,
   getKotlinType,
+  getSchemaName,
 } from "./utils.mjs";
 import { ApiAST, Config, Parameter, TypeAST } from "../types.mjs";
 import { SERVICE_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings.mjs";
@@ -17,6 +18,12 @@ function generateApis(
 ): string {
   let code = SERVICE_BEGINNING;
   try {
+    const schemasMap = new Map(
+      types
+        .filter(({ schema }) => Boolean(schema))
+        .map(({ name, schema }) => [getSchemaName(name), schema!] as const),
+    );
+
     const apisCode = apis
       .sort(({ serviceName }, { serviceName: _serviceName }) =>
         isAscending(serviceName, _serviceName),
@@ -47,7 +54,14 @@ function generateApis(
         ) => {
           const functionParams = [
             ...pathParams.map(({ name, required, schema, description }) =>
-              getDefineParam(name, required, schema, config, description),
+              getDefineParam(
+                name,
+                required,
+                schema,
+                config,
+                description,
+                schemasMap,
+              ),
             ),
             ...(requestBody
               ? [
@@ -56,6 +70,8 @@ function generateApis(
                     requestBodyRequired,
                     requestBody,
                     config,
+                    undefined,
+                    schemasMap,
                   ),
                 ]
               : []),
@@ -63,7 +79,7 @@ function generateApis(
               getQueryParamString(
                 name,
                 required,
-                getKotlinType(schema, config),
+                getKotlinType(schema, config, schemasMap),
                 description,
               ),
             ),
@@ -72,7 +88,7 @@ function generateApis(
                 getHeaderParamString(
                   name,
                   required,
-                  getKotlinType(schema, config),
+                  getKotlinType(schema, config, schemasMap),
                   description,
                 ),
             ),
@@ -87,7 +103,7 @@ function generateApis(
   @${method.toUpperCase()}("${endPoint}")
   suspend fun ${serviceName}(
     ${functionParams.join(",\n    ")}
-  ): Response<${responses ? getKotlinType(responses, config) : "Any"}>
+  ): Response<${responses ? getKotlinType(responses, config, schemasMap) : "Any"}>
 
 `
           );

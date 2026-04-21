@@ -128,11 +128,12 @@ function getDefineParam(
   schema: Schema | undefined,
   config: Config,
   description?: string,
+  schemasMap?: Map<string, Schema>,
 ): string {
   return getParamString(
     name,
     required,
-    getTsType(schema, config, undefined),
+    getTsType(schema, config, schemasMap),
     description,
   );
 }
@@ -149,18 +150,95 @@ function getParamString(
   })}${name}${required ? "" : "?"}: ${isPartial ? `Partial<${type}>` : type}`;
 }
 
+function isSchemaMarkedNullable(schema?: Schema): boolean {
+  return schema?.nullable === true || schema?.["x-nullable"] === true;
+}
+
+function resolveReferencedSchema(
+  $ref: string,
+  schemasMap?: Map<string, Schema>,
+  visitedRefs: Set<string> = new Set(),
+): Schema | undefined {
+  if (!schemasMap) {
+    return undefined;
+  }
+
+  const refName = getRefName($ref);
+  const referencedSchema = schemasMap.get(refName);
+
+  if (!referencedSchema?.$ref) {
+    return referencedSchema;
+  }
+
+  if (visitedRefs.has(referencedSchema.$ref)) {
+    return referencedSchema;
+  }
+
+  const nextVisitedRefs = new Set(visitedRefs);
+  nextVisitedRefs.add(referencedSchema.$ref);
+  return resolveReferencedSchema(
+    referencedSchema.$ref,
+    schemasMap,
+    nextVisitedRefs,
+  );
+}
+
+function isSchemaNullable(
+  schema: Schema | undefined,
+  schemasMap?: Map<string, Schema>,
+  visitedRefs: Set<string> = new Set(),
+): boolean {
+  if (!schema) {
+    return false;
+  }
+
+  if (isSchemaMarkedNullable(schema)) {
+    return true;
+  }
+
+  if (schema.$ref) {
+    if (visitedRefs.has(schema.$ref)) {
+      return false;
+    }
+
+    const nextVisitedRefs = new Set(visitedRefs);
+    nextVisitedRefs.add(schema.$ref);
+    return isSchemaNullable(
+      resolveReferencedSchema(schema.$ref, schemasMap, nextVisitedRefs),
+      schemasMap,
+      nextVisitedRefs,
+    );
+  }
+
+  return false;
+}
+
+function appendNullToTsType(type: string): string {
+  return type
+    .split("|")
+    .map((part) => part.trim())
+    .includes("null")
+    ? type
+    : `${type} | null`;
+}
+
 /**
  * Handles reference types ($ref) and returns appropriate TypeScript type
  *
  * @param $ref - The reference string
  * @returns TypeScript type for the reference
  */
-function handleRefType($ref: string): string {
+function handleRefType(
+  $ref: string,
+  schemasMap?: Map<string, Schema>,
+  nullable: boolean = false,
+): string {
   const refArray = $ref.split("/");
-  if (refArray[refArray.length - 2] === "requestBodies") {
-    return `RequestBody${getRefName($ref)}`;
-  }
-  return getRefName($ref);
+  const refType = refArray[refArray.length - 2] === "requestBodies"
+    ? `RequestBody${getRefName($ref)}`
+    : getRefName($ref);
+
+  return nullable ? appendNullToTsType(refType) : refType;
 }
 
 /**
@@ -384,9 +462,11 @@ function getTsType(
     discriminator,
   } = schema as Schema;
 
+  const schemaNullable = isSchemaNullable(schema as Schema, schemasMap);
+
   // Handle reference types
   if ($ref) {
-    return handleRefType($ref);
+    return handleRefType($ref, schemasMap, schemaNullable);
   }
 
   // Handle enum types
@@ -396,7 +476,8 @@ function getTsType(
 
   // Handle array types
   if (items) {
-    return handleArrayType(items, config, schemasMap);
+    const arrayType = handleArrayType(items, config, schemasMap);
+    return schemaNullable ? appendNullToTsType(arrayType) : arrayType;
   }
 
   let result = "";
@@ -433,7 +514,8 @@ function getTsType(
 
   // Handle basic object types
   if (type === "object" && !result) {
-    return handleBasicObjectType(additionalProperties, config);
+    const objectType = handleBasicObjectType(additionalProperties, config);
+    return schemaNullable ? appendNullToTsType(objectType) : objectType;
   }
 
   // Handle nullable types
@@ -442,7 +524,8 @@ function getTsType(
   }
 
   // Return result or fallback to basic type mapping
-  return result || TYPES[type as keyof typeof TYPES] || "any";
+  const resolvedType = result || TYPES[type as keyof typeof TYPES] || "any";
+  return schemaNullable ? appendNullToTsType(resolvedType) : resolvedType;
 }
 
 function getObjectType(
@@ -479,16 +562,9 @@ function getObjectType(
           name,
         },
       ) => {
-        const nullable = schema?.nullable ?? schema?.["x-nullable"] ?? false;
+        const nullable = isSchemaNullable(schema, schemasMap);
         const tsType = getTsType(schema, config, schemasMap);
-        const typeWithNullable =
-          nullable &&
-          !tsType
-            .split("|")
-            .map((part) => part.trim())
-            .includes("null")
-            ? `${tsType} | null`
-            : tsType;
+        const typeWithNullable = nullable ? appendNullToTsType(tsType) : tsType;
 
         return `${prev}${getJsdoc({
           ...schema,
@@ -565,6 +641,7 @@ export {
   getHeaderParams,
   generateServiceName,
   getTsType,
+  isSchemaNullable,
   getRefName,
   isAscending,
   getDefineParam,

@@ -78,7 +78,7 @@ function objToUrlencoded(requestBody: object) {
 export const getSettlementV1PrivateSettlementGet = (
   queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SettlementRequestResultListResponseVM>> => {
+): Promise<SwaggerResponse<SettlementRequestResultListResponseVM | null>> => {
   return Http.getRequest(
     getSettlementV1PrivateSettlementGet.key,
     queryParams,
@@ -113,7 +113,7 @@ exports[`enums generate enum as type: generate type 1`] = `
 
 export type EnumWithoutName = 0 | 1 | 2 | 10 | 30;
 
-export interface GetSettlementV1PrivateSettlementGetQueryParams {
+export type GetSettlementV1PrivateSettlementGetQueryParams = {
   EndDate?: string;
   IsAuto?: boolean;
   /** - Format: decimal */
@@ -122,11 +122,11 @@ export interface GetSettlementV1PrivateSettlementGetQueryParams {
   Skip?: number;
   /** - Format: date-time */
   StartDate?: string;
-  States?: SettlementRequestStatus[];
+  States?: (SettlementRequestStatus | null)[];
   /** - Format: int64 */
   UserWalletId?: number;
   status?: SettlementRequestStatus;
-}
+} | null;
 
 export type NotificationLevel =
   | \\"Unknown\\"
@@ -246,7 +246,7 @@ function objToUrlencoded(requestBody: object) {
 export const getSettlementV1PrivateSettlementGet = (
   queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SettlementRequestResultListResponseVM>> => {
+): Promise<SwaggerResponse<SettlementRequestResultListResponseVM | null>> => {
   return Http.getRequest(
     getSettlementV1PrivateSettlementGet.key,
     queryParams,
@@ -287,7 +287,7 @@ export enum EnumWithoutName {
   \\"30\\" = 30,
 }
 
-export interface GetSettlementV1PrivateSettlementGetQueryParams {
+export type GetSettlementV1PrivateSettlementGetQueryParams = {
   EndDate?: string;
   IsAuto?: boolean;
   /** - Format: decimal */
@@ -296,11 +296,11 @@ export interface GetSettlementV1PrivateSettlementGetQueryParams {
   Skip?: number;
   /** - Format: date-time */
   StartDate?: string;
-  States?: SettlementRequestStatus[];
+  States?: (SettlementRequestStatus | null)[];
   /** - Format: int64 */
   UserWalletId?: number;
   status?: SettlementRequestStatus;
-}
+} | null;
 
 export enum NotificationLevel {
   \\"Unknown\\" = \\"Unknown\\",
