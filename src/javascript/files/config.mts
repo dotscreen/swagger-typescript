@@ -16,7 +16,6 @@ import qs from "qs";
 const baseConfig: AxiosRequestConfig = {
   baseURL: "${baseUrl}", // <--- Add your base url
   headers: {
-    "Content-Encoding": "UTF-8",
     Accept: "application/json",
     "Content-Type": "application/json-patch+json",
   },
